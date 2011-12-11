@@ -1,0 +1,29 @@
+div.seo_stats_snippet { padding:10px; width:455px; height:150px; margin:0 auto 10px auto; background:url(../img/item_bg_hover.png) top left no-repeat;  overflow:hidden; }
+div.seo_stats_snippet img.url_tn{ width:202px; height:152px; float:left; }
+div.seo_stats_snippet .right-blk{ width:240px; float:left; margin-left:5px; }
+div.seo_stats_snippet .right-blk span{ margin-bottom:8px; display:block; width:100%; float:left;}
+div.seo_stats_snippet .right-blk span a{ color:#990000; }
+
+span.imageDouble {width:225px; padding:5px; float:left; display:block;}
+span.imageDouble a{text-decoration:none;}
+
+
+.report fieldset { background:url(../img/w2.0_bg.png); border:1px solid #ccc; padding:10px; margin-bottom:15px; }
+
+.report fieldset legend {
+  padding: 5px;
+  font-weight:bold;
+  border:1px solid #ccc;
+  margin-left:10px;
+  color:#990000;
+  font-size:16px;
+  text-align:left;
+  background:#fff;
+}
+
+.report fieldset legend em { font-size:12px; color:#666;}
+
+
+.report fieldset tr.advice_color_0 td { background:#EA4D5C;}
+.report fieldset tr.advice_color_1 td { background:#FFCC33;}
+.report fieldset tr.advice_color_2 td { background:#99CC00;}

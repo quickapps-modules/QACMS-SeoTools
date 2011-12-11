@@ -1,0 +1,7 @@
+<table cellpadding="0" cellspacing="0" border="0" id="toolbar">
+	<tr valign="middle" align="center">
+		<td><a <?php $html->tooltip(_e("URL's")); ?> class="toolbar <?php echo $this->params['controller'] == 'urls' ? ' selected ' : ''; ?>" href="<?php echo $this->Html->url("/{$this->plugin}/urls/"); ?>"><span><?php echo $html->image("/{$this->plugin}/img/urls.png", array('border' => 0, 'align' => 'middle') ); ?><br /><?php __e("URL's"); ?></span></a></td>
+		<td><a <?php $html->tooltip(_e('SEO Tools')); ?> class="toolbar <?php echo $this->params['controller'] == 'tools' ? ' selected ' : ''; ?>" href="<?php echo $this->Html->url("/{$this->plugin}/tools/"); ?>"><span><?php echo $html->image("/{$this->plugin}/img/tools.png", array('border' => 0, 'align' => 'middle') ); ?><br /><?php __e('Tools'); ?></span></a></td>
+		<td><a <?php $html->tooltip(_e('Settings')); ?> class="toolbar <?php echo $this->params['controller'] == 'settings' ? ' selected ' : ''; ?>" href="<?php echo $this->Html->url("/{$this->plugin}/settings/"); ?>"><span><?php echo $html->image("/{$this->plugin}/img/settings.gif", array('border' => 0, 'align' => 'middle') ); ?><br /><?php __e('Settings'); ?></span></a></td>
+	</tr>
+</table>
