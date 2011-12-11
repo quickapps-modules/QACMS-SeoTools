@@ -1,0 +1,5 @@
+name: Backlinks checker
+description: Checks google, yahoo and alexa backlinks
+category: Stats
+version: 1.0
+author: Christopher Castro <chris@quickapps.es>
