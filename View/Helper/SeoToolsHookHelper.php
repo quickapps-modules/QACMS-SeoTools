@@ -26,7 +26,7 @@ class SeoToolsHookHelper extends AppHelper {
         if (isset($this->request->params['admin']) &&
             $this->request->params['plugin'] == 'seo_tools'
         ) {
-            $this->_View->Layout->blockPush(array('body' => $this->_View->element('toolbar-urls') . '<!-- SeoToolsHookHelper -->' ), 'toolbar');
+            $this->_View->Layout->blockPush(array('body' => $this->_View->element('toolbar') . '<!-- SeoToolsHookHelper -->' ), 'toolbar');
         }    
 
         return true;

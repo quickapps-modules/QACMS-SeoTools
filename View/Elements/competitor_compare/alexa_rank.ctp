@@ -31,23 +31,23 @@
             <td align="right" valign="middle">&nbsp;</td>
         </tr>
         
-        <tr class="advice_color_<?php echo $color = $this->SeoTools->advice_color($data, $results['Data']['Site']['alexa_rank'], $aspect);  ?>">
+        <tr class="advice_color_<?php echo $color = $this->CC->advice_color($data, $results['Data']['Site']['alexa_rank'], $aspect);  ?>">
             <td align="left" valign="middle" colspan="3">
             <?php 
-                if ( $this->SeoTools->tmp[0] < $this->SeoTools->tmp[1] && 170000 < $this->SeoTools->tmp[1] ){
+                if ( $this->CC->tmp[0] < $this->CC->tmp[1] && 170000 < $this->CC->tmp[1] ){
                     printf(__t("Although your web site %s appears to attract more visitors than the average of your competitors' sites, the absolute number of visitors is low. This could be disadvantageous to your rankings on %s"),
                         $this->data['Tool']['url'],
                         $this->data['Tool']['engine']
                     );
-                } elseif (    ($this->SeoTools->tmp[0] > $this->SeoTools->tmp[1]) ||
-                        ($this->SeoTools->tmp[0] > 170000  && $this->SeoTools->tmp[1] < $this->SeoTools->tmp[0])
+                } elseif (    ($this->CC->tmp[0] > $this->CC->tmp[1]) ||
+                        ($this->CC->tmp[0] > 170000  && $this->CC->tmp[1] < $this->CC->tmp[0])
                 ){
                     printf(
                         __t('Your web site %s does not appear to attract many visitors because your traffic trank is above #100,000 and you have less visitors than the average of your competitors. This could be disadvantageous to your rankings on %s'),
                         $this->data['Tool']['url'],
                         $this->data['Tool']['engine']
                         );
-                } elseif ( $this->SeoTools->tmp[0] < 170000){
+                } elseif ( $this->CC->tmp[0] < 170000){
                     printf(
                         __t('Your web site %s appears to attract a lot of visitors. This is very good and might be beneficial to your rankings on %s'),
                         $this->data['Tool']['url'],

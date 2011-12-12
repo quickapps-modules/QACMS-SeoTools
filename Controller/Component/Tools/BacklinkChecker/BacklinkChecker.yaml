@@ -1,5 +1,5 @@
 name: Backlinks checker
-description: Checks google, yahoo and alexa backlinks
-category: Stats
+description: Find out how many total backlinks there are for any one website
+category: Link Tools
 version: 1.0
 author: Christopher Castro <chris@quickapps.es>

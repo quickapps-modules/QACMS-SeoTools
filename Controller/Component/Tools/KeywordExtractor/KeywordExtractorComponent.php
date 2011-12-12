@@ -1,14 +1,25 @@
 <?php 
 class KeywordExtractorComponent extends Component {
+    protected $Controller;
 
     public function main(&$Controller) {
         if (!isset($Controller->data['Tool']['url'])) {
             return false;
         }
 
+        $this->Controller = $Controller;
 		$parseUrl = $this->BaseTools->parseUrl($Controller->data['Tool']['url']);
 		$page = $this->BaseTools->getPage($parseUrl['full']);
 		$page = $this->__string2keywords($page);
+
+        if (empty($page)) {
+            return array(
+                'words_1' => '',
+                'words_2' => '',
+                'words_3' => '',
+                'words_all' => ''
+            );
+        }
 
 		include_once dirname(__FILE__) . DS . 'Autokeyword.php';
 
@@ -21,7 +32,7 @@ class KeywordExtractorComponent extends Component {
 			'min_2words_phrase_occur' => 2,		//minimum occur of 2 words phrase
 			'min_3words_length' => 2,			//minimum length of words for 3 word phrases
 			'min_3words_phrase_length' => 2,	//minimum length of 3 word phrases
-			'min_3words_phrase_occur' => 2		//minimum occur of 3 words phrase
+			'min_3words_phrase_occur' => 1		//minimum occur of 3 words phrase
 		);
 		$keyword = new Autokeyword($opts, 'utf-8');
 		$out = array(
@@ -97,7 +108,8 @@ class KeywordExtractorComponent extends Component {
 			'/[^ a-zA-Z\s]/' => '',
 			'/[ ]{2,}/' => ' '
 		);	
-
+        
+        $page = html_entity_decode($page);
 		$page = preg_replace(array_keys($replacement), array_values($replacement), $page);
 		$page = explode(' ', $page);
 
@@ -110,8 +122,8 @@ class KeywordExtractorComponent extends Component {
 		$page = implode(' ', $page);
 		$page = strtolower($page);
 
-        if (isset($Controller->data['Tool']['exclude_words']) && !empty($Controller->data['Tool']['exclude_words'])) {
-            $ew = explode("\n", $Controller->data['Tool']['exclude_words']);
+        if (isset($this->Controller->data['Tool']['exclude_words']) && !empty($this->Controller->data['Tool']['exclude_words'])) {
+            $ew = explode("\n", $this->Controller->data['Tool']['exclude_words']);
             $page = $this->__exclude_words($page, $ew);
         }
 

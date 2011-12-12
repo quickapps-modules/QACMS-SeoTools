@@ -1,5 +1,5 @@
 name: Keyword Density
-description: --
-category: Stats
+description: The Keyword Density Checker tool extracts keywords from a website and determines how often they occur
+category: Keyword Tools
 version: 1.0
 author: Christopher Castro <chris@quickapps.es>

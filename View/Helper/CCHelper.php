@@ -1,5 +1,5 @@
 <?php
-class SeoToolsHelper extends AppHelper {
+class CCHelper extends AppHelper {
 	public $red = 0;
 	public $yellow = 0;
 	public $green = 0;
@@ -90,10 +90,10 @@ class SeoToolsHelper extends AppHelper {
 			return $this->return_color(2, $aspect);
 		}
 
-		$competitor = Set::filter($competitor);
+		$competitor = (array)Set::filter($competitor);
 		$min = min($competitor);
 		$max = max($competitor);
-		
+
 		if ($min == 0 && $max > 0 && $your == 0) {
 			if ($this->relevance($aspect) === 1) {
 				return $this->return_color(0, $aspect);

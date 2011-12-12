@@ -1,5 +1,5 @@
 name: Robots TXT
-description: --
-category: Stats
+description: Check for and view the contents of the robots.txt file for any website
+category: Search Engine Tools
 version: 1.0
 author: Christopher Castro <chris@quickapps.es>

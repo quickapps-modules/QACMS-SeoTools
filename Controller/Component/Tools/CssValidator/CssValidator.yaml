@@ -1,5 +1,5 @@
 name: CSS Validator
-description: --
-category: Stats
+description: Validate your cascading stylesheets with the W3C CSS validator
+category: Source Code Tools
 version: 1.0
 author: Christopher Castro <chris@quickapps.es>

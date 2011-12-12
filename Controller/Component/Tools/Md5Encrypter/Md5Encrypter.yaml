@@ -1,5 +1,5 @@
 name: MD5 Encrypter
-description: --
-category: Stats
+description: Encrypt text with MD5 encoding
+category: Source Code Tools
 version: 1.0
 author: Christopher Castro <chris@quickapps.es>

@@ -1,5 +1,5 @@
 name: Link Extractor
-description: --
-category: Stats
+description: Extract all links from the specified domain
+category: Link Tools
 version: 1.0
 author: Christopher Castro <chris@quickapps.es>

@@ -1,0 +1,12 @@
+div.tools-box { 
+    display:block; 
+    overflow:hidden; 
+    width:100%; 
+    border:1px solid #ccc; 
+    padding:10px;
+    background:#fff;
+    margin-bottom:15px;
+    margin-right:10px;
+}
+div.tools-box ul li { padding:5px; }
+img.tool-icon { margin-right:10px; }

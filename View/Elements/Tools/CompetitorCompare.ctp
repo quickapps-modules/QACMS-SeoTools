@@ -1,80 +1,76 @@
-<?php if (!isset($results)) : ?>
-<div style="width:100%;">
-    <form id="toolForm" action="" method="post" onsubmit="tool__txe(950); return false;">
-        <table width="100%" border="0" cellspacing="0" cellpadding="5">
-            <tr>
-                <td align="left" valign="top"><b><?php echo __t('Enter Your URL'); ?>:</b></td>
-                </tr>
-            <tr>
-              <td align="left" valign="top"><input type="text" name="data[Tool][url]" value="<?php echo Configure::read('ModSeo.Config.seo_site_url'); ?>" class="text" style="width:100%;" /></td>
-          </tr>
-            <tr>
-              <td align="left" valign="top"><b><?php echo __t('Criteria'); ?>:</b></td>
-          </tr>
-            <tr>
-              <td align="left" valign="top"><input type="text" name="data[Tool][criteria]" value="" class="text" style="width:100%;" /></td>
-          </tr>
-            <tr>
-              <td align="left" valign="top"><b><?php echo __t('Seach Engine'); ?>:</b></td>
-          </tr>
-            <tr>
-              <td align="left" valign="top">
+<?php if (!isset($results)): ?>
+
+<form action="" method="post">
+    <table width="100%" border="0" cellspacing="0" cellpadding="5">
+        <tr>
+            <td align="left" valign="top"><b><?php echo __t('Enter Your URL'); ?>:</b></td>
+        </tr>
+
+        <tr>
+            <td align="left" valign="top"><input type="text" name="data[Tool][url]" value="<?php echo Configure::read('ModSeo.Config.seo_site_url'); ?>" class="text" style="width:100%;" /></td>
+        </tr>
+
+        <tr>
+            <td align="left" valign="top"><b><?php echo __t('Criteria'); ?>:</b></td>
+        </tr>
+
+        <tr>
+            <td align="left" valign="top"><input type="text" name="data[Tool][criteria]" value="" class="text" style="width:100%;" /></td>
+        </tr>
+
+        <tr>
+            <td align="left" valign="top"><b><?php echo __t('Seach Engine'); ?>:</b></td>
+        </tr>
+
+        <tr>
+            <td align="left" valign="top">
                 <select name="data[Tool][engine]" id="select">
-                  <option value="google.com" selected="selected">Google.com</option>
-                  <option value="google.es">Google.es</option>
-                  <option value="google.as">Google.as</option>
-                  <option value="google.at">Google.at</option>
-                  <option value="google.be">Google.be</option>
-                  <option value="google.ca">Google.ca</option>
-                  <option value="google.ch">Google.ch</option>
-                  <option value="google.cl">Google.cl</option>
-                  <option value="google.co.cr">Google.co.cr</option>
-                  <option value="google.co.il">Google.co.il</option>
-                  <option value="google.con.in">Google.co.in</option>
-                  <option value="google.co.jp">Google.co.jp</option>
-                  <option value="google.co.kr">Google.co.kr</option>
-                  <option value="google.co.nz">Google.co.nz</option>
-                  <option value="google.co.th">Google.co.th</option>
-                  <option value="google.co.uk">Google.co.uk</option>
-                  <option value="google.co.ve">Google.co.ve</option>
-                  <option value="google.co.za">Google.co.za</option>
-                  <option value="google.com.ar">Google.com.ar</option>
-                  <option value="google.com.au">Google.com.au</option>
-                  <option value="google.com.br">Google.com.br</option>
-                  <option value="google.com.co">Google.com.co</option>
-                  <option value="google.com.gr">Google.com.gr</option>
-                  <option value="google.com.hk">Google.com.hk</option>
-                  <option value="google.com.mx">Google.com.mx</option>
-                  <option value="google.com.my">Google.com.my</option>
-                  <option value="google.com.pe">Google.com.pe</option>
-                  <option value="google.com.ph">Google.com.ph</option>
-                  <option value="google.com.sg">Google.com.sg</option>
-                  <option value="google.com.tr">Google.com.tr</option>
-                  <!--<option value="es.search.yahoo.com">Yahoo.com (es)</option>-->
+                    <option value="google.com" selected="selected">Google.com</option>
+                    <option value="google.es">Google.es</option>
+                    <option value="google.as">Google.as</option>
+                    <option value="google.at">Google.at</option>
+                    <option value="google.be">Google.be</option>
+                    <option value="google.ca">Google.ca</option>
+                    <option value="google.ch">Google.ch</option>
+                    <option value="google.cl">Google.cl</option>
+                    <option value="google.co.cr">Google.co.cr</option>
+                    <option value="google.co.il">Google.co.il</option>
+                    <option value="google.con.in">Google.co.in</option>
+                    <option value="google.co.jp">Google.co.jp</option>
+                    <option value="google.co.kr">Google.co.kr</option>
+                    <option value="google.co.nz">Google.co.nz</option>
+                    <option value="google.co.th">Google.co.th</option>
+                    <option value="google.co.uk">Google.co.uk</option>
+                    <option value="google.co.ve">Google.co.ve</option>
+                    <option value="google.co.za">Google.co.za</option>
+                    <option value="google.com.ar">Google.com.ar</option>
+                    <option value="google.com.au">Google.com.au</option>
+                    <option value="google.com.br">Google.com.br</option>
+                    <option value="google.com.co">Google.com.co</option>
+                    <option value="google.com.gr">Google.com.gr</option>
+                    <option value="google.com.hk">Google.com.hk</option>
+                    <option value="google.com.mx">Google.com.mx</option>
+                    <option value="google.com.my">Google.com.my</option>
+                    <option value="google.com.pe">Google.com.pe</option>
+                    <option value="google.com.ph">Google.com.ph</option>
+                    <option value="google.com.sg">Google.com.sg</option>
+                    <option value="google.com.tr">Google.com.tr</option>
+                    <!--<option value="es.search.yahoo.com">Yahoo.com (es)</option>-->
                 </select>
-              </td>
-          </tr>
-            <tr>
-              <td align="left" valign="top"><b><?php echo __t('Engine Results'); ?>:</b></td>
-          </tr>
-            <tr>
-              <td align="left" valign="top">
-                <select name="data[Tool][engine_results_num]" id="select">
-                    <option value="10" selected="selected">TOP 10</option>
-                    <option value="5">TOP 5</option>
-                </select>
-              </td>
-          </tr>          
-          
-          
-            <tr>
-                <td align="left" valign="top">
-                    <input type="submit" value="<?php echo __t('Continue'); ?>" class="primary_lg" />
-                </td>
-            </tr>
-        </table>
-    </form>
-</div>
+            </td>
+        </tr>
+
+        <tr>
+            <td align="left" valign="top"><b><?php echo __t('Engine Results'); ?>:</b></td>
+        </tr>    
+
+        <tr>
+            <td align="left" valign="top">
+                <input type="submit" value="<?php echo __t('Continue'); ?>" class="primary_lg" />
+            </td>
+        </tr>
+    </table>
+</form>
 
 <?php else: ?>
 
@@ -84,7 +80,7 @@
         $keywords = Set::extract('Analysis.title', $results); 
         $keywords = array_keys($keywords); 
     ?>
-    
+
     <fieldset>
         <legend id="report_overview"><?php echo __t('Report overview'); ?></legend>
         <em><?php echo __t('This report helps you to optimize the web page "<b>http://%s/</b>" for a high ranking on <b>%s</b> for the search term "<b>%s</b>".', $this->data['Tool']['url'], $this->data['Tool']['engine'], $this->data['Tool']['criteria']); ?></em>
@@ -99,7 +95,7 @@
             <tbody>
                 <tr>
                     <td align="center" valign="middle" width="10%">
-                        <script type="text/javascript">wsr_snapshot('<?php echo $this->data['Tool']['url']; ?>', '5GIftiBHDrC1', 't');</script>
+                        <script type="text/javascript">wsr_snapshot('<?php echo $this->data['Tool']['url']; ?>', Configure::read('Modules.SeoTools.settings.websnapr_key'), 't');</script>
                     </td>
                     <td align="left" valign="top" width="90%">
                         <a href="http://<?php $this->data['Tool']['url']; ?>" target="_blank"><?php echo $this->data['Tool']['url']; ?></a><br/><br/>
@@ -119,14 +115,15 @@
             
             <tbody>
                 <?php 
-                    $i = 0; 
+                    $i = 0;
+
                     foreach($results['Data']['Competitors'] as $competitor): 
                         $i++;
                  ?>
                     <tr>
                         <td align="center" valign="middle" width="3%"><b><?php echo $i; ?></b></td>
                         <td align="center" valign="middle" width="10%">
-                            <script type="text/javascript">wsr_snapshot('<?php echo $competitor['url']; ?>', '5GIftiBHDrC1', 't');</script>
+                            <script type="text/javascript">wsr_snapshot('<?php echo $competitor['url']; ?>', Configure::read('Modules.SeoTools.settings.websnaper_key'), 't');</script>
                         </td>
                         <td align="left" valign="top" width="87%">
                             <a href="<?php echo $competitor['url']; ?>" target="_blank"><?php echo $competitor['url']; ?></a><br/><br/>
@@ -157,17 +154,17 @@
                     <td align="left" valign="middle">2. <a href="#aspect_title"><?php echo __t('Keyword use in document title'); ?></a></td>
                     <td align="left" valign="middle">7. <a href="#aspect_url"><?php echo __t('Keyword use in page URL'); ?></a></td>
                 </tr>
-                
+
                 <tr>
                     <td align="left" valign="middle">3. <a href="#aspect_backlinks"><?php echo __t('Global link popularity of web site'); ?></a></td>
                     <td align="left" valign="middle">8. <a href="#aspect_alexa_rank"><?php echo __t('Number of visitors to the site'); ?></a></td>
                 </tr>
-                
+
                 <tr>
                     <td align="left" valign="middle">4. <a href="#aspect_body"><?php echo __t('Keyword use in body text'); ?></a></td>
                     <td align="left" valign="middle">9. <a href="#report_tags/description"><?php echo __t('Keyword use in meta description'); ?></a></td>
                 </tr>
-                
+
                 <tr>
                     <td align="left" valign="middle">5. <a href="#aspect_age"><?php echo __t('Age of web site'); ?></a></td>
                     <td align="left" valign="middle">10. <a href="#other_factors"><?php echo __t('Factors that could prevent your top ranking'); ?></a></td>
@@ -175,7 +172,7 @@
             </tbody>
         </table>
     </fieldset>
-    
+
     <?php 
         $titles = array(
             'title' => array(
@@ -232,11 +229,11 @@
         <?php 
             // 'pagerank', 'backlinks', 'alexa_rank', 'dmoz_directory', 'yahoo_directory', 'age'
             if (in_array($aspect, array('backlinks', 'alexa_rank', 'age'))) {
-                echo $this->element($aspect, compact('aspect', 'titles', 'results', 'data'));
+                echo $this->element('competitor_compare/' . $aspect, compact('aspect', 'titles', 'results', 'data'));
 
         } else { 
             if ($aspect != 'h1') { 
-                echo $this->element('h1', compact('aspect', 'titles', 'results', 'data', 'keywords')); 
+                echo $this->element('competitor_compare/' . 'h1', compact('aspect', 'titles', 'results', 'data', 'keywords')); 
             }
         ?>
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -249,7 +246,7 @@
                 <?php if ($aspect != 'h1') { ?>
                     <tbody>
                         <tr>
-                          <td align="left" valign="top" colspan="3"><?php $your_content = Set::extract("/{$aspect}", $results['Data']['Site']); echo !empty($your_content[0]) ? $this->SeoTools->emphasize_keywords($your_content[0], $keywords) : __t('Content not found'); ?></td>
+                          <td align="left" valign="top" colspan="3"><?php $your_content = Set::extract("/{$aspect}", $results['Data']['Site']); echo !empty($your_content[0]) ? $this->CC->emphasize_keywords($your_content[0], $keywords) : __t('Content not found'); ?></td>
                         </tr>
                         <?php if ($aspect == 'body'): ?>
                         <tr>
@@ -261,9 +258,9 @@
                             $competitor_wc = Set::extract('Analysis.body.{s}.competitors.words_count', $results);
                             $site_wc = Set::extract('Analysis.body.{s}.site.words_count', $results);
                         ?>
-                        <tr class="advice_color_<?php echo $this->SeoTools->advice_color($competitor_wc[0], $site_wc[0], $aspect); ?>">
+                        <tr class="advice_color_<?php echo $this->CC->advice_color($competitor_wc[0], $site_wc[0], $aspect); ?>">
                             <td align="left" valign="top"><?php echo __t('Number of words'); ?></td>
-                            <td align="left" valign="top"><?php echo $this->SeoTools->competitor_average($competitor_wc[0]); ?></td>
+                            <td align="left" valign="top"><?php echo $this->CC->competitor_average($competitor_wc[0]); ?></td>
                             <td align="left" valign="top"><?php echo $site_wc[0]; ?></td>
                         </tr>
                         <?php endif; ?>
@@ -305,21 +302,21 @@
                             <td width="40%" align="left" valign="top"><b><?php echo __t('Competitors'); ?></b></td>
                             <td width="39%" align="left" valign="top"><b><?php echo __t('Your Site'); ?></b></td>
                         </tr>
-                        <tr class="advice_color_<?php echo $this->SeoTools->advice_color($analysis['competitors']['quantity'], $analysis['site']['quantity'], $aspect); ?>">
+                        <tr class="advice_color_<?php echo $this->CC->advice_color($analysis['competitors']['quantity'], $analysis['site']['quantity'], $aspect); ?>">
                             <td align="left" valign="top"><?php echo __t('Quantity'); ?></td>
-                            <td align="left" valign="top"><?php echo $this->SeoTools->competitor_average($analysis['competitors']['quantity']); ?></td>
+                            <td align="left" valign="top"><?php echo $this->CC->competitor_average($analysis['competitors']['quantity']); ?></td>
                             <td align="left" valign="top"><?php echo $analysis['site']['quantity']; ?></td>
                         </tr>
-                        <tr class="advice_color_<?php echo $this->SeoTools->advice_color($analysis['competitors']['density'], $analysis['site']['density'], $aspect); ?>">
+                        <tr class="advice_color_<?php echo $this->CC->advice_color($analysis['competitors']['density'], $analysis['site']['density'], $aspect); ?>">
                             <td align="left" valign="top"><?php echo __t('Density'); ?></td>
-                            <td align="left" valign="top"><?php echo $this->SeoTools->competitor_average($analysis['competitors']['density'], 'percent'); ?></td>
+                            <td align="left" valign="top"><?php echo $this->CC->competitor_average($analysis['competitors']['density'], 'percent'); ?></td>
                             <td align="left" valign="top"><?php echo $analysis['site']['density']; ?>%</td>
                         </tr>
 
                         <?php if ($aspect != 'h1') { ?>
-                        <tr class="advice_color_<?php echo $this->SeoTools->advice_color($analysis['competitors']['position'], $analysis['site']['position'], $aspect); ?>">
+                        <tr class="advice_color_<?php echo $this->CC->advice_color($analysis['competitors']['position'], $analysis['site']['position'], $aspect); ?>">
                             <td align="left" valign="top"><?php echo __t('Position'); ?></td>
-                            <td align="left" valign="top"><?php echo $this->SeoTools->competitor_average($analysis['competitors']['position']); ?></td>
+                            <td align="left" valign="top"><?php echo $this->CC->competitor_average($analysis['competitors']['position']); ?></td>
                             <td align="left" valign="top"><?php echo $analysis['site']['position']; ?></td>
                         </tr>
                         <?php } ?>
@@ -390,7 +387,7 @@
         <tbody>
             <tr>
                 <td width="29%" rowspan="4" align="center" valign="middle">
-                    <img src="http://chart.apis.google.com/chart?cht=p3&chs=250x250&chd=t:<?php echo $this->SeoTools->green; ?>,<?php echo $this->SeoTools->red; ?>&chdl=<?php urlencode(__t('Passed factors')); ?>|<?php urldecode(__t('Failed factors')); ?>&chco=99CC00,EA4D5C&noCache=<?php echo rand(0,9999); ?>" width="250" height="250" />
+                    <img src="http://chart.apis.google.com/chart?cht=p3&chs=250x250&chd=t:<?php echo $this->CC->green; ?>,<?php echo $this->CC->red; ?>&chdl=<?php urlencode(__t('Passed factors')); ?>|<?php urldecode(__t('Failed factors')); ?>&chco=99CC00,EA4D5C&noCache=<?php echo rand(0,9999); ?>" width="250" height="250" />
                 </td>
                 <td width="42%" height="20" align="right"><b><?php echo __t('Ranking Factor Importance'); ?></b></td>
                 <td width="17%" height="20" align="center"><b><?php echo __t('Factors Passed'); ?></b></td>
@@ -399,20 +396,20 @@
 
             <tr>
                 <td align="right" valign="middle"><?php echo __t('Essential'); ?></td>
-                <td align="center" valign="middle"><?php echo $this->SeoTools->essential_passed; ?></td>
-                <td align="center" valign="middle"><?php echo $this->SeoTools->essential_failed; ?></td>
+                <td align="center" valign="middle"><?php echo $this->CC->essential_passed; ?></td>
+                <td align="center" valign="middle"><?php echo $this->CC->essential_failed; ?></td>
             </tr>
 
             <tr>
                 <td align="right" valign="middle"><?php echo __t('Very Important'); ?></td>
-                <td align="center" valign="middle"><?php echo $this->SeoTools->very_important_passed; ?></td>
-                <td align="center" valign="middle"><?php echo $this->SeoTools->very_important_failed; ?></td>
+                <td align="center" valign="middle"><?php echo $this->CC->very_important_passed; ?></td>
+                <td align="center" valign="middle"><?php echo $this->CC->very_important_failed; ?></td>
             </tr>
 
             <tr>
                 <td align="right" valign="middle"><?php echo __t('Important'); ?></td>
-                <td align="center" valign="middle"><?php echo $this->SeoTools->important_passed; ?></td>
-                <td align="center" valign="middle"><?php echo $this->SeoTools->important_failed; ?></td>
+                <td align="center" valign="middle"><?php echo $this->CC->important_passed; ?></td>
+                <td align="center" valign="middle"><?php echo $this->CC->important_failed; ?></td>
             </tr>
         </tbody>
     </table>
@@ -423,4 +420,5 @@
         $('div#chart').html($('div#chart_results').html());
     });
 </script>
+
 <?php endif; ?>

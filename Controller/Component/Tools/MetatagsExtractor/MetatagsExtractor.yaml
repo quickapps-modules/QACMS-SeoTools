@@ -1,5 +1,5 @@
 name: Meta Tags Extractor
-description: --
-category: Stats
+description: Extract meta-tags information from a web page
+category: Header/Tag Tools
 version: 1.0
 author: Christopher Castro <chris@quickapps.es>

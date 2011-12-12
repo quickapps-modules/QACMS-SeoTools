@@ -15,16 +15,16 @@
         <tr>
             <td align="center" valign="middle"><?php echo __t('Your Site'); ?></td>
             <td align="left" valign="middle"><?php echo $results['Data']['Site']['url']; ?></td>
-            <td align="left" valign="middle"><?php echo $this->SeoTools->age($results['Data']['Site']['age']); ?></td>
+            <td align="left" valign="middle"><?php echo $this->CC->age($results['Data']['Site']['age']); ?></td>
         </tr>
-        <?php $s_stamp = $this->SeoTools->tmp; $c_stamp = array(); ?>
+        <?php $s_stamp = $this->CC->tmp; $c_stamp = array(); ?>
         <?php foreach($results['Data']['Competitors'] as $index => $competitor) { ?>
             <tr>
                 <td align="center" valign="middle"><?php echo $index+1; ?></td>
                 <td align="left" valign="middle"><?php echo $competitor['url']; ?></td>
-                <td align="left" valign="middle"><?php echo $this->SeoTools->age($competitor['age']); ?></td>
+                <td align="left" valign="middle"><?php echo $this->CC->age($competitor['age']); ?></td>
             </tr>
-            <?php $c_stamp[] = $this->SeoTools->tmp; ?>
+            <?php $c_stamp[] = $this->CC->tmp; ?>
         <?php } ?>
         <tr>
             <td align="center" valign="middle"><?php echo __t('Range'); ?></td>
@@ -38,7 +38,7 @@
             </td>
         </tr>
         
-        <tr class="advice_color_<?php echo $color = $this->SeoTools->advice_color($c_stamp, $s_stamp, $aspect);  ?>">
+        <tr class="advice_color_<?php echo $color = $this->CC->advice_color($c_stamp, $s_stamp, $aspect);  ?>">
             <td align="left" valign="left" colspan="3">
                 <?php 
                     switch($color){
@@ -53,7 +53,7 @@
                         
                         case 2:
                             $msg = __t('Your web site is about %s years old. This is very good because the older your web site, the better it is for your rankings on %s');
-                            $msg = sprintf($msg, number_format( ($this->SeoTools->tmp/31556926) , 0), $this->data['Tool']['engine']);
+                            $msg = sprintf($msg, number_format($this->CC->tmp/31556926, 0), $this->data['Tool']['engine']);
                         break;
                     }
                     

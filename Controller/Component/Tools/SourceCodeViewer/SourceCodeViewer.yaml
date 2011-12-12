@@ -1,5 +1,5 @@
 name: Source Code viewer
-description: View source code
-category: Code
+description: View the source code of a website
+category: Source Code Tools
 version: 1.0
 author: Christopher Castro <chris@quickapps.es>

@@ -50,6 +50,10 @@ class SeoToolsComponent extends Component {
         return $this->_tools;
     }
 
+    public function toolInfo($tool) {
+        return $this->_tools[Inflector::camelize($tool)];
+    }
+
     public function loadTool($tool) {
         $tool = Inflector::camelize($tool);
 

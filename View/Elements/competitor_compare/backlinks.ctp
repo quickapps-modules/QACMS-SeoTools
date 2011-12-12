@@ -23,9 +23,9 @@
             <?php 
                 $s_peak = max(
                     array(
-                        $this->SeoTools->__str2int($results['Data']['Site']['backlinks']['alexa']), 
-                        $this->SeoTools->__str2int($results['Data']['Site']['backlinks']['google']), 
-                        $this->SeoTools->__str2int($results['Data']['Site']['backlinks']['yahoo'])
+                        $this->CC->__str2int($results['Data']['Site']['backlinks']['alexa']), 
+                        $this->CC->__str2int($results['Data']['Site']['backlinks']['google']), 
+                        $this->CC->__str2int($results['Data']['Site']['backlinks']['yahoo'])
                     )
                 );
                 
@@ -57,20 +57,20 @@
         <?php } ?>
         <tr>
             <td align="center" valign="middle"><?php echo __t('Range'); ?></td>
-            <td align="right" valign="middle"><?php echo $this->SeoTools->competitor_average($results['Analysis']['backlinks']['alexa']); ?></td>
-            <td align="right" valign="middle"><?php echo $this->SeoTools->competitor_average($results['Analysis']['backlinks']['google']); ?></td>
-            <td align="right" valign="middle"><?php echo $this->SeoTools->competitor_average($results['Analysis']['backlinks']['yahoo']); ?></td>
-            <td align="right" valign="middle"><?php echo $this->SeoTools->competitor_average($peaks); ?></td>
+            <td align="right" valign="middle"><?php echo $this->CC->competitor_average($results['Analysis']['backlinks']['alexa']); ?></td>
+            <td align="right" valign="middle"><?php echo $this->CC->competitor_average($results['Analysis']['backlinks']['google']); ?></td>
+            <td align="right" valign="middle"><?php echo $this->CC->competitor_average($results['Analysis']['backlinks']['yahoo']); ?></td>
+            <td align="right" valign="middle"><?php echo $this->CC->competitor_average($peaks); ?></td>
         </tr>
         
-        <tr class="advice_color_<?php echo $color = $this->SeoTools->advice_color($peaks, $s_peak, $aspect);  ?>">
+        <tr class="advice_color_<?php echo $color = $this->CC->advice_color($peaks, $s_peak, $aspect);  ?>">
             <td align="left" valign="left" colspan="5">
                 <?php 
                     switch($color){
                         
                         default: case 0: 
                             $msg = __t('In average, less web pages link to your page than to the top ranked pages. The average link popularity of the top ranked pages is %s, the link popularity of your web page is %s. You must increase the number of web pages from different domains that link to your web site. Keep in mind that all search engines also evaluate the link texts and the quality of the web pages that link to your web site');
-                            $msg = sprintf($msg, $this->SeoTools->tmp[0], $this->SeoTools->tmp[1]);
+                            $msg = sprintf($msg, $this->CC->tmp[0], $this->CC->tmp[1]);
                         break;
                         
                         case 1:

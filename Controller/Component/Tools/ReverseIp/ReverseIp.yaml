@@ -1,5 +1,5 @@
 name: Reverse IP
-description: --
-category: Stats
+description: Look up the hostname for any IP address
+category: IP Tools
 version: 1.0
 author: Christopher Castro <chris@quickapps.es>

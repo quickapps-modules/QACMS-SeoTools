@@ -1,5 +1,5 @@
 name: Keyword Extractor
-description: --
-category: Stats
+description: Extract keywords from any website and create a list of single, double, and triple word keyphrases
+category: Keyword Tools
 version: 1.0
 author: Christopher Castro <chris@quickapps.es>

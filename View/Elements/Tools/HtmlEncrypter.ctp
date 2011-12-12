@@ -3,7 +3,7 @@
 <form action="" method="post">
     <table width="100%" border="0" cellspacing="0" cellpadding="5">
         <tr>
-            <td align="left" valign="top"><b><?php echo __t('Enter Your URL'); ?>:</b></td>
+            <td align="left" valign="top"><b><?php echo __t('Enter Your Text'); ?>:</b></td>
             </tr>
         <tr>
           <td align="left" valign="top">

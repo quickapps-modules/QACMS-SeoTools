@@ -18,7 +18,7 @@
                 <?php
                     $cd = Set::extract("/{$aspect}", $competitor); $cd = isset($cd[0]) ? $cd[0] : '';
                     $cd = !empty($cd) ? $cd : __t('Content not found');
-                    $cd = $this->SeoTools->emphasize_keywords($cd, $keywords);
+                    $cd = $this->CC->emphasize_keywords($cd, $keywords);
 
                     if ($aspect == 'body') { 
                         echo '<div style="text-align:left; height:80px; overflow-x:hidden; overflow-y:auto;">'. $cd .'</div>';
