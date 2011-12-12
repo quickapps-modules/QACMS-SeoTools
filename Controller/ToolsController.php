@@ -12,7 +12,11 @@ class ToolsController extends SeoToolsAppController {
         $Tool = $this->SeoTools->loadTool($tool);
 
         if (!empty($this->data)) {
-            $this->set('results', $Tool->main($this));
+            if ($execute = $Tool->main($this)) {
+                $this->set('results', $execute);
+            } else {
+                $this->redirect('/admin/seo_tools/tools/execute/' . $tool);
+            }
         } else {
             $data['Tool']['url'] = Router::url('/', true);
             $this->data = $data;

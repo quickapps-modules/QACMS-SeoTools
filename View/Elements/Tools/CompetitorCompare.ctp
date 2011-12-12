@@ -61,10 +61,6 @@
         </tr>
 
         <tr>
-            <td align="left" valign="top"><b><?php echo __t('Engine Results'); ?>:</b></td>
-        </tr>    
-
-        <tr>
             <td align="left" valign="top">
                 <input type="submit" value="<?php echo __t('Continue'); ?>" class="primary_lg" />
             </td>

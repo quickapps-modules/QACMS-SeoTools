@@ -27,24 +27,20 @@ class CompetitorCompareComponent extends Component {
 				return false;
 			}
 
-			if ($Controller->data['Tool']['engine_results_num'] > 10 || 0 > $Controller->data['Tool']['engine_results_num']) {
-                $data = $Controller->data;
-                $data['Tool']['engine_results_num'] = 10;
-                $Controller->data = $data;
-            }
-
-            $cache = Cache::read('top_10_optimizer_' . md5($Controller->data['Tool']['url'] . $Controller->data['Tool']['criteria'] . $Controller->data['Tool']['engine_results_num']), 'seo_cache_cc');
+            $cache = Cache::read('top_10_optimizer_' . md5($Controller->data['Tool']['url'] . $Controller->data['Tool']['criteria'] . $Controller->data['Tool']['engine']), 'seo_cache_cc');
 
             if (!$cache) {
                 $results = $this->competitor_compare($Controller->data['Tool']['url'], $Controller->data['Tool']['criteria'], $Controller->data['Tool']['engine']);
 
-                Cache::write('top_10_optimizer_' . md5($Controller->data['Tool']['url'] . $Controller->data['Tool']['criteria'] . $Controller->data['Tool']['engine_results_num']), $results, 'seo_cache_cc');
+                Cache::write('top_10_optimizer_' . md5($Controller->data['Tool']['url'] . $Controller->data['Tool']['criteria'] . $Controller->data['Tool']['engine']), $results, 'seo_cache_cc');
             } else {
                 $results = $cache;
             }
 
 			return $results;
 		}
+        
+        return false;
     }
 
 	public function competitor_compare($url = null, $keywords, $engine = 'google.com', $engine_results_num = 10) {
