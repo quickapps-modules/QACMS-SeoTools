@@ -1,6 +1,6 @@
 <?php if (!isset($results)): ?>
 
-<form id="toolForm" action="" method="post" onsubmit="tool_exe(550); return false;">
+<form action="" method="post">
     <table width="100%" border="0" cellspacing="0" cellpadding="5">
         <tr>
             <td align="left" valign="top"><b><?php echo __t('Enter Your URL'); ?>:</b></td>
@@ -17,43 +17,50 @@
 </form>
 
 <?php else: ?>
+<style>
+   .url_tn img { width:202px; height:152px; float:left; }
+   
+    span.imageDouble { width:225px; padding:5px; float:left; display:block; }
+    span.imageDouble a { text-decoration:none; }
+</style>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
-    <thead>
+    <tbody>
         <tr>
-            <td align="left" valign="top">
-                <div class="seo_stats_snippet">
+            <td align="left" valign="top" width="250">
+                <script type="text/javascript" src="http://www.websnapr.com/js/websnapr.js"></script>
 
-                    <div class="right-blk">
-                        <span>
-                            <?php echo $this->Html->image("/{$this->plugin}/img/seo-stats-icons/domain-name.png", array('border' => 0, 'align' => 'absmiddle') ); ?> 
-                            <?php echo __t('Domain Name'); ?>: <b><?php echo substr($results['url'], 0, 15); echo strlen($results['url']) > 15 ? '...' : ''; ?></b>
-                        </span>
-                        
-                        <span>
-                            <?php echo $this->Html->image("/{$this->plugin}/img/seo-stats-icons/google.png", array('border' => 0, 'align' => 'absmiddle') ); ?> 
-                            <?php echo __t('Google Pagerank'); ?>: <?php echo $this->Html->image("/{$this->plugin}/img/seo-stats-icons/pr/pr{$results['pagerank']}.gif", array('border' => 0, 'align' => 'absmiddle') ); ?>
-                        </span>
-                        
-                        <span>
-                            <?php echo $this->Html->image("/{$this->plugin}/img/seo-stats-icons/alexa.png", array('border' => 0, 'align' => 'absmiddle') ); ?> 
-                            <?php echo __t('Alexa Rank'); ?>: <a href="http://www.alexa.com/siteinfo/<?php echo $results['url'] ?>" target="_blank"><b><?php echo $results['alexarank']; ?></b></a>
-                        </span>
-                        
-                        <span>
-                            <?php echo $this->Html->image("/{$this->plugin}/img/seo-stats-icons/yahoo.png", array('border' => 0, 'align' => 'absmiddle') ); ?> 
-                            <?php echo __t('Yahoo Backlinks'); ?>: <a href="http://siteexplorer.search.yahoo.com/search?p=<?php echo $results['url'] ?>" target="_blank"><b><?php echo $results['backlinksYahoo']; ?></b></a>
-                        </span>
-                        
-                        <span>
-                            <?php echo $this->Html->image("/{$this->plugin}/img/seo-stats-icons/dmoz.png", array('border' => 0, 'align' => 'absmiddle') ); ?> 
-                            <?php echo __t('DMOZ Directory'); ?>: <a href="http://www.dmoz.org/search?q=<?php echo $results['url'] ?>" target="_blank"><b><?php echo $results['dmoz'] ? __t('Yes') : __t('No'); ?></b></a>
-                        </span>
-                    </div>
+                <div class="url_tn">
+                    <script type="text/javascript">wsr_snapshot('<?php echo $this->data['Tool']['url']; ?>', '<?php echo Configure::read('Modules.SeoTools.settings.websnapr_key'); ?>', 't');</script>
                 </div>
+            </td>
+
+            <td align="left" valign="top">
+                <span class="imageDouble">
+                    <?php echo $this->Html->image("/{$this->plugin}/img/seo-stats-icons/domain-name.png", array('border' => 0, 'align' => 'absmiddle') ); ?> 
+                    <?php echo __t('Domain Name'); ?>: <b><?php echo substr($results['url'], 0, 15); echo strlen($results['url']) > 15 ? '...' : ''; ?></b>
+                </span>
                 
-                <br/>
+                <span class="imageDouble">
+                    <?php echo $this->Html->image("/{$this->plugin}/img/seo-stats-icons/google.png", array('border' => 0, 'align' => 'absmiddle') ); ?> 
+                    <?php echo __t('Google Pagerank'); ?>: <?php echo $this->Html->image("/{$this->plugin}/img/seo-stats-icons/pr/pr{$results['pagerank']}.gif", array('border' => 0, 'align' => 'absmiddle') ); ?>
+                </span>
                 
+                <span class="imageDouble">
+                    <?php echo $this->Html->image("/{$this->plugin}/img/seo-stats-icons/alexa.png", array('border' => 0, 'align' => 'absmiddle') ); ?> 
+                    <?php echo __t('Alexa Rank'); ?>: <a href="http://www.alexa.com/siteinfo/<?php echo $results['url'] ?>" target="_blank"><b><?php echo $results['alexarank']; ?></b></a>
+                </span>
+                
+                <span class="imageDouble">
+                    <?php echo $this->Html->image("/{$this->plugin}/img/seo-stats-icons/yahoo.png", array('border' => 0, 'align' => 'absmiddle') ); ?> 
+                    <?php echo __t('Yahoo Backlinks'); ?>: <a href="http://siteexplorer.search.yahoo.com/search?p=<?php echo $results['url'] ?>" target="_blank"><b><?php echo $results['backlinksYahoo']; ?></b></a>
+                </span>
+                
+                <span class="imageDouble">
+                    <?php echo $this->Html->image("/{$this->plugin}/img/seo-stats-icons/dmoz.png", array('border' => 0, 'align' => 'absmiddle') ); ?> 
+                    <?php echo __t('DMOZ Directory'); ?>: <a href="http://www.dmoz.org/search?q=<?php echo $results['url'] ?>" target="_blank"><b><?php echo $results['dmoz'] ? __t('Yes') : __t('No'); ?></b></a>
+                </span>
+
                 <span class="imageDouble">
                     <?php echo $this->Html->image("/{$this->plugin}/img/seo-stats-icons/domain-age.png", array('border' => 0, 'align' => 'absmiddle') ); ?>
                     <?php echo __t('Domain Age'); ?>: <a href="http://www.who.is/whois/<?php echo $results['url']; ?>" target="_blank"><b><?php echo is_array($results['age']) ? sprintf(__t('%s years, %s days'), $results['age']['years'], $results['age']['days']) : __t('Unknow'); ?></b></a>
@@ -129,13 +136,7 @@
                     <?php echo __t('Google Bot Last Visit'); ?>: <a href="" target="_blank"><b><?php echo $results['googlebot']; ?></b></a>
                 </span>					
             </td>
-      </tr>
-        <tr>
-            <td width="100%" align="left" valign="top">&nbsp;</td>
         </tr>
-    </thead>
-    
-    <tbody>
     </tbody>
 </table>
 

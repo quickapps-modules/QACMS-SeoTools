@@ -2,6 +2,15 @@
 class CompetitorCompareComponent extends Component {
     public $tmp;
     public $Controller;
+    public $EngineParser;
+
+    public function __construct(ComponentCollection $collection, $settings = array()) {
+        include dirname(__FILE__) . DS . 'EngineParser.php';
+
+        $this->EngineParser = new EngineParser;
+
+        parent::__construct($collection, $settings);
+    }
 
     public function main(&$Controller) {
         $this->Controller = $Controller;
@@ -52,7 +61,7 @@ class CompetitorCompareComponent extends Component {
 		foreach ($competitors_data as $pos => $data) {
 			$page = $this->BaseTools->getPage($competitors_data[$pos]['url']);
 			$competitors_data[$pos]['body'] = $this->BaseTools->toUTF8($this->BaseTools->html2text($this->parseTag('body', $page))); 
-			$competitors_data[$pos]['tags'] = get_meta_tags($competitors_data[$pos]['url']);
+			$competitors_data[$pos]['tags'] = @(array)get_meta_tags($competitors_data[$pos]['url']);
 			$competitors_data[$pos]['h1'] = $this->BaseTools->toUTF8($this->BaseTools->html2text(@implode(' ', $this->parseTag('h1', $page, true)))); #get all
 			$parseUrl = $this->BaseTools->parseUrl($competitors_data[$pos]['url']);
 
@@ -329,30 +338,11 @@ class CompetitorCompareComponent extends Component {
 		return number_format(($occurr * 100) / count($words), 2);
 	}
 
-	public function getSnippet($keywords, $engine = 'google.com') {
-        $out = array();
+	public function getSnippet($keywords, $engine = 'google.com', $limit = 10) {
+        $this->EngineParser->BaseTools = $this->BaseTools;
+        $this->EngineParser->loadEngine($engine);
 
-		if (strpos($engine, 'google.') !== false) {
-			$query = "http://www.{$engine}/search?q=" . urlencode($keywords) ."&num=10";
-			$exp = '@<li class=g><div class=vsc.*?><.*? class="?r"?>.+?href="(.+?)".*?>(.+?)<\/a>.+?<span class=vshid><a href="(.+?)".*?>.+?<\/a>.+?<span class=st>(.+?)<br><\/span>.+?@m';
-            $results = $this->BaseTools->toUTF8($this->BaseTools->getPage($query));
-
-            preg_match_all($exp, $results, $matches, PREG_SET_ORDER);
-
-            foreach ($matches as $pos => $data) {
-                $out[] = array(
-                    'url' => strip_tags($data[1]),
-                    'title' => strip_tags($data[2]),
-                    'cache_url' => strip_tags($data[3]),
-                    'snippet' => strip_tags($data[4])
-                );
-            }        
-        } else {
-            // try other engines
-			return false;
-		}
-
-		return $out;
+        return $this->EngineParser->parse($keywords, $limit);
 	}
 
 	public function parseTag($tag, $haystack, $all = false) {

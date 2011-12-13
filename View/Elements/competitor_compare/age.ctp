@@ -1,4 +1,4 @@
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tablekit"><!-- alexa rank -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0"><!-- alexa rank -->
     <thead>
         <tr>
           <td colspan="3" align="left" valign="top"><b><?php echo __t('Dates of the domain registration or of the first contents'); ?></b></td>

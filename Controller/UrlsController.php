@@ -4,30 +4,39 @@ class UrlsController extends SeoToolsAppController {
 
     public function admin_index() {
         $this->set('results', $this->paginate('SeoUrl'));
+        $this->setCrumb('/admin/seo_tools');
+        $this->setCrumb(array('URL List'));
     }
-    
+
     public function admin_add() {
         if (isset($this->data['SeoUrl'])) {
-            $this->SeoUrl->save($this->data['SeoUrl']);
+            if ($url = $this->SeoUrl->save($this->data)) {
+                $this->redirect('/admin/seo_tools/urls/edit/' . $url['SeoUrl']['id']);
+            }
         }
+
+        $this->setCrumb(
+            '/admin/seo_tools', 
+            array('Add URL')
+        );
     }
 
     public function admin_edit($id) {
-        $results = $this->SeoUrl->findById($id);
-        $this->data = $results;
+        $result = $this->SeoUrl->findById($id);
+
+        if (!$result) {
+            $this->redirect('/admin/seo_tools/urls');
+        }
+
+        if (isset($this->data['SeoUrl']) && $this->SeoUrl->save($this->data)) {
+            $this->redirect('/admin/seo_tools/urls/edit/' . $result['SeoUrl']['id']);
+        }
+
+        $this->data = $result;
+        $this->setCrumb('/admin/seo_tools');
     }
- 
+
     public function admin_delete($id) {
-        $this->SeoUrl->delete($id);
-        $this->redirect($this->referer());
-    }
-
-    private function __prepareDump($sql) {
-        $sql = trim($sql);
-        $sql = preg_replace("/\n#[^\n]*\n/", "\n", $sql);
-        $sql = preg_replace('/^\-\-(.*)/im', '', $sql);
-        $sql = preg_replace("/\n{2,}/m", "\n", $sql);
-
-        return $sql;
+        return $this->SeoUrl->delete($id);
     }
 }

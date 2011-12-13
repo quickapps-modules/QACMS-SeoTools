@@ -6,6 +6,8 @@ class ToolsController extends SeoToolsAppController {
         $this->Layout['stylesheets']['all'][] = '/seo_tools/css/styles.css';
 
         $this->set('tools', $this->SeoTools->toolsList());
+        $this->setCrumb('/admin/seo_tools');
+        $this->setCrumb(array('Tools'));
     }
 
     public function admin_execute($tool) {
@@ -22,7 +24,14 @@ class ToolsController extends SeoToolsAppController {
             $this->data = $data;
         }
 
+        $tool_info = $this->SeoTools->toolInfo($tool);
+
         $this->set('tool', $tool);
-        $this->set('tool_info', $this->SeoTools->toolInfo($tool));
+        $this->set('tool_info', $tool_info);
+        $this->setCrumb(
+            '/admin/seo_tools',
+            array('Tools', '/admin/seo_tools/tools/'),
+            array($tool_info['name'])
+        );
     } 
 }

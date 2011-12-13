@@ -4,7 +4,7 @@ class SeoUrl extends SeoToolsAppModel {
     public $useTable = 'seo_tools_urls';
 
 	public $validate = array(
-		'url' => array('required' => true, 'allowEmpty' => false, 'rule' => 'notEmpty', 'message' => "Invalid URL"),
+		'url' => array('required' => true, 'allowEmpty' => false, 'rule' => array('isUnique'), 'message' => "Invalid URL"),
 		'status' => array('required' => true, 'allowEmpty' => false, 'rule' => 'numeric', 'message' => "Invalid status"),
 		'redirect' => array('required' => false, 'allowEmpty' => true, 'rule' => array('url', true), 'message' => "Invalid redirect URL")
 	);
@@ -14,7 +14,7 @@ class SeoUrl extends SeoToolsAppModel {
 
         return true;
     }
-    
+
     public function afterDelete() {
         if (isset($this->__tmp['url'])) {
             Cache::delete('seo_url_' . md5($this->__tmp['url']));

@@ -34,7 +34,7 @@ $tSettings = array(
     'noItemsMessage' => __t('There are no URLs to display'),
     'paginate' => true,
     'headerPosition' => 'top',
-    'tableOptions' => array('width' => '100%')    # table attributes
+    'tableOptions' => array('width' => '100%') # table attributes
 );
 ?>
 
@@ -47,14 +47,9 @@ $tSettings = array(
                         'type' => 'select',
                         'label' => false,
                         'options' => array(
-                            'publish' => __t('Publish selected content'),
-                            'unpublish' => __t('Unpublish selected content'),
-                            'promote' => __t('Promote selected content to front page'),
-                            'demote' => __t('Demote selected content from front page'),
-                            'sticky' => __t('Make selected content sticky'),
-                            'unsticky' => __t('Make selected content not sticky'),
-                            'delete' => __t('Delete selected content'),
-                            'clear_cache' => __t('Clear cache')
+                            'delete' => __t('Delete selected urls'),
+                            'enable' => __t('Enable selected urls'),
+                            'disable' => __t('Disable selected urls')
                         )
                     )
                 );

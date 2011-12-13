@@ -1,4 +1,4 @@
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tablekit">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
     <thead>
         <tr>
           <td colspan="2" align="left" valign="top"><b><?php echo __t('Their Content'); ?></b></td>
@@ -9,7 +9,7 @@
         </tr>
         
     </thead>
-    
+
     <tbody>
         <?php foreach($results['Data']['Competitors'] as $pos => $competitor): ?>
         <tr>

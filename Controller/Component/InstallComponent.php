@@ -26,7 +26,12 @@ class InstallComponent extends Component {
               PRIMARY KEY (`id`)
             ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;";        
 
-        return $db->execute($create_table);
+        $Installer->menuLink(array(
+            'title' => 'Seo Tools',
+            'url' => '/admin/seo_tools'
+        ), 1, 1);
+
+        return $db->execute($query);
     }
 
     function beforeUninstall() {
