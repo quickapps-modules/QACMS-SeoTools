@@ -20,12 +20,14 @@ class UrlsController extends SeoToolsAppController {
                 }
             }
 
-            $this->redirect('/admin/seo_tools/urls/');
+            $this->redirect('/admin/seo_tools/urls/index');
         }
 
         $this->set('results', $this->paginate('SeoUrl'));
-        $this->setCrumb('/admin/seo_tools');
-        $this->setCrumb(array('URL List'));
+        $this->setCrumb(
+            '/admin/seo_tools',
+            array(__t('URL List'))
+        );
     }
 
     public function admin_add() {
@@ -37,7 +39,7 @@ class UrlsController extends SeoToolsAppController {
 
         $this->setCrumb(
             '/admin/seo_tools', 
-            array('Add URL')
+            array(__t('Add URL'))
         );
     }
 
@@ -45,7 +47,7 @@ class UrlsController extends SeoToolsAppController {
         $result = $this->SeoUrl->findById($id);
 
         if (!$result) {
-            $this->redirect('/admin/seo_tools/urls');
+            $this->redirect('/admin/seo_tools/urls/index');
         }
 
         if (isset($this->data['SeoUrl']) && $this->SeoUrl->save($this->data)) {

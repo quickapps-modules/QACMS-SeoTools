@@ -334,7 +334,7 @@
         <h1><?php echo __t('Advice'); ?></h1>
 
         <p class="questions">
-            <b><?php echo __t('Ibound links to your web page'); ?></b><br/>
+            <b><?php echo __t('Inbound links to your web page'); ?></b><br/>
 
             <font><?php echo __t('Are the web pages linking to your web page relevant to the search term "%s"?', $this->data['Tool']['criteria']); ?></font><br/>
             <font><?php echo __t('How fast does your web page get new links pointing to it?'); ?></font><br/>

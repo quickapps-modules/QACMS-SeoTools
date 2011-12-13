@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-28 21:04+0100\n"
+"POT-Creation-Date: 2011-12-13 23:05+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Christopher Castro <chris@quickapps.es>\n"
 "Language-Team: \n"
@@ -10,7 +10,824 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Country: SPAIN\n"
-"X-Poedit-KeywordsList: _e;__e;__;_\n"
+"X-Poedit-KeywordsList: __t;__\n"
 "X-Poedit-Basepath: ../../../\n"
 "X-Poedit-SearchPath-0: .\n"
+
+#: Controller/ToolsController.php:33
+msgid "Tools"
+msgstr "Herramientas"
+
+#: Controller/UrlsController.php:29
+msgid "URL List"
+msgstr "Listado"
+
+#: Controller/UrlsController.php:42
+msgid "Add URL"
+msgstr "Nueva URL"
+
+#: Controller/Component/Tools/CompetitorCompare/CompetitorCompareComponent.php:26
+msgid "Invalid URL"
+msgstr "URL inválida"
+
+#: Controller/Component/Tools/CompetitorCompare/CompetitorCompareComponent.php:30
+msgid "Invalid criteria"
+msgstr "criterio inválido"
+
+#: View/Helper/CCHelper.php:25
+msgid "all 0"
+msgstr "todos 0"
+
+#: View/Helper/CCHelper.php:29
+msgid "all 0%"
+msgstr "todos 0%"
+
+#: View/Helper/CCHelper.php:34
+#, php-format
+msgid "%s to %s"
+msgstr "%s a %s"
+
+#: View/Helper/CCHelper.php:38
+#, php-format
+msgid "%s to %s %%"
+msgstr "%s a %s %%"
+
+#: View/Helper/CCHelper.php:214
+#, php-format
+msgid "%s years, %s days. (%s)"
+msgstr "%s años, %s días. (%s)"
+
+#: View/Helper/CCHelper.php:214
+#: View/Elements/competitor_compare/age.ctp:36
+msgid "Y-m-d"
+msgstr "d-m-Y"
+
+#: View/Elements/toolbar.ctp:3
+msgid "URLs"
+msgstr "URLs"
+
+#: View/Elements/competitor_compare/age.ctp:4
+msgid "Dates of the domain registration or of the first contents"
+msgstr "Fecha de registro del dominio o de primer contenido"
+
+#: View/Elements/competitor_compare/age.ctp:11
+#: View/Elements/competitor_compare/alexa_rank.ctp:12
+#: View/Elements/Tools/BacklinkChecker.ctp:23
+msgid "URL"
+msgstr "URL"
+
+#: View/Elements/competitor_compare/age.ctp:12
+msgid "Registration Date"
+msgstr "Fecha de registro"
+
+#: View/Elements/competitor_compare/age.ctp:16
+#: View/Elements/competitor_compare/alexa_rank.ctp:17
+#: View/Elements/competitor_compare/backlinks.ctp:18
+#: View/Elements/Tools/CompetitorCompare.ctp:256
+#: View/Elements/Tools/CompetitorCompare.ctp:304
+msgid "Your Site"
+msgstr "Tu Sitio"
+
+#: View/Elements/competitor_compare/age.ctp:30
+#: View/Elements/competitor_compare/alexa_rank.ctp:29
+#: View/Elements/competitor_compare/backlinks.ctp:59
+msgid "Range"
+msgstr "Rango"
+
+#: View/Elements/competitor_compare/age.ctp:36
+#, php-format
+msgid "From %s to %s"
+msgstr "De %s a %s"
+
+#: View/Elements/competitor_compare/age.ctp:46
+msgid "Your web site is less than 1 year old"
+msgstr "Su sitio web tiene menos de 1 año de antiguedad"
+
+#: View/Elements/competitor_compare/age.ctp:50
+#, php-format
+msgid "The web site age could not be determined or is newer than the newer of your competitors. In general, the older your web site, the better it is for your rankings on %s. If you have a young web site, you must compensate by improving the other search engine ranking factors"
+msgstr ""
+
+#: View/Elements/competitor_compare/age.ctp:55
+#, php-format
+msgid "Your web site is about %s years old. This is very good because the older your web site, the better it is for your rankings on %s"
+msgstr ""
+
+#: View/Elements/competitor_compare/alexa_rank.ctp:4
+msgid "Alexa.com Traffic Rank results (the lower the better)"
+msgstr ""
+
+#: View/Elements/competitor_compare/alexa_rank.ctp:13
+msgid "Alexa Traffic Rank"
+msgstr "Rank de Tráfico Alexa"
+
+#: View/Elements/competitor_compare/alexa_rank.ctp:19
+#: View/Elements/competitor_compare/alexa_rank.ctp:25
+msgid "Rank #"
+msgstr "Rank #"
+
+#: View/Elements/competitor_compare/alexa_rank.ctp:38
+#, php-format
+msgid "Although your web site %s appears to attract more visitors than the average of your competitors' sites, the absolute number of visitors is low. This could be disadvantageous to your rankings on %s"
+msgstr ""
+
+#: View/Elements/competitor_compare/alexa_rank.ctp:46
+#, php-format
+msgid "Your web site %s does not appear to attract many visitors because your traffic trank is above #100,000 and you have less visitors than the average of your competitors. This could be disadvantageous to your rankings on %s"
+msgstr ""
+
+#: View/Elements/competitor_compare/alexa_rank.ctp:52
+#, php-format
+msgid "Your web site %s appears to attract a lot of visitors. This is very good and might be beneficial to your rankings on %s"
+msgstr ""
+
+#: View/Elements/competitor_compare/backlinks.ctp:4
+msgid "Number of inbound links according to these search engines (the more the better)"
+msgstr ""
+
+#: View/Elements/competitor_compare/backlinks.ctp:11
+msgid "Alexa"
+msgstr "Alexa"
+
+#: View/Elements/competitor_compare/backlinks.ctp:12
+msgid "Google.com"
+msgstr "Google.com"
+
+#: View/Elements/competitor_compare/backlinks.ctp:13
+msgid "Yahoo.com"
+msgstr "Yahoo.com"
+
+#: View/Elements/competitor_compare/backlinks.ctp:14
+msgid "Peak Value"
+msgstr "Valor Pico"
+
+#: View/Elements/competitor_compare/backlinks.ctp:39
+msgid "Top Site"
+msgstr "Primer Sitio"
+
+#: View/Elements/competitor_compare/backlinks.ctp:72
+#, php-format
+msgid "In average, less web pages link to your page than to the top ranked pages. The average link popularity of the top ranked pages is %s, the link popularity of your web page is %s. You must increase the number of web pages from different domains that link to your web site. Keep in mind that all search engines also evaluate the link texts and the quality of the web pages that link to your web site"
+msgstr ""
+
+#: View/Elements/competitor_compare/backlinks.ctp:77
+#, php-format
+msgid "Summing up all analyzed search engines, there are at least as many web pages linking to your page as to the top ranked pages. This meets the basic requirements for getting high rankings on %s. Keep in mind that all search engines also evaluate the link texts and the quality of the web pages that link to your web site"
+msgstr ""
+
+#: View/Elements/competitor_compare/backlinks.ctp:82
+#, php-format
+msgid "Summing up all analyzed search engines, you have more web pages linking to your web page than the top ranking web pages. This is very good. However, %s also evaluates the link texts and the quality of the web pages that link to your web site"
+msgstr ""
+
+#: View/Elements/competitor_compare/h1.ctp:4
+msgid "Their Content"
+msgstr "El contenido de ellos"
+
+#: View/Elements/competitor_compare/h1.ctp:7
+msgid "Rank"
+msgstr "Rank"
+
+#: View/Elements/competitor_compare/h1.ctp:8
+msgid "Content"
+msgstr "Contenido"
+
+#: View/Elements/competitor_compare/h1.ctp:20
+#: View/Elements/Tools/CompetitorCompare.ctp:248
+msgid "Content not found"
+msgstr "Contenido no encontrado"
+
+#: View/Elements/Tools/BacklinkChecker.ctp:5
+#: View/Elements/Tools/CompetitorCompare.ctp:6
+#: View/Elements/Tools/CssValidator.ctp:6
+#: View/Elements/Tools/HeaderExtractor.ctp:6
+#: View/Elements/Tools/HtmlValidator.ctp:6
+#: View/Elements/Tools/KeywordDensity.ctp:6
+msgid "Enter Your URL"
+msgstr "Ingrese Su URL"
+
+#: View/Elements/Tools/BacklinkChecker.ctp:12
+#: View/Elements/Tools/CompetitorCompare.ctp:65
+#: View/Elements/Tools/CssValidator.ctp:13
+#: View/Elements/Tools/HeaderExtractor.ctp:13
+#: View/Elements/Tools/HtmlEncrypter.ctp:15
+#: View/Elements/Tools/HtmlValidator.ctp:13
+#: View/Elements/Tools/KeywordDensity.ctp:13
+msgid "Continue"
+msgstr "Continuar"
+
+#: View/Elements/Tools/BacklinkChecker.ctp:24
+msgid "BL Alexa"
+msgstr "Continuar"
+
+#: View/Elements/Tools/BacklinkChecker.ctp:25
+msgid "BL Google"
+msgstr "BL Google"
+
+#: View/Elements/Tools/BacklinkChecker.ctp:26
+msgid "BL Yahoo"
+msgstr "BL Yahoo"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:14
+msgid "Criteria"
+msgstr "Criterio"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:22
+msgid "Seach Engine"
+msgstr "Motor de Búsqueda"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:81
+#: View/Elements/Tools/CompetitorCompare.ctp:145
+msgid "Report overview"
+msgstr "Vision General"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:82
+#, php-format
+msgid "This report helps you to optimize the web page \"<b>http://%s/</b>\" for a high ranking on <b>%s</b> for the search term \"<b>%s</b>\"."
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:87
+msgid "Your Web Page"
+msgstr "Su Página Web"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:98
+#: View/Elements/Tools/CompetitorCompare.ctp:126
+msgid "Title"
+msgstr "Título"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:99
+#: View/Elements/Tools/CompetitorCompare.ctp:127
+msgid "Description"
+msgstr "Descricpión"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:99
+#: View/Elements/Tools/CompetitorCompare.ctp:127
+msgid "[No meta description available.]"
+msgstr "[meta description no disponible.]"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:108
+#, php-format
+msgid "Your competitors for the search term \"%s\" on %s"
+msgstr "Sus competidores para el término de búsqueda \"%s\" on %s"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:139
+msgid "Table of contents"
+msgstr "Tabla de contenidos"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:146
+#: View/Elements/Tools/CompetitorCompare.ctp:190
+msgid "Keyword use in H1 headline texts"
+msgstr "Palabras clave utilizadas en titulares H1"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:150
+#: View/Elements/Tools/CompetitorCompare.ctp:175
+msgid "Keyword use in document title"
+msgstr "Palabras clave utilizadas título de documento"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:151
+#: View/Elements/Tools/CompetitorCompare.ctp:205
+msgid "Keyword use in page URL"
+msgstr "Palabras clave utilizadas en URL de página"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:155
+#: View/Elements/Tools/CompetitorCompare.ctp:185
+msgid "Global link popularity of web site"
+msgstr "Popularidad general de vínculos del sitio web"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:156
+#: View/Elements/Tools/CompetitorCompare.ctp:200
+msgid "Number of visitors to the site"
+msgstr "Número de visitantes al sitio"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:160
+#: View/Elements/Tools/CompetitorCompare.ctp:180
+msgid "Keyword use in body text"
+msgstr "Palabras clave utilizadas en el texto del cuerpo"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:161
+#: View/Elements/Tools/CompetitorCompare.ctp:210
+msgid "Keyword use in meta description"
+msgstr "Palabras clave utilizadas en meta-description"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:165
+#: View/Elements/Tools/CompetitorCompare.ctp:195
+msgid "Age of web site"
+msgstr "Edad del sitio web"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:166
+#: View/Elements/Tools/CompetitorCompare.ctp:332
+msgid "Factors that could prevent your top ranking"
+msgstr "Factores que podrían impedir el primer puesto"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:176
+#: View/Elements/Tools/CompetitorCompare.ctp:181
+#: View/Elements/Tools/CompetitorCompare.ctp:186
+#: View/Elements/Tools/CompetitorCompare.ctp:399
+msgid "Essential"
+msgstr "Esencial"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:177
+#, php-format
+msgid "The document title is the text within the &lt;title&gt;...&lt;/title&gt; tags in the HTML code of your web page. This chapter tries to find out how to use the search term '%s' in the document title and if it's important for %s"
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:182
+msgid "The body text is the text on your web page that can be seen by people in their web browsers. It does not include HTML commands, comments, etc. The more visible text there is on a web page, the more a search engine can index. The calculations include spaces and punctuation marks"
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:187
+msgid "The global link popularity measures how many web pages link to your site. The number of web pages linking to your site is not as important as the quality of the web pages that link to your site"
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:191
+#: View/Elements/Tools/CompetitorCompare.ctp:196
+#: View/Elements/Tools/CompetitorCompare.ctp:405
+msgid "Very Important"
+msgstr "Muy Importante"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:192
+msgid "H1 headline texts are the texts that are written between the &lt;h1&gt;...&lt;/h1&gt; tags in the HTML code of a web page. Some search engines give extra relevance to search terms that appear in the headline texts"
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:197
+msgid "Spam sites often come and go quickly. For this reason, search engines tend to trust a web site that has been around for a long time over one that is brand new. The age of the domain is seen as a sign of trustworthiness because it cannot be faked. The data is provided by Alexa.com"
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:201
+#: View/Elements/Tools/CompetitorCompare.ctp:206
+#: View/Elements/Tools/CompetitorCompare.ctp:211
+#: View/Elements/Tools/CompetitorCompare.ctp:411
+msgid "Important"
+msgstr "Importante"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:202
+msgid "Search engines might look at web site usage data, such as the number of visitors to your site, to determine if your site is reputable and contains popular contents. The Alexa.com traffic rank is based on three months of aggregated traffic data from millions of Alexa Toolbar users and is a combined measure of page views and number of site visitors"
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:207
+msgid "The page URL is the part after the domain name in the web page address. This chapter tries to find out if Google.es  (la Web) gives extra relevance to search terms within the page URL. Separate your search terms in the page URL with slashes, dashes or underscores"
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:212
+#, php-format
+msgid "The Meta Description tag allows you to describe your web page. This chapter tries to find out if %s takes the Meta Description tag into account. Some search engines display the text to the user in the search results.<br/> Example: &lt;meta name=\"description\" content= \"This sentence describes the contents of your web site.\"&gt;<br/> Even if the Meta Description tag might not be important for ranking purposes, you should use the Meta Description tag to make sure that your web site is displayed with an attractive description in the search results"
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:237
+msgid "Your Content"
+msgstr "Su Contenido"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:255
+#: View/Elements/Tools/CompetitorCompare.ctp:303
+msgid "Competitors"
+msgstr "Competidores"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:263
+msgid "Number of words"
+msgstr "Número de palabras"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:272
+msgid "No."
+msgstr "No."
+
+#: View/Elements/Tools/CompetitorCompare.ctp:273
+msgid "H1 Heading Text"
+msgstr "Texto en Títulos H1"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:296
+msgid "Search Term"
+msgstr "Criterio de Búsqueda"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:307
+msgid "Quantity"
+msgstr "Cantidad"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:312
+msgid "Density"
+msgstr "Densidad"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:319
+msgid "Position"
+msgstr "Posición"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:333
+#, php-format
+msgid "Some ranking factors cannot be measured because the search engines do not reveal the necessary data, or it would be extremely time-consuming to measure the data. Make sure you pay attention to the following factors because they could prevent a top ranking for <b>%s</b> on <b>%s</b>."
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:334
+msgid "Advice"
+msgstr "Consejo"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:337
+msgid "Inbound links to your web page"
+msgstr "Enlaces entrantes a su página web"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:339
+#, php-format
+msgid "Are the web pages linking to your web page relevant to the search term \"%s\"?"
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:340
+msgid "How fast does your web page get new links pointing to it?"
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:341
+msgid "Do the web sites which link to your page belong to the same content category?"
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:342
+msgid "Since when do the links to your page exist?"
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:343
+#, php-format
+msgid "Is the text surrounding the link to your page relevant to the search term \"%s\"?"
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:347
+msgid "Your web page"
+msgstr "Su página web"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:349
+msgid "How many important links from your other pages point to your web page?"
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:350
+msgid "Do the links on your web page point to high quality, topically-related pages?"
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:351
+msgid "How often and how many changes do you make to your web page over time? Is your content up-to-date?"
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:352
+msgid "How often and how many web pages do you add to your web site?"
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:353
+msgid "How long do your visitors spend time on your web page?"
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:357
+msgid "Search engine result page"
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:359
+#, php-format
+msgid "Do your competitors on the search engine result page get a manual ranking boost by %s, for example Amazon or Wikipedia?"
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:360
+msgid "How many visitors of the search engine result pages click through to your page?"
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:361
+#, php-format
+msgid "How often do search engine visitors search for your company name or web page URL on %s?"
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:365
+msgid "Negative ranking factors (you should be able to say \"no\" to all the following questions)"
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:367
+msgid "Is your content very similar or a duplicate of existing content?"
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:368
+msgid "Is your server often down when search engine crawlers try to access it?"
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:369
+msgid "Do you link to web sites that do not deserve a link?"
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:370
+msgid "Do you use the same title or meta tags for many web pages?"
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:371
+msgid "Do you overuse the same keyword or key phrase?"
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:372
+msgid "Do you participate in link schemes?"
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:373
+msgid "Do you actively sell links on your web page?"
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:374
+msgid "Do a majority of your inbound links come from low quality or spam sites?"
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:375
+msgid "Does your web page have any spelling or grammar mistakes?"
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:384
+msgid "Search engine ranking factors performance"
+msgstr ""
+
+#: View/Elements/Tools/CompetitorCompare.ctp:391
+msgid "Passed factors"
+msgstr "Factores superados"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:391
+msgid "Failed factors"
+msgstr "Factores fallidos"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:393
+msgid "Ranking Factor Importance"
+msgstr "Ranking de Importancia de Factores"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:394
+msgid "Factors Passed"
+msgstr "Factores Superados"
+
+#: View/Elements/Tools/CompetitorCompare.ctp:395
+msgid "Factors Failed"
+msgstr "Factores Fallidos"
+
+#: View/Elements/Tools/CssValidator.ctp:21
+msgid "CSS Validator"
+msgstr "Validador CSS"
+
+#: View/Elements/Tools/HeaderExtractor.ctp:21
+msgid "HTTP Header Extractor"
+msgstr "Extractor de cabeceras HTTP"
+
+#: View/Elements/Tools/HtmlEncrypter.ctp:6
+msgid "Enter Your Text"
+msgstr "Ingrese su Texto"
+
+#: View/Elements/Tools/HtmlEncrypter.ctp:23
+msgid "HTML Encrypter"
+msgstr "Encriptador HTML"
+
+#: View/Elements/Tools/HtmlValidator.ctp:21
+msgid "HTML Validator"
+msgstr "Validador HTML"
+
+#: View/Elements/Tools/KeywordDensity.ctp:21
+#, php-format
+msgid "%s analysed words"
+msgstr "%s palabras an alizadas"
+
+#: View/Elements/Tools/LinkExtractor.ctp:21
+#, php-format
+msgid "Extracted %s links"
+msgstr "%s links extraídos"
+
+#: View/Elements/Tools/Md5Encrypter.ctp:23
+msgid "MD5 Encrypter"
+msgstr "Encriptador MD5"
+
+#: View/Elements/Tools/MetatagsExtractor.ctp:21
+msgid "Meta Tags Extractor"
+msgstr "Extractor de Meta Tags"
+
+#: View/Elements/Tools/MetatagsGenerator.ctp:15
+#: View/Urls/admin_add.ctp:14
+#: View/Urls/admin_edit.ctp:15
+msgid "Keywords"
+msgstr "Keywords"
+
+#: View/Elements/Tools/MetatagsGenerator.ctp:23
+msgid "Author"
+msgstr "Autor"
+
+#: View/Elements/Tools/MetatagsGenerator.ctp:30
+msgid "Owner"
+msgstr "Owner"
+
+#: View/Elements/Tools/MetatagsGenerator.ctp:37
+msgid "Copyright"
+msgstr "Copyright"
+
+#: View/Elements/Tools/MetatagsGenerator.ctp:51
+msgid "Meta Tags Generator"
+msgstr "Generador de Meta Tags"
+
+#: View/Elements/Tools/Ping.ctp:5
+msgid "Enter Your Domain/Ip"
+msgstr "Ingrese Su Dominio/IP"
+
+#: View/Elements/Tools/Ping.ctp:19
+#: View/Elements/Tools/ReverseIp.ctp:20
+msgid "Ping Domain/IP"
+msgstr "Ping Dominio/IP"
+
+#: View/Elements/Tools/ReverseIp.ctp:5
+msgid "Enter Your IP"
+msgstr "Ingrese Su IP"
+
+#: View/Elements/Tools/RobotsTxt.ctp:21
+#, php-format
+msgid "robots.txt file for %s"
+msgstr "Fichero robots.txt para %s"
+
+#: View/Elements/Tools/SeoStats.ctp:41
+msgid "Domain Name"
+msgstr "Nombre de Dominio"
+
+#: View/Elements/Tools/SeoStats.ctp:46
+msgid "Google Pagerank"
+msgstr "Google Pagerank"
+
+#: View/Elements/Tools/SeoStats.ctp:51
+msgid "Alexa Rank"
+msgstr "Alexa Rank"
+
+#: View/Elements/Tools/SeoStats.ctp:56
+msgid "Yahoo Backlinks"
+msgstr "Yahoo Backlinks"
+
+#: View/Elements/Tools/SeoStats.ctp:61
+msgid "DMOZ Directory"
+msgstr "Directorio DMOZ"
+
+#: View/Elements/Tools/SeoStats.ctp:61
+#: View/Elements/Tools/SeoStats.ctp:81
+msgid "Yes"
+msgstr "Si"
+
+#: View/Elements/Tools/SeoStats.ctp:61
+#: View/Elements/Tools/SeoStats.ctp:81
+msgid "No"
+msgstr "No"
+
+#: View/Elements/Tools/SeoStats.ctp:66
+msgid "Domain Age"
+msgstr "Edad de Dominoi"
+
+#: View/Elements/Tools/SeoStats.ctp:66
+#, php-format
+msgid "%s years, %s days"
+msgstr "%s años, %s días"
+
+#: View/Elements/Tools/SeoStats.ctp:66
+msgid "Unknow"
+msgstr "Desconocido"
+
+#: View/Elements/Tools/SeoStats.ctp:71
+msgid "Google Backlinks"
+msgstr "Google Backlinks"
+
+#: View/Elements/Tools/SeoStats.ctp:76
+msgid "Alexa Backlinks"
+msgstr "Alexa Backlinks"
+
+#: View/Elements/Tools/SeoStats.ctp:81
+msgid "Yahoo Directory"
+msgstr "Directorio Yahoo"
+
+#: View/Elements/Tools/SeoStats.ctp:86
+msgid "Google Indexed Pages"
+msgstr "Páginas indexadas por Google"
+
+#: View/Elements/Tools/SeoStats.ctp:91
+msgid "Yahoo Indexed Pages"
+msgstr "Páginas indexadas por Yahoo"
+
+#: View/Elements/Tools/SeoStats.ctp:96
+msgid "Bing Indexed Pages"
+msgstr "Páginas indexadas por Bing"
+
+#: View/Elements/Tools/SeoStats.ctp:101
+msgid "Digg Links"
+msgstr "Vínculus Digg"
+
+#: View/Elements/Tools/SeoStats.ctp:106
+msgid "Delicious Links"
+msgstr "Vínculos Delicious"
+
+#: View/Elements/Tools/SeoStats.ctp:111
+msgid "Technorati (Blog) Rank"
+msgstr "Technorati (Blog) Rank"
+
+#: View/Elements/Tools/SeoStats.ctp:116
+msgid "Compete Rank"
+msgstr "Compete Rank"
+
+#: View/Elements/Tools/SeoStats.ctp:121
+msgid "Site Value"
+msgstr "Valor del Sitio"
+
+#: View/Elements/Tools/SeoStats.ctp:121
+msgid "No data"
+msgstr "Sin datos"
+
+#: View/Elements/Tools/SeoStats.ctp:126
+msgid "W3C Validator"
+msgstr "Validador W3C"
+
+#: View/Elements/Tools/SeoStats.ctp:126
+#: View/Elements/Tools/SeoStats.ctp:131
+msgid "Details"
+msgstr "Detalles"
+
+#: View/Elements/Tools/SeoStats.ctp:131
+msgid "Internet Archive"
+msgstr "Internet Archive"
+
+#: View/Elements/Tools/SeoStats.ctp:136
+msgid "Google Bot Last Visit"
+msgstr "Última Visita de Google BOT"
+
+#: View/Elements/Tools/SourceCodeViewer.ctp:21
+msgid "Source Code Viewer"
+msgstr "Visor de Código Fuente"
+
+#: View/Elements/Tools/SpiderViewer.ctp:18
+msgid "Spider Viewer"
+msgstr "Visor Araña"
+
+#: View/Elements/Tools/WhoisRetriever.ctp:21
+msgid "Domain Whois Retriever"
+msgstr "Domain Whois Retriever"
+
+#: View/Urls/admin_add.ctp:2
+msgid "Optimize new URL"
+msgstr "Optimizar nueva URL"
+
+#: View/Urls/admin_add.ctp:9
+#: View/Urls/admin_edit.ctp:10
+msgid "Optimization Active"
+msgstr "Optimizacion Activa"
+
+#: View/Urls/admin_add.ctp:11
+#: View/Urls/admin_edit.ctp:12
+msgid "Redirect to"
+msgstr "Redireccionar a"
+
+#: View/Urls/admin_add.ctp:12
+#: View/Urls/admin_edit.ctp:13
+msgid "Page title"
+msgstr "Título de página"
+
+#: View/Urls/admin_add.ctp:15
+#: View/Urls/admin_edit.ctp:16
+msgid "Header"
+msgstr "Cabecera"
+
+#: View/Urls/admin_add.ctp:16
+#: View/Urls/admin_edit.ctp:17
+msgid "Footer"
+msgstr "Pie de página"
+
+#: View/Urls/admin_add.ctp:20
+#: View/Urls/admin_edit.ctp:20
+msgid "Save url"
+msgstr "Guardar url"
+
+#: View/Urls/admin_edit.ctp:2
+msgid "Editing URL"
+msgstr "Editado URL"
+
+#: View/Urls/admin_index.ctp:14
+msgid "Page Title"
+msgstr "Título de Página"
+
+#: View/Urls/admin_index.ctp:29
+msgid "Status"
+msgstr "Estado"
+
+#: View/Urls/admin_index.ctp:30
+msgid "inactive"
+msgstr "inactivo"
+
+#: View/Urls/admin_index.ctp:30
+msgid "active"
+msgstr "activo"
+
+#: View/Urls/admin_index.ctp:34
+msgid "There are no URLs to display"
+msgstr "No hay URLs para mostrar"
+
+#: View/Urls/admin_index.ctp:41
+msgid "Are you sure about this changes ?"
+msgstr "Seguro desea aplicar estos cambios ?"
+
+#: View/Urls/admin_index.ctp:43
+msgid "Update Options"
+msgstr "Opciones de Modificación"
+
+#: View/Urls/admin_index.ctp:50
+msgid "Delete selected urls"
+msgstr "Eliminar urls seleccionadas"
+
+#: View/Urls/admin_index.ctp:51
+msgid "Enable selected urls"
+msgstr "Activar urls seleccionadas"
+
+#: View/Urls/admin_index.ctp:52
+msgid "Disable selected urls"
+msgstr "Desactivar urls seleccionadas"
+
+#: View/Urls/admin_index.ctp:57
+msgid "Update"
+msgstr "Actualizar"
 

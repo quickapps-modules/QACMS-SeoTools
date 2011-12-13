@@ -26,13 +26,13 @@ class SeoUrl extends SeoToolsAppModel {
 
     public function afterDelete() {
         if (isset($this->__tmp['url'])) {
-            Cache::delete('seo_url_' . md5($this->__tmp['url']));
+            Cache::delete('seo_url_' . md5($this->__tmp['url']), 'seo_tools_optimized_url');
         }
     }
 
 	public function afterSave(){
 		if (isset($this->data['SeoUrl']['url'])) {
-            Cache::write('seo_url_' . md5($this->data['SeoUrl']['url']), $this->data['SeoUrl']);
+            Cache::write('seo_url_' . md5($this->data['SeoUrl']['url']), $this->data['SeoUrl'], 'seo_tools_optimized_url');
         }
 	}
 }
