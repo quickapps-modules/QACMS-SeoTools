@@ -1,8 +1,13 @@
 <?php echo $this->Form->create('SeoUrl'); ?>
     <?php echo $this->Html->useTag('fieldsetstart', __t('Optimize new URL')); ?>
+        <?php 
+            $base_url = Router::url('/', true);
+            $base_url = Configure::read('Variable.url_language_prefix') ? preg_replace('/\/[a-z]{3}\/$/s', '', $base_url) : $base_url;
+            $base_url = preg_replace('/\/$/s', '', $base_url);
+        ?>
 
-        <?php echo $this->Form->input('SeoUrl.status', array('type' => 'checkbox', 'label' => __t('Optimization Active'))); ?>
-        <?php echo $this->Form->input('SeoUrl.url', array('type' => 'text', 'label' => 'URL *')); ?>
+        <?php echo $this->Form->input('SeoUrl.status', array('type' => 'checkbox', 'checked' => true, 'label' => __t('Optimization Active'))); ?>
+        <?php echo $this->Form->input('SeoUrl.url', array('between' => $base_url, 'type' => 'text', 'label' => 'URL *')); ?>
         <?php echo $this->Form->input('SeoUrl.redirect', array('type' => 'text', 'label' => __t('Redirect to'))); ?>
         <?php echo $this->Form->input('SeoUrl.title', array('type' => 'text', 'label' => __t('Page title'))); ?>
         <?php echo $this->Form->input('SeoUrl.description', array('type' => 'textarea', 'label' => __t('Description'))); ?>

@@ -37,7 +37,7 @@ class SeoToolsHookHelper extends AppHelper {
         $_url = str_replace('//', '/', "/{$_url}");
         $cache = Cache::read('seo_url_' . md5($_url));
 
-        if ($cache) {
+        if ($cache && $cache['status']) {
             $this->__url = array_merge($this->__url, $cache);
             $this->__url['url'] = $_url;
 

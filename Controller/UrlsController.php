@@ -3,6 +3,26 @@ class UrlsController extends SeoToolsAppController {
     public $uses = array('SeoTools.SeoUrl');
 
     public function admin_index() {
+        if (isset($this->data['SeoUrl']['update']) && isset($this->data['Items'])) {
+            foreach ($this->data['Items']['id'] as $id) {
+                switch ($this->data['SeoUrl']['update']) {
+                    case 'enable':
+                        $this->admin_enable($id);
+                    break;
+
+                    case 'disable':
+                        $this->admin_disable($id);
+                    break;
+
+                    case 'delete':
+                        $this->admin_delete($id);
+                    break;
+                }
+            }
+
+            $this->redirect('/admin/seo_tools/urls/');
+        }
+
         $this->set('results', $this->paginate('SeoUrl'));
         $this->setCrumb('/admin/seo_tools');
         $this->setCrumb(array('URL List'));
@@ -34,6 +54,16 @@ class UrlsController extends SeoToolsAppController {
 
         $this->data = $result;
         $this->setCrumb('/admin/seo_tools');
+    }
+
+    public function admin_enable($id) {
+        $this->SeoUrl->id = $id;
+        return $this->SeoUrl->saveField('status', 1);
+    }
+
+    public function admin_disable($id) {
+        $this->SeoUrl->id = $id;
+        return $this->SeoUrl->saveField('status', 0);
     }
 
     public function admin_delete($id) {

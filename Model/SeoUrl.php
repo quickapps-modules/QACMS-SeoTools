@@ -9,6 +9,15 @@ class SeoUrl extends SeoToolsAppModel {
 		'redirect' => array('required' => false, 'allowEmpty' => true, 'rule' => array('url', true), 'message' => "Invalid redirect URL")
 	);
 
+    public function beforeSave() {
+        if (isset($this->data['SeoUrl']['url'])) {
+            $this->data['SeoUrl']['url'] = '/' . $this->data['SeoUrl']['url'];
+            $this->data['SeoUrl']['url'] = preg_replace('/\/{2,}/', '/', $this->data['SeoUrl']['url']);
+        }
+
+        return true;
+    }
+
     public function beforeDelete() {
         $this->__tmp['url'] = $this->field('url');
 

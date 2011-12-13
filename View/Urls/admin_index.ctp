@@ -42,7 +42,7 @@ $tSettings = array(
     <!-- Update -->
     <?php echo $this->Html->useTag('fieldsetstart', '<span id="toggle-update_fieldset" style="cursor:pointer;">' . __t('Update Options') . '</span>' ); ?>
         <div id="update_fieldset" class="horizontalLayout" style="<?php echo isset($this->data['Node']['update']) ? '' : 'display:none;'; ?>">
-            <?php echo $this->Form->input('Node.update',
+            <?php echo $this->Form->input('SeoUrl.update',
                     array(
                         'type' => 'select',
                         'label' => false,
@@ -57,19 +57,14 @@ $tSettings = array(
             <?php echo $this->Form->input(__t('Update'), array('type' => 'submit', 'label' => false)); ?>
         </div>
     <?php echo $this->Html->useTag('fieldsetend'); ?>
+
     <!-- table results -->
     <?php echo $this->Html->table($results, $tSettings); ?>
     <!-- end: table results -->
 <?php echo $this->Form->end(); ?>
 
-
 <script type="text/javascript">
-
     $("#toggle-update_fieldset").click(function () {
         $("#update_fieldset").toggle('fast', 'linear');
-    });
-
-    $("#toggle-filter_fieldset").click(function () {
-        $("#filter_fieldset").toggle('fast', 'linear');
     });
 </script>
