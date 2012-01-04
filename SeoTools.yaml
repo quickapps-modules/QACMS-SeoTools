@@ -1,5 +1,5 @@
-name: SEO
+name: Seo Tools
 description: Search Engine Optimization
 category: Seo
-version: 1.0b
-core: (>=1.0RC1)
+version: 1.0
+core: 1.x
