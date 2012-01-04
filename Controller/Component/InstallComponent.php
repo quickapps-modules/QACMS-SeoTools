@@ -4,12 +4,9 @@ class InstallComponent extends Component {
 	public $components = array('Installer');
 
     function beforeInstall($Installer) {
-        @App::import('Model', 'ConnectionManager');
-        @ConnectionManager::create('default');
-
-        $db = ConnectionManager::getDataSource('default');
+        $dSource = $Installer->Controller->Module->getDataSource();
         $query = "
-            CREATE TABLE IF NOT EXISTS `{$db->config['prefix']}seo_tools_urls` (
+            CREATE TABLE IF NOT EXISTS `{$dSource->config['prefix']}seo_tools_urls` (
               `id` int(11) NOT NULL AUTO_INCREMENT,
               `url` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
               `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -31,19 +28,16 @@ class InstallComponent extends Component {
             'url' => '/admin/seo_tools'
         ), 1, 1);
 
-        return $db->execute($query);
+        return $dSource->execute($query);
     }
 
     function beforeUninstall() {
         return true;
     }
 
-    function afterUninstall() {
-        @App::import('Model', 'ConnectionManager');
-        @ConnectionManager::create('default');
+    function afterUninstall($Installer) {
+        $dSource = $Installer->Controller->Module->getDataSource();
 
-        $db = ConnectionManager::getDataSource('default');    
-
-        return $db->execute("DROP TABLE `{$db->config['prefix']}seo_tools_urls`;");
+        return $dSource->execute("DROP TABLE `{$dSource->config['prefix']}seo_tools_urls`;");
     }
 }
