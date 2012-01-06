@@ -1,10 +1,7 @@
 <?php
 class InstallComponent extends Component {
-	public $Controller = null;
-	public $components = array('Installer');
-
-    function beforeInstall($Installer) {
-        $dSource = $Installer->Controller->Module->getDataSource();
+    public function beforeInstall() {
+        $dSource = $this->Installer->Controller->Module->getDataSource();
         $query = "
             CREATE TABLE IF NOT EXISTS `{$dSource->config['prefix']}seo_tools_urls` (
               `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -23,7 +20,7 @@ class InstallComponent extends Component {
               PRIMARY KEY (`id`)
             ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;";        
 
-        $Installer->menuLink(array(
+        $this->Installer->menuLink(array(
             'title' => 'Seo Tools',
             'url' => '/admin/seo_tools'
         ), 1, 1);
@@ -31,12 +28,12 @@ class InstallComponent extends Component {
         return $dSource->execute($query);
     }
 
-    function beforeUninstall() {
+    public function beforeUninstall() {
         return true;
     }
 
-    function afterUninstall($Installer) {
-        $dSource = $Installer->Controller->Module->getDataSource();
+    public function afterUninstall() {
+        $dSource = $this->Installer->Controller->Module->getDataSource();
 
         return $dSource->execute("DROP TABLE `{$dSource->config['prefix']}seo_tools_urls`;");
     }
