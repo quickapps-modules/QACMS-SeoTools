@@ -1,6 +1,15 @@
 <?php 
 class ToolsController extends SeoToolsAppController {
     public $components = array('SeoTools.SeoTools');
+    public $uses = array();
+
+    public function beforeFilter(){
+        parent::beforeFilter();
+
+        if(!empty($this->data) && isset($this->Security) && $this->action = 'admin_execute') {
+            $this->Security->validatePost = false;
+        }
+    }
 
     public function admin_index() {
         $this->Layout['stylesheets']['all'][] = '/seo_tools/css/styles.css';

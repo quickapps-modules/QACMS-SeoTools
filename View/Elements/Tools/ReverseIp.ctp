@@ -1,24 +1,26 @@
 <?php if (!isset($results)) : ?>
-<form action="" method="post">
+<?php echo $this->Form->create(false); ?>
     <table width="100%" border="0" cellspacing="0" cellpadding="5">
         <tr>
             <td align="left" valign="top"><b><?php echo __t('Enter Your IP'); ?>:</b></td>
-            </tr>
+        </tr>
+
         <tr>
           <td align="left" valign="top"><input type="text" name="data[Tool][ip]" value="" class="text" style="width:100%;" /></td>
-      </tr>
+        </tr>
+
         <tr>
             <td align="left" valign="top">
                 <input type="submit" value="<?php echo __t('Continue'); ?>" class="primary_lg" />
             </td>
         </tr>
     </table>
-</form>
+<?php echo $this->Form->end(); ?>
 
 <?php else: ?>
 
 <h1><?php echo __t('Ping Domain/IP'); ?></h1>
-<div style="width:100%;">
-    <?php echo nl2br($results); ?>
-</div>
+<pre>
+    <?php echo $results; ?>
+</pre>
 <?php endif; ?>
