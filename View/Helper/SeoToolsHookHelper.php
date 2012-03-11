@@ -64,7 +64,7 @@ class SeoToolsHookHelper extends AppHelper {
         }
     }
 
-    public function title_for_layout_alter(&$title) {
+    public function layout_title_alter(&$title) {
         if ($this->__url['title']) {
             $title = $this->__url['title'];
         }
