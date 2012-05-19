@@ -36,7 +36,9 @@ class SeoToolsComponent extends Component {
             if (file_exists($path . DS . "{$name}.yaml")) {
                 $yaml = Spyc::YAMLLoad($path . DS . "{$name}.yaml");
                 $yaml['author'] = @htmlentities($yaml['author']);
-            }
+            } else {
+				continue;
+			}
             
             $yaml = Set::merge($__yaml, $yaml);
             $yaml['path'] = str_replace(DS . DS, DS, $path . DS);
@@ -71,11 +73,11 @@ class SeoToolsComponent extends Component {
         $component = new $class($this->_controller->Components);
 
         if (method_exists($component, 'initialize')) {
-            $component->initialize($this);
+            $component->initialize($this->_controller);
         }
 
         if (method_exists($component, 'startup')) {
-            $component->startup($this);
+            $component->startup($this->_controller);
         }
 
         $component->BaseTools = $this;

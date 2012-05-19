@@ -3,6 +3,7 @@
         <tr>
           <td colspan="2" align="left" valign="top"><b><?php echo __t('Their Content'); ?></b></td>
         </tr>
+
         <tr>
             <td width="3%" align="left" valign="top"><b><?php echo __t('Rank'); ?></b></td>
             <td align="center" valign="top" width="97%"><b><?php echo __t('Content'); ?></b></td>

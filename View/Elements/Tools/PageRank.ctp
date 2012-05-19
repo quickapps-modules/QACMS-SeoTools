@@ -1,4 +1,4 @@
-<?php if (!isset($results)): ?>
+<?php if (!isset($results)) : ?>
 	<?php echo $this->Form->create(false); ?>
 		<table width="100%" border="0" cellspacing="0" cellpadding="5">
 			<tr>
@@ -17,8 +17,6 @@
 		</table>
 	<?php echo $this->Form->end(); ?>
 <?php else: ?>
-	<h1><?php echo __t('CSS Validator'); ?></h1>
-	<iframe src="<?php echo $results; ?>" style="width:100%; height:360px;"></iframe>
+	<h1><?php echo __d('seo_tools', 'Page rank: <b>%d</b>', $results); ?></h1><br />
+	<?php echo $this->Html->image("/seo_tools/img/seo-stats-icons/pr/pr{$results}.gif"); ?>
 <?php endif; ?>
-
-
