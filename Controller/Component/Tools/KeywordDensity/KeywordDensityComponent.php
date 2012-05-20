@@ -81,7 +81,7 @@ class KeywordDensityComponent extends Component {
 			'/ƒ/' => 'f',
 			'/[^ a-zA-Z\s]/' => '',
 			'/[ ]{2,}/' => ' '
-		);	
+		);
 
 		$page = preg_replace(array_keys($replacement), array_values($replacement), $page);
 		$page = explode(' ', $page);
@@ -100,7 +100,7 @@ class KeywordDensityComponent extends Component {
             $page = $this->__exclude_words($page, $ew);
         }
 
-		return $page;	
+		return $page;
 	} 
 
 	private function __exclude_words($str, $exclude_words = array()) {

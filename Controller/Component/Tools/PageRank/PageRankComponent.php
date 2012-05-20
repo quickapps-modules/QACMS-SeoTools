@@ -23,7 +23,7 @@ class PageRankComponent extends Component {
 			$pagerank = substr($data, $pos + 9); 
 
 			return $pagerank; 
-		}	
+		}
 	}
 
 	private function __strToNum($Str, $Check, $Magic) {
@@ -65,7 +65,7 @@ class PageRankComponent extends Component {
 
 		$HashStr = sprintf('%u', $Hashnum);
 		$length = strlen($HashStr);
-		
+
 		for ($i = $length-1; $i >= 0; $i--) {
 			$Re = $HashStr{$i};
 

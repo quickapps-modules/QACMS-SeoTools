@@ -77,13 +77,14 @@
 			<legend id="report_overview"><?php echo __t('Report overview'); ?></legend>
 			<em><?php echo __t('This report helps you to optimize the web page "<b>http://%s/</b>" for a high ranking on <b>%s</b> for the search term "<b>%s</b>".', $this->data['Tool']['url'], $this->data['Tool']['engine'], $this->data['Tool']['criteria']); ?></em>
 
+			<!-- your site overview -->
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<thead>
 					<tr>
-					  <td colspan="2" align="left" valign="top"><b><?php echo __t('Your Web Page'); ?></b></td>
+						<td colspan="2" align="left" valign="top"><b><?php echo __t('Your Web Page'); ?></b></td>
 					</tr>
 				</thead>
-				
+
 				<tbody>
 					<tr>
 						<td align="center" valign="middle" width="10%">
@@ -97,14 +98,15 @@
 					</tr>
 				</tbody>
 			</table>
-			
+
+			<!-- competitors overview -->
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<thead>
 					<tr>
 						<td colspan="3" align="left" valign="top"><b><?php __t('Your competitors for the search term "%s" on %s', $this->data['Tool']['criteria'], $this->data['Tool']['engine']); ?></b></td>
 					</tr>
 				</thead>
-				
+
 				<tbody>
 					<?php 
 						$i = 0;
@@ -129,10 +131,11 @@
 
 			<div id="chart"><!-- RESULTS --></div>
 
-			<table width="100%" border="0" cellspacing="0" cellpadding="0"><!-- table of contents -->
+			<!-- table of contents -->
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<thead>
 					<tr>
-					  <td colspan="2" align="left" valign="top"><b><?php echo __t('Table of contents'); ?></b></td>
+						<td colspan="2" align="left" valign="top"><b><?php echo __t('Table of contents'); ?></b></td>
 					</tr>
 				</thead>
 
@@ -165,72 +168,71 @@
 			</table>
 		</fieldset>
 
-	<?php 
-		$titles = array(
-			'title' => array(
-				'title' => __t('Keyword use in document title'), 
-				'importance' => __t('Essential'), 
-				'info' => __t("The document title is the text within the &lt;title&gt;...&lt;/title&gt; tags in the HTML code of your web page. This chapter tries to find out how to use the search term '%s' in the document title and if it's important for %s", $this->data['Tool']['url'],    $this->data['Tool']['engine'])
-			),
-			'body' => array(
-				'title' => __t('Keyword use in body text'), 
-				'importance' => __t('Essential'), 
-				'info' => __t('The body text is the text on your web page that can be seen by people in their web browsers. It does not include HTML commands, comments, etc. The more visible text there is on a web page, the more a search engine can index. The calculations include spaces and punctuation marks')
-			),
-			'backlinks' => array(
-				'title' => __t('Global link popularity of web site'), 
-				'importance' => __t('Essential'), 
-				'info' => __t('The global link popularity measures how many web pages link to your site. The number of web pages linking to your site is not as important as the quality of the web pages that link to your site')
-			),
-			'h1' => array(
-				'title' => __t('Keyword use in H1 headline texts'), 
-				'importance' => __t('Very Important'), 
-				'info' => __t('H1 headline texts are the texts that are written between the &lt;h1&gt;...&lt;/h1&gt; tags in the HTML code of a web page. Some search engines give extra relevance to search terms that appear in the headline texts')
-			),
-			'age' => array(
-				'title' => __t('Age of web site'), 
-				'importance' => __t('Very Important'), 
-				'info' => __t('Spam sites often come and go quickly. For this reason, search engines tend to trust a web site that has been around for a long time over one that is brand new. The age of the domain is seen as a sign of trustworthiness because it cannot be faked. The data is provided by Alexa.com')
-			),
-			'alexa_rank' => array(
-				'title' => __t('Number of visitors to the site'), 
-				'importance' => __t('Important'), 
-				'info' => __t('Search engines might look at web site usage data, such as the number of visitors to your site, to determine if your site is reputable and contains popular contents. The Alexa.com traffic rank is based on three months of aggregated traffic data from millions of Alexa Toolbar users and is a combined measure of page views and number of site visitors')
-			),
-			'url' => array(
-				'title' => __t('Keyword use in page URL'), 
-				'importance' => __t('Important'), 
-				'info' => __t('The page URL is the part after the domain name in the web page address. This chapter tries to find out if Google.es  (la Web) gives extra relevance to search terms within the page URL. Separate your search terms in the page URL with slashes, dashes or underscores')
-			),
-			'tags/description' => array(
-				'title' => __t('Keyword use in meta description'), 
-				'importance' => __t('Important'), 
-				'info' => __t('The Meta Description tag allows you to describe your web page. This chapter tries to find out if %s takes the Meta Description tag into account. Some search engines display the text to the user in the search results.<br/> Example: &lt;meta name="description" content= "This sentence describes the contents of your web site."&gt;<br/> Even if the Meta Description tag might not be important for ranking purposes, you should use the Meta Description tag to make sure that your web site is displayed with an attractive description in the search results', $this->data['Tool']['engine'])
-			)
-		);
-
-		foreach ($results['Analysis'] as $aspect => $data): ?>
+		<?php 
+			$titles = array(
+				'title' => array(
+					'title' => __t('Keyword use in document title'), 
+					'importance' => __t('Essential'), 
+					'info' => __t("The document title is the text within the &lt;title&gt;...&lt;/title&gt; tags in the HTML code of your web page. This chapter tries to find out how to use the search term '%s' in the document title and if it's important for %s", $this->data['Tool']['url'],    $this->data['Tool']['engine'])
+				),
+				'body' => array(
+					'title' => __t('Keyword use in body text'), 
+					'importance' => __t('Essential'), 
+					'info' => __t('The body text is the text on your web page that can be seen by people in their web browsers. It does not include HTML commands, comments, etc. The more visible text there is on a web page, the more a search engine can index. The calculations include spaces and punctuation marks')
+				),
+				'backlinks' => array(
+					'title' => __t('Global link popularity of web site'), 
+					'importance' => __t('Essential'), 
+					'info' => __t('The global link popularity measures how many web pages link to your site. The number of web pages linking to your site is not as important as the quality of the web pages that link to your site')
+				),
+				'h1' => array(
+					'title' => __t('Keyword use in H1 headline texts'), 
+					'importance' => __t('Very Important'), 
+					'info' => __t('H1 headline texts are the texts that are written between the &lt;h1&gt;...&lt;/h1&gt; tags in the HTML code of a web page. Some search engines give extra relevance to search terms that appear in the headline texts')
+				),
+				'age' => array(
+					'title' => __t('Age of web site'), 
+					'importance' => __t('Very Important'), 
+					'info' => __t('Spam sites often come and go quickly. For this reason, search engines tend to trust a web site that has been around for a long time over one that is brand new. The age of the domain is seen as a sign of trustworthiness because it cannot be faked. The data is provided by Alexa.com')
+				),
+				'alexa_rank' => array(
+					'title' => __t('Number of visitors to the site'), 
+					'importance' => __t('Important'), 
+					'info' => __t('Search engines might look at web site usage data, such as the number of visitors to your site, to determine if your site is reputable and contains popular contents. The Alexa.com traffic rank is based on three months of aggregated traffic data from millions of Alexa Toolbar users and is a combined measure of page views and number of site visitors')
+				),
+				'url' => array(
+					'title' => __t('Keyword use in page URL'), 
+					'importance' => __t('Important'), 
+					'info' => __t('The page URL is the part after the domain name in the web page address. This chapter tries to find out if Google.es  (la Web) gives extra relevance to search terms within the page URL. Separate your search terms in the page URL with slashes, dashes or underscores')
+				),
+				'tags/description' => array(
+					'title' => __t('Keyword use in meta description'), 
+					'importance' => __t('Important'), 
+					'info' => __t('The Meta Description tag allows you to describe your web page. This chapter tries to find out if %s takes the Meta Description tag into account. Some search engines display the text to the user in the search results.<br/> Example: &lt;meta name="description" content= "This sentence describes the contents of your web site."&gt;<br/> Even if the Meta Description tag might not be important for ranking purposes, you should use the Meta Description tag to make sure that your web site is displayed with an attractive description in the search results', $this->data['Tool']['engine'])
+				)
+			);
+		?>
+		<?php foreach ($results['Analysis'] as $aspect => $data) { ?>
 		<fieldset>
 			<legend id="aspect_<?php echo $aspect; ?>">
 				<?php echo $titles[$aspect]['title']; ?><br/>
 				<em><?php echo $titles[$aspect]['importance']; ?></em>
 			</legend>
 			<em><?php echo $titles[$aspect]['info']; ?></em>
-			
-			<?php 
-				// 'pagerank', 'backlinks', 'alexa_rank', 'dmoz_directory', 'yahoo_directory', 'age'
-				if (in_array($aspect, array('backlinks', 'alexa_rank', 'age'))) {
-					echo $this->element('competitor_compare/' . $aspect, compact('aspect', 'titles', 'results', 'data'));
 
+			<?php 
+				if (in_array($aspect, array('backlinks', 'alexa_rank', 'age'))) {
+					echo $this->element('SeoTools.competitor_compare/' . $aspect, compact('aspect', 'titles', 'results', 'data'));
 				} else {
 					if ($aspect != 'h1') {
-						echo $this->element('competitor_compare/h1', compact('aspect', 'titles', 'results', 'data', 'keywords')); 
+						// body
+						echo $this->element('SeoTools.competitor_compare/h1', compact('aspect', 'titles', 'results', 'data', 'keywords')); 
 					}
 			?>
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<thead>
 					<tr>
-					  <td align="left" valign="top" colspan="3"><b><?php echo __t('Your Content'); ?></b></td>
+						<td align="left" valign="top" colspan="3"><b><?php echo __t('Your Content'); ?></b></td>
 					</tr>
 				</thead>
 
@@ -245,32 +247,34 @@
 							?>
 							</td>
 						</tr>
-						<?php if ($aspect == 'body'): ?>
+						<?php if ($aspect == 'body') {?>
 						<tr>
 							<td width="21%" align="left" valign="top">&nbsp;</td>
 							<td width="46%" align="left" valign="top"><b><?php echo __t('Competitors'); ?></b></td>
 							<td width="33%" align="left" valign="top"><b><?php echo __t('Your Site'); ?></b></td>
 						</tr>
 						<?php 
-							$competitor_wc = Set::extract('Analysis.body.{s}.competitors.words_count', $results);
-							$site_wc = Set::extract('Analysis.body.{s}.site.words_count', $results);
+							$competitor_wc = Hash::extract($results, 'Analysis.body.{s}.competitors.words_count');
+							$site_wc = Set::extract($results, 'Analysis.body.{s}.site.words_count');
 						?>
-						<tr class="advice_color_<?php echo $this->CC->advice_color($competitor_wc[0], $site_wc[0], $aspect); ?>">
+						<tr class="advice_color_<?php echo $this->CC->advice_color($competitor_wc, $site_wc, $aspect); ?>">
 							<td align="left" valign="top"><?php echo __t('Number of words'); ?></td>
-							<td align="left" valign="top"><?php echo $this->CC->competitor_average($competitor_wc[0]); ?></td>
-							<td align="left" valign="top"><?php echo $site_wc[0]; ?></td>
+							<td align="left" valign="top"><?php echo $this->CC->competitor_average($competitor_wc); ?></td>
+							<td align="left" valign="top"><?php echo $site_wc; ?></td>
 						</tr>
-						<?php endif; ?>
+						<?php } ?>
 					</tbody>
-				<?php } else { #H1 SITE LISTING ?> 
+				<?php } else { ?>
+				<!-- H1 SITE LISTING -->
 					<tbody>
 						<tr>
 							<td width="3%" align="left" valign="top"><b><?php echo __t('No.'); ?></b></td>
 							<td width="97%" align="left" valign="top" colspan="2"><b><?php echo __t('H1 Heading Text'); ?></b></td>
 						</tr>
-						
+
 						<?php 
-							$i=0; 
+							$i = 0;
+
 							foreach ((array)$results['Data']['Site']['h1_array'] as $h1) { 
 								$i++;
 						?>
@@ -292,7 +296,7 @@
 						  <td colspan="3" align="left" valign="top"><b><?php echo __t('Search Term'); ?>: "<?php echo $keyword; ?>"</b></td>
 						</tr>
 					</thead>
-					
+
 					<tbody>
 						<tr>
 							<td width="21%" align="left" valign="top">&nbsp;</td>
@@ -309,7 +313,6 @@
 							<td align="left" valign="top"><?php echo $this->CC->competitor_average($analysis['competitors']['density'], 'percent'); ?></td>
 							<td align="left" valign="top"><?php echo $analysis['site']['density']; ?>%</td>
 						</tr>
-
 						<?php if ($aspect != 'h1') { ?>
 						<tr class="advice_color_<?php echo $this->CC->advice_color($analysis['competitors']['position'], $analysis['site']['position'], $aspect); ?>">
 							<td align="left" valign="top"><?php echo __t('Position'); ?></td>
@@ -322,7 +325,7 @@
 			<?php } ?>
 			<?php } ?>
 		</fieldset>
-	<?php endforeach; ?>
+	<?php } ?>
 
 		<fieldset>
 			<legend id="aspect_other_factors"><?php echo __t('Factors that could prevent your top ranking'); ?></legend>
@@ -415,6 +418,7 @@
 	<script>
 		$(document).ready(function () {
 			$('div#chart').html($('div#chart_results').html());
+			$('.body-text').width($('.ref-width').width());
 		});
 	</script>
 <?php endif; ?>

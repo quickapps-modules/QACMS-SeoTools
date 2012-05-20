@@ -39,7 +39,7 @@ Change Log:
 ================================
 Added user configurable parameters and commented codes
 for easier end user understanding.
-						
+
 0.3 Vasilich  (vasilich_AT_grafin.kiev.ua) - 26 July 2006
 =========================================================
 Added encoding parameter to work with UTF texts, min number 

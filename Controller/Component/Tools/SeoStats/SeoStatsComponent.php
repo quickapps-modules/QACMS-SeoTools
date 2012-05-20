@@ -52,11 +52,11 @@ class SeoStatsComponent extends Component {
 	public function checkFake($url) {
 		$siteurl = 'http://www.google.com/search?q=info:' . $url . '&cd=1&hl=en&ct=clnk';
 		$data = $this->BaseTools->getPage($siteurl); 
-		
+
         preg_match('/<cite>(.*?)<\/cite>/i', $data, $p);
-		
+
         $datatext = isset($p[1]) ? $p[1] : '';
-		
+
 		if (stripos($url, $datatext) !== false) {
 			$value = "1";
 		} else {
@@ -104,7 +104,7 @@ class SeoStatsComponent extends Component {
 
         return $value;
 	}
-    
+
 	public function getBacklinkAlexa($url) {
 		$url = 'http://data.alexa.com/data?cli=10&dat=s&url=' . $url;
 		$data = $this->BaseTools->getPage($url);
@@ -112,10 +112,14 @@ class SeoStatsComponent extends Component {
         preg_match('/LINKSIN NUM="(.*?)"/i', $data, $p);
 
         $value = isset($p[1]) ? number_format($this->BaseTools->toInt($p[1])) : 0;
-		
+
         return $value;
 	}
-  
+
+	public function getBacklinksYahoo($url) {
+		return 0;
+	}
+
 	public function getAlexaRank($url) {
 		$url = 'http://data.alexa.com/data?cli=10&url=' . $url;
 		$data = $this->BaseTools->getPage($url);
@@ -126,7 +130,7 @@ class SeoStatsComponent extends Component {
 
         return $value;
 	}    
-    
+
 	public function getAge($host) {
 		$url = preg_replace('/www\./', '', $host);
 		$url = "http://www.who.is/whois/{$url}";
@@ -145,15 +149,15 @@ class SeoStatsComponent extends Component {
 
 		return $value;
 	}
-    
+
 	public function getGooglebotLastAccess($url) {
 		$url = 'http://webcache.googleusercontent.com/search?q=cache:'.$url.'&cd=1&hl=en&ct=clnk';
 		$data = $this->BaseTools->getPage($url); 
 
         preg_match('/appeared on (.*?). The/i', $data, $p);
-		
+
         $value = isset($p[1]) ? $p[1] : 'No Data';
-		
+
         return $value;
 	}   
 
@@ -162,11 +166,11 @@ class SeoStatsComponent extends Component {
 		$url = str_replace(array('http://', 'https://', 'ftp://'), '', $url);
 		$url = "http://www.websiteoutlook.com/" . urlencode($url);
 		$data = $this->BaseTools->getPage($url);
-		
+
         preg_match('/Estimated Worth (.*) by websiteoutlook/i', $data, $p);
-		
+
         $value = isset($p[1]) ? $p[1] : false;
-		
+
         return $value;
 	} 
 
@@ -177,7 +181,7 @@ class SeoStatsComponent extends Component {
         preg_match('/<span.+?id="count">(.*?) results<\/span>/i', $data, $p);
 
         $value = isset($p[1]) ? $p[1] : 0;
-		
+
         return $value;
 	}    
     
@@ -191,15 +195,15 @@ class SeoStatsComponent extends Component {
 
         return $value;
 	}
-	
+
 	public function yahooIndexed($url) {
 		$url = 'http://search.yahoo.com/search?p=site%3A' . $url;
 		$data = $this->BaseTools->getPage($url);
-		
+
         preg_match('/resultCount\">(.*?)<\/span>/i', $data, $p);
-		
+
         $value = isset($p[1]) ? number_format($this->BaseTools->toInt($p[1])) : 0;
-		
+
         return $value;
 	}  
 
@@ -208,9 +212,9 @@ class SeoStatsComponent extends Component {
 		$data = $this->BaseTools->getPage($url);
 
         preg_match('/Digg - (.*?) Results For/i', $data, $p);
-		
+
         $value = isset($p[1]) ? number_format($this->BaseTools->toInt($p[1])) : 0;
-		
+
         return $value;
 	}
     
@@ -220,22 +224,22 @@ class SeoStatsComponent extends Component {
 		$hash = md5($url);
 		$url = 'http://feeds.delicious.com/v2/json/urlinfo/' . $hash;
 		$data = $this->BaseTools->getPage($url);
-		
+
         preg_match('/\"total_posts\"\:(.*?)\,/i', $data, $p);
-		
+
         $value = isset($p[1]) ? number_format($this->BaseTools->toInt($p[1])) : 0;
-		
+
         return $value;
-	}	
+	}
 
 	public function technoratiRank($url) {
 		$url = 'http://technorati.com/blogs/' . $url;
 		$data = $this->BaseTools->getPage($url);
-		
+
         preg_match('/<span class="blog-authorities-number">(.*?)<\/span>/i', $data, $p);
-		
+
         $value = isset($p[1]) ? number_format($this->BaseTools->toInt($p[1])) : 0;
-		
+
         return $value;
 	} 
 

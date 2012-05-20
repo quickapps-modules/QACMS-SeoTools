@@ -104,29 +104,29 @@ class CompetitorCompareComponent extends Component {
 			'alexa_rank' => $SeoStats->getAlexaRank($parseUrl['full']),
 			'age' => $SeoStats->getAge($parseUrl['host'])
 		);
-			
+
 		foreach ($site_data['tags'] as $s_tag_name => &$s_tag_data) {
 			$s_tag_data = $this->BaseTools->toUTF8(html_entity_decode($s_tag_data));
-		}		
+		}
 
 		/*********************/
 			# $site_data
 			# $competitors_data
 		/* Analysis */
-		
+
 		$analysis = array(
 			'title' => null,
 			'backlinks' => null,
 			'body' => null,
-			
+
 			'age' => null,
 			'h1' => null,
-			
+
 			'url' => null,
 			'alexa_rank' => null,
 			'tags/description' => null
-		);	
-		
+		);
+
 		/* SEO */
 		foreach ($analysis as $aspect => &$aspect_data) {
 			if (in_array($aspect, array('backlinks', 'alexa_rank', 'age'))) {
@@ -135,10 +135,10 @@ class CompetitorCompareComponent extends Component {
 
 			$site_aspect_data = Set::extract("/{$aspect}", $site_data);
 			$site_aspect_data = @$site_aspect_data[0];
-		
+
 			$_keywords = explode(' ', str_replace(',', '', $keywords));
 			$_keywords[] = $this->__exclude_words(str_replace(',', '', $keywords));
-		
+
 			foreach ($_keywords as $word) {
 				$strpos = $aspect == 'h1' ? 0 : $this->word_position($site_aspect_data, $word); #h1 aspect = no position required
 				$quantity = $this->word_occurr($site_aspect_data, $word); // --> auto set $this->tmp = source # words
@@ -147,28 +147,28 @@ class CompetitorCompareComponent extends Component {
 					'density'	=> @number_format(($quantity*100) / $this->tmp, 2), // --> overload: $this->word_density($site_aspect_data, $word)
 					'position'	=> $strpos
 				);
-				
+
 				if ($aspect == 'body') {
 					$aspect_data[$word]['site']['words_count'] = $this->words_count($site_aspect_data, $word);
 				}
-				
+
 				$c_quantity = $c_density = $c_position = $c_body_word_count = array();
-				
+
 				foreach ($competitors_data as $pos => $data) {
 					$competitor_aspect_data = Set::extract("/{$aspect}", $competitors_data[$pos]);
 					$competitor_aspect_data = @$competitor_aspect_data[0];
-					
+
 					if ($aspect == 'tags/description' && empty($competitor_aspect_data)) {
 						continue;
                     }
-					
+
 					$q = $this->word_occurr($competitor_aspect_data, $word); // --> improve: $this->tmp
 
 					$c_quantity[] = $q;
 					$c_density[] = @number_format(($q*100) / $this->tmp, 2);
 					$strpos = $aspect == 'h1' ? 0 : $this->word_position($competitor_aspect_data, $word); #h1 aspect = no position required
 					$c_position[] = $strpos;
-					
+
 					if ($aspect == 'body') {
 						$c_body_word_count[] = $this->words_count($competitor_aspect_data, $word);
                     }
@@ -269,7 +269,7 @@ class CompetitorCompareComponent extends Component {
 			'/ƒ/' => 'f',
 			'/[^ a-zA-Z\s]/' => '',
 			'/[ ]{2,}/' => ' '
-		);	
+		);
 
 		$page = preg_replace(array_keys($replacement), array_values($replacement), $page);
 		$page = explode(' ', $page);
@@ -297,14 +297,14 @@ class CompetitorCompareComponent extends Component {
 
 		return ($strpos === false ? 0 : $strpos+1);
 	}
-	
+
 	public function words_count($source) {
 		$source = $this->__string2keywords($source);
 		$words  = str_word_count($source, 1);
 
 		return count($words);
 	}
-	
+
 	public function word_occurr($source, $word) {
 		$source = $this->__string2keywords($source);
 		$word = strtolower($word);

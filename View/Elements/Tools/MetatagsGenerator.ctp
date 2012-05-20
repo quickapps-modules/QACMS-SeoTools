@@ -5,28 +5,28 @@
 				<td width="50%" align="left" valign="top"><b><?php echo __t('Title'); ?>:</b></td>
 				<td width="50%" align="left" valign="top"><b><?php echo __t('Description'); ?>:</b></td>
 			</tr>
-			
+
 			<tr>
 				<td align="left" valign="top"><input type="text" name="data[Tool][metas][title]" value="" class="text" style="width:100%;" /></td>
 				<td rowspan="9" align="left" valign="top"><textarea name="data[Tool][metas][description]" style="width:100%; height:220px;" wrap="on"></textarea></td>
 			</tr>
-			
+
 			<tr>
 				<td align="left" valign="top"><b><?php echo __t('Keywords'); ?></b></td>
 			</tr>
-			
+
 			<tr>
 				<td align="left" valign="top"><input type="text" name="data[Tool][metas][keywords]" value="" class="text" style="width:100%;" /></td>
 			</tr>
-			
+
 			<tr>
 				<td align="left" valign="top"><b><?php echo __t('Author'); ?></b></td>
 			</tr>
-			
+
 			<tr>
 				<td align="left" valign="top"><input type="text" name="data[Tool][metas][author]" value="" class="text" style="width:100%;" /></td>
 			</tr>
-			
+
 			<tr>
 				<td align="left" valign="top"><b><?php echo __t('Owner'); ?></b></td>
 			</tr>

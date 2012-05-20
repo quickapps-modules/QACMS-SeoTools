@@ -22,7 +22,7 @@ class LinkExtractorComponent extends Component {
 				} elseif (substr($link, 0, 7) != 'http://' && substr($link, 0, 8) != 'https://') {
 					$link = $parseUrl['full'] . '/' . $link;
 				}
-				
+
 				$link = $this->BaseTools->toUTF8($link);
 			}
 

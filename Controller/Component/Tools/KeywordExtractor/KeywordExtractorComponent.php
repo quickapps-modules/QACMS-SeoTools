@@ -107,7 +107,7 @@ class KeywordExtractorComponent extends Component {
 			'/ƒ/' => 'f',
 			'/[^ a-zA-Z\s]/' => '',
 			'/[ ]{2,}/' => ' '
-		);	
+		);
         
         $page = html_entity_decode($page);
 		$page = preg_replace(array_keys($replacement), array_values($replacement), $page);
@@ -127,7 +127,7 @@ class KeywordExtractorComponent extends Component {
             $page = $this->__exclude_words($page, $ew);
         }
 
-		return $page;	
+		return $page;
 	} 
 
 	private function __exclude_words($str, $exclude_words = array()) {

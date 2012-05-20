@@ -5,21 +5,45 @@ class Google {
 
 		if (strpos($domain, 'google.') !== false) {
 			$query = "http://www.{$domain}/search?q=" . urlencode($keywords) ."&num=10";
-			$exp = '@<li class=g><div class=vsc.*?><.*? class="?r"?>.+?href="(.+?)".*?>(.+?)<\/a>.+?<span class=vshid><a href="(.+?)".*?>.+?<\/a>.+?<span class=st>(.+?)<br><\/span>.+?@m';
+			$exp = '/<li class="g">(.*)<\/li>/iUs';
             $results = $this->BaseTools->toUTF8($this->BaseTools->getPage($query));
 
-            preg_match_all($exp, $results, $matches, PREG_SET_ORDER);
+            preg_match_all($exp, $results, $matches);
 
-            foreach ($matches as $pos => $data) {
+            foreach ($matches[1] as $data) {
                 $out[] = array(
-                    'url' => strip_tags($data[1]),
-                    'title' => strip_tags($data[2]),
-                    'cache_url' => strip_tags($data[3]),
-                    'snippet' => strip_tags($data[4])
+                    'url' => $this->__getUrl($data),
+                    'title' => $this->__getTitle($data),
+                    'cache_url' => $this->__getCacheUrl($data),
+                    'snippet' => $this->__getSnippet($data)
                 );
             }        
         }
 
 		return $out;
+	}
+
+	private function __getUrl($data) {
+		preg_match('/<h3 class="r"><a href="(.*)" .+?>/iUs', $data, $url);
+
+		return $url[1];
+	}
+
+	private function __getTitle($data) {
+		preg_match('/<h3 class="r">(.*)<\/h3>/iUs', $data, $title);
+
+		return strip_tags($title[1]);
+	}
+
+	private function __getCacheUrl($data) {
+		preg_match('/<span class="vshid"><a href="(.*)">.+?<\/a><\/span>/iUs', $data, $cacheUrl);
+
+		return $cacheUrl[1];
+	}
+
+	private function __getSnippet($data) {
+		preg_match('/<span class="st">(.*)<\/span>/iUs', $data, $snippet);
+
+		return strip_tags($snippet[1]);
 	}
 }

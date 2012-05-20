@@ -22,7 +22,7 @@ class BacklinkCheckerComponent extends Component {
         preg_match('/LINKSIN NUM="(.*?)"/i', $data, $p);
 
         $value = isset($p[1]) ? number_format($this->BaseTools->toInt($p[1])) : 0;
-		
+
         return $value;
 	}
     
