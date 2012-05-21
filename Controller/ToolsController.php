@@ -17,7 +17,7 @@ class ToolsController extends SeoToolsAppController {
         $this->set('tools', $this->SeoTools->toolsList());
         $this->setCrumb(
             '/admin/seo_tools',
-            array(__t('Tools'))
+            array(__d('seo_tools', 'Tools'))
         );
     }
 
@@ -41,7 +41,7 @@ class ToolsController extends SeoToolsAppController {
         $this->set('tool_info', $tool_info);
         $this->setCrumb(
             '/admin/seo_tools',
-            array(__t('Tools'), '/admin/seo_tools/tools/'),
+            array(__d('seo_tools', 'Tools'), '/admin/seo_tools/tools/'),
             array($tool_info['name'])
         );
     } 

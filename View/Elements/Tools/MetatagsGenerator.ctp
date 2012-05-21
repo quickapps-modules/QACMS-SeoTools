@@ -2,8 +2,8 @@
 	<?php echo $this->Form->create(false); ?>
 		<table width="100%" border="0" cellspacing="0" cellpadding="5">
 			<tr>
-				<td width="50%" align="left" valign="top"><b><?php echo __t('Title'); ?>:</b></td>
-				<td width="50%" align="left" valign="top"><b><?php echo __t('Description'); ?>:</b></td>
+				<td width="50%" align="left" valign="top"><b><?php echo __d('seo_tools', 'Title'); ?>:</b></td>
+				<td width="50%" align="left" valign="top"><b><?php echo __d('seo_tools', 'Description'); ?>:</b></td>
 			</tr>
 
 			<tr>
@@ -12,7 +12,7 @@
 			</tr>
 
 			<tr>
-				<td align="left" valign="top"><b><?php echo __t('Keywords'); ?></b></td>
+				<td align="left" valign="top"><b><?php echo __d('seo_tools', 'Keywords'); ?></b></td>
 			</tr>
 
 			<tr>
@@ -20,7 +20,7 @@
 			</tr>
 
 			<tr>
-				<td align="left" valign="top"><b><?php echo __t('Author'); ?></b></td>
+				<td align="left" valign="top"><b><?php echo __d('seo_tools', 'Author'); ?></b></td>
 			</tr>
 
 			<tr>
@@ -28,7 +28,7 @@
 			</tr>
 
 			<tr>
-				<td align="left" valign="top"><b><?php echo __t('Owner'); ?></b></td>
+				<td align="left" valign="top"><b><?php echo __d('seo_tools', 'Owner'); ?></b></td>
 			</tr>
 
 			<tr>
@@ -36,7 +36,7 @@
 			</tr>
 
 			<tr>
-				<td align="left" valign="top"><b><?php echo __t('Copyright'); ?></b></td>
+				<td align="left" valign="top"><b><?php echo __d('seo_tools', 'Copyright'); ?></b></td>
 			</tr>
 
 			<tr>
@@ -44,11 +44,11 @@
 			</tr>
 
 			<tr>
-				<td colspan="2" align="right" valign="top"><input type="submit" value="<?php echo __t('Continue'); ?>" class="primary_lg" /></td>
+				<td colspan="2" align="right" valign="top"><input type="submit" value="<?php echo __d('seo_tools', 'Continue'); ?>" class="primary_lg" /></td>
 			</tr>
 		</table>
 	<?php echo $this->Form->end(); ?>
 <?php else: ?>
-	<h1><?php echo __t('Meta Tags Generator'); ?></h1>
+	<h1><?php echo __d('seo_tools', 'Meta Tags Generator'); ?></h1>
 	<textarea style="width:100%; height:250px;" wrap="off"><?php echo $results; ?></textarea>
 <?php endif; ?>

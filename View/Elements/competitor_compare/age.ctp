@@ -1,19 +1,19 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="0"><!-- alexa rank -->
     <thead>
         <tr>
-          <td colspan="3" align="left" valign="top"><b><?php echo __t('Dates of the domain registration or of the first contents'); ?></b></td>
+          <td colspan="3" align="left" valign="top"><b><?php echo __d('seo_tools', 'Dates of the domain registration or of the first contents'); ?></b></td>
         </tr>
     </thead>
 
     <tbody>
         <tr>
             <td width="10%" height="20" align="center">&nbsp;</td>
-            <td width="63%" height="20" align="left"><b><?php echo __t('URL'); ?></b></td>
-            <td width="27%" align="left"><b><?php echo __t('Registration Date'); ?></b></td>
+            <td width="63%" height="20" align="left"><b><?php echo __d('seo_tools', 'URL'); ?></b></td>
+            <td width="27%" align="left"><b><?php echo __d('seo_tools', 'Registration Date'); ?></b></td>
         </tr>
 
         <tr>
-            <td align="center" valign="middle"><?php echo __t('Your Site'); ?></td>
+            <td align="center" valign="middle"><?php echo __d('seo_tools', 'Your Site'); ?></td>
             <td align="left" valign="middle"><?php echo $results['Data']['Site']['url']; ?></td>
             <td align="left" valign="middle"><?php echo $this->CC->age($results['Data']['Site']['age']); ?></td>
         </tr>
@@ -29,12 +29,12 @@
         <?php } ?>
 
         <tr>
-            <td align="center" valign="middle"><?php echo __t('Range'); ?></td>
+            <td align="center" valign="middle"><?php echo __d('seo_tools', 'Range'); ?></td>
             <td colspan="2" align="left" valign="middle">
                 <?php
                     $min = min($c_stamp);
                     $max = max($c_stamp);
-                    echo __t('From %s to %s', date(__t('Y-m-d'), strtotime(date('Y-m-d'))-$min), date(__t('Y-m-d'), strtotime(date('Y-m-d'))-$max));
+                    echo __d('seo_tools', 'From %s to %s', date(__d('seo_tools', 'Y-m-d'), strtotime(date('Y-m-d'))-$min), date(__d('seo_tools', 'Y-m-d'), strtotime(date('Y-m-d'))-$max));
                 ?>
             </td>
         </tr>
@@ -44,14 +44,14 @@
                 <?php
                     switch($color){
                         default: case 0:
-                            $msg = __t('Your web site is less than 1 year old');
+                            $msg = __d('seo_tools', 'Your web site is less than 1 year old');
                         break;
                         case 1:
-                            $msg = __t('The web site age could not be determined or is newer than the newer of your competitors. In general, the older your web site, the better it is for your rankings on %s. If you have a young web site, you must compensate by improving the other search engine ranking factors');
+                            $msg = __d('seo_tools', 'The web site age could not be determined or is newer than the newer of your competitors. In general, the older your web site, the better it is for your rankings on %s. If you have a young web site, you must compensate by improving the other search engine ranking factors');
                             $msg = sprintf($msg, $this->data['Tool']['engine']);
                         break;
                         case 2:
-                            $msg = __t('Your web site is about %s years old. This is very good because the older your web site, the better it is for your rankings on %s');
+                            $msg = __d('seo_tools', 'Your web site is about %s years old. This is very good because the older your web site, the better it is for your rankings on %s');
                             $msg = sprintf($msg, number_format($this->CC->tmp/31556926, 0), $this->data['Tool']['engine']);
                         break;
                     }

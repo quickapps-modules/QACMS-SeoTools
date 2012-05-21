@@ -22,20 +22,20 @@ class CCHelper extends AppHelper {
 
 		if ($min == 0 && $min == $max) {
 			if ($type == 'integer') {
-				return __t('all 0');
+				return __d('seo_tools', 'all 0');
             }
 
 			if ($type == 'percent') {
-				return __t('all 0%');
+				return __d('seo_tools', 'all 0%');
             }
 		}
 
 		if ($type == 'integer') {
-			return sprintf(__t('%s to %s'), number_format(intval($min), 2), number_format(intval($max), 2));
+			return sprintf(__d('seo_tools', '%s to %s'), number_format(intval($min), 2), number_format(intval($max), 2));
         }
 
 		if ($type == 'percent')
-			return sprintf(__t('%s to %s %%'), number_format($min, 2), number_format($max, 2)); 
+			return sprintf(__d('seo_tools', '%s to %s %%'), number_format($min, 2), number_format($max, 2)); 
 	}
 
 
@@ -211,7 +211,7 @@ class CCHelper extends AppHelper {
 		$stamp = ($data['years']*31556926) + ($data['days'] * 86400);
 		$this->tmp = $stamp;
 
-		$out = sprintf(__t('%s years, %s days. (%s)'), $data['years'], $data['days'], date(__t('Y-m-d'), strtotime(date('Y-m-d'))-$stamp));
+		$out = sprintf(__d('seo_tools', '%s years, %s days. (%s)'), $data['years'], $data['days'], date(__d('seo_tools', 'Y-m-d'), strtotime(date('Y-m-d'))-$stamp));
 		return $out;
 	}
 

@@ -26,7 +26,7 @@ class UrlsController extends SeoToolsAppController {
         $this->set('results', $this->paginate('SeoUrl'));
         $this->setCrumb(
             '/admin/seo_tools',
-            array(__t('URL List'))
+            array(__d('seo_tools', 'URL List'))
         );
     }
 
@@ -39,7 +39,7 @@ class UrlsController extends SeoToolsAppController {
 
         $this->setCrumb(
             '/admin/seo_tools', 
-            array(__t('Add URL'))
+            array(__d('seo_tools', 'Add URL'))
         );
     }
 

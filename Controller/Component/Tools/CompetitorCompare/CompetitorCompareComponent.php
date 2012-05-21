@@ -23,11 +23,11 @@ class CompetitorCompareComponent extends Component {
             $errors = array();
 
 			if (empty($Controller->data['Tool']['url'])) {
-				$errors[] = __t('Invalid URL');
+				$errors[] = __d('seo_tools', 'Invalid URL');
             }
 
 			if (empty($Controller->data['Tool']['criteria'])) {
-				$errors[] = __t('Invalid criteria');
+				$errors[] = __d('seo_tools', 'Invalid criteria');
             }
 
 			if (count($errors) > 0) {

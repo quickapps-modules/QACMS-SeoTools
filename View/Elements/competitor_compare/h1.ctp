@@ -1,12 +1,12 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <thead>
         <tr>
-			<td colspan="2" align="left" valign="top" class="ref-width"><b><?php echo __t('Their Content'); ?></b></td>
+			<td colspan="2" align="left" valign="top" class="ref-width"><b><?php echo __d('seo_tools', 'Their Content'); ?></b></td>
         </tr>
 
         <tr>
-            <td width="3%" align="left" valign="top"><b><?php echo __t('Rank'); ?></b></td>
-            <td align="center" valign="top" width="97%"><b><?php echo __t('Content'); ?></b></td>
+            <td width="3%" align="left" valign="top"><b><?php echo __d('seo_tools', 'Rank'); ?></b></td>
+            <td align="center" valign="top" width="97%"><b><?php echo __d('seo_tools', 'Content'); ?></b></td>
         </tr>
     </thead>
 
@@ -17,13 +17,13 @@
             <td align="left" valign="top" width="97%">
                 <?php
                     $cd = Set::extract("/{$aspect}", $competitor); $cd = isset($cd[0]) ? $cd[0] : '';
-                    $cd = !empty($cd) ? $cd : __t('Content not found');
+                    $cd = !empty($cd) ? $cd : __d('seo_tools', 'Content not found');
                     $cd = $this->CC->emphasize_keywords($cd, $keywords);
 
                     if ($aspect == 'body') { 
-                        echo '<div class="body-text" style="text-align:left; height:90px; overflow-y:scroll; width:100%; margin:0; padding:0;">'. $cd .'</div>';
+                        echo '<div class="body-text" style="text-align:left; height:90px; overflow-y:scroll; width:100%; margin:0; padding:0;">' . $cd . '</div>';
                     } elseif ($aspect == 'title') {
-                        echo '<a href="'. $results['Data']['Competitors'][$pos]['url'] . '" target="_blank">'. $cd . '</a>';
+                        echo '<a href="'. $results['Data']['Competitors'][$pos]['url'] . '" target="_blank">' . $cd . '</a>';
                     } else {
                         echo $cd;
                     }
