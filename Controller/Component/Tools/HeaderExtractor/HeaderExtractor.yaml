@@ -1,5 +1,5 @@
 name: Header Extractor
-description: Extract the HTTP Headers of a web page
+description: Extract the HTTP Headers of a web page.
 category: Header/Tag Tools
 version: 1.0
 author: Christopher Castro <chris@quickapps.es>

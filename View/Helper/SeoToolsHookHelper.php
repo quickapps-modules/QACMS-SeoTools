@@ -27,7 +27,28 @@ class SeoToolsHookHelper extends AppHelper {
             $this->request->params['plugin'] == 'seo_tools'
         ) {
             $this->_View->Block->push(array('body' => $this->_View->element('toolbar') . '<!-- SeoToolsHookHelper -->' ), 'toolbar');
-        }    
+        }
+
+		$ga = Configure::read('Modules.SeoTools.settings.google_analytics');
+		$gm = Configure::read('Modules.SeoTools.settings.google_meta');
+		$bm = Configure::read('Modules.SeoTools.settings.bing_meta');
+		$am = Configure::read('Modules.SeoTools.settings.alexa_meta');
+
+		if (!empty($ga)) {
+			$this->_View->viewVars['Layout']['footer'][] = $ga;
+		}
+
+		if (!empty($gm)) {
+			$this->_View->viewVars['Layout']['header'][] = '<meta name="google-site-verification" content="' . $gm . '"/>';
+		}
+
+		if (!empty($bm)) {
+			$this->_View->viewVars['Layout']['header'][] = '<meta name="msvalidate.01" content="' . $bm . '"/>';
+		}
+
+		if (!empty($am)) {
+			$this->_View->viewVars['Layout']['header'][] = '<meta name="alexaVerifyID" content="' . $am . '"/>';
+		}
 
         return true;
     }
@@ -42,6 +63,7 @@ class SeoToolsHookHelper extends AppHelper {
             $this->__url['url'] = $_url;
 
             if ($this->__url['redirect']) {
+				header('HTTP/1.1 301 Moved Permanently'); 
                 header('Location: ' . $this->__url['redirect']);
                 die();
             }

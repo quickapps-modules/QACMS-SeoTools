@@ -1,12 +1,92 @@
 div.tools-box { 
     display:block; 
     overflow:hidden; 
-    width:100%; 
     border:1px solid #ccc; 
     padding:10px;
     background:#fff;
     margin-bottom:15px;
-    margin-right:10px;
 }
+div.tools-box ul { list-style:none; }
 div.tools-box ul li { padding:5px; }
 img.tool-icon { margin-right:10px; }
+
+#preview-snippet {
+	float:left;
+	border:1px solid #ccc;
+	padding:15px;
+	margin:10px 0;
+}
+
+#preview-snippet a.url, div.web-snippet a.url {
+	font-size:13px;
+	color:#282;
+	line-height:15px;
+}
+
+#preview-snippet p.description, div.web-snippet p.description {
+	color:#444;
+	font-size:13px;
+	line-height:15px;
+}
+
+#preview-snippet a.title, div.web-snippet a.title {
+	font-size:16px !important;
+	color:#2518b5;
+	text-decoration:underline;
+	font-family:arial,sans-serif;
+}
+
+.url_tn img { width:202px; height:152px; float:left; }
+span.imageDouble { width:225px; padding:5px; float:left; display:block; }
+span.imageDouble a { text-decoration:none; }
+
+div.web-snippet {
+	border:1px solid #ccc;
+	padding:15px;
+	margin:10px 0;
+	overflow:hidden;
+}
+
+div.web-snippet img { float:left; margin-right:20px; }
+div.web-snippet span.rank { float:right; font-size:14px; font-weight:bold; }
+
+p.versus { text-align:center; font-weight:bold; font-size:16px; padding:15px;}
+p.versus hr { margin:0 !important; padding:0; line-height:0 !important; }
+
+.words-column { float:left; width:30%; }
+.words-column ol { list-style-type:decimal; }
+a.retrieve-page { padding-left:10px; }
+
+/* filter row */
+table.tablesorter th { cursor:pointer; }
+table.tablesorter th.filter-false { cursor:auto !important; }
+.tablesorter-filter-row td {
+	background: #eee;
+	line-height: normal;
+	text-align: left; /* center the input */
+}
+
+/* optional disabled input styling */
+.tablesorter-filter-row .disabled {	display:none; }
+
+/* hidden filter row */
+.tablesorter-filter-row.hideme td {
+	padding: 2px;
+	margin: 0;
+	line-height: 0;
+	cursor: pointer;
+}
+
+.tablesorter-filter-row.hideme .tablesorter-filter {
+	height: 1px;
+	min-height: 0;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	/* don't use visibility: hidden because it disables tabbing */
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+
+/* filters */
+.tablesorter-filter { width:90%; }

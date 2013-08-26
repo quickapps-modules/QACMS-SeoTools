@@ -1,17 +1,16 @@
-##Seo Tools
+## Seo Tools
 
 [![QuickApps CMS](https://raw.github.com/QuickAppsCMS/QuickApps-CMS-Docs/1.x/img/logo.png)](http://www.quickappscms.org)
 
 `Seo Tools` is a simple module that allows to perform fine SEO to your site.
-It includes several tools such as `Competitor Compare`, which analize and compare your page with the first 10 competitors and tells you what should you change to reach the first position!
+It includes several tools such as `Competitor Compare`, which analize and compare your page with the first 10 competitors and tells
+you what should you change to reach the first position!
 
 With this module you can modify the following aspects of any page of your site:
 
 * Page Title
-* Meta description
-* Meta keywords
+* Meta-description
+* Meta-keywords
 * Add extra header code
 * Add extra footer code.
-* Redirection 
-
-This module requires a Websnapr key: http://www.websnapr.com
+* 301 Redirection 

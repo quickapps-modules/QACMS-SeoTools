@@ -1,27 +1,8 @@
-<?php if (!isset($results)) : ?>
-	<?php echo $this->Form->create(false); ?>
-		<table width="100%" border="0" cellspacing="0" cellpadding="5">
-			<tr>
-				<td align="left" valign="top"><b><?php echo __d('seo_tools', 'Enter Your URL'); ?>:</b></td>
-			</tr>
-
-			<tr>
-				<td align="left" valign="top"><input type="text" name="data[Tool][url]" value="<?php echo Configure::read('ModSeo.Config.seo_site_url'); ?>" class="text" style="width:100%;" /></td>
-			</tr>
-
-			<tr>
-				<td align="left" valign="top">
-					<input type="submit" value="<?php echo __d('seo_tools', 'Continue'); ?>" class="primary_lg" />
-				</td>
-			</tr>
-		</table>
-	<?php echo $this->Form->end(); ?>
+<?php if (!isset($results)): ?>
+	<?php echo $this->Form->create('Tool'); ?>
+		<?php echo $this->Form->input('Tool.url', array('label' => __d('seo_tools', 'Enter Your URL'))); ?>
+	<?php echo $this->Form->end(__d('seo_tools', 'Continue')); ?>
 <?php else: ?>
-    <style>
-        .words-column { float:left; width:30%; }
-        .words-column ol { list-style-type:decimal; }
-    </style>
-
     <div class="words-column">
         <h4>1 Word</h4>
         <ol>
@@ -35,7 +16,7 @@
             <?php endforeach; ?>
         <ol>
     </div>
-    
+
     <div class="words-column">
         <h4>2 Word</h4>
         <ol>
@@ -49,7 +30,7 @@
             <?php endforeach; ?>
         <ol>
     </div>
-    
+
     <div class="words-column">
         <h4>3 Word</h4>
         <ol>

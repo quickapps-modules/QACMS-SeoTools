@@ -5,6 +5,8 @@
 ?>
 <div class="tools-box">
     <h2><?php echo $category; ?></h2>
+	<hr />
+
     <ul>
         <?php 
             foreach ($tools as $folder => $tool) { 
@@ -13,7 +15,7 @@
                 }
         ?>
         <li>
-            <?php echo $this->Html->image('/seo_tools/img/' . $folder . '.gif', array('class' => 'tool-icon', 'align' => 'left')); ?>
+            <?php echo $this->Html->image("/seo_tools/img/Tools/{$folder}/tool-icon.gif", array('class' => 'tool-icon', 'align' => 'left')); ?>
             <?php echo $this->Html->link($tool['name'], '/admin/seo_tools/tools/execute/' . $folder); ?>
             <p><em><?php echo $tool['description']; ?></em></p>
         </li>

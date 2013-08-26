@@ -55,9 +55,11 @@ class CompetitorCompareComponent extends Component {
 	public function competitor_compare($url = null, $keywords, $engine = 'google.com', $engine_results_num = 10) {
 		set_time_limit(0);
 
+		// GET RESULTS
         $SeoStats = $this->BaseTools->loadTool('SeoStats');
         $competitors_data = $this->getSnippet($keywords, $engine, $engine_results_num);
 
+		// DOWNLOAD PAGES
 		foreach ($competitors_data as $pos => $data) {
 			$page = $this->BaseTools->getPage($competitors_data[$pos]['url']);
 			$competitors_data[$pos]['body'] = $this->BaseTools->toUTF8($this->BaseTools->html2text($this->parseTag('body', $page))); 

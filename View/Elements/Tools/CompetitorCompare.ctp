@@ -1,72 +1,60 @@
 <?php if (!isset($results)): ?>
-	<?php echo $this->Form->create(false); ?>
-		<table width="100%" border="0" cellspacing="0" cellpadding="5">
-			<tr>
-				<td align="left" valign="top"><b><?php echo __d('seo_tools', 'Enter Your URL'); ?>:</b></td>
-			</tr>
+	<?php echo $this->Form->create('Tool'); ?>
+		<?php
+			echo $this->Form->input('Tool.url',
+				array(
+					'label' => __d('seo_tools', 'Enter Your URL')
+				)
+			);
 
-			<tr>
-				<td align="left" valign="top"><input type="text" name="data[Tool][url]" value="<?php echo Configure::read('ModSeo.Config.seo_site_url'); ?>" class="text" style="width:100%;" /></td>
-			</tr>
+			echo $this->Form->input('Tool.criteria',
+				array(
+					'label' => __d('seo_tools', 'Criteria')
+				)
+			);
 
-			<tr>
-				<td align="left" valign="top"><b><?php echo __d('seo_tools', 'Criteria'); ?>:</b></td>
-			</tr>
-
-			<tr>
-				<td align="left" valign="top"><input type="text" name="data[Tool][criteria]" value="" class="text" style="width:100%;" /></td>
-			</tr>
-
-			<tr>
-				<td align="left" valign="top"><b><?php echo __d('seo_tools', 'Seach Engine'); ?>:</b></td>
-			</tr>
-
-			<tr>
-				<td align="left" valign="top">
-					<select name="data[Tool][engine]" id="select">
-						<option value="google.com" selected="selected">Google.com</option>
-						<option value="google.es">Google.es</option>
-						<option value="google.as">Google.as</option>
-						<option value="google.at">Google.at</option>
-						<option value="google.be">Google.be</option>
-						<option value="google.ca">Google.ca</option>
-						<option value="google.ch">Google.ch</option>
-						<option value="google.cl">Google.cl</option>
-						<option value="google.co.cr">Google.co.cr</option>
-						<option value="google.co.il">Google.co.il</option>
-						<option value="google.con.in">Google.co.in</option>
-						<option value="google.co.jp">Google.co.jp</option>
-						<option value="google.co.kr">Google.co.kr</option>
-						<option value="google.co.nz">Google.co.nz</option>
-						<option value="google.co.th">Google.co.th</option>
-						<option value="google.co.uk">Google.co.uk</option>
-						<option value="google.co.ve">Google.co.ve</option>
-						<option value="google.co.za">Google.co.za</option>
-						<option value="google.com.ar">Google.com.ar</option>
-						<option value="google.com.au">Google.com.au</option>
-						<option value="google.com.br">Google.com.br</option>
-						<option value="google.com.co">Google.com.co</option>
-						<option value="google.com.gr">Google.com.gr</option>
-						<option value="google.com.hk">Google.com.hk</option>
-						<option value="google.com.mx">Google.com.mx</option>
-						<option value="google.com.my">Google.com.my</option>
-						<option value="google.com.pe">Google.com.pe</option>
-						<option value="google.com.ph">Google.com.ph</option>
-						<option value="google.com.sg">Google.com.sg</option>
-						<option value="google.com.tr">Google.com.tr</option>
-					</select>
-				</td>
-			</tr>
-
-			<tr>
-				<td align="left" valign="top">
-					<input type="submit" value="<?php echo __d('seo_tools', 'Continue'); ?>" class="primary_lg" />
-				</td>
-			</tr>
-		</table>
-	<?php echo $this->Form->end(); ?>
+			echo $this->Form->input('Tool.engine',
+				array(
+					'type' => 'select',
+					'label' => __d('seo_tools', 'Search Engine'),
+					'options' => array(
+						'google.com' => 'Google.com',
+						'google.es' => 'Google.es',
+						'google.as' => 'Google.as',
+						'google.at' => 'Google.at',
+						'google.be' => 'Google.be',
+						'google.ca' => 'Google.ca',
+						'google.ch' => 'Google.ch',
+						'google.cl' => 'Google.cl',
+						'google.co.cr' => 'Google.co.cr',
+						'google.co.il' => 'Google.co.il',
+						'google.con.in' => 'Google.co.in',
+						'google.co.jp' => 'Google.co.jp',
+						'google.co.kr' => 'Google.co.kr',
+						'google.co.nz' => 'Google.co.nz',
+						'google.co.th' => 'Google.co.th',
+						'google.co.uk' => 'Google.co.uk',
+						'google.co.ve' => 'Google.co.ve',
+						'google.co.za' => 'Google.co.za',
+						'google.com.ar' => 'Google.com.ar',
+						'google.com.au' => 'Google.com.au',
+						'google.com.br' => 'Google.com.br',
+						'google.com.co' => 'Google.com.co',
+						'google.com.gr' => 'Google.com.gr',
+						'google.com.hk' => 'Google.com.hk',
+						'google.com.mx' => 'Google.com.mx',
+						'google.com.my' => 'Google.com.my',
+						'google.com.pe' => 'Google.com.pe',
+						'google.com.ph' => 'Google.com.ph',
+						'google.com.sg' => 'Google.com.sg',
+						'google.com.tr' => 'Google.com.tr'
+					)
+				)
+			);
+		?>
+		<em><?php echo __d('seo_tools', 'This may take a few minutes, please be patient and wait.'); ?></em><br />
+	<?php echo $this->Form->end(__d('seo_tools', 'Continue')); ?>
 <?php else: ?>
-	<script type="text/javascript" src="http://www.websnapr.com/js/websnapr.js"></script>
 	<div class="report" id="top10_report">
 		<?php 
 			$keywords = Set::extract('Analysis.title', $results); 
@@ -78,56 +66,32 @@
 			<em><?php echo __d('seo_tools', 'This report helps you to optimize the web page "<b>http://%s/</b>" for a high ranking on <b>%s</b> for the search term "<b>%s</b>".', $this->data['Tool']['url'], $this->data['Tool']['engine'], $this->data['Tool']['criteria']); ?></em>
 
 			<!-- your site overview -->
-			<table width="100%" border="0" cellspacing="0" cellpadding="0">
-				<thead>
-					<tr>
-						<td colspan="2" align="left" valign="top"><b><?php echo __d('seo_tools', 'Your Web Page'); ?></b></td>
-					</tr>
-				</thead>
+			<div class="web-snippet">
+				<img src="http://immediatenet.com/t/m?Size=1024x768&URL=<?php echo $this->data['Tool']['url']; ?>" class="web-tn" />
+				<a href="http://<?php $this->data['Tool']['url']; ?>" target="_blank" class="title"><?php echo $results['Data']['Site']['title']; ?></a><br />
+				<a href="http://<?php $this->data['Tool']['url']; ?>" target="_blank" class="url"><?php echo String::truncate("http://{$this->data['Tool']['url']}", 80); ?></a>
+				<p class="description"><?php echo isset($results['Data']['Site']['tags']['description']) ? $results['Data']['Site']['tags']['description'] : __d('seo_tools', '[No meta description available.]'); ?></p>
+			</div>
 
-				<tbody>
-					<tr>
-						<td align="center" valign="middle" width="10%">
-							<script type="text/javascript">wsr_snapshot('<?php echo $this->data['Tool']['url']; ?>', '<?php echo Configure::read('Modules.SeoTools.settings.websnapr_key'); ?>', 't');</script>
-						</td>
-						<td align="left" valign="top" width="90%">
-							<a href="http://<?php $this->data['Tool']['url']; ?>" target="_blank"><?php echo $this->data['Tool']['url']; ?></a><br/><br/>
-							<b><?php echo __d('seo_tools', 'Title'); ?>:</b> <?php echo $results['Data']['Site']['title']; ?><br/><br/>
-							<b><?php echo __d('seo_tools', 'Description'); ?>: </b> <?php echo isset($results['Data']['Site']['tags']['description']) ? $results['Data']['Site']['tags']['description'] : __d('seo_tools', '[No meta description available.]'); ?>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+			<p class="versus">
+				<?php echo $this->Html->image('/seo_tools/img/up-arrow-green.png'); ?><br />
+				<?php echo __d('seo_tools', 'Your Web Page'); ?>
+				<br />
+				<?php echo __d('seo_tools', 'Your Competitors'); ?><br />
+				<?php echo $this->Html->image('/seo_tools/img/down-arrow-red.png'); ?>
+			</p>
 
 			<!-- competitors overview -->
-			<table width="100%" border="0" cellspacing="0" cellpadding="0">
-				<thead>
-					<tr>
-						<td colspan="3" align="left" valign="top"><b><?php __d('seo_tools', 'Your competitors for the search term "%s" on %s', $this->data['Tool']['criteria'], $this->data['Tool']['engine']); ?></b></td>
-					</tr>
-				</thead>
-
-				<tbody>
-					<?php 
-						$i = 0;
-
-						foreach($results['Data']['Competitors'] as $competitor) {
-							$i++;
-					 ?>
-						<tr>
-							<td align="center" valign="middle" width="3%"><b><?php echo $i; ?></b></td>
-							<td align="center" valign="middle" width="10%">
-								<script type="text/javascript">wsr_snapshot('<?php echo $competitor['url']; ?>', '<?php echo Configure::read('Modules.SeoTools.settings.websnaper_key'); ?>', 't');</script>
-							</td>
-							<td align="left" valign="top" width="87%">
-								<a href="<?php echo $competitor['url']; ?>" target="_blank"><?php echo $competitor['url']; ?></a><br/><br/>
-								<b><?php echo __d('seo_tools', 'Title'); ?>:</b> <?php echo $competitor['title']; ?><br/><br/>
-								<b><?php echo __d('seo_tools', 'Description'); ?>: </b> <?php echo isset($competitor['tags']['description']) ? $competitor['tags']['description'] : __d('seo_tools', '[No meta description available.]'); ?>
-							</td>
-						</tr>
-					<?php } ?>
-				</tbody>
-			</table>    
+			<h2><?php __d('seo_tools', 'Your competitors for the search term "%s" on %s', $this->data['Tool']['criteria'], $this->data['Tool']['engine']); ?></h2>
+			<?php $i = 0; foreach($results['Data']['Competitors'] as $competitor): $i++; ?>
+				<div class="web-snippet">
+					<span class="rank">#<?php echo $i; ?></span>
+					<img src="http://immediatenet.com/t/m?Size=1024x768&URL=<?php echo $competitor['url']; ?>" class="web-tn" />
+					<a href="<?php echo $competitor['url']; ?>" target="_blank" class="title"><?php echo $competitor['title']; ?></a><br />
+					<a href="<?php echo $competitor['url']; ?>" target="_blank" class="url"><?php echo String::truncate($competitor['url'], 80); ?></a>
+					<p class="description"><?php echo isset($competitor['tags']['description']) ? $competitor['tags']['description'] : __d('seo_tools', '[No meta description available.]'); ?></p>
+				</div>
+			<?php endforeach; ?>
 
 			<div id="chart"><!-- RESULTS --></div>
 
@@ -419,6 +383,13 @@
 		$(document).ready(function () {
 			$('div#chart').html($('div#chart_results').html());
 			$('.body-text').width($('.ref-width').width());
+
+			// refresh websnaps
+			setInterval(function() { 
+				$('img.web-tn').each(function () {
+					$(this).attr('src', $(this).attr('src'));
+				});
+			}, 10000);
 		});
 	</script>
 <?php endif; ?>

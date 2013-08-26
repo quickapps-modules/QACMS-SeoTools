@@ -1,7 +1,7 @@
 <?php 
 class ToolsController extends SeoToolsAppController {
     public $components = array('SeoTools.SeoTools');
-    public $uses = array();
+    public $uses = array('System.Module');
 
     public function beforeFilter(){
         parent::beforeFilter();
@@ -22,6 +22,7 @@ class ToolsController extends SeoToolsAppController {
     }
 
     public function admin_execute($tool) {
+		$this->Layout['stylesheets']['all'][] = '/seo_tools/css/styles.css';
         $Tool = $this->SeoTools->loadTool($tool);
 
         if (!empty($this->data)) {

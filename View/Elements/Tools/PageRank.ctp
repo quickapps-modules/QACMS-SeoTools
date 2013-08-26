@@ -1,22 +1,8 @@
-<?php if (!isset($results)) : ?>
-	<?php echo $this->Form->create(false); ?>
-		<table width="100%" border="0" cellspacing="0" cellpadding="5">
-			<tr>
-				<td align="left" valign="top"><b><?php echo __d('seo_tools', 'Enter Your URL'); ?>:</b></td>
-			</tr>
-
-			<tr>
-				<td align="left" valign="top"><input type="text" name="data[Tool][url]" value="<?php echo Configure::read('ModSeo.Config.seo_site_url'); ?>" class="text" style="width:100%;" /></td>
-			</tr>
-
-			<tr>
-				<td align="left" valign="top">
-					<input type="submit" value="<?php echo __d('seo_tools', 'Continue'); ?>" class="primary_lg" />
-				</td>
-			</tr>
-		</table>
-	<?php echo $this->Form->end(); ?>
+<?php if (!isset($results)): ?>
+	<?php echo $this->Form->create('Tool'); ?>
+		<?php echo $this->Form->input('Tool.url', array('label' => __d('seo_tools', 'Enter Your URL'))); ?>
+	<?php echo $this->Form->end(__d('seo_tools', 'Continue')); ?>
 <?php else: ?>
-	<h1><?php echo __d('seo_tools', 'Page rank: <b>%d</b>', $results); ?></h1><br />
+	<h1><?php echo __d('seo_tools', 'Page rank: <b>%d</b>', $results); ?></h1>
 	<?php echo $this->Html->image("/seo_tools/img/seo-stats-icons/pr/pr{$results}.gif"); ?>
 <?php endif; ?>

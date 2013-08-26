@@ -89,9 +89,7 @@ class SeoToolsComponent extends Component {
 		return preg_replace('#[^0-9]#si', '', $string);
 	}
 
-	function getPage($url = null) {
-		$url = $url === null ? $this->url['full'] : $url;
-
+	function getPage($url) {
 		if (function_exists('curl_init')) {
 			$ch = curl_init($url);
 			$options = array(

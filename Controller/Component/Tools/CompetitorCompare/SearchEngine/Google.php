@@ -4,7 +4,8 @@ class Google {
         $out = array();
 
 		if (strpos($domain, 'google.') !== false) {
-			$query = "http://www.{$domain}/search?q=" . urlencode($keywords) ."&num=10";
+			$q = urlencode($keywords);
+			$query = "http://www.{$domain}/search?q={$q}&oq={$q}&num=10";
 			$exp = '/<li class="g">(.*)<\/li>/iUs';
             $results = $this->BaseTools->toUTF8($this->BaseTools->getPage($query));
 
@@ -14,7 +15,6 @@ class Google {
                 $out[] = array(
                     'url' => $this->__getUrl($data),
                     'title' => $this->__getTitle($data),
-                    'cache_url' => $this->__getCacheUrl($data),
                     'snippet' => $this->__getSnippet($data)
                 );
             }        
@@ -24,21 +24,18 @@ class Google {
 	}
 
 	private function __getUrl($data) {
-		preg_match('/<h3 class="r"><a href="(.*)" .+?>/iUs', $data, $url);
+		preg_match('/<h3 class="r"><a href="(.*)".+?>/iUs', $data, $url);
 
-		return $url[1];
+		list($url, $dummy) = explode('&sa=', html_entity_decode(urldecode($url[1])));
+		$url = str_replace('/url?q=', '', $url);
+
+		return $url;
 	}
 
 	private function __getTitle($data) {
 		preg_match('/<h3 class="r">(.*)<\/h3>/iUs', $data, $title);
 
 		return strip_tags($title[1]);
-	}
-
-	private function __getCacheUrl($data) {
-		preg_match('/<span class="vshid"><a href="(.*)">.+?<\/a><\/span>/iUs', $data, $cacheUrl);
-
-		return $cacheUrl[1];
 	}
 
 	private function __getSnippet($data) {

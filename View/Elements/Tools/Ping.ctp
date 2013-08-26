@@ -1,21 +1,7 @@
-<?php if (!isset($results)) : ?>
-	<?php echo $this->Form->create(false); ?>
-		<table width="100%" border="0" cellspacing="0" cellpadding="5">
-			<tr>
-				<td align="left" valign="top"><b><?php echo __d('seo_tools', 'Enter Your Domain/Ip'); ?>:</b></td>
-			</tr>
-
-			<tr>
-				<td align="left" valign="top"><input type="text" name="data[Tool][url]" value="" class="text" style="width:100%;" /></td>
-			</tr>
-
-			<tr>
-				<td align="left" valign="top">
-					<input type="submit" value="<?php echo __d('seo_tools', 'Continue'); ?>" class="primary_lg" />
-				</td>
-			</tr>
-		</table>
-	<?php echo $this->Form->end(); ?>
+<?php if (!isset($results)): ?>
+	<?php echo $this->Form->create('Tool'); ?>
+		<?php echo $this->Form->input('Tool.url', array('label' => __d('seo_tools', 'Enter Your Domain/IP'))); ?>
+	<?php echo $this->Form->end(__d('seo_tools', 'Continue')); ?>
 <?php else: ?>
 	<h1><?php echo __d('seo_tools', 'Ping Domain/IP'); ?></h1>
 	<div style="width:100%; height:200px; overflow:auto;">

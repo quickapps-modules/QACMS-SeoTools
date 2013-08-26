@@ -1,5 +1,5 @@
 name: Page Rank
-description: Check the current PageRank of a single website
+description: Check the current PageRank of a single website.
 category: Rank Checkers
 version: 1.0
 author: Christopher Castro <chris@quickapps.es>

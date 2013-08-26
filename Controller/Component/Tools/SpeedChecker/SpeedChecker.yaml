@@ -1,0 +1,5 @@
+name: Page Speed Checker
+description: Enter a URL to test the load time of that page, analyze it and find bottlenecks.
+category: Source Code Tools
+version: 1.0
+author: Christopher Castro <chris@quickapps.es>
