@@ -1,5 +1,41 @@
 <?php if (!isset($results)): ?>
 	<?php echo $this->Form->create('Tool'); ?>
+		<div class="processing" style="display:none;">
+			<ul>
+				<li class="task-start">
+					<span><?php echo __d('seo_tools', 'Validating information...'); ?></span>
+					<?php echo $this->Html->image('/seo_tools/img/icon-loading.gif'); ?>
+				</li>
+
+				<li class="task-get_site_page">
+					<span><?php echo __d('seo_tools', 'Downloading your web page...'); ?></span>
+					<?php echo $this->Html->image('/seo_tools/img/icon-loading.gif'); ?>
+				</li>
+
+				<li class="task-get_snippets">
+					<span><?php echo __d('seo_tools', 'Fetching search engine results...'); ?></span>
+					<?php echo $this->Html->image('/seo_tools/img/icon-loading.gif'); ?>
+				</li>
+
+				<li class="task-get_competitor_page">
+					<span><?php echo __d('seo_tools', 'Downloading competitor web pages...'); ?></span>
+					<?php echo $this->Html->image('/seo_tools/img/icon-loading.gif'); ?>
+				</li>
+
+				<li class="task-analize_competitor">
+					<span><?php echo __d('seo_tools', 'Analyzing competitors...'); ?></span>
+					<?php echo $this->Html->image('/seo_tools/img/icon-loading.gif'); ?>
+				</li>
+
+				<li class="task-report">
+					<span><?php echo __d('seo_tools', 'Generating report...'); ?></span>
+					<?php echo $this->Html->image('/seo_tools/img/icon-loading.gif'); ?>
+				</li>
+			</ul>
+
+			<hr />
+		</div>
+
 		<?php
 			echo $this->Form->input('Tool.url',
 				array(
@@ -83,9 +119,9 @@
 
 			<!-- competitors overview -->
 			<h2><?php __d('seo_tools', 'Your competitors for the search term "%s" on %s', $this->data['Tool']['criteria'], $this->data['Tool']['engine']); ?></h2>
-			<?php $i = 0; foreach($results['Data']['Competitors'] as $competitor): $i++; ?>
+			<?php foreach($results['Data']['Competitors'] as $i => $competitor): ?>
 				<div class="web-snippet">
-					<span class="rank">#<?php echo $i; ?></span>
+					<span class="rank">#<?php echo $i + 1; ?></span>
 					<img src="http://immediatenet.com/t/m?Size=1024x768&URL=<?php echo $competitor['url']; ?>" class="web-tn" />
 					<a href="<?php echo $competitor['url']; ?>" target="_blank" class="title"><?php echo $competitor['title']; ?></a><br />
 					<a href="<?php echo $competitor['url']; ?>" target="_blank" class="url"><?php echo String::truncate($competitor['url'], 80); ?></a>
@@ -186,11 +222,11 @@
 
 			<?php 
 				if (in_array($aspect, array('backlinks', 'alexa_rank', 'age'))) {
-					echo $this->element('SeoTools.competitor_compare/' . $aspect, compact('aspect', 'titles', 'results', 'data'));
+					echo $this->element('SeoTools.CompetitorCompare/' . $aspect, compact('aspect', 'titles', 'results', 'data'));
 				} else {
 					if ($aspect != 'h1') {
 						// body
-						echo $this->element('SeoTools.competitor_compare/h1', compact('aspect', 'titles', 'results', 'data', 'keywords')); 
+						echo $this->element('SeoTools.CompetitorCompare/h1', compact('aspect', 'titles', 'results', 'data', 'keywords')); 
 					}
 			?>
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">

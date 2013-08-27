@@ -205,10 +205,11 @@ class CCHelper extends AppHelper {
 
 	public function age($data) {
 		if (!isset($data['years']) || !isset($data['days'])) {
+			$this->tmp = 0;
 			return 'n/a';
         }
 
-		$stamp = ($data['years']*31556926) + ($data['days'] * 86400);
+		$stamp = ($data['years'] * 31556926) + ($data['days'] * 86400);
 		$this->tmp = $stamp;
 
 		$out = sprintf(__d('seo_tools', '%s years, %s days. (%s)'), $data['years'], $data['days'], date(__d('seo_tools', 'Y-m-d'), strtotime(date('Y-m-d'))-$stamp));

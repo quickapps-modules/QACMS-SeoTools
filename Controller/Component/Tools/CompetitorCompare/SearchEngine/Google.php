@@ -1,46 +1,36 @@
 <?php
 class Google {
 	public function main($keywords, $domain = 'google.com', $limit = 10) {
-        $out = array();
+		$out = array();
 
 		if (strpos($domain, 'google.') !== false) {
+			App::import('Vendor', 'SeoTools.simple_html_dom');
+
 			$q = urlencode($keywords);
-			$query = "http://www.{$domain}/search?q={$q}&oq={$q}&num=10";
-			$exp = '/<li class="g">(.*)<\/li>/iUs';
-            $results = $this->BaseTools->toUTF8($this->BaseTools->getPage($query));
+			$html = file_get_html("http://www.{$domain}/search?q={$q}&oq={$q}&num=10");
 
-            preg_match_all($exp, $results, $matches);
+			foreach ($html->find('li.g') as $snippet) {
+				$url = $snippet->find('h3.r a', 0);
+				$title = $snippet->find('h3', 0);
+				$description = $snippet->find('span.st', 0);
 
-            foreach ($matches[1] as $data) {
-                $out[] = array(
-                    'url' => $this->__getUrl($data),
-                    'title' => $this->__getTitle($data),
-                    'snippet' => $this->__getSnippet($data)
-                );
-            }        
+				if ($url && $title && $description) {
+					$out[] = array(
+						'url' => $this->__fixUrl($url->href),
+						'title' => $this->BaseTools->toUTF8($title->plaintext),
+						'description' => $this->BaseTools->toUTF8($description->plaintext)
+					);
+				}
+			}
         }
 
 		return $out;
 	}
 
-	private function __getUrl($data) {
-		preg_match('/<h3 class="r"><a href="(.*)".+?>/iUs', $data, $url);
-
-		list($url, $dummy) = explode('&sa=', html_entity_decode(urldecode($url[1])));
+	private function __fixUrl($url) {
+		list($url, $dummy) = explode('&sa=', html_entity_decode(urldecode($url)));
 		$url = str_replace('/url?q=', '', $url);
 
 		return $url;
-	}
-
-	private function __getTitle($data) {
-		preg_match('/<h3 class="r">(.*)<\/h3>/iUs', $data, $title);
-
-		return strip_tags($title[1]);
-	}
-
-	private function __getSnippet($data) {
-		preg_match('/<span class="st">(.*)<\/span>/iUs', $data, $snippet);
-
-		return strip_tags($snippet[1]);
 	}
 }

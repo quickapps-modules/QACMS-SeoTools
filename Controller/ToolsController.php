@@ -6,8 +6,8 @@ class ToolsController extends SeoToolsAppController {
     public function beforeFilter(){
         parent::beforeFilter();
 
-        if(!empty($this->data) && isset($this->Security) && $this->action = 'admin_execute') {
-            $this->Security->validatePost = false;
+        if(!empty($this->data) && $this->action == 'admin_execute') {
+            $this->QuickApps->disableSecurity();
         }
     }
 
@@ -27,12 +27,16 @@ class ToolsController extends SeoToolsAppController {
 
         if (!empty($this->data)) {
             if ($execute = $Tool->main($this)) {
+				if (!$this->Module->getDataSource()->isConnected()) {
+					$this->Module->getDataSource()->reconnect();
+				}
+
                 $this->set('results', $execute);
             } else {
-                $this->redirect('/admin/seo_tools/tools/execute/' . $tool);
+                $this->redirect("/admin/seo_tools/tools/execute/{$tool}");
             }
         } else {
-            $data['Tool']['url'] = Router::url('/', true);
+            $data['Tool']['url'] = QuickApps::strip_language_prefix(Router::url('/', true));
             $this->data = $data;
         }
 
