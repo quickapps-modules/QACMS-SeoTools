@@ -66,13 +66,11 @@ class SpeedCheckerComponent extends Component {
 
 			foreach ($resources as $type => $links) {
 				foreach ($links as $i => $r) {
-					if (substr($r['link'], 0, 1) == '/' || substr($r['link'], 0, 1) == '.') {
-						$r['link'] = $parseUrl['full'] . $r['link'];
-					} elseif(substr($r['link'], 0, 11) == 'javascript:' || substr($r['link'], 0, 7) == 'mailto:') {
+					$r['link'] = $this->BaseTools->unrelativizeLink($r['link'], $parseUrl['full']);
+
+					if (!$r['link']) {
 						unset($resources[$type][$i]);
 						continue;
-					} elseif (substr($r['link'], 0, 7) != 'http://' && substr($r['link'], 0, 8) != 'https://') {
-						$r['link'] = $parseUrl['full'] . '/' . $r['link'];
 					}
 
 					$haders = get_headers($r['link'], 1);
