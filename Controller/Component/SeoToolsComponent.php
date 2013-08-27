@@ -48,6 +48,20 @@ class SeoToolsComponent extends Component {
         $this->_tools = $tools;
 	}
 
+	public function unrelativizeLink($link, $parent) {
+		if (preg_match('/^(\.|\/)/', $link)) {
+			$link = $parent . $link;
+		} elseif(preg_match('/^(javascript:|mailto:|skype:)/i', $link)) {
+			return false;
+		} elseif (!preg_match('/^https?:\/\//i', $link)) {
+			$link = "{$parent}/{$link}";
+		}
+
+		$link = preg_replace('/([^:])(\/{2,})/', '$1/', $link);
+
+		return $this->toUTF8($link);
+	}
+
     public function toolsList() {
         return $this->_tools;
     }
@@ -108,7 +122,16 @@ class SeoToolsComponent extends Component {
 
 			return curl_exec($ch);
 		} else {
-			return @file_get_contents($url);
+			$opts = array(
+				'http'=>array(
+					'method'=> 'GET',
+					'header'=>
+						'User-Agent: ' . env('HTTP_USER_AGENT') . '\r\n'
+				)
+			);
+			$context = stream_context_create($opts);
+
+			return @file_get_contents($url, false, $context);
 		}
 	}
 
@@ -127,13 +150,13 @@ class SeoToolsComponent extends Component {
         ob_start();
 
         if (strpos(strtoupper(php_uname('s')), 'WIN') !== false) {
-			$cmd = ($reverse) ? "ping -a -n 4 {$host}" : "ping -n 4 {$host}";
+			$cmd = $reverse ? "ping -a -n 4 {$host}" : "ping -n 4 {$host}";
 
 			system($cmd);
 		} else {
-			$cmd = ($reverse) ? "dig +noall +answer -x {$host}" : "ping -c4 -w4 {$host}";
+			$cmd = $reverse ? "dig +noall +answer -x {$host}" : "ping -c4 -w4 {$host}";
 
-			system ($cmd);
+			system($cmd);
 			system("killall ping");
 		}
 
