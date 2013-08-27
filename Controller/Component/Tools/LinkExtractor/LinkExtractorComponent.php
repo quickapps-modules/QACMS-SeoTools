@@ -1,34 +1,25 @@
 <?php 
 class LinkExtractorComponent extends Component {
-
     public function main(&$Controller) {
         if (!isset($Controller->data['Tool']['url'])) {
             return false;
         }
+		
+		App::import('Vendor', 'SeoTools.simple_html_dom');
 
 		$parseUrl = $this->BaseTools->parseUrl($Controller->data['Tool']['url']);
-		$page = $this->BaseTools->getPage($parseUrl['full']);
+		$page = file_get_html($parseUrl['full']);
+		$links = array();
 
-		preg_match_all ("/a[\s]+[^>]*?href[\s]?=[\s\"\']+" . "(.*?)[\"\']+.*?>"."([^<]+|.*?)?<\/a>/", $page, $matches);
+		foreach ($page->find('a') as $a) {
+			$link = $this->BaseTools->unrelativizeLink($a->href, $parseUrl['full']);
 
-		if (isset($matches[1])) {
-			foreach ($matches[1] as  $index => &$link) {
-				$link = strtolower($link);
-
-				if (substr($link, 0, 1) == '/' || substr($link, 0, 1) == '.') {
-					$link = $parseUrl['full'] . $link;
-				} elseif(substr($link, 0, 11) == 'javascript:' || substr($link, 0, 7) == 'mailto:') {
-					unset($matches[1][$index]);
-				} elseif (substr($link, 0, 7) != 'http://' && substr($link, 0, 8) != 'https://') {
-					$link = $parseUrl['full'] . '/' . $link;
-				}
-
-				$link = $this->BaseTools->toUTF8($link);
+			if ($link) {
+				$links[] = $link;
 			}
-
-			return array_unique($matches[1]);
+		
 		}
 
-		return false;        
+		return array_unique($links);
     }
 }
