@@ -20,10 +20,10 @@ class CompetitorCompareComponent extends Component {
 		if (isset($Controller->data['Tool']['cmd'])) {
 			$CMD = $this->Controller->data['Tool']['cmd'];
 			$TOKEN = $this->__getToken();
-			$CACHE_FOLDER =  CACHE . 'seo_tools_cc_' . $TOKEN;
+			$CACHE_FOLDER =  CACHE . 'seo_tools' . DS . 'cc_' . $TOKEN;
 
 			if (!is_dir($CACHE_FOLDER)) {
-				mkdir($CACHE_FOLDER . DS);
+				@mkdir($CACHE_FOLDER . DS);
 			}
 
 			set_time_limit(0);
@@ -37,7 +37,7 @@ class CompetitorCompareComponent extends Component {
 			Cache::config('seo_cache_cc_report',
 				array(
 					'engine' => 'File',
-					'path' => CACHE,
+					'path' => CACHE . 'seo_tools',
 					'duration' => '+30 minutes'
 				)
 			);

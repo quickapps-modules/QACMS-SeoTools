@@ -71,7 +71,7 @@
 						array(
 							'type' => 'textarea',
 							'label' => __d('seo_tools', 'Description'),
-							'helpBlock' => __d('seo_tools', 'The <code>meta</code> description will be limited to 156 chars, <span class="desc-chars-left">156</span> chars left.')
+							'helpBlock' => __d('seo_tools', 'The <code>meta</code> description will be limited to 156 chars, <span class="desc-chars-left">156</span> chars left. If not given, your <a href="%s">site description</a> wil be used by default.', Router::url('/admin/system/configuration'))
 						)
 					);
 
