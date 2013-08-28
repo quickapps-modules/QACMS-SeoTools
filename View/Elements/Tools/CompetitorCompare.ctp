@@ -1,37 +1,39 @@
 <?php if (!isset($results)): ?>
 	<?php echo $this->Form->create('Tool'); ?>
 		<div class="processing" style="display:none;">
-			<ul>
-				<li class="task-start">
-					<span><?php echo __d('seo_tools', 'Validating information...'); ?></span>
-					<?php echo $this->Html->image('/seo_tools/img/icon-loading.gif'); ?>
-				</li>
+			<div style="text-align:center;">
+				<?php echo $this->Html->image('/seo_tools/img/Tools/CompetitorCompare/process.gif'); ?>
+			</div>
 
-				<li class="task-get_site_page">
-					<span><?php echo __d('seo_tools', 'Downloading your web page...'); ?></span>
-					<?php echo $this->Html->image('/seo_tools/img/icon-loading.gif'); ?>
-				</li>
+			<p class="task-start">
+				<span class="label"><?php echo __d('seo_tools', 'Please Wait...'); ?></span>
+				<?php echo __d('seo_tools', 'Validating information.'); ?>
+			</p>
 
-				<li class="task-get_snippets">
-					<span><?php echo __d('seo_tools', 'Fetching search engine results...'); ?></span>
-					<?php echo $this->Html->image('/seo_tools/img/icon-loading.gif'); ?>
-				</li>
+			<p class="task-get_site_page">
+				<span class="label"><?php echo __d('seo_tools', 'Please Wait...'); ?></span>
+				<?php echo __d('seo_tools', 'Downloading your web page.'); ?>
+			</p>
 
-				<li class="task-get_competitor_page">
-					<span><?php echo __d('seo_tools', 'Downloading competitor web pages...'); ?></span>
-					<?php echo $this->Html->image('/seo_tools/img/icon-loading.gif'); ?>
-				</li>
+			<p class="task-get_snippets">
+				<span class="label"><?php echo __d('seo_tools', 'Please Wait...'); ?></span>
+				<?php echo __d('seo_tools', 'Fetching search engine results.'); ?>
+			</p>
 
-				<li class="task-analize_competitor">
-					<span><?php echo __d('seo_tools', 'Analyzing competitors...'); ?></span>
-					<?php echo $this->Html->image('/seo_tools/img/icon-loading.gif'); ?>
-				</li>
+			<p class="task-get_competitor_page">
+				<span class="label"><?php echo __d('seo_tools', 'Please Wait...'); ?></span>
+				<?php echo __d('seo_tools', 'Downloading competitor web pages.'); ?>
+			</p>
 
-				<li class="task-report">
-					<span><?php echo __d('seo_tools', 'Generating report...'); ?></span>
-					<?php echo $this->Html->image('/seo_tools/img/icon-loading.gif'); ?>
-				</li>
-			</ul>
+			<p class="task-analize_competitor">
+				<span class="label"><?php echo __d('seo_tools', 'Please Wait...'); ?></span>
+				<?php echo __d('seo_tools', 'Analyzing competitors.'); ?>
+			</p>
+
+			<p class="task-report">
+				<span class="label"><?php echo __d('seo_tools', 'Please Wait...'); ?></span>
+				<?php echo __d('seo_tools', 'Generating report.'); ?>
+			</p>
 
 			<hr />
 		</div>

@@ -12,23 +12,14 @@ $(document).ready(function () {
 	});
 });
 
-function taskDone(task) {
-	$('div.processing .task-' + task + ' img').attr('src', QuickApps.settings.base_url + 'seo_tools/img/icon-accept-icon.png');
-}
-
-function setToken(token) {
-	_TOKEN = token;
-}
-
-function finalizeWork() {
-	$('#ToolAdminExecuteForm').append('<input type="hidden" name="data[Tool][cmd]" id="CC_CMD" value="finalize" />');
-	$('#ToolAdminExecuteForm').append('<input type="hidden" name="data[Tool][token]" value="' + _TOKEN + '" />');
-	$('#ToolAdminExecuteForm').submit();		
-}
-
-function runTask(cmd, postData, callback) {
-	var theData = typeof(postData) == 'string' ? postData + '&data[Tool][cmd]=' + cmd : 'data[Tool][cmd]=' + cmd;
+function runTask(task, postData, callback) {
+	var theData = typeof(postData) == 'string' ? postData + '&data[Tool][cmd]=' + task : 'data[Tool][cmd]=' + task;
 	theData += _TOKEN ? '&data[Tool][token]=' + _TOKEN : '';
+
+	$('div.processing .task-' + task + ' span').removeClass()
+	.addClass('label')
+	.addClass('label-info')
+	.html('<?php echo __d('seo_tools', 'Running'); ?>');
 
 	$.ajax({
 		type: 'POST',
@@ -40,4 +31,21 @@ function runTask(cmd, postData, callback) {
 			callback(msg);
 		}
 	});
+}
+
+function taskDone(task) {
+	$('div.processing .task-' + task + ' span').removeClass()
+	.addClass('label')
+	.addClass('label-success')
+	.html('<?php echo __d('seo_tools', 'Complete'); ?>');
+}
+
+function finalizeWork() {
+	$('#ToolAdminExecuteForm').append('<input type="hidden" name="data[Tool][cmd]" id="CC_CMD" value="finalize" />');
+	$('#ToolAdminExecuteForm').append('<input type="hidden" name="data[Tool][token]" value="' + _TOKEN + '" />');
+	$('#ToolAdminExecuteForm').submit();		
+}
+
+function setToken(token) {
+	_TOKEN = token;
 }
