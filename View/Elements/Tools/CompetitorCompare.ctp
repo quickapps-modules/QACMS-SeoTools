@@ -51,41 +51,51 @@
 				)
 			);
 
+			/**
+			 * EngineClass|options for EngineClass::main()
+			 *
+			 * example: Google|option1|option2|option3
+			 * will invoke:
+			 * Google::results($keywords, array('option1', 'option2', 'option3'))
+			 *
+			 */
 			echo $this->Form->input('Tool.engine',
 				array(
 					'type' => 'select',
 					'label' => __d('seo_tools', 'Search Engine'),
 					'options' => array(
-						'google.com' => 'Google.com',
-						'google.es' => 'Google.es',
-						'google.as' => 'Google.as',
-						'google.at' => 'Google.at',
-						'google.be' => 'Google.be',
-						'google.ca' => 'Google.ca',
-						'google.ch' => 'Google.ch',
-						'google.cl' => 'Google.cl',
-						'google.co.cr' => 'Google.co.cr',
-						'google.co.il' => 'Google.co.il',
-						'google.con.in' => 'Google.co.in',
-						'google.co.jp' => 'Google.co.jp',
-						'google.co.kr' => 'Google.co.kr',
-						'google.co.nz' => 'Google.co.nz',
-						'google.co.th' => 'Google.co.th',
-						'google.co.uk' => 'Google.co.uk',
-						'google.co.ve' => 'Google.co.ve',
-						'google.co.za' => 'Google.co.za',
-						'google.com.ar' => 'Google.com.ar',
-						'google.com.au' => 'Google.com.au',
-						'google.com.br' => 'Google.com.br',
-						'google.com.co' => 'Google.com.co',
-						'google.com.gr' => 'Google.com.gr',
-						'google.com.hk' => 'Google.com.hk',
-						'google.com.mx' => 'Google.com.mx',
-						'google.com.my' => 'Google.com.my',
-						'google.com.pe' => 'Google.com.pe',
-						'google.com.ph' => 'Google.com.ph',
-						'google.com.sg' => 'Google.com.sg',
-						'google.com.tr' => 'Google.com.tr'
+						'Google' => array(
+							'Google|google.com' => 'Google.com',
+							'Google|google.es' => 'Google.es',
+							'Google|google.as' => 'Google.as',
+							'Google|google.at' => 'Google.at',
+							'Google|google.be' => 'Google.be',
+							'Google|google.ca' => 'Google.ca',
+							'Google|google.ch' => 'Google.ch',
+							'Google|google.cl' => 'Google.cl',
+							'Google|google.co.cr' => 'Google.co.cr',
+							'Google|google.co.il' => 'Google.co.il',
+							'Google|google.con.in' => 'Google.co.in',
+							'Google|google.co.jp' => 'Google.co.jp',
+							'Google|google.co.kr' => 'Google.co.kr',
+							'Google|google.co.nz' => 'Google.co.nz',
+							'Google|google.co.th' => 'Google.co.th',
+							'Google|google.co.uk' => 'Google.co.uk',
+							'Google|google.co.ve' => 'Google.co.ve',
+							'Google|google.co.za' => 'Google.co.za',
+							'Google|google.com.ar' => 'Google.com.ar',
+							'Google|google.com.au' => 'Google.com.au',
+							'Google|google.com.br' => 'Google.com.br',
+							'Google|google.com.co' => 'Google.com.co',
+							'Google|google.com.gr' => 'Google.com.gr',
+							'Google|google.com.hk' => 'Google.com.hk',
+							'Google|google.com.mx' => 'Google.com.mx',
+							'Google|google.com.my' => 'Google.com.my',
+							'Google|google.com.pe' => 'Google.com.pe',
+							'Google|google.com.ph' => 'Google.com.ph',
+							'Google|google.com.sg' => 'Google.com.sg',
+							'Google|google.com.tr' => 'Google.com.tr'
+						)
 					)
 				)
 			);

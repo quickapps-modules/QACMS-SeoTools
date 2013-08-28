@@ -2,13 +2,6 @@
 class CompetitorCompareComponent extends Component {
     public $tmp;
     public $Controller;
-    public $EngineParser;
-
-    public function __construct(ComponentCollection $collection, $settings = array()) {
-        include_once dirname(__FILE__) . DS . 'EngineParser.php';
-        $this->EngineParser = new EngineParser;
-        parent::__construct($collection, $settings);
-    }
 
 	public function startup(&$Controller) {
 		$this->Controller = $Controller;
@@ -71,11 +64,15 @@ class CompetitorCompareComponent extends Component {
 						die('location.reload();');
 					}
 
+					$engineInfo = explode('|', $Controller->data['Tool']['engine']);
 					$config = array(
 						'token' => $this->__getToken(),
 						'url' => $Controller->data['Tool']['url'],
 						'criteria' => $Controller->data['Tool']['criteria'],
-						'engine' => $Controller->data['Tool']['engine'],
+						'engine' => array(
+							'class' => array_shift($engineInfo),
+							'options' => $engineInfo
+						),
 						'competitors' => array() // list of cache names
 					);
 
@@ -99,7 +96,7 @@ class CompetitorCompareComponent extends Component {
 
 				case 'get_snippets':
 					$config = Cache::read('config', 'seo_cache_cc');
-					$snippets = $this->getSnippet($config['criteria'], $config['engine'], 10);
+					$snippets = $this->getSnippet($config['criteria'], $config['engine']);
 
 					foreach ($snippets as $s) {
 						$competitorCachePrefix = 'competitor_' . md5($s['url']);
@@ -466,11 +463,20 @@ class CompetitorCompareComponent extends Component {
 		return number_format(($occurr * 100) / count($words), 2);
 	}
 
-	public function getSnippet($keywords, $engine = 'google.com', $limit = 10) {
-        $this->EngineParser->BaseTools = $this->BaseTools;
-        $this->EngineParser->loadEngine($engine);
+	public function getSnippet($keywords, $engine) {
+        $className = Inflector::camelize($engine['class']);
+        $class = dirname(__FILE__) . DS  . 'SearchEngine' . DS . $className . '.php';
 
-        return $this->EngineParser->parse($keywords, $limit);
+        if (file_exists($class)) {
+            require_once $class;
+
+            $Engine = new $className;
+            $Engine->BaseTools = $this->BaseTools;
+			
+			return $Engine->results($keywords, $engine['options']);
+        }
+
+        return array();
 	}
 
 	public function parseTag($tag, $haystack, $all = false) {
