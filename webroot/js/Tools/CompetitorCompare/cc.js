@@ -1,12 +1,18 @@
 var _TOKEN = '';
+var _WORKING = false;
 
 $(document).ready(function () {
 	$('form input[type=submit]').click(function () {
-		var form = $('#ToolAdminExecuteForm');
-		$('div.processing').show();
-		$('div.processing li img').attr('src', QuickApps.settings.base_url + 'seo_tools/img/icon-loading.gif');
+		if (!_WORKING) {
+			var form = $('#ToolAdminExecuteForm');
+			$('div.processing').show();
+			$('div.processing li img').attr('src', QuickApps.settings.base_url + 'seo_tools/img/icon-loading.gif');
 
-		runTask('start', form.serialize());
+			_WORKING = true;
+			runTask('start', form.serialize());
+		} else {
+			alert(QuickApps.__t('Please be patient!'));
+		}
 
 		return false;
 	});
