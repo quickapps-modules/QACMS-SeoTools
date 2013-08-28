@@ -22,7 +22,12 @@ class CompetitorCompareComponent extends Component {
 			$TOKEN = $this->__getToken();
 			$CACHE_FOLDER =  CACHE . 'seo_tools' . DS . 'cc_' . $TOKEN;
 
-			if (!is_dir($CACHE_FOLDER)) {
+			if ($CMD == 'start') {
+				if (is_dir($CACHE_FOLDER)) {
+					$Folder = new Folder($CACHE_FOLDER);
+					$Folder->delete();
+				}
+
 				@mkdir($CACHE_FOLDER . DS);
 			}
 

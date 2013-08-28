@@ -19,7 +19,7 @@ function runTask(task, postData, callback) {
 	$('div.processing .task-' + task + ' span').removeClass()
 	.addClass('label')
 	.addClass('label-info')
-	.html('<?php echo __d('seo_tools', 'Running'); ?>');
+	.html(QuickApps.__t('Running'));
 
 	$.ajax({
 		type: 'POST',
@@ -37,7 +37,7 @@ function taskDone(task) {
 	$('div.processing .task-' + task + ' span').removeClass()
 	.addClass('label')
 	.addClass('label-success')
-	.html('<?php echo __d('seo_tools', 'Complete'); ?>');
+	.html(QuickApps.__t('Complete'));
 }
 
 function finalizeWork() {
