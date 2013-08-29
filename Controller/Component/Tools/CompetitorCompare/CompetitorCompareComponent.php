@@ -2,6 +2,16 @@
 class CompetitorCompareComponent extends Component {
     public $tmp;
     public $Controller;
+	private $report = array(
+		'config' => array(),
+		'site_data' => array(),
+		'competitors_data' => array(),
+		'factors' => array(
+			'essential' => array(0, 0), // success, failed
+			'very_important' => array(0, 0),
+			'important' =>  array(0, 0)
+		)
+	);
 
 	public function startup(&$Controller) {
 		$this->Controller = $Controller;
@@ -25,12 +35,25 @@ class CompetitorCompareComponent extends Component {
 			}
 
 			set_time_limit(0);
-			Cache::config('seo_cache_cc',
-				array(
-					'engine' => 'File',
-					'path' => $CACHE_FOLDER
-				)
-			);
+
+			if (is_dir($CACHE_FOLDER)) {
+				Cache::config('seo_cache_cc',
+					array(
+						'engine' => 'File',
+						'path' => $CACHE_FOLDER
+					)
+				);
+			}
+
+			if (isset($Controller->data['Tool']['engine'])) {
+				$data = $Controller->data;
+				$parts = explode('|', $data['Tool']['engine']);
+				$data['Tool']['engine'] = array(
+					'class' => array_shift($parts),
+					'options' => $parts
+				);
+				$Controller->data = $data;
+			}
 
 			Cache::config('seo_cache_cc_report',
 				array(
@@ -64,14 +87,13 @@ class CompetitorCompareComponent extends Component {
 						die('location.reload();');
 					}
 
-					$engineInfo = explode('|', $Controller->data['Tool']['engine']);
 					$config = array(
 						'token' => $this->__getToken(),
 						'url' => $Controller->data['Tool']['url'],
 						'criteria' => $Controller->data['Tool']['criteria'],
 						'engine' => array(
-							'class' => array_shift($engineInfo),
-							'options' => $engineInfo
+							'class' => $Controller->data['Tool']['engine']['class'],
+							'options' => $Controller->data['Tool']['engine']['options']
 						),
 						'competitors' => array() // list of cache names
 					);
@@ -86,9 +108,9 @@ class CompetitorCompareComponent extends Component {
 
 				case 'get_site_page':
 					$config = Cache::read('config', 'seo_cache_cc');
-					$html = $this->BaseTools->getPage($config['url']);
 
-					Cache::write('site_html', $html, 'seo_cache_cc');
+					Cache::write('site_html', $this->BaseTools->toUTF8($this->BaseTools->getPage($config['url'])), 'seo_cache_cc');
+
 					echo "taskDone('{$CMD}');";
 					echo "runTask('get_snippets');";
 					die;
@@ -106,6 +128,7 @@ class CompetitorCompareComponent extends Component {
 
 					Cache::write('snippets', $snippets, 'seo_cache_cc');
 					Cache::write('config', $config, 'seo_cache_cc');
+
 					echo "taskDone('{$CMD}');";
 					echo "runTask('get_competitor_page');";
 					die;
@@ -119,7 +142,7 @@ class CompetitorCompareComponent extends Component {
 							$c['_page_downloaded'] = true;
 
 							Cache::write('config', $config, 'seo_cache_cc');
-							Cache::write("{$c['_cache_prefix']}_html", $this->BaseTools->getPage($c['url']), 'seo_cache_cc');
+							Cache::write("{$c['_cache_prefix']}_html", $this->BaseTools->toUTF8($this->BaseTools->getPage($c['url'])), 'seo_cache_cc');
 							echo "runTask('get_competitor_page');";
 							die;
 						}
@@ -140,20 +163,20 @@ class CompetitorCompareComponent extends Component {
 						Cache::write('config', $config, 'seo_cache_cc');
 
 						$page = Cache::read("{$competitorCachePrefix}_html", 'seo_cache_cc');
-						$competitor['body'] = $this->BaseTools->toUTF8($this->BaseTools->html2text($this->parseTag('body', $page))); 
-						$competitor['tags'] = @(array)get_meta_tags($competitor['url']);
-						$competitor['h1'] = $this->BaseTools->toUTF8($this->BaseTools->html2text(@implode(' ', $this->parseTag('h1', $page, true)))); #get all
+						$competitor['body'] = $this->BaseTools->html2text($this->parseTag('body', $page)); 
+						$competitor['meta_tags'] = @(array)get_meta_tags($competitor['url']);
+						$competitor['h1'] = $this->BaseTools->html2text(@implode(' ', $this->parseTag('h1', $page, true)));
 						$parseUrl = $this->BaseTools->parseUrl($competitor['url']);
 
-						$competitor['alexa_rank'] = $SeoStats->getAlexaRank($competitor['url']);
-						$competitor['age'] = $SeoStats->getAge($parseUrl['host']);
+						$competitor['alexa_rank'] = $this->str2int($SeoStats->getAlexaRank($competitor['url']));
+						$competitor['domain_age'] = $SeoStats->getAge($parseUrl['host']);
 						$competitor['backlinks'] = array(
-							'alexa' => $SeoStats->getBacklinkAlexa($parseUrl['full']),
-							'google' => $SeoStats->getBacklinksGoogle($parseUrl['full']),
-							'yahoo' => $SeoStats->getBacklinksYahoo($parseUrl['full'])
+							'alexa' => $this->str2int($SeoStats->getBacklinkAlexa($parseUrl['full'])),
+							'google' => $this->str2int($SeoStats->getBacklinksGoogle($parseUrl['full'])),
+							'yahoo' => $this->str2int($SeoStats->getBacklinksYahoo($parseUrl['full']))
 						);
 
-						foreach ($competitor['tags'] as $c_tag_name => &$c_tag_data) {
+						foreach ($competitor['meta_tags'] as $c_tag_name => &$c_tag_data) {
 							$c_tag_data = $this->BaseTools->toUTF8(html_entity_decode($c_tag_data));
 						}
 
@@ -166,145 +189,56 @@ class CompetitorCompareComponent extends Component {
 						die;
 					} else {
 						echo "taskDone('{$CMD}');";
-						echo "runTask('report');";
+						echo "runTask('analize_site');";
 						die;
 					}
 				break;
 
-				case 'report':
+				case 'analize_site':
 					$config = Cache::read('config', 'seo_cache_cc');
 					$parseUrl = $this->BaseTools->parseUrl($config['url']);
 					$page = Cache::read('site_html', 'seo_cache_cc');
-					$h1_array = (array)$this->parseTag('h1', $page, true);
 					$SeoStats = $this->BaseTools->loadTool('SeoStats');
-
-					foreach ($h1_array as &$h1) { 
-						$h1 = $this->BaseTools->toUTF8($h1);
-					}
 
 					$site_data = array(
 						'url' => $parseUrl['full'],
-						'title' => $this->BaseTools->toUTF8($this->BaseTools->html2text($this->parseTag('title', $page))), // sanitize
-						'body' => $this->BaseTools->toUTF8($this->BaseTools->html2text($this->parseTag('body', $page))), // sanitize
-						'tags' => @(array)get_meta_tags($parseUrl['full']),
-						'h1' => $this->BaseTools->html2text(implode(' ', $h1_array)), #get all
-
-						/* SEM */
-						'backlinks' =>
-						 array(
-							'alexa' => $SeoStats->getBacklinkAlexa($parseUrl['full']),
-							'google' => $SeoStats->getBacklinksGoogle($parseUrl['full']),
-							'yahoo' => $SeoStats->getBacklinksYahoo($parseUrl['full'])
+						'title' => $this->BaseTools->html2text($this->parseTag('title', $page)),
+						'body' => $this->BaseTools->html2text($this->parseTag('body', $page)), // sanitize
+						'meta_tags' => @(array)get_meta_tags($parseUrl['full']),
+						'h1' => $this->BaseTools->html2text(@implode(' ', $this->parseTag('h1', $page, true))),
+						'backlinks' => array(
+							'alexa' => $this->str2int($SeoStats->getBacklinkAlexa($parseUrl['full'])),
+							'google' => $this->str2int($SeoStats->getBacklinksGoogle($parseUrl['full'])),
+							'yahoo' => $this->str2int($SeoStats->getBacklinksYahoo($parseUrl['full']))
 						),
-						'alexa_rank' => $SeoStats->getAlexaRank($parseUrl['full']),
-						'age' => $SeoStats->getAge($parseUrl['host'])
+						'alexa_rank' => $this->str2int($SeoStats->getAlexaRank($parseUrl['full'])),
+						'domain_age' => $SeoStats->getAge($parseUrl['host'])
 					);
 
-					foreach ($site_data['tags'] as $s_tag_name => &$s_tag_data) {
+					foreach ($site_data['meta_tags'] as $s_tag_name => &$s_tag_data) {
 						$s_tag_data = $this->BaseTools->toUTF8(html_entity_decode($s_tag_data));
 					}
 
-					/*********************************************/
-					// $site_data
-					// $competitors_data
-					$competitors_data = (array)Cache::read('competitors_data', 'seo_cache_cc');
-					$analysis = array(
-						'title' => null,
-						'backlinks' => null,
-						'body' => null,
+					Cache::write('site_data', $site_data, 'seo_cache_cc');
 
-						'age' => null,
-						'h1' => null,
+					echo "taskDone('{$CMD}');";
+					echo "runTask('report');";
+					die;
+				break;
 
-						'url' => null,
-						'alexa_rank' => null,
-						'tags/description' => null
-					);
+				case 'report':
+					$this->report['config'] = Cache::read('config', 'seo_cache_cc');
+					$this->report['site_data'] = (array)Cache::read('site_data', 'seo_cache_cc');
+					$this->report['competitors_data'] = (array)Cache::read('competitors_data', 'seo_cache_cc');
 
-					/* SEO */
-					foreach ($analysis as $aspect => &$aspect_data) {
-						if (in_array($aspect, array('backlinks', 'alexa_rank', 'age'))) {
-							continue;
-						}
+					Cache::write('top_10_optimizer_' . $this->__getToken(), $this->prepareReport(), 'seo_cache_cc_report');
 
-						$site_aspect_data = Set::extract("/{$aspect}", $site_data);
-						$site_aspect_data = @$site_aspect_data[0];
-
-						$_keywords = explode(' ', str_replace(',', '', $config['criteria']));
-						$_keywords[] = $this->__exclude_words(str_replace(',', '', $config['criteria']));
-
-						foreach ($_keywords as $word) {
-							$strpos = $aspect == 'h1' ? 0 : $this->word_position($site_aspect_data, $word); #h1 aspect = no position required
-							$quantity = $this->word_occurr($site_aspect_data, $word); // --> auto set $this->tmp = source # words
-							$aspect_data[$word]['site'] = array(
-								'quantity'	=> $quantity,
-								'density'	=> @number_format(($quantity*100) / $this->tmp, 2), // --> overload: $this->word_density($site_aspect_data, $word)
-								'position'	=> $strpos
-							);
-
-							if ($aspect == 'body') {
-								$aspect_data[$word]['site']['words_count'] = $this->words_count($site_aspect_data, $word);
-							}
-
-							$c_quantity = $c_density = $c_position = $c_body_word_count = array();
-
-							foreach ($competitors_data as $pos => $data) {
-								$competitor_aspect_data = Set::extract("/{$aspect}", $competitors_data[$pos]);
-								$competitor_aspect_data = @$competitor_aspect_data[0];
-
-								if ($aspect == 'tags/description' && empty($competitor_aspect_data)) {
-									continue;
-								}
-
-								$q = $this->word_occurr($competitor_aspect_data, $word); // --> improve: $this->tmp
-
-								$c_quantity[] = $q;
-								$c_density[] = @number_format(($q*100) / $this->tmp, 2);
-								$strpos = $aspect == 'h1' ? 0 : $this->word_position($competitor_aspect_data, $word); // h1 aspect = no position required
-								$c_position[] = $strpos;
-
-								if ($aspect == 'body') {
-									$c_body_word_count[] = $this->words_count($competitor_aspect_data, $word);
-								}
-							}
-
-							$aspect_data[$word]['competitors'] = array(
-								'quantity'	=> $c_quantity,
-								'density'	=> $c_density,
-								'position'	=> $c_position
-							);
-
-							if ($aspect == 'body') {
-								$aspect_data[$word]['competitors']['words_count'] = $c_body_word_count;
-							}
-						}
-					}
-
-					/* SEM */
-					$analysis['backlinks'] = array(
-						'alexa' => Set::extract('{n}.backlinks.alexa', $competitors_data),
-						'google' => Set::extract('{n}.backlinks.google', $competitors_data),
-						'yahoo' => Set::extract('{n}.backlinks.yahoo', $competitors_data)
-					);
-					$analysis['alexa_rank'] = Set::extract('{n}.alexa_rank', $competitors_data);
-					$analysis['age'] = Set::extract('{n}.age', $competitors_data);
-					$DATA = array(
-						'Analysis' => $analysis,
-						'Data'	=> array(
-							'Site' => $site_data,
-							'Competitors' => $competitors_data
-						)
-					);
-					$DATA['Data']['Site']['h1_array'] = $h1_array;
-
-					Cache::write('top_10_optimizer_' . $this->__getToken(), $DATA, 'seo_cache_cc_report');
 					echo "taskDone('{$CMD}');";
 					echo "finalizeWork();";
 					die;
 				break;
 
 				case 'finalize':
-					$this->Controller->helpers[] = 'SeoTools.CC';
 					$token = $this->__getToken();
 					$data = Cache::read('top_10_optimizer_' . $this->__getToken(), 'seo_cache_cc_report');
 
@@ -319,6 +253,641 @@ class CompetitorCompareComponent extends Component {
 
         return false;
     }
+
+	private function prepareReport() {
+		$out = array(
+			'site_data' => $this->report['site_data'],
+			'competitors_data' => $this->report['competitors_data']
+		);
+
+		// Keyword use in document title
+		$out['keyword_use_in_document_title'] = $this->keyword_use_in_document_title();
+
+		// Global link popularity of web site
+		$out['global_link_popularity_of_web_site'] = $this->global_link_popularity_of_web_site();
+
+		
+		// Keyword use in body text
+		$out['keyword_use_in_body_text'] = $this->keyword_use_in_body_text();
+		
+		// Age of web site
+		$out['age_of_web_site'] = $this->age_of_web_site();
+
+		// Keyword use in H1 headline texts
+		$out['keyword_use_in_h1_headline_texts'] = $this->keyword_use_in_h1_headline_texts();
+		
+		
+		// Keyword use in page URL
+		$out['keyword_use_in_page_url'] = $this->keyword_use_in_page_url();
+		
+		// Number of visitors to the site
+		$out['number_of_visitors_to_the_site'] = $this->number_of_visitors_to_the_site();
+
+		// Keyword use in meta description
+		$out['keyword_use_in_meta_description'] = $this->keyword_use_in_meta_description();
+
+		// factors stats
+		$out['factors'] = $this->report['factors'];
+
+		return $out;
+	}
+
+	private function keyword_use_in_document_title() {
+		$criteriaWords = $this->criteriaWords($this->report['config']['criteria']);
+		$competitorsTitles = array();
+		$your_content_is_empty = false;
+
+		if (!empty($this->report['site_data']['title'])) {
+			$your_content = $this->emphasize_keywords($this->report['site_data']['title'], $criteriaWords);
+		} else {
+			$your_content = __d('seo_tools', '[No content was found]');
+			$your_content_is_empty = true;
+		}
+
+		$out = array(
+			'their_content' => array(),
+			'your_content' => $your_content
+		);
+
+		foreach ($this->report['competitors_data'] as $cData) {
+			if (!empty($cData['title'])) {
+				$out['their_content'][] = $this->emphasize_keywords($cData['title'], $criteriaWords);
+			} else {
+				$out['their_content'][] = __d('seo_tools', '[No content was found]');
+			}
+
+			$competitorsTitles[] = $cData['title'];
+		}
+
+		$out['keywords_stats'] = $this->keywordsStats($criteriaWords, ($your_content_is_empty ? '' : $this->report['site_data']['title']), $competitorsTitles);
+
+		foreach ($out['keywords_stats'] as $keyword => $info) {
+			foreach ($info as $type => $stats) {
+				/* FACTOR-RULE */
+				if ($stats['min'] == 0 && $stats['max'] > 0 && $stats['site'] == 0) {
+					$class = 'error';
+					$this->pushFactor('essential', false); // failed
+				} elseif ($stats['avg'] == 0 && $stats['site'] == 0) {
+					$class = 'warning';
+					$this->pushFactor('essential', true); // passed
+				} elseif ($stats['site'] >= $stats['min'] && $stats['max'] >= $stats['site']) { // between ranges -> OK
+					$class = 'success';
+					$this->pushFactor('essential', true); // passed
+				} else {
+					$class = 'warning';
+					$this->pushFactor('essential', false); //failed
+				}
+
+				$out['keywords_stats'][$keyword][$type]['class'] = $class;
+				/* FACTOR-RULE */
+			}
+		}
+
+		return $out;
+	}
+
+	private function global_link_popularity_of_web_site() {
+		$out = array(
+			'sites' => array(),
+			'message' => '', // tips
+			'class' => 'info' // success, warning, error
+		);
+
+		$yourSite = array(
+			'site_name' => __d('seo_tools', 'Your Site'),
+			'alexa' => $this->report['site_data']['backlinks']['alexa'],
+			'google' => $this->report['site_data']['backlinks']['google'],
+			'yahoo' => $this->report['site_data']['backlinks']['yahoo'],
+			'peak' => max(
+				array(
+					$this->report['site_data']['backlinks']['alexa'],
+					$this->report['site_data']['backlinks']['google'],
+					$this->report['site_data']['backlinks']['yahoo']
+				)
+			)
+		);
+
+		foreach ($this->report['competitors_data'] as $i => $competitor) {
+			$out['sites'][] = array(
+				'site_name' => __d('seo_tools', 'Site #%d', $i + 1),
+				'alexa' => $competitor['backlinks']['alexa'],
+				'google' => $competitor['backlinks']['google'],
+				'yahoo' => $competitor['backlinks']['yahoo'],
+				'peak' => max(
+					array(
+						$competitor['backlinks']['alexa'],
+						$competitor['backlinks']['google'],
+						$competitor['backlinks']['yahoo']
+					)
+				)
+			);
+		}
+
+		/* FACTOR-RULE */
+		$peaks = Hash::extract($out, 'sites.{n}.peak');
+		$your = $yourSite['peak'];
+		$average = @(array_sum($peaks) / count($peaks));
+
+		if ($your >= max($peaks)) {
+			$out['class'] = 'success';
+			$this->pushFactor('essential', true);
+		} elseif ($your >= $average) {
+			$out['class'] = 'warning';
+			$this->pushFactor('essential', true);
+		} else {
+			$out['class'] = 'error';
+			$this->pushFactor('essential', false);
+		}
+		/* FACTOR-RULE */
+
+		array_unshift($out['sites'], $yourSite);
+
+		switch ($out['class']) {
+			default:
+				case 'error':
+					$out['message'] = __d('seo_tools', 'In average, less web pages link to your page than to the top ranked pages. The average link popularity of the top ranked pages is %s, the link popularity of your web page is %s. You must increase the number of web pages from different domains that link to your web site. Keep in mind that all search engines also evaluate the link texts and the quality of the web pages that link to your web site', $average, $your);
+			break;
+
+			case 'warning':
+				$out['message'] = __d('seo_tools', 'Summing up all analyzed search engines, there are at least as many web pages linking to your page as to the top ranked pages. This meets the basic requirements for getting high rankings on %s. Keep in mind that all search engines also evaluate the link texts and the quality of the web pages that link to your web site', $this->report['config']['engine']['class']);
+			break;
+
+			case 'success':
+				$out['message'] = __d('seo_tools', 'Summing up all analyzed search engines, you have more web pages linking to your web page than the top ranking web pages. This is very good. However, %s also evaluates the link texts and the quality of the web pages that link to your web site', $this->report['config']['engine']['class']);
+			break;
+		}
+
+		return $out;
+	}
+
+	private function keyword_use_in_body_text() {
+		$criteriaWords = $this->criteriaWords($this->report['config']['criteria']);
+		$competitorsBodies = array();
+		$your_content_is_empty = false;
+
+		if (!empty($this->report['site_data']['body'])) {
+			$your_content = $this->emphasize_keywords($this->report['site_data']['body'], $criteriaWords);
+		} else {
+			$your_content = __d('seo_tools', '[No content was found]');
+			$your_content_is_empty = true;
+		}
+
+		$out = array(
+			'their_content' => array(),
+			'your_content' => $your_content
+		);
+
+		foreach ($this->report['competitors_data'] as $cData) {
+			if (!empty($cData['body'])) {
+				$out['their_content'][] = $this->emphasize_keywords($cData['body'], $criteriaWords);
+			} else {
+				$out['their_content'][] = __d('seo_tools', '[No content was found]');
+			}
+
+			$competitorsBodies[] = $cData['body'];
+		}
+
+		$out['keywords_stats'] = $this->keywordsStats($criteriaWords, ($your_content_is_empty ? '' : $this->report['site_data']['body']), $competitorsBodies);
+
+		foreach ($out['keywords_stats'] as $keyword => $info) {
+			foreach ($info as $type => $stats) {
+				/* FACTOR-RULE */
+				if ($stats['min'] == 0 && $stats['max'] > 0 && $stats['site'] == 0) {
+					$class = 'error';
+					$this->pushFactor('essential', false); // failed
+				} elseif ($stats['avg'] == 0 && $stats['site'] == 0) {
+					$class = 'warning';
+					$this->pushFactor('essential', true); // passed
+				} elseif ($stats['site'] >= $stats['min'] && $stats['max'] >= $stats['site']) { // between ranges -> OK
+					$class = 'success';
+					$this->pushFactor('essential', true); // passed
+				} else {
+					$class = 'warning';
+					$this->pushFactor('essential', false); //failed
+				}
+
+				$out['keywords_stats'][$keyword][$type]['class'] = $class;
+				/* FACTOR-RULE */
+			}
+		}
+
+		return $out;
+	}
+
+	private function age_of_web_site() {
+		$out = array(
+			'sites' => array(),
+			'message' => '', // tips
+			'class' => 'info' // success, warning, error
+		);
+
+		$competitorsStamps = array();
+		$yourAge = $this->ageFormat($this->report['site_data']['domain_age']);
+		$yourSite = array(
+			'site_name' => __d('seo_tools', 'Your Site'),
+			'url' => $this->report['site_data']['url'],
+			'age' => $yourAge[0]
+		);
+
+		foreach ($this->report['competitors_data'] as $i => $competitor) {
+			$age = $this->ageFormat($competitor['domain_age']);
+			$competitorsStamps[] = $age[1];
+			$out['sites'][] = array(
+				'site_name' => __d('seo_tools', 'Site #%d', $i + 1),
+				'url' => $competitor['url'],
+				'age' => $age[0]
+
+			);
+		}
+
+		/* FACTOR-RULE */
+		if ($yourAge[1] == 0 ||
+			($yourAge[1] != 0 && $yourAge[1] > (31556926/2) && $yourAge[1] < min($competitorsStamps))
+		) {
+			$out['class'] = 'warning';
+			$this->pushFactor('very_important', true);
+		} elseif ($yourAge[1] < 31556926) { // yours < 1 year
+			$out['class'] = 'error';
+			$this->pushFactor('very_important', false);
+		} else {
+			$out['class'] = 'success';
+			$this->pushFactor('very_important', true);
+		}
+		/* FACTOR-RULE */
+
+		array_unshift($out['sites'], $yourSite);
+
+		switch ($out['class']) {
+			default:
+				case 'error':
+					$out['message'] = __d('seo_tools', 'Your web site is less than 1 year old');
+			break;
+
+			case 'warning':
+				$out['message'] = __d('seo_tools', 'The web site age could not be determined or is newer than the newer of your competitors. In general, the older your web site, the better it is for your rankings on %s. If you have a young web site, you must compensate by improving the other search engine ranking factors', $this->report['config']['engine']['class']);
+			break;
+
+			case 'success':
+				$out['message'] = __d('seo_tools', 'Your web site is about %s years old. This is very good because the older your web site, the better it is for your rankings on %s', number_format($yourAge[1]/31556926, 0), $this->report['config']['engine']['class']);
+			break;
+		}
+
+		return $out;
+	}
+
+	private function keyword_use_in_h1_headline_texts() {
+		$criteriaWords = $this->criteriaWords($this->report['config']['criteria']);
+		$competitorsH1s = array();
+		$your_content_is_empty = false;
+
+		if (!empty($this->report['site_data']['h1'])) {
+			$your_content = $this->emphasize_keywords($this->report['site_data']['h1'], $criteriaWords);
+		} else {
+			$your_content = __d('seo_tools', '[No content was found]');
+			$your_content_is_empty = true;
+		}
+
+		$out = array(
+			'their_content' => array(),
+			'your_content' => $your_content
+		);
+
+		foreach ($this->report['competitors_data'] as $cData) {
+			if (!empty($cData['h1'])) {
+				$out['their_content'][] = $this->emphasize_keywords($cData['h1'], $criteriaWords);
+			} else {
+				$out['their_content'][] = __d('seo_tools', '[No content was found]');
+			}
+
+			$competitorsH1s[] = $cData['h1'];
+		}
+
+		$out['keywords_stats'] = $this->keywordsStats($criteriaWords, ($your_content_is_empty ? '' : $this->report['site_data']['h1']), $competitorsH1s);
+
+		foreach ($out['keywords_stats'] as $keyword => $info) {
+			foreach ($info as $type => $stats) {
+				if ($type == 'position') {
+					continue;
+				}
+
+				/* FACTOR-RULE */
+				if ($stats['min'] == 0 && $stats['max'] > 0 && $stats['site'] == 0) {
+					$class = 'error';
+					$this->pushFactor('very_important', false); // failed
+				} elseif ($stats['avg'] == 0 && $stats['site'] == 0) {
+					$class = 'warning';
+					$this->pushFactor('very_important', true); // passed
+				} elseif ($stats['site'] >= $stats['min'] && $stats['max'] >= $stats['site']) { // between ranges -> OK
+					$class = 'success';
+					$this->pushFactor('very_important', true); // passed
+				} else {
+					$class = 'warning';
+					$this->pushFactor('very_important', false); //failed
+				}
+
+				$out['keywords_stats'][$keyword][$type]['class'] = $class;
+				/* FACTOR-RULE */
+			}
+		}
+
+		return $out;
+	}
+
+	private function keyword_use_in_page_url() {
+		$criteriaWords = $this->criteriaWords($this->report['config']['criteria']);
+		$competitorsURLs = array();
+		$your_content_is_empty = false;
+
+		if (!empty($this->report['site_data']['url'])) {
+			$your_content = $this->emphasize_keywords($this->report['site_data']['url'], $criteriaWords);
+		} else {
+			$your_content = __d('seo_tools', '[No content was found]');
+			$your_content_is_empty = true;
+		}
+
+		$out = array(
+			'their_content' => array(),
+			'your_content' => $your_content
+		);
+
+		foreach ($this->report['competitors_data'] as $cData) {
+			if (!empty($cData['url'])) {
+				$out['their_content'][] = $this->emphasize_keywords($cData['url'], $criteriaWords);
+			} else {
+				$out['their_content'][] = __d('seo_tools', '[No content was found]');
+			}
+
+			$competitorsURLs[] = $cData['url'];
+		}
+
+		$out['keywords_stats'] = $this->keywordsStats($criteriaWords, ($your_content_is_empty ? '' : $this->report['site_data']['url']), $competitorsURLs);
+
+		foreach ($out['keywords_stats'] as $keyword => $info) {
+			foreach ($info as $type => $stats) {
+				/* FACTOR-RULE */
+				if ($stats['min'] == 0 && $stats['max'] > 0 && $stats['site'] == 0) {
+					$class = 'error';
+					$this->pushFactor('very_important', false); // failed
+				} elseif ($stats['avg'] == 0 && $stats['site'] == 0) {
+					$class = 'warning';
+					$this->pushFactor('very_important', true); // passed
+				} elseif ($stats['site'] >= $stats['min'] && $stats['max'] >= $stats['site']) { // between ranges -> OK
+					$class = 'success';
+					$this->pushFactor('very_important', true); // passed
+				} else {
+					$class = 'warning';
+					$this->pushFactor('very_important', false); //failed
+				}
+
+				$out['keywords_stats'][$keyword][$type]['class'] = $class;
+				/* FACTOR-RULE */
+			}
+		}
+
+		return $out;
+	}
+
+	private function number_of_visitors_to_the_site() {
+		$out = array(
+			'sites' => array(),
+			'message' => '', // tips
+			'class' => 'info' // success, warning, error
+		);
+
+		$competitorsRanks = array();
+		$yourSite = array(
+			'site_name' => __d('seo_tools', 'Your Site'),
+			'url' => $this->report['site_data']['url'],
+			'rank' => ($this->report['site_data']['alexa_rank'] < 0 ? __d('seo_tools', 'n/a') : $this->report['site_data']['alexa_rank'])
+		);
+
+		foreach ($this->report['competitors_data'] as $i => $competitor) {
+			if ($competitor['alexa_rank'] >= 0) {
+				$competitorsRanks[] = $competitor['alexa_rank'];
+			}
+
+			$out['sites'][] = array(
+				'site_name' => __d('seo_tools', 'Site #%d', $i + 1),
+				'url' => $competitor['url'],
+				'rank' => ($competitor['alexa_rank'] < 0 ? __d('seo_tools', 'n/a') : $competitor['alexa_rank'])
+
+			);
+		}
+
+		/* FACTOR-RULE */
+		$your = $yourSite['rank'];
+		$average = count($competitorsRanks) ? array_sum($competitorsRanks) / count($competitorsRanks) : -1;
+
+		if ($your < $average && 170000 < $average) {
+			$out['message'] = __d('seo_tools', "Although your web site %s appears to attract more visitors than the average of your competitors sites, the absolute number of visitors is low. This could be disadvantageous to your rankings on %s", $this->report['site_data']['url'], $this->report['config']['engine']['class']);
+			$out['class'] = 'warning';
+			$this->pushFactor('important', true);
+		} elseif (
+			$your > $average ||
+			($your > 170000 && $average < $your)
+		) {
+			$out['message'] = __d('seo_tools', 'Your web site %s does not appear to attract many visitors because your traffic trank is above #100,000 and you have less visitors than the average of your competitors. This could be disadvantageous to your rankings on %s', $this->report['site_data']['url'], $this->report['config']['engine']['class']);
+			$out['class'] = 'error';
+			$this->pushFactor('important', false);
+		} elseif ($your < 170000) {
+			$out['message'] = __d('seo_tools', 'Your web site %s appears to attract a lot of visitors. This is very good and might be beneficial to your rankings on %s', $this->report['site_data']['url'], $this->report['config']['engine']['class']);
+			$out['class'] = 'success';
+			$this->pushFactor('important', true);
+		}
+		/* FACTOR-RULE */
+
+		array_unshift($out['sites'], $yourSite);
+
+		return $out;
+	}
+	
+	private function keyword_use_in_meta_description() {
+		$criteriaWords = $this->criteriaWords($this->report['config']['criteria']);
+		$competitorsMetas = array();
+		$your_content_is_empty = false;
+
+		if (isset($this->report['site_data']['meta_tags']['description']) && !empty($this->report['site_data']['meta_tags']['description'])) {
+			$your_content = $this->emphasize_keywords($this->report['site_data']['meta_tags']['description'], $criteriaWords);
+		} else {
+			$your_content = __d('seo_tools', '[No content was found]');
+			$your_content_is_empty = true;
+		}
+
+		$out = array(
+			'their_content' => array(),
+			'your_content' => $your_content
+		);
+
+		foreach ($this->report['competitors_data'] as $cData) {
+			if (isset($cData['meta_tags']['description']) && !empty($cData['meta_tags']['description'])) {
+				$out['their_content'][] = $this->emphasize_keywords($cData['meta_tags']['description'], $criteriaWords);
+				$competitorsMetas[] = $cData['meta_tags']['description'];
+			} else {
+				$out['their_content'][] = __d('seo_tools', '[No content was found]');
+			}
+		}
+
+		$out['keywords_stats'] = $this->keywordsStats($criteriaWords, ($your_content_is_empty ? '' : $this->report['site_data']['meta_tags']['description']), $competitorsMetas);
+
+		foreach ($out['keywords_stats'] as $keyword => $info) {
+			foreach ($info as $type => $stats) {
+				/* FACTOR-RULE */
+				if ($stats['min'] == 0 && $stats['max'] > 0 && $stats['site'] == 0) {
+					$class = 'error';
+					$this->pushFactor('essential', false); // failed
+				} elseif ($stats['avg'] == 0 && $stats['site'] == 0) {
+					$class = 'warning';
+					$this->pushFactor('essential', true); // passed
+				} elseif ($stats['site'] >= $stats['min'] && $stats['max'] >= $stats['site']) { // between ranges -> OK
+					$class = 'success';
+					$this->pushFactor('essential', true); // passed
+				} else {
+					$class = 'warning';
+					$this->pushFactor('essential', false); //failed
+				}
+
+				$out['keywords_stats'][$keyword][$type]['class'] = $class;
+				/* FACTOR-RULE */
+			}
+		}
+
+		return $out;
+	}
+
+	private function ageFormat($data) {
+		if (!isset($data['years']) || !isset($data['days'])) {
+			return array('n/a', 0);
+        }
+
+		$stamp = ($data['years'] * 31556926) + ($data['days'] * 86400);
+		$human = __d('seo_tools', '%s years, %s days. (%s)', $data['years'], $data['days'], date(__d('seo_tools', 'Y-m-d'), strtotime(date('Y-m-d')) - $stamp));
+
+		return array($human, $stamp);	
+	}
+
+	private function str2int($data) {
+		if (is_array($data)) {
+			foreach($data as &$rank) { 
+                $rank = (int)str_replace(array(',', '.'), '', $rank);
+            }
+
+			return $data;
+		}
+
+		$data = (int)str_replace(array(',', '.'), '', $data);
+
+		return $data;
+	}
+
+/**
+ * Split criteria into words.
+ * Example:
+ *
+ *     criteriaChunk('mi cool criteria');
+ *     // returns: array('mi', 'cool', 'criteria', 'mi cool criteria');
+ *
+ */
+	private function criteriaWords($criteria) {
+		$words = explode(' ', preg_replace('/\s{2,}/', ' ', trim($criteria)));
+
+		foreach ($words as $i => $word) {
+			if (strlen($word) <= 2) {
+				unset($words[$i]);
+			}
+		}
+
+		$words[] = $criteria;
+
+		return $words;
+	}
+
+/**
+ * Registers a new factor as failed/passed.
+ *
+ */
+	private function pushFactor($type, $status) {
+		if ($status) {
+			$this->report['factors'][$type][0]++;
+		} else {
+			$this->report['factors'][$type][1]++;
+		}
+	}
+
+	private function keywordsStats($keywords, $siteContent = '', $competitors = array()) {
+		$out = array();
+
+		foreach ($keywords as $kw) {
+			$quantity = $density = $position = array();
+
+			foreach ($competitors as $competitorContent) {
+				$quantity[] = $this->word_occurr($competitorContent, $kw);
+				$density[] = $this->word_density($competitorContent, $kw);
+				$position[] = $this->word_position($competitorContent, $kw);
+			}
+
+			$out[$kw] = array(
+				'quantity' => array(
+					'min' => min($quantity), // min of competitors
+					'max' => max($quantity), // max of competitors
+					'avg' => (array_sum($quantity) / count($quantity)), // average value from competitors
+					'site' => $this->word_occurr($siteContent, $kw), // your's site value
+					'class' => '' // success, warning, error
+				),
+				'density' => array(
+					'min' => min($density),
+					'max' => max($density),
+					'avg' => (array_sum($density) / count($density)),
+					'site' => $this->word_density($siteContent, $kw),
+					'class' => '' // success, warning, error
+				),
+				'position' => array(
+					'min' => min($position),
+					'max' => max($position),
+					'avg' => (array_sum($position) / count($position)),
+					'site' => $this->word_position($siteContent, $kw),
+					'class' => '' // success, warning, error
+				)
+			);
+		}
+
+		return $out;
+	}
+
+	private function emphasize_keywords($str, $words = array(), $type = 'bold') {
+		switch($type) {
+			case 'highlight': 
+                default: 
+                    $var_style = 'background: #CEDAEB;'; 
+            break;
+            
+			case 'bold': 
+                $var_style = 'font-weight: bold;'; 
+            break;
+            
+			case 'underline': 
+                $var_style = 'text-decoration: underline;'; 
+            break;
+		}
+
+		if (is_array($words)) {
+			foreach($words as $word) {
+				if(strlen($word) <= 1) {
+					continue;
+                }
+                
+				if(!empty($word)) {
+					$word= strip_tags($word);
+					$word= preg_quote($word, '/');
+
+					$str = preg_replace("/({$word})/i", "<span style='".$var_style."'>\\1</span>", $str);
+				}
+			}
+
+			return $str;
+		}
+
+		return false;
+	}	
 
 	private function __getToken() {
 		$token = false;
@@ -410,27 +979,27 @@ class CompetitorCompareComponent extends Component {
 
         if (isset($Controller->data['Tool']['exclude_words']) && !empty($Controller->data['Tool']['exclude_words'])) {
             $ew = explode("\n", $Controller->data['Tool']['exclude_words']);
-            $page = $this->__exclude_words($page, $ew);
+            $page = $this->exclude_words($page, $ew);
         }
 
 		return $page;
 	}     
     
-	public function word_position($source, $word) {
-		$source = $this->__exclude_words($source);
+	private function word_position($source, $word) {
+		$source = $this->exclude_words($source);
 		$strpos = strpos(strtolower($source), strtolower($word));
 
-		return ($strpos === false ? 0 : $strpos+1);
+		return $strpos === false ? 0 : $strpos + 1;
 	}
 
-	public function words_count($source) {
+	private function words_count($source) {
 		$source = $this->__string2keywords($source);
 		$words  = str_word_count($source, 1);
 
 		return count($words);
 	}
 
-	public function word_occurr($source, $word) {
+	private function word_occurr($source, $word) {
 		$source = $this->__string2keywords($source);
 		$word = strtolower($word);
 		$words = str_word_count($source, 1);
@@ -456,14 +1025,19 @@ class CompetitorCompareComponent extends Component {
 		return $occurr;
 	}
 
-	public function word_density($source, $word) {
+	private function word_density($source, $word) {
 		$occurr = $this->word_occurr($source, $word);
 		$words = str_word_count($source, 1);
-        
-		return number_format(($occurr * 100) / count($words), 2);
+		$count = count($words);
+
+		if (!$count) {
+			return 0;
+		}
+
+		return number_format(($occurr * 100) / $count, 2);
 	}
 
-	public function getSnippet($keywords, $engine) {
+	private function getSnippet($keywords, $engine) {
         $className = Inflector::camelize($engine['class']);
         $class = dirname(__FILE__) . DS  . 'SearchEngine' . DS . $className . '.php';
 
@@ -479,7 +1053,7 @@ class CompetitorCompareComponent extends Component {
         return array();
 	}
 
-	public function parseTag($tag, $haystack, $all = false) {
+	private function parseTag($tag, $haystack, $all = false) {
 		$pattern = '/\<' . $tag . '(.*)\>(.*)\<\/' . $tag . '\>/iUs';
 
         if ($all) {
@@ -493,7 +1067,7 @@ class CompetitorCompareComponent extends Component {
 		return $matches;
 	}  
 
-	private function __exclude_words($str, $exclude_words = array()) {
+	private function exclude_words($str, $exclude_words = array()) {
 		foreach ($exclude_words as $filter_word) {
 			$str = preg_replace(array('/[ ]{2,}/', '/\b' . strtolower($filter_word) . '\b/i'), array(' ', ''), $str);
 		}

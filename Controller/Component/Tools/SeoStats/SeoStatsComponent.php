@@ -126,8 +126,8 @@ class SeoStatsComponent extends Component {
 
         preg_match('/TEXT="(.*?)"/i', $data, $p);
 
-        $value = isset($p[1]) ? number_format($this->BaseTools->toInt($p[1])) : 0;
-
+        $value = isset($p[1]) ? number_format($this->BaseTools->toInt($p[1])) : -1;
+// -1, means not found
         return $value;
 	}    
 

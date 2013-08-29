@@ -30,6 +30,11 @@
 				<?php echo __d('seo_tools', 'Analyzing competitors.'); ?>
 			</p>
 
+			<p class="task-analize_site">
+				<span class="label"><?php echo __d('seo_tools', 'Please Wait...'); ?></span>
+				<?php echo __d('seo_tools', 'Analyzing your web page.'); ?>
+			</p>
+
 			<p class="task-report">
 				<span class="label"><?php echo __d('seo_tools', 'Please Wait...'); ?></span>
 				<?php echo __d('seo_tools', 'Generating report.'); ?>
@@ -65,36 +70,246 @@
 					'label' => __d('seo_tools', 'Search Engine'),
 					'options' => array(
 						'Google' => array(
-							'Google|google.com' => 'Google.com',
-							'Google|google.es' => 'Google.es',
-							'Google|google.as' => 'Google.as',
-							'Google|google.at' => 'Google.at',
-							'Google|google.be' => 'Google.be',
-							'Google|google.ca' => 'Google.ca',
-							'Google|google.ch' => 'Google.ch',
-							'Google|google.cl' => 'Google.cl',
-							'Google|google.co.cr' => 'Google.co.cr',
-							'Google|google.co.il' => 'Google.co.il',
-							'Google|google.con.in' => 'Google.co.in',
-							'Google|google.co.jp' => 'Google.co.jp',
-							'Google|google.co.kr' => 'Google.co.kr',
-							'Google|google.co.nz' => 'Google.co.nz',
-							'Google|google.co.th' => 'Google.co.th',
-							'Google|google.co.uk' => 'Google.co.uk',
-							'Google|google.co.ve' => 'Google.co.ve',
-							'Google|google.co.za' => 'Google.co.za',
-							'Google|google.com.ar' => 'Google.com.ar',
-							'Google|google.com.au' => 'Google.com.au',
-							'Google|google.com.br' => 'Google.com.br',
-							'Google|google.com.co' => 'Google.com.co',
-							'Google|google.com.gr' => 'Google.com.gr',
-							'Google|google.com.hk' => 'Google.com.hk',
-							'Google|google.com.mx' => 'Google.com.mx',
-							'Google|google.com.my' => 'Google.com.my',
-							'Google|google.com.pe' => 'Google.com.pe',
-							'Google|google.com.ph' => 'Google.com.ph',
-							'Google|google.com.sg' => 'Google.com.sg',
-							'Google|google.com.tr' => 'Google.com.tr'
+							'Google|www.google.com.np' => 'Google ﻿नेपाल',
+							'Google|www.google.dz' => 'Google Algérie',
+							'Google|www.google.as' => 'Google American Samoa',
+							'Google|www.google.ad' => 'Google Andorra',
+							'Google|www.google.it.ao' => 'Google Angola',
+							'Google|www.google.com.ai' => 'Google Anguilla',
+							'Google|www.google.com.ag' => 'Google Antigua and Barbuda',
+							'Google|www.google.com.ar' => 'Google Argentina',
+							'Google|www.google.ac' => 'Google Ascension Island',
+							'Google|www.google.com.au' => 'Google Australia',
+							'Google|www.google.az' => 'Google Azərbaycan',
+							'Google|www.google.be' => 'Google België',
+							'Google|www.google.com.bz' => 'Google Belize',
+							'Google|www.google.bj' => 'Google Bénin',
+							'Google|www.google.bt' => 'Google Bhutan',
+							'Google|www.google.com.bo' => 'Google Bolivia',
+							'Google|www.google.ba' => 'Google Bosna i Hercegovina',
+							'Google|www.google.co.bw' => 'Google Botswana',
+							'Google|www.google.com.br' => 'Google Brasil',
+							'Google|www.google.vg' => 'Google British Virgin Islands',
+							'Google|www.google.com.bn' => 'Google Brunei',
+							'Google|www.google.bf' => 'Google Burkina Faso',
+							'Google|www.google.bi' => 'Google Burundi',
+							'Google|www.google.cv' => 'Google Cabo Verde',
+							'Google|www.google.cm' => 'Google Cameroun',
+							'Google|www.google.ca' => 'Google Canada',
+							'Google|www.google.cat' => 'Google Català',
+							'Google|www.google.cf' => 'Google Centrafrique',
+							'Google|www.google.cz' => 'Google Česká republika',
+							'Google|www.google.cl' => 'Google Chile',
+							'Google|www.google.com.co' => 'Google Colombia',
+							'Google|www.google.co.ck' => 'Google Cook Islands',
+							'Google|www.google.co.cr' => 'Google Costa Rica',
+							'Google|www.google.ci' => 'Google Cote D’Ivoire',
+							'Google|www.google.me' => 'Google Crna Gora',
+							'Google|www.google.com.cu' => 'Google Cuba',
+							'Google|www.google.dk' => 'Google Danmark',
+							'Google|www.google.de' => 'Google Deutschland',
+							'Google|www.google.dj' => 'Google Djibouti',
+							'Google|www.google.dm' => 'Google Dominica',
+							'Google|www.google.com.ec' => 'Google Ecuador',
+							'Google|www.google.ee' => 'Google Eesti',
+							'Google|www.google.com.sv' => 'Google El Salvador',
+							'Google|www.google.es' => 'Google España',
+							'Google|www.google.com.fj' => 'Google Fiji',
+							'Google|www.google.fr' => 'Google France',
+							'Google|www.google.ga' => 'Google Gabon',
+							'Google|www.google.com.gh' => 'Google Ghana',
+							'Google|www.google.com.gi' => 'Google Gibraltar',
+							'Google|www.google.gl' => 'Google Grønlands',
+							'Google|www.google.gp' => 'Google Guadeloupe',
+							'Google|www.google.com.gt' => 'Google Guatemala',
+							'Google|www.google.gg' => 'Google Guernsey',
+							'Google|www.google.gy' => 'Google Guyana',
+							'Google|www.google.ht' => 'Google Haïti',
+							'Google|www.google.hn' => 'Google Honduras',
+							'Google|www.google.hr' => 'Google Hrvatska',
+							'Google|www.google.co.in' => 'Google India',
+							'Google|www.google.co.id' => 'Google Indonesia',
+							'Google|www.google.ie' => 'Google Ireland',
+							'Google|www.google.is' => 'Google Ísland',
+							'Google|www.google.im' => 'Google Isle of Man',
+							'Google|www.google.it' => 'Google Italia',
+							'Google|www.google.com.jm' => 'Google Jamaica',
+							'Google|www.google.je' => 'Google Jersey',
+							'Google|www.google.co.ke' => 'Google Kenya',
+							'Google|www.google.ki' => 'Google Kiribati',
+							'Google|www.google.lv' => 'Google Latvija',
+							'Google|www.google.co.ls' => 'Google Lesotho',
+							'Google|www.google.li' => 'Google Liechtenstein',
+							'Google|www.google.lt' => 'Google Lietuvos',
+							'Google|www.google.lu' => 'Google Luxemburg',
+							'Google|www.google.mg' => 'Google Madagasikara',
+							'Google|www.google.hu' => 'Google Magyarország',
+							'Google|www.google.mw' => 'Google Malawi',
+							'Google|www.google.com.my' => 'Google Malaysia',
+							'Google|www.google.mv' => 'Google Maldives',
+							'Google|www.google.ml' => 'Google Mali',
+							'Google|www.google.com.mt' => 'Google Malta',
+							'Google|www.google.co.ma' => 'Google Maroc',
+							'Google|www.google.mu' => 'Google Mauritius',
+							'Google|www.google.com.mx' => 'Google México',
+							'Google|www.google.fm' => 'Google Micronesia',
+							'Google|www.google.co.mz' => 'Google Moçambique',
+							'Google|www.google.md' => 'Google Moldova',
+							'Google|www.google.ms' => 'Google Montserrat',
+							'Google|www.google.com.na' => 'Google Namibia',
+							'Google|www.google.nr' => 'Google Nauru',
+							'Google|www.google.nl' => 'Google Nederland',
+							'Google|www.google.co.nz' => 'Google New Zealand',
+							'Google|www.google.com.ni' => 'Google Nicaragua',
+							'Google|www.google.com.ng' => 'Google Nigeria',
+							'Google|www.google.ne' => 'Google Nijar',
+							'Google|www.google.nu' => 'Google Niue',
+							'Google|www.google.com.nf' => 'Google Norfolk Island',
+							'Google|www.google.no' => 'Google Norge',
+							'Google|www.google.co.uz' => 'Google O’zbekiston',
+							'Google|www.google.at' => 'Google Österreich',
+							'Google|www.google.com.pk' => 'Google Pakistan',
+							'Google|www.google.com.pa' => 'Google Panamá',
+							'Google|www.google.com.pg' => 'Google Papua New Guinea',
+							'Google|www.google.com.py' => 'Google Paraguay',
+							'Google|www.google.com.pe' => 'Google Perú',
+							'Google|www.google.com.ph' => 'Google Pilipinas',
+							'Google|www.google.pn' => 'Google Pitcairn Islands',
+							'Google|www.google.pl' => 'Google Polska',
+							'Google|www.google.pt' => 'Google Portugal',
+							'Google|www.google.com.pr' => 'Google Puerto Rico',
+							'Google|www.google.com.do' => 'Google República Dominicana',
+							'Google|www.google.cd' => 'Google République démocratique du Congo',
+							'Google|www.google.cg' => 'Google République du Congo',
+							'Google|www.google.ro' => 'Google România',
+							'Google|www.google.rw' => 'Google Rwanda',
+							'Google|www.google.sh' => 'Google Saint Helena',
+							'Google|www.google.com.vc' => 'Google Saint Vincent and the Grenadines',
+							'Google|www.google.com.sl' => 'Google Salone',
+							'Google|www.google.ws' => 'Google Samoa',
+							'Google|www.google.sm' => 'Google San Marino',
+							'Google|www.google.st' => 'Google São Tomé e Príncipe',
+							'Google|www.google.ch' => 'Google Schweiz',
+							'Google|www.google.sn' => 'Google Sénégal',
+							'Google|www.google.sc' => 'Google Seychelles',
+							'Google|www.google.al' => 'Google Shqipëri',
+							'Google|www.google.com.sg' => 'Google Singapore',
+							'Google|www.google.si' => 'Google Slovenija',
+							'Google|www.google.sk' => 'Google Slovensko',
+							'Google|www.google.com.sb' => 'Google Solomon Islands',
+							'Google|www.google.so' => 'Google Soomaaliya',
+							'Google|www.google.co.za' => 'Google South Africa',
+							'Google|www.google.lk' => 'Google Sri Lanka',
+							'Google|www.google.fi' => 'Google Suomi',
+							'Google|www.google.se' => 'Google Sverige',
+							'Google|www.google.com.tj' => 'Google Tajikistan',
+							'Google|www.google.co.tz' => 'Google Tanzania',
+							'Google|www.google.bs' => 'Google The Bahamas',
+							'Google|www.google.gm' => 'Google The Gambia',
+							'Google|www.google.tl' => 'Google Timor-Leste',
+							'Google|www.google.tg' => 'Google Togo',
+							'Google|www.google.tk' => 'Google Tokelau',
+							'Google|www.google.to' => 'Google Tonga',
+							'Google|www.google.tt' => 'Google Trinidad and Tobago',
+							'Google|www.google.com.tr' => 'Google Türkiye',
+							'Google|www.google.tm' => 'Google Türkmenistan',
+							'Google|www.google.co.vi' => 'Google U.S. Virgin Islands',
+							'Google|www.google.co.ug' => 'Google Uganda',
+							'Google|www.google.co.uk' => 'Google United Kingdom',
+							'Google|www.google.com' => 'Google United States',
+							'Google|www.google.com.uy' => 'Google Uruguay',
+							'Google|www.google.vu' => 'Google Vanuatu',
+							'Google|www.google.co.ve' => 'Google Venezuela',
+							'Google|www.google.com.vn' => 'Google Việt Nam',
+							'Google|www.google.co.zm' => 'Google Zambia',
+							'Google|www.google.co.zw' => 'Google Zimbabwe',
+							'Google|www.google.gr' => 'Google Ελλάς',
+							'Google|www.google.com.cy' => 'Google Κύπρος / Kıbrıs',
+							'Google|www.google.com.by' => 'Google Беларусь',
+							'Google|www.google.bg' => 'Google България',
+							'Google|www.google.kg' => 'Google Кыргызстан',
+							'Google|www.google.kz' => 'Google Қазақстан',
+							'Google|www.google.mk' => 'Google Македонија',
+							'Google|www.google.mn' => 'Google Монгол улс',
+							'Google|www.google.ru' => 'Google Россия',
+							'Google|www.google.rs' => 'Google Србија',
+							'Google|www.google.com.ua' => 'Google Україна',
+							'Google|www.google.am' => 'Google Հայաստան',
+							'Google|www.google.ge' => 'Google საქართველო',
+							'Google|www.google.co.il' => 'Google ישראל',
+							'Google|www.google.com.af' => 'Google افغانستان',
+							'Google|www.google.jo' => 'Google الأردن',
+							'Google|www.google.ae' => 'Google الامارات العربية الم',
+							'Google|www.google.com.bh' => 'Google البحرين',
+							'Google|www.google.com.sa' => 'Google السعودية',
+							'Google|www.google.iq' => 'Google العراق',
+							'Google|www.google.com.kw' => 'Google ‫الكويت',
+							'Google|www.google.td' => 'Google تشاد',
+							'Google|www.google.com.tn' => 'Google تونس',
+							'Google|www.google.com.om' => 'Google عُمان',
+							'Google|www.google.ps' => 'Google فلسطين',
+							'Google|www.google.com.qa' => 'Google قطر',
+							'Google|www.google.com.lb' => 'Google لبنان',
+							'Google|www.google.com.ly' => 'Google ليبيــا',
+							'Google|www.google.com.eg' => 'Google مصر',
+							'Google|www.google.com.bd' => 'Google বাংলাদেশ',
+							'Google|www.google.co.th' => 'Google ประเทศไทย',
+							'Google|www.google.la' => 'Google ລາວ',
+							'Google|www.google.com.kh' => 'Google ព្រះរាជាណាចក្រកម្ពុជា',
+							'Google|www.google.com.et' => 'Google ኢትዮጵያ',
+							'Google|www.google.co.kr' => 'Google 한국',
+							'Google|www.google.com.tw' => 'Google 台灣',
+							'Google|www.google.co.jp' => 'Google 日本',
+							'Google|www.google.com.hk' => 'Google 香港'
+						),
+						// http://antezeta.com/news/yahoo-search-domains
+						'Yahoo' => array(
+							'Yahoo|ar.search.yahoo.com|p' => 'Yahoo Argentina',
+							'Yahoo|at.search.yahoo.com|p' => 'Yahoo Österreich',
+							'Yahoo|au.search.yahoo.com|p' => 'Yahoo Australia',
+							'Yahoo|br.search.yahoo.com|p' => 'Yahoo Brasil',
+							'Yahoo|ca.search.yahoo.com|p' => 'Yahoo Canada',
+							'Yahoo|qc.search.yahoo.com|p' => 'Yahoo Québec',
+							'Yahoo|ch.search.yahoo.com|p' => 'Yahoo Schweiz',
+							'Yahoo|chfr.search.yahoo.com|p' => 'Yahoo Suisse',
+							'Yahoo|chit.search.yahoo.com|p' => 'Yahoo Svizzera',
+							'Yahoo|cl.search.yahoo.com|p' => 'Yahoo Chile',
+							'Yahoo|cn.search.yahoo.com|q' => 'Yahoo 中国 (cn.search.yahoo.com)',
+							'Yahoo|yahoo.cn|q' => 'Yahoo 中国 (yahoo.cn)',
+							'Yahoo|co.search.yahoo.com|p' => 'Yahoo Columbia',
+							'Yahoo|espanol.search.yahoo.com|p' => 'Yahoo Estados Unidos',
+							'Yahoo|search.yahoo.com|p' => 'Yahoo United States',
+							'Yahoo|de.search.yahoo.com|p' => 'Yahoo Deutschland',
+							'Yahoo|dk.search.yahoo.com|p' => 'Yahoo Danmark',
+							'Yahoo|es.search.yahoo.com|p' => 'Yahoo España',
+							'Yahoo|fi.search.yahoo.com|p' => 'Yahoo Suomi',
+							'Yahoo|fr.search.yahoo.com|p' => 'Yahoo France',
+							'Yahoo|gr.search.yahoo.com|p' => 'Yahoo Ελλάς',
+							'Yahoo|hk.search.yahoo.com|p' => 'Yahoo 香港',
+							'Yahoo|id.search.yahoo.com|p' => 'Yahoo Indonesia',
+							'Yahoo|in.search.yahoo.com|p' => 'Yahoo India',
+							'Yahoo|it.search.yahoo.com|p' => 'Yahoo Italia',
+							'Yahoo|maktoob.search.yahoo.com|p' => 'Yahoo الأردن',
+							'Yahoo|search.yahoo.co.jp|p' => 'Yahoo 日本',
+							'Yahoo|kr.search.yahoo.com|p' => 'Yahoo Korea',
+							'Yahoo|mx.search.yahoo.com|p' => 'Yahoo México',
+							'Yahoo|malaysia.search.yahoo.com|p' => 'Yahoo Malaysia',
+							'Yahoo|nl.search.yahoo.com|p' => 'Yahoo Nederland',
+							'Yahoo|no.search.yahoo.com|p' => 'Yahoo Norge',
+							'Yahoo|nz.search.yahoo.com|p' => 'Yahoo New Zealand',
+							'Yahoo|pe.search.yahoo.com|p' => 'Yahoo Perú',
+							'Yahoo|ph.search.yahoo.com|p' => 'Yahoo Pilipinas',
+							'Yahoo|pl.search.yahoo.com|p' => 'Yahoo Polska',
+							'Yahoo|ru.search.yahoo.com|p' => 'Yahoo Россия',
+							'Yahoo|se.search.yahoo.com|p' => 'Yahoo Sverige',
+							'Yahoo|sg.search.yahoo.com|p' => 'Yahoo Singapore',
+							'Yahoo|th.search.yahoo.com|p' => 'Yahoo ประเทศไทย',
+							'Yahoo|tr.search.yahoo.com|p' => 'Yahoo Türkiye',
+							'Yahoo|tw.search.yahoo.com|p' => 'Yahoo 台灣',
+							'Yahoo|uk.search.yahoo.com|p' => 'Yahoo UK & Ireland',
+							'Yahoo|ve.search.yahoo.com|p' => 'Yahoo Venezuela',
+							'Yahoo|vn.search.yahoo.com|p' => 'Yahoo Việt Nam',
+							'Yahoo|za.search.yahoo.com|p' => 'Yahoo South Africa'
 						)
 					)
 				)
@@ -104,21 +319,16 @@
 	<?php echo $this->Form->end(__d('seo_tools', 'Continue')); ?>
 <?php else: ?>
 	<div class="report" id="top10_report">
-		<?php 
-			$keywords = Set::extract('Analysis.title', $results); 
-			$keywords = array_keys($keywords); 
-		?>
-
 		<fieldset>
 			<legend id="report_overview"><?php echo __d('seo_tools', 'Report overview'); ?></legend>
-			<em><?php echo __d('seo_tools', 'This report helps you to optimize the web page "<b>http://%s/</b>" for a high ranking on <b>%s</b> for the search term "<b>%s</b>".', $this->data['Tool']['url'], $this->data['Tool']['engine'], $this->data['Tool']['criteria']); ?></em>
+			<em><?php echo __d('seo_tools', 'This report helps you to optimize the web page "<b>%s</b>" for a high ranking on <b>%s</b> for the search term "<b>%s</b>".', $this->data['Tool']['url'], $this->data['Tool']['engine']['class'], $this->data['Tool']['criteria']); ?></em>
 
 			<!-- your site overview -->
 			<div class="web-snippet">
-				<img src="http://immediatenet.com/t/m?Size=1024x768&URL=<?php echo $this->data['Tool']['url']; ?>" class="web-tn" />
-				<a href="http://<?php $this->data['Tool']['url']; ?>" target="_blank" class="title"><?php echo $results['Data']['Site']['title']; ?></a><br />
-				<a href="http://<?php $this->data['Tool']['url']; ?>" target="_blank" class="url"><?php echo String::truncate("http://{$this->data['Tool']['url']}", 80); ?></a>
-				<p class="description"><?php echo isset($results['Data']['Site']['tags']['description']) ? $results['Data']['Site']['tags']['description'] : __d('seo_tools', '[No meta description available.]'); ?></p>
+				<img src="http://immediatenet.com/t/l?Size=1280x768&URL=<?php echo $this->data['Tool']['url']; ?>" class="web-tn" />
+				<a href="<?php echo $results['site_data']['url']; ?>" target="_blank" class="title"><?php echo $results['site_data']['title']; ?></a><br />
+				<a href="<?php echo $results['site_data']['url']; ?>" target="_blank" class="url"><?php echo String::truncate("http://{$results['site_data']['url']}", 80); ?></a>
+				<p class="description"><?php echo isset($results['site_data']['meta_tags']['description']) ? $results['site_data']['meta_tags']['description'] : __d('seo_tools', '[No meta description available.]'); ?></p>
 			</div>
 
 			<p class="versus">
@@ -131,17 +341,19 @@
 
 			<!-- competitors overview -->
 			<h2><?php __d('seo_tools', 'Your competitors for the search term "%s" on %s', $this->data['Tool']['criteria'], $this->data['Tool']['engine']); ?></h2>
-			<?php foreach($results['Data']['Competitors'] as $i => $competitor): ?>
+			<?php foreach($results['competitors_data'] as $i => $competitor): ?>
 				<div class="web-snippet">
 					<span class="rank">#<?php echo $i + 1; ?></span>
-					<img src="http://immediatenet.com/t/m?Size=1024x768&URL=<?php echo $competitor['url']; ?>" class="web-tn" />
+					<img src="http://immediatenet.com/t/l?Size=1280x768&URL=<?php echo $competitor['url']; ?>" class="web-tn" />
 					<a href="<?php echo $competitor['url']; ?>" target="_blank" class="title"><?php echo $competitor['title']; ?></a><br />
 					<a href="<?php echo $competitor['url']; ?>" target="_blank" class="url"><?php echo String::truncate($competitor['url'], 80); ?></a>
-					<p class="description"><?php echo isset($competitor['tags']['description']) ? $competitor['tags']['description'] : __d('seo_tools', '[No meta description available.]'); ?></p>
+					<p class="description"><?php echo isset($competitor['meta_tags']['description']) ? $competitor['meta_tags']['description'] : __d('seo_tools', '[No meta description available.]'); ?></p>
 				</div>
 			<?php endforeach; ?>
 
-			<div id="chart"><!-- RESULTS --></div>
+			<div id="chart">
+				<?php echo $this->element('CompetitorCompare/report_charts'); ?>
+			</div>
 
 			<!-- table of contents -->
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -180,259 +392,19 @@
 			</table>
 		</fieldset>
 
-		<?php 
-			$titles = array(
-				'title' => array(
-					'title' => __d('seo_tools', 'Keyword use in document title'), 
-					'importance' => __d('seo_tools', 'Essential'), 
-					'info' => __d('seo_tools', "The document title is the text within the &lt;title&gt;...&lt;/title&gt; tags in the HTML code of your web page. This chapter tries to find out how to use the search term '%s' in the document title and if it's important for %s", $this->data['Tool']['url'],    $this->data['Tool']['engine'])
-				),
-				'body' => array(
-					'title' => __d('seo_tools', 'Keyword use in body text'), 
-					'importance' => __d('seo_tools', 'Essential'), 
-					'info' => __d('seo_tools', 'The body text is the text on your web page that can be seen by people in their web browsers. It does not include HTML commands, comments, etc. The more visible text there is on a web page, the more a search engine can index. The calculations include spaces and punctuation marks')
-				),
-				'backlinks' => array(
-					'title' => __d('seo_tools', 'Global link popularity of web site'), 
-					'importance' => __d('seo_tools', 'Essential'), 
-					'info' => __d('seo_tools', 'The global link popularity measures how many web pages link to your site. The number of web pages linking to your site is not as important as the quality of the web pages that link to your site')
-				),
-				'h1' => array(
-					'title' => __d('seo_tools', 'Keyword use in H1 headline texts'), 
-					'importance' => __d('seo_tools', 'Very Important'), 
-					'info' => __d('seo_tools', 'H1 headline texts are the texts that are written between the &lt;h1&gt;...&lt;/h1&gt; tags in the HTML code of a web page. Some search engines give extra relevance to search terms that appear in the headline texts')
-				),
-				'age' => array(
-					'title' => __d('seo_tools', 'Age of web site'), 
-					'importance' => __d('seo_tools', 'Very Important'), 
-					'info' => __d('seo_tools', 'Spam sites often come and go quickly. For this reason, search engines tend to trust a web site that has been around for a long time over one that is brand new. The age of the domain is seen as a sign of trustworthiness because it cannot be faked. The data is provided by Alexa.com')
-				),
-				'alexa_rank' => array(
-					'title' => __d('seo_tools', 'Number of visitors to the site'), 
-					'importance' => __d('seo_tools', 'Important'), 
-					'info' => __d('seo_tools', 'Search engines might look at web site usage data, such as the number of visitors to your site, to determine if your site is reputable and contains popular contents. The Alexa.com traffic rank is based on three months of aggregated traffic data from millions of Alexa Toolbar users and is a combined measure of page views and number of site visitors')
-				),
-				'url' => array(
-					'title' => __d('seo_tools', 'Keyword use in page URL'), 
-					'importance' => __d('seo_tools', 'Important'), 
-					'info' => __d('seo_tools', 'The page URL is the part after the domain name in the web page address. This chapter tries to find out if Google.es  (la Web) gives extra relevance to search terms within the page URL. Separate your search terms in the page URL with slashes, dashes or underscores')
-				),
-				'tags/description' => array(
-					'title' => __d('seo_tools', 'Keyword use in meta description'), 
-					'importance' => __d('seo_tools', 'Important'), 
-					'info' => __d('seo_tools', 'The Meta Description tag allows you to describe your web page. This chapter tries to find out if %s takes the Meta Description tag into account. Some search engines display the text to the user in the search results.<br/> Example: &lt;meta name="description" content= "This sentence describes the contents of your web site."&gt;<br/> Even if the Meta Description tag might not be important for ranking purposes, you should use the Meta Description tag to make sure that your web site is displayed with an attractive description in the search results', $this->data['Tool']['engine'])
-				)
-			);
-		?>
-		<?php foreach ($results['Analysis'] as $aspect => $data) { ?>
-		<fieldset>
-			<legend id="aspect_<?php echo $aspect; ?>">
-				<?php echo $titles[$aspect]['title']; ?><br/>
-				<em><?php echo $titles[$aspect]['importance']; ?></em>
-			</legend>
-			<em><?php echo $titles[$aspect]['info']; ?></em>
-
-			<?php 
-				if (in_array($aspect, array('backlinks', 'alexa_rank', 'age'))) {
-					echo $this->element('SeoTools.CompetitorCompare/' . $aspect, compact('aspect', 'titles', 'results', 'data'));
-				} else {
-					if ($aspect != 'h1') {
-						// body
-						echo $this->element('SeoTools.CompetitorCompare/h1', compact('aspect', 'titles', 'results', 'data', 'keywords')); 
-					}
-			?>
-			<table width="100%" border="0" cellspacing="0" cellpadding="0">
-				<thead>
-					<tr>
-						<td align="left" valign="top" colspan="3"><b><?php echo __d('seo_tools', 'Your Content'); ?></b></td>
-					</tr>
-				</thead>
-
-				<?php if ($aspect != 'h1') { ?>
-					<tbody>
-						<tr>
-							<td align="left" valign="top" colspan="3">
-							<?php 
-								$your_content = Set::extract("/{$aspect}", $results['Data']['Site']);
-
-								echo !empty($your_content[0]) ? $this->CC->emphasize_keywords($your_content[0], $keywords) : __d('seo_tools', 'Content not found');
-							?>
-							</td>
-						</tr>
-						<?php if ($aspect == 'body') {?>
-						<tr>
-							<td width="21%" align="left" valign="top">&nbsp;</td>
-							<td width="46%" align="left" valign="top"><b><?php echo __d('seo_tools', 'Competitors'); ?></b></td>
-							<td width="33%" align="left" valign="top"><b><?php echo __d('seo_tools', 'Your Site'); ?></b></td>
-						</tr>
-						<?php 
-							$competitor_wc = Hash::extract($results, 'Analysis.body.{s}.competitors.words_count');
-							$site_wc = Set::extract($results, 'Analysis.body.{s}.site.words_count');
-						?>
-						<tr class="advice_color_<?php echo $this->CC->advice_color($competitor_wc, $site_wc, $aspect); ?>">
-							<td align="left" valign="top"><?php echo __d('seo_tools', 'Number of words'); ?></td>
-							<td align="left" valign="top"><?php echo $this->CC->competitor_average($competitor_wc); ?></td>
-							<td align="left" valign="top"><?php echo $site_wc; ?></td>
-						</tr>
-						<?php } ?>
-					</tbody>
-				<?php } else { ?>
-				<!-- H1 SITE LISTING -->
-					<tbody>
-						<tr>
-							<td width="3%" align="left" valign="top"><b><?php echo __d('seo_tools', 'No.'); ?></b></td>
-							<td width="97%" align="left" valign="top" colspan="2"><b><?php echo __d('seo_tools', 'H1 Heading Text'); ?></b></td>
-						</tr>
-
-						<?php 
-							$i = 0;
-
-							foreach ((array)$results['Data']['Site']['h1_array'] as $h1) { 
-								$i++;
-						?>
-						<tr>
-							<td align="left" valign="top"><?php echo $i; ?></td>
-							<td align="left" valign="top"><?php echo htmlentities($h1); ?></td>
-						</tr>
-						<?php } ?>
-					</tbody>
-			<?php } ?>
-			</table>
-
-			<br/><hr/><br/>
-
-			<?php foreach ($data as $keyword => $analysis) { ?>
-				<table width="100%" border="0" cellspacing="0" cellpadding="0">
-					<thead>
-						<tr>
-						  <td colspan="3" align="left" valign="top"><b><?php echo __d('seo_tools', 'Search Term'); ?>: "<?php echo $keyword; ?>"</b></td>
-						</tr>
-					</thead>
-
-					<tbody>
-						<tr>
-							<td width="21%" align="left" valign="top">&nbsp;</td>
-							<td width="40%" align="left" valign="top"><b><?php echo __d('seo_tools', 'Competitors'); ?></b></td>
-							<td width="39%" align="left" valign="top"><b><?php echo __d('seo_tools', 'Your Site'); ?></b></td>
-						</tr>
-						<tr class="advice_color_<?php echo $this->CC->advice_color($analysis['competitors']['quantity'], $analysis['site']['quantity'], $aspect); ?>">
-							<td align="left" valign="top"><?php echo __d('seo_tools', 'Quantity'); ?></td>
-							<td align="left" valign="top"><?php echo $this->CC->competitor_average($analysis['competitors']['quantity']); ?></td>
-							<td align="left" valign="top"><?php echo $analysis['site']['quantity']; ?></td>
-						</tr>
-						<tr class="advice_color_<?php echo $this->CC->advice_color($analysis['competitors']['density'], $analysis['site']['density'], $aspect); ?>">
-							<td align="left" valign="top"><?php echo __d('seo_tools', 'Density'); ?></td>
-							<td align="left" valign="top"><?php echo $this->CC->competitor_average($analysis['competitors']['density'], 'percent'); ?></td>
-							<td align="left" valign="top"><?php echo $analysis['site']['density']; ?>%</td>
-						</tr>
-						<?php if ($aspect != 'h1') { ?>
-						<tr class="advice_color_<?php echo $this->CC->advice_color($analysis['competitors']['position'], $analysis['site']['position'], $aspect); ?>">
-							<td align="left" valign="top"><?php echo __d('seo_tools', 'Position'); ?></td>
-							<td align="left" valign="top"><?php echo $this->CC->competitor_average($analysis['competitors']['position']); ?></td>
-							<td align="left" valign="top"><?php echo $analysis['site']['position']; ?></td>
-						</tr>
-						<?php } ?>
-					</tbody>
-				</table>
-			<?php } ?>
-			<?php } ?>
-		</fieldset>
-	<?php } ?>
-
-		<fieldset>
-			<legend id="aspect_other_factors"><?php echo __d('seo_tools', 'Factors that could prevent your top ranking'); ?></legend>
-			<em><?php echo __d('seo_tools', 'Some ranking factors cannot be measured because the search engines do not reveal the necessary data, or it would be extremely time-consuming to measure the data. Make sure you pay attention to the following factors because they could prevent a top ranking for <b>%s</b> on <b>%s</b>.', $this->data['Tool']['url'], $this->data['Tool']['engine']); ?></em>
-			<h1><?php echo __d('seo_tools', 'Advice'); ?></h1>
-
-			<p class="questions">
-				<b><?php echo __d('seo_tools', 'Inbound links to your web page'); ?></b><br/>
-
-				<font><?php echo __d('seo_tools', 'Are the web pages linking to your web page relevant to the search term "%s"?', $this->data['Tool']['criteria']); ?></font><br/>
-				<font><?php echo __d('seo_tools', 'How fast does your web page get new links pointing to it?'); ?></font><br/>
-				<font><?php echo __d('seo_tools', 'Do the web sites which link to your page belong to the same content category?'); ?></font><br/>
-				<font><?php echo __d('seo_tools', 'Since when do the links to your page exist?'); ?></font><br/>
-				<font><?php echo __d('seo_tools', 'Is the text surrounding the link to your page relevant to the search term "%s"?', $this->data['Tool']['criteria']); ?></font>
-			</p>
-
-			<p class="questions">
-				<b><?php echo __d('seo_tools', 'Your web page'); ?></b><br/>
-
-				<font><?php echo __d('seo_tools', 'How many important links from your other pages point to your web page?'); ?></font><br/>
-				<font><?php echo __d('seo_tools', 'Do the links on your web page point to high quality, topically-related pages?'); ?></font><br/>
-				<font><?php echo __d('seo_tools', 'How often and how many changes do you make to your web page over time? Is your content up-to-date?'); ?></font><br/>
-				<font><?php echo __d('seo_tools', 'How often and how many web pages do you add to your web site?'); ?></font><br/>
-				<font><?php echo __d('seo_tools', 'How long do your visitors spend time on your web page?'); ?></font>
-			</p>
-
-			<p class="questions">
-				<b><?php echo __d('seo_tools', 'Search engine result page'); ?></b><br/>
-
-				<font><?php echo __d('seo_tools', 'Do your competitors on the search engine result page get a manual ranking boost by %s, for example Amazon or Wikipedia?', $this->data['Tool']['engine']); ?></font><br/>
-				<font><?php echo __d('seo_tools', 'How many visitors of the search engine result pages click through to your page?'); ?></font><br/>
-				<font><?php echo __d('seo_tools', 'How often do search engine visitors search for your company name or web page URL on %s?', $this->data['Tool']['engine']); ?></font>
-			</p>
-
-			<p class="questions">
-				<b><?php echo __d('seo_tools', 'Negative ranking factors (you should be able to say "no" to all the following questions)'); ?></b><br/>
-
-				<font><?php echo __d('seo_tools', 'Is your content very similar or a duplicate of existing content?'); ?></font><br/>
-				<font><?php echo __d('seo_tools', 'Is your server often down when search engine crawlers try to access it?'); ?></font><br/>
-				<font><?php echo __d('seo_tools', 'Do you link to web sites that do not deserve a link?'); ?></font><br/>
-				<font><?php echo __d('seo_tools', 'Do you use the same title or meta tags for many web pages?'); ?></font><br/>
-				<font><?php echo __d('seo_tools', 'Do you overuse the same keyword or key phrase?'); ?></font><br/>
-				<font><?php echo __d('seo_tools', 'Do you participate in link schemes?'); ?></font><br/>
-				<font><?php echo __d('seo_tools', 'Do you actively sell links on your web page?'); ?></font><br/>
-				<font><?php echo __d('seo_tools', 'Do a majority of your inbound links come from low quality or spam sites?'); ?></font><br/>
-				<font><?php echo __d('seo_tools', 'Does your web page have any spelling or grammar mistakes?'); ?></font>
-			</p>
-		</fieldset>
-	</div>
-
-	<div id="chart_results" style="display:none;">
-		<table width="100%" border="0" cellspacing="0" cellpadding="0"><!-- chart -->
-			<thead>
-				<tr>
-					<td colspan="4" align="left" valign="top"><b><?php echo __d('seo_tools', 'Search engine ranking factors performance'); ?></b></td>
-				</tr>
-			</thead>
-
-			<tbody>
-				<tr>
-					<td width="29%" rowspan="4" align="center" valign="middle">
-						<img src="http://chart.apis.google.com/chart?cht=p3&chs=250x250&chd=t:<?php echo $this->CC->green; ?>,<?php echo $this->CC->red; ?>&chdl=<?php urlencode(__d('seo_tools', 'Passed factors')); ?>|<?php urldecode(__d('seo_tools', 'Failed factors')); ?>&chco=99CC00,EA4D5C&noCache=<?php echo rand(0,9999); ?>" width="250" height="250" />
-					</td>
-					<td width="42%" height="20" align="right"><b><?php echo __d('seo_tools', 'Ranking Factor Importance'); ?></b></td>
-					<td width="17%" height="20" align="center"><b><?php echo __d('seo_tools', 'Factors Passed'); ?></b></td>
-					<td width="12%" height="20" align="center"><b><?php echo __d('seo_tools', 'Factors Failed'); ?></b></td>
-				</tr>
-
-				<tr>
-					<td align="right" valign="middle"><?php echo __d('seo_tools', 'Essential'); ?></td>
-					<td align="center" valign="middle"><?php echo $this->CC->essential_passed; ?></td>
-					<td align="center" valign="middle"><?php echo $this->CC->essential_failed; ?></td>
-				</tr>
-
-				<tr>
-					<td align="right" valign="middle"><?php echo __d('seo_tools', 'Very Important'); ?></td>
-					<td align="center" valign="middle"><?php echo $this->CC->very_important_passed; ?></td>
-					<td align="center" valign="middle"><?php echo $this->CC->very_important_failed; ?></td>
-				</tr>
-
-				<tr>
-					<td align="right" valign="middle"><?php echo __d('seo_tools', 'Important'); ?></td>
-					<td align="center" valign="middle"><?php echo $this->CC->important_passed; ?></td>
-					<td align="center" valign="middle"><?php echo $this->CC->important_failed; ?></td>
-				</tr>
-			</tbody>
-		</table>
+		<?php echo $this->element('CompetitorCompare/keyword_use_in_document_title', array('data' => $results['keyword_use_in_document_title'])); ?>
+		<?php echo $this->element('CompetitorCompare/global_link_popularity_of_web_site', array('data' => $results['global_link_popularity_of_web_site'])); ?>
+		<?php echo $this->element('CompetitorCompare/keyword_use_in_body_text', array('data' => $results['keyword_use_in_body_text'])); ?>
+		<?php echo $this->element('CompetitorCompare/age_of_web_site', array('data' => $results['age_of_web_site'])); ?>
+		<?php echo $this->element('CompetitorCompare/keyword_use_in_h1_headline_texts', array('data' => $results['keyword_use_in_h1_headline_texts'])); ?>
+		<?php echo $this->element('CompetitorCompare/keyword_use_in_page_url', array('data' => $results['keyword_use_in_page_url'])); ?>
+		<?php echo $this->element('CompetitorCompare/number_of_visitors_to_the_site', array('data' => $results['number_of_visitors_to_the_site'])); ?>
+		<?php echo $this->element('CompetitorCompare/keyword_use_in_meta_description', array('data' => $results['keyword_use_in_meta_description'])); ?>
+		<?php echo $this->element('CompetitorCompare/factors_that_could_prevent_your_top_ranking'); ?>
 	</div>
 
 	<script>
 		$(document).ready(function () {
-			$('div#chart').html($('div#chart_results').html());
-			$('.body-text').width($('.ref-width').width());
-
-			// refresh websnaps
 			setInterval(function() { 
 				$('img.web-tn').each(function () {
 					$(this).attr('src', $(this).attr('src'));
