@@ -59,11 +59,6 @@
 					</span>
 
 					<span class="imageDouble">
-						<?php echo $this->Html->image("/seo_tools/img/Tools/SeoStats/yahoo-indexed.png", array('border' => 0, 'align' => 'absmiddle') ); ?>
-						<?php echo __d('seo_tools', 'Yahoo Indexed Pages'); ?>: <a href="http://search.yahoo.com/search?p=site:<?php echo $results['url']; ?>" target="_blank"><b><?php echo $results['yahooindexed']; ?></b></a>
-					</span>
-
-					<span class="imageDouble">
 						<?php echo $this->Html->image("/seo_tools/img/Tools/SeoStats/bing.png", array('border' => 0, 'align' => 'absmiddle') ); ?>
 						<?php echo __d('seo_tools', 'Bing Indexed Pages'); ?>: <a href="http://www.bing.com/search?mkt=en-US&q=site:<?php echo $results['url']; ?>" target="_blank"><b><?php echo $results['bingindexed']; ?></b></a>
 					</span>
