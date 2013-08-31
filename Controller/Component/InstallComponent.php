@@ -36,6 +36,9 @@ class InstallComponent extends Component {
     }
 
     public function afterUninstall() {
+		$Folder = new Folder(CACHE . 'seo_tools');
+		$Folder->delete();
+
         return $this->Installer->sql("DROP TABLE `#__seo_tools_urls`;");
     }
 }
