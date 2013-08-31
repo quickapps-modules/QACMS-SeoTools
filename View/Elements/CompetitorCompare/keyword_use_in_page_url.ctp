@@ -1,5 +1,5 @@
 <fieldset>
-	<legend id="keyword_use_in_document_title"><?php echo __d('seo_tools', 'Keyword use in page URL'); ?> (<?php echo __d('seo_tools', 'Important'); ?>)</legend>
+	<legend id="keyword_use_in_page_url"><?php echo __d('seo_tools', 'Keyword use in page URL'); ?> (<?php echo __d('seo_tools', 'Important'); ?>)</legend>
 	<em><?php echo __d('seo_tools', 'The page URL is the part after the domain name in the web page address. This chapter tries to find out if Google.es  (la Web) gives extra relevance to search terms within the page URL. Separate your search terms in the page URL with slashes, dashes or underscores.'); ?></em>
 
 	<hr />
@@ -16,7 +16,7 @@
 		<tbody>
 			<?php foreach ($data['their_content'] as $i => $content): ?>
 			<tr>
-				<td align="left">#<?php echo $i + 1; ?></td>
+				<td align="left"><a href="#competitor-<?php echo $i + 1; ?>">#<?php echo $i + 1; ?></a></td>
 				<td align="left"> <?php echo $content; ?></td>
 			</tr>
 			<?php endforeach; ?>

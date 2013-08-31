@@ -325,8 +325,8 @@
 
 			<!-- your site overview -->
 			<div class="web-snippet">
-				<img src="http://immediatenet.com/t/l?Size=1280x768&URL=<?php echo $this->data['Tool']['url']; ?>" class="web-tn" />
-				<a href="<?php echo $results['site_data']['url']; ?>" target="_blank" class="title"><?php echo $results['site_data']['title']; ?></a><br />
+				<img src="http://free.pagepeeker.com/v2/thumbs.php?size=m&refresh=1&wait=3&url=<?php echo urlencode($this->data['Tool']['url']); ?>" class="web-tn" />
+				<a href="<?php echo $results['site_data']['url']; ?>" target="_blank" class="title"><?php echo $results['keyword_use_in_document_title']['your_content']; ?></a><br />
 				<a href="<?php echo $results['site_data']['url']; ?>" target="_blank" class="url"><?php echo String::truncate("http://{$results['site_data']['url']}", 80); ?></a>
 				<p class="description"><?php echo isset($results['site_data']['meta_tags']['description']) ? $results['site_data']['meta_tags']['description'] : __d('seo_tools', '[No meta description available.]'); ?></p>
 			</div>
@@ -342,9 +342,9 @@
 			<!-- competitors overview -->
 			<h2><?php __d('seo_tools', 'Your competitors for the search term "%s" on %s', $this->data['Tool']['criteria'], $this->data['Tool']['engine']); ?></h2>
 			<?php foreach($results['competitors_data'] as $i => $competitor): ?>
-				<div class="web-snippet">
+				<div id="competitor-<?php echo $i + 1; ?>" class="web-snippet">
 					<span class="rank">#<?php echo $i + 1; ?></span>
-					<img src="http://immediatenet.com/t/l?Size=1280x768&URL=<?php echo $competitor['url']; ?>" class="web-tn" />
+					<img src="http://free.pagepeeker.com/v2/thumbs.php?size=m&refresh=1&wait=3&url=<?php echo urlencode($competitor['url']); ?>" class="web-tn" />
 					<a href="<?php echo $competitor['url']; ?>" target="_blank" class="title"><?php echo $competitor['title']; ?></a><br />
 					<a href="<?php echo $competitor['url']; ?>" target="_blank" class="url"><?php echo String::truncate($competitor['url'], 80); ?></a>
 					<p class="description"><?php echo isset($competitor['meta_tags']['description']) ? $competitor['meta_tags']['description'] : __d('seo_tools', '[No meta description available.]'); ?></p>
@@ -355,45 +355,23 @@
 				<?php echo $this->element('CompetitorCompare/report_charts'); ?>
 			</div>
 
-			<!-- table of contents -->
-			<table width="100%" border="0" cellspacing="0" cellpadding="0">
-				<thead>
-					<tr>
-						<td colspan="2" align="left" valign="top"><b><?php echo __d('seo_tools', 'Table of contents'); ?></b></td>
-					</tr>
-				</thead>
-
-				<tbody>
-					<tr>
-						<td width="33%" height="20" align="left">1. <a href="#report_overview"><?php echo __d('seo_tools', 'Report overview'); ?></a></td>
-						<td width="33%" height="20" align="left">6. <a href="#aspect_h1"><?php echo __d('seo_tools', 'Keyword use in H1 headline texts'); ?></a></td>
-					</tr>
-
-					<tr>
-						<td align="left" valign="middle">2. <a href="#aspect_title"><?php echo __d('seo_tools', 'Keyword use in document title'); ?></a></td>
-						<td align="left" valign="middle">7. <a href="#aspect_url"><?php echo __d('seo_tools', 'Keyword use in page URL'); ?></a></td>
-					</tr>
-
-					<tr>
-						<td align="left" valign="middle">3. <a href="#aspect_backlinks"><?php echo __d('seo_tools', 'Global link popularity of web site'); ?></a></td>
-						<td align="left" valign="middle">8. <a href="#aspect_alexa_rank"><?php echo __d('seo_tools', 'Number of visitors to the site'); ?></a></td>
-					</tr>
-
-					<tr>
-						<td align="left" valign="middle">4. <a href="#aspect_body"><?php echo __d('seo_tools', 'Keyword use in body text'); ?></a></td>
-						<td align="left" valign="middle">9. <a href="#report_tags/description"><?php echo __d('seo_tools', 'Keyword use in meta description'); ?></a></td>
-					</tr>
-
-					<tr>
-						<td align="left" valign="middle">5. <a href="#aspect_age"><?php echo __d('seo_tools', 'Age of web site'); ?></a></td>
-						<td align="left" valign="middle">10. <a href="#other_factors"><?php echo __d('seo_tools', 'Factors that could prevent your top ranking'); ?></a></td>
-					</tr>
-				</tbody>
-			</table>
+			<h3><?php echo __d('seo_tools', 'Table of contents'); ?></h3>
+			<ol>
+				<li><a href="#report_overview"><?php echo __d('seo_tools', 'Report overview'); ?></a></li>
+				<li><a href="#keyword_use_in_document_title"><?php echo __d('seo_tools', 'Keyword use in document title'); ?></a></li>
+				<li><a href="#number_of_backlinks"><?php echo __d('seo_tools', 'Number of backlinks'); ?></a></li>
+				<li><a href="#keyword_use_in_body_text"><?php echo __d('seo_tools', 'keyword use in body text'); ?></a></li>
+				<li><a href="#age_of_web_site"><?php echo __d('seo_tools', 'Age of web site'); ?></a></li>
+				<li><a href="#keyword_use_in_h1_headline_texts"><?php echo __d('seo_tools', 'Keyword use in H1 headline texts'); ?></a></li>
+				<li><a href="#keyword_use_in_page_url"><?php echo __d('seo_tools', 'Keyword use in page URL'); ?></a></li>
+				<li><a href="#number_of_visitors_to_the_site"><?php echo __d('seo_tools', 'Number of visitors to the site'); ?></a></li>
+				<li><a href="#keyword_use_in_meta_description"><?php echo __d('seo_tools', 'Keyword use in meta description'); ?></a></li>
+				<li><a href="#factors_that_could_prevent_your_top_ranking"><?php echo __d('seo_tools', 'Factors that could prevent your top ranking'); ?></a></li>
+			</ol>
 		</fieldset>
 
 		<?php echo $this->element('CompetitorCompare/keyword_use_in_document_title', array('data' => $results['keyword_use_in_document_title'])); ?>
-		<?php echo $this->element('CompetitorCompare/global_link_popularity_of_web_site', array('data' => $results['global_link_popularity_of_web_site'])); ?>
+		<?php echo $this->element('CompetitorCompare/number_of_backlinks', array('data' => $results['number_of_backlinks'])); ?>
 		<?php echo $this->element('CompetitorCompare/keyword_use_in_body_text', array('data' => $results['keyword_use_in_body_text'])); ?>
 		<?php echo $this->element('CompetitorCompare/age_of_web_site', array('data' => $results['age_of_web_site'])); ?>
 		<?php echo $this->element('CompetitorCompare/keyword_use_in_h1_headline_texts', array('data' => $results['keyword_use_in_h1_headline_texts'])); ?>
@@ -402,14 +380,4 @@
 		<?php echo $this->element('CompetitorCompare/keyword_use_in_meta_description', array('data' => $results['keyword_use_in_meta_description'])); ?>
 		<?php echo $this->element('CompetitorCompare/factors_that_could_prevent_your_top_ranking'); ?>
 	</div>
-
-	<script>
-		$(document).ready(function () {
-			setInterval(function() { 
-				$('img.web-tn').each(function () {
-					$(this).attr('src', $(this).attr('src'));
-				});
-			}, 10000);
-		});
-	</script>
 <?php endif; ?>

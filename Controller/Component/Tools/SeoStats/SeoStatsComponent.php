@@ -30,7 +30,6 @@ class SeoStatsComponent extends Component {
 				'sitevalue' => $this->getSiteValue($url),
 				'bingindexed' => $this->bingIndexed($url),
 				'googleindexed' => $this->googleIndexed($url),
-				'yahooindexed' => $this->yahooIndexed($url),
 				'digglinks' => $this->diggLinks($url),
 				'deliciouslinks' => $this->deliciousLinks($url),
 				'technoratirank' => $this->technoratiRank($url),
@@ -94,8 +93,9 @@ class SeoStatsComponent extends Component {
 		return $value;
 	}
 
-	public function getBacklinksGoogle($url) {
-		$url = 'http://www.google.com/search?q=link:' . urlencode($url) . '&hl=en';
+	public function getBacklinksGoogle($domain) {
+		$domain = $this->BaseTools->parseUrl($domain);
+		$url = "http://www.google.com/search?q=link:{$domain['host']}&hl=en";
 		$data = $this->BaseTools->getPage($url);
 
         preg_match('/([0-9\,]+) (results|result)<nobr>/si', $data, $p);
@@ -105,8 +105,9 @@ class SeoStatsComponent extends Component {
         return $value;
 	}
 
-	public function getBacklinkAlexa($url) {
-		$url = 'http://data.alexa.com/data?cli=10&dat=s&url=' . $url;
+	public function getBacklinkAlexa($domain) {
+		$domain = $this->BaseTools->parseUrl($domain);
+		$url = "http://data.alexa.com/data?cli=10&dat=s&url={$domain['host']}";
 		$data = $this->BaseTools->getPage($url);
 
         preg_match('/LINKSIN NUM="(.*?)"/i', $data, $p);
@@ -116,8 +117,24 @@ class SeoStatsComponent extends Component {
         return $value;
 	}
 
-	public function getBacklinksYahoo($url) {
-		return 0;
+	public function getBacklinksSEOprofiler($domain) {
+		$domain = $this->BaseTools->parseUrl($domain);
+		$url = "http://www.seoprofiler.com/analyze/{$domain['host']}?appid=";
+		$data = $this->BaseTools->getPage($url);
+
+        preg_match('/\<a href="#backlinks".*?\>(.+) backlinks?\<\/a\>/i', $data, $p);
+		
+		if (isset($p[1])) {
+			if (strtolower($p[1]) == 'one') {
+				return 1;
+			} else {
+				return number_format($this->BaseTools->toInt($p[1]));
+			}
+		} else {
+			return 0;
+		}
+
+        return $value;
 	}
 
 	public function getAlexaRank($url) {
@@ -126,8 +143,7 @@ class SeoStatsComponent extends Component {
 
         preg_match('/TEXT="(.*?)"/i', $data, $p);
 
-        $value = isset($p[1]) ? number_format($this->BaseTools->toInt($p[1])) : -1;
-// -1, means not found
+        $value = isset($p[1]) ? number_format($this->BaseTools->toInt($p[1])) : -1; // -1, means not found
         return $value;
 	}    
 
@@ -196,17 +212,6 @@ class SeoStatsComponent extends Component {
         return $value;
 	}
 
-	public function yahooIndexed($url) {
-		$url = 'http://search.yahoo.com/search?p=site%3A' . $url;
-		$data = $this->BaseTools->getPage($url);
-
-        preg_match('/resultCount\">(.*?)<\/span>/i', $data, $p);
-
-        $value = isset($p[1]) ? number_format($this->BaseTools->toInt($p[1])) : 0;
-
-        return $value;
-	}  
-
 	public function diggLinks($url) {
 		$url = 'http://digg.com/search?q=site%3A' . $url;
 		$data = $this->BaseTools->getPage($url);
@@ -217,7 +222,6 @@ class SeoStatsComponent extends Component {
 
         return $value;
 	}
-    
 
 	public function deliciousLinks($url) {
 		$url = "http://" . $url . "/";

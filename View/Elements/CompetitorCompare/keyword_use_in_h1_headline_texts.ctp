@@ -1,5 +1,5 @@
 <fieldset>
-	<legend id="keyword_use_in_document_title"><?php echo __d('seo_tools', 'Keyword use in H1 headline texts'); ?> (<?php echo __d('seo_tools', 'Very Important'); ?>)</legend>
+	<legend id="keyword_use_in_h1_headline_texts"><?php echo __d('seo_tools', 'Keyword use in H1 headline texts'); ?> (<?php echo __d('seo_tools', 'Very Important'); ?>)</legend>
 	<em><?php echo __d('seo_tools', 'H1 headline texts are the texts that are written between the &lt;h1&gt;...&lt;/h1&gt; tags in the HTML code of a web page. Some search engines give extra relevance to search terms that appear in the headline texts.'); ?></em>
 
 	<hr />
@@ -14,10 +14,20 @@
 		</thead>
 
 		<tbody>
-			<?php foreach ($data['their_content'] as $i => $content): ?>
+			<?php foreach ($data['their_content'] as $i => $h1_list): ?>
 			<tr>
-				<td align="left">#<?php echo $i + 1; ?></td>
-				<td align="left"> <?php echo htmlentities($content); ?></td>
+				<td align="left"><a href="#competitor-<?php echo $i + 1; ?>">#<?php echo $i + 1; ?></a></td>
+				<td align="left">
+					<?php if (empty($h1_list)): ?>
+						<?php echo __d('seo_tools', 'This site does not have H1 titles.'); ?>
+					<?php else: ?>
+						<ol>
+							<?php foreach ($h1_list as $h1): ?>
+								<li><?php echo $h1; ?></li>
+							<?php endforeach; ?>
+						</ol>
+					<?php endif; ?>
+				</td>
 			</tr>
 			<?php endforeach; ?>
 		</tbody>
@@ -26,7 +36,17 @@
 	<hr />
 
 	<h3><?php echo __d('seo_tools', 'Your Content'); ?></h3>
-	<div class="alert alert-info"><?php echo htmlentities($data['your_content']); ?></div>
+	<div class="alert alert-info">
+		<?php if (empty($data['your_content'])): ?>
+			<?php echo __d('seo_tools', 'Your web site does not have any H1 titles.'); ?>
+		<?php else: ?>
+			<ol>
+				<?php foreach ($data['your_content'] as $h1): ?>
+					<li><?php echo $h1; ?></li>
+				<?php endforeach; ?>
+			</ol>
+		<?php endif; ?>
+	</div>
 
 	<hr />
 
@@ -42,7 +62,7 @@
 			</thead>
 
 			<tbody>
-				<tr class="<?php echo $stats['position']['class']; ?>">
+				<tr class="<?php echo $stats['quantity']['class']; ?>">
 					<td align="left"><?php echo __d('seo_tools', 'Quantity'); ?></td>
 					<td align="left">
 						<?php

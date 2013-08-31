@@ -1,5 +1,5 @@
 <fieldset>
-	<legend id="keyword_use_in_document_title"><?php echo __d('seo_tools', 'Age of web site'); ?> (<?php echo __d('seo_tools', 'Very Important'); ?>)</legend>
+	<legend id="age_of_web_site"><?php echo __d('seo_tools', 'Age of web site'); ?> (<?php echo __d('seo_tools', 'Very Important'); ?>)</legend>
 	<em><?php echo __d('seo_tools', 'Spam sites often come and go quickly. For this reason, search engines tend to trust a web site that has been around for a long time over one that is brand new. The age of the domain is seen as a sign of trustworthiness because it cannot be faked. The data is provided by Alexa.com.'); ?></em>
 
 	<hr />

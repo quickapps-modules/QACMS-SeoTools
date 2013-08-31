@@ -1,5 +1,5 @@
 <fieldset>
-	<legend id="keyword_use_in_document_title"><?php echo __d('seo_tools', 'Keyword use in body text'); ?> (<?php echo __d('seo_tools', 'Essential'); ?>)</legend>
+	<legend id="keyword_use_in_body_text"><?php echo __d('seo_tools', 'Keyword use in body text'); ?> (<?php echo __d('seo_tools', 'Essential'); ?>)</legend>
 	<em><?php echo __d('seo_tools', 'The body text is the text on your web page that can be seen by people in their web browsers. It does not include HTML commands, comments, etc. The more visible text there is on a web page, the more a search engine can index. The calculations include spaces and punctuation marks.'); ?></em>
 
 	<hr />
@@ -8,7 +8,7 @@
 	<table class="table table-bordered">
 		<thead>
 			<tr>
-				<th align="left"><?php echo __d('seo_tools', 'Rank'); ?></th>
+				<th align="left"><?php echo __d('seo_tools', 'Web Site'); ?></th>
 				<th align="left"><?php echo __d('seo_tools', 'Content'); ?></th>
 			</tr>
 		</thead>
@@ -16,10 +16,10 @@
 		<tbody>
 			<?php foreach ($data['their_content'] as $i => $content): ?>
 			<tr>
-				<td align="left"><?php echo $i + 1; ?></td>
+				<td align="left"><a href="#competitor-<?php echo $i + 1; ?>">#<?php echo $i + 1; ?></a></td>
 				<td align="left">
 					<div class="body-text" style="text-align:left; height:110px; overflow-y:scroll; width:100%; margin:0; padding:0;">
-						<?php echo $content; ?>
+						<?php echo $content ? $content : __d('seo_tools', '[No content was found for this web page.]'); ?>
 					</div>
 				</td>
 			</tr>
@@ -30,7 +30,7 @@
 	<hr />
 
 	<h3><?php echo __d('seo_tools', 'Your Content'); ?></h3>
-	<div class="alert alert-info"><?php echo $results['site_data']['body']; ?></div>
+	<div class="alert alert-info"><?php echo $data['your_content'] ? $data['your_content'] : __d('seo_tools', '[No content was found!]'); ?></div>
 
 	<hr />
 

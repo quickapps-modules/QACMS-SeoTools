@@ -21,8 +21,10 @@ class CompetitorCompareComponent extends Component {
 
     public function main(&$Controller) {
 		if (isset($Controller->data['Tool']['cmd'])) {
+			App::import('Vendor', 'SeoTools.simple_html_dom');
+
 			$CMD = $this->Controller->data['Tool']['cmd'];
-			$TOKEN = $this->__getToken();
+			$TOKEN = $this->getToken();
 			$CACHE_FOLDER =  CACHE . 'seo_tools' . DS . 'cc_' . $TOKEN;
 
 			if ($CMD == 'start') {
@@ -88,7 +90,7 @@ class CompetitorCompareComponent extends Component {
 					}
 
 					$config = array(
-						'token' => $this->__getToken(),
+						'token' => $this->getToken(),
 						'url' => $Controller->data['Tool']['url'],
 						'criteria' => $Controller->data['Tool']['criteria'],
 						'engine' => array(
@@ -109,7 +111,7 @@ class CompetitorCompareComponent extends Component {
 				case 'get_site_page':
 					$config = Cache::read('config', 'seo_cache_cc');
 
-					Cache::write('site_html', $this->BaseTools->toUTF8($this->BaseTools->getPage($config['url'])), 'seo_cache_cc');
+					Cache::write('site_html', $this->BaseTools->getPage($config['url']), 'seo_cache_cc');
 
 					echo "taskDone('{$CMD}');";
 					echo "runTask('get_snippets');";
@@ -142,7 +144,7 @@ class CompetitorCompareComponent extends Component {
 							$c['_page_downloaded'] = true;
 
 							Cache::write('config', $config, 'seo_cache_cc');
-							Cache::write("{$c['_cache_prefix']}_html", $this->BaseTools->toUTF8($this->BaseTools->getPage($c['url'])), 'seo_cache_cc');
+							Cache::write("{$c['_cache_prefix']}_html", $this->BaseTools->getPage($c['url']), 'seo_cache_cc');
 							echo "runTask('get_competitor_page');";
 							die;
 						}
@@ -155,25 +157,23 @@ class CompetitorCompareComponent extends Component {
 
 				case 'analize_competitor':
 					$config = Cache::read('config', 'seo_cache_cc');
-					$competitor = array_pop($config['competitors']);
+					$competitor = array_shift($config['competitors']);
 					$competitorCachePrefix = $competitor['_cache_prefix'];
 					$SeoStats = $this->BaseTools->loadTool('SeoStats');
 
 					if ($competitor) {
 						Cache::write('config', $config, 'seo_cache_cc');
 
-						$page = Cache::read("{$competitorCachePrefix}_html", 'seo_cache_cc');
-						$competitor['body'] = $this->BaseTools->html2text($this->parseTag('body', $page)); 
+						$competitor['page_cache'] = "{$competitorCachePrefix}_html";
 						$competitor['meta_tags'] = @(array)get_meta_tags($competitor['url']);
-						$competitor['h1'] = $this->BaseTools->html2text(@implode(' ', $this->parseTag('h1', $page, true)));
 						$parseUrl = $this->BaseTools->parseUrl($competitor['url']);
 
-						$competitor['alexa_rank'] = $this->str2int($SeoStats->getAlexaRank($competitor['url']));
+						$competitor['alexa_rank'] = $this->formatedNumberToInteger($SeoStats->getAlexaRank($competitor['url']));
 						$competitor['domain_age'] = $SeoStats->getAge($parseUrl['host']);
 						$competitor['backlinks'] = array(
-							'alexa' => $this->str2int($SeoStats->getBacklinkAlexa($parseUrl['full'])),
-							'google' => $this->str2int($SeoStats->getBacklinksGoogle($parseUrl['full'])),
-							'yahoo' => $this->str2int($SeoStats->getBacklinksYahoo($parseUrl['full']))
+							'alexa' => $this->formatedNumberToInteger($SeoStats->getBacklinkAlexa($parseUrl['full'])),
+							'google' => $this->formatedNumberToInteger($SeoStats->getBacklinksGoogle($parseUrl['full'])),
+							'seoprofiler' => $this->formatedNumberToInteger($SeoStats->getBacklinksSEOprofiler($parseUrl['full']))
 						);
 
 						foreach ($competitor['meta_tags'] as $c_tag_name => &$c_tag_data) {
@@ -197,21 +197,18 @@ class CompetitorCompareComponent extends Component {
 				case 'analize_site':
 					$config = Cache::read('config', 'seo_cache_cc');
 					$parseUrl = $this->BaseTools->parseUrl($config['url']);
-					$page = Cache::read('site_html', 'seo_cache_cc');
 					$SeoStats = $this->BaseTools->loadTool('SeoStats');
 
 					$site_data = array(
 						'url' => $parseUrl['full'],
-						'title' => $this->BaseTools->html2text($this->parseTag('title', $page)),
-						'body' => $this->BaseTools->html2text($this->parseTag('body', $page)), // sanitize
+						'page_cache' => 'site_html',
 						'meta_tags' => @(array)get_meta_tags($parseUrl['full']),
-						'h1' => $this->BaseTools->html2text(@implode(' ', $this->parseTag('h1', $page, true))),
 						'backlinks' => array(
-							'alexa' => $this->str2int($SeoStats->getBacklinkAlexa($parseUrl['full'])),
-							'google' => $this->str2int($SeoStats->getBacklinksGoogle($parseUrl['full'])),
-							'yahoo' => $this->str2int($SeoStats->getBacklinksYahoo($parseUrl['full']))
+							'alexa' => $this->formatedNumberToInteger($SeoStats->getBacklinkAlexa($parseUrl['full'])),
+							'google' => $this->formatedNumberToInteger($SeoStats->getBacklinksGoogle($parseUrl['full'])),
+							'seoprofiler' => $this->formatedNumberToInteger($SeoStats->getBacklinksSEOprofiler($parseUrl['full']))
 						),
-						'alexa_rank' => $this->str2int($SeoStats->getAlexaRank($parseUrl['full'])),
+						'alexa_rank' => $this->formatedNumberToInteger($SeoStats->getAlexaRank($parseUrl['full'])),
 						'domain_age' => $SeoStats->getAge($parseUrl['host'])
 					);
 
@@ -231,7 +228,7 @@ class CompetitorCompareComponent extends Component {
 					$this->report['site_data'] = (array)Cache::read('site_data', 'seo_cache_cc');
 					$this->report['competitors_data'] = (array)Cache::read('competitors_data', 'seo_cache_cc');
 
-					Cache::write('top_10_optimizer_' . $this->__getToken(), $this->prepareReport(), 'seo_cache_cc_report');
+					Cache::write('top_10_optimizer_' . $this->getToken(), $this->prepareReport(), 'seo_cache_cc_report');
 
 					echo "taskDone('{$CMD}');";
 					echo "finalizeWork();";
@@ -239,8 +236,8 @@ class CompetitorCompareComponent extends Component {
 				break;
 
 				case 'finalize':
-					$token = $this->__getToken();
-					$data = Cache::read('top_10_optimizer_' . $this->__getToken(), 'seo_cache_cc_report');
+					$token = $this->getToken();
+					$data = Cache::read('top_10_optimizer_' . $this->getToken(), 'seo_cache_cc_report');
 
 					// clear tmps if exists
 					$Folder = new Folder($CACHE_FOLDER);
@@ -264,7 +261,7 @@ class CompetitorCompareComponent extends Component {
 		$out['keyword_use_in_document_title'] = $this->keyword_use_in_document_title();
 
 		// Global link popularity of web site
-		$out['global_link_popularity_of_web_site'] = $this->global_link_popularity_of_web_site();
+		$out['number_of_backlinks'] = $this->number_of_backlinks();
 
 		
 		// Keyword use in body text
@@ -295,13 +292,13 @@ class CompetitorCompareComponent extends Component {
 	private function keyword_use_in_document_title() {
 		$criteriaWords = $this->criteriaWords($this->report['config']['criteria']);
 		$competitorsTitles = array();
-		$your_content_is_empty = false;
+		$page = str_get_html(Cache::read($this->report['site_data']['page_cache'], 'seo_cache_cc'));
+		$site_title = $page ? $page->find('title', 0) : '';
 
-		if (!empty($this->report['site_data']['title'])) {
-			$your_content = $this->emphasize_keywords($this->report['site_data']['title'], $criteriaWords);
+		if ($site_title) {
+			$your_content = $this->emphasizeKeywords($site_title->plaintext, $criteriaWords);
 		} else {
-			$your_content = __d('seo_tools', '[No content was found]');
-			$your_content_is_empty = true;
+			$your_content = '';
 		}
 
 		$out = array(
@@ -310,16 +307,23 @@ class CompetitorCompareComponent extends Component {
 		);
 
 		foreach ($this->report['competitors_data'] as $cData) {
-			if (!empty($cData['title'])) {
-				$out['their_content'][] = $this->emphasize_keywords($cData['title'], $criteriaWords);
+			$page = str_get_html(Cache::read($cData['page_cache'], 'seo_cache_cc'));
+			$competitor_title = $page ? $page->find('title', 0) : '';
+
+			if ($competitor_title) {
+				$out['their_content'][] = $this->emphasizeKeywords($competitor_title->plaintext, $criteriaWords);
+				$competitorsTitles[] = $competitor_title->plaintext;
 			} else {
 				$out['their_content'][] = __d('seo_tools', '[No content was found]');
+				$competitorsTitles[] = '';
 			}
-
-			$competitorsTitles[] = $cData['title'];
 		}
 
-		$out['keywords_stats'] = $this->keywordsStats($criteriaWords, ($your_content_is_empty ? '' : $this->report['site_data']['title']), $competitorsTitles);
+		$out['keywords_stats'] = $this->keywordsStats(
+			$criteriaWords,
+			(empty($your_content) ? '' : $site_title->plaintext),
+			$competitorsTitles
+		);
 
 		foreach ($out['keywords_stats'] as $keyword => $info) {
 			foreach ($info as $type => $stats) {
@@ -346,7 +350,7 @@ class CompetitorCompareComponent extends Component {
 		return $out;
 	}
 
-	private function global_link_popularity_of_web_site() {
+	private function number_of_backlinks() {
 		$out = array(
 			'sites' => array(),
 			'message' => '', // tips
@@ -357,12 +361,12 @@ class CompetitorCompareComponent extends Component {
 			'site_name' => __d('seo_tools', 'Your Site'),
 			'alexa' => $this->report['site_data']['backlinks']['alexa'],
 			'google' => $this->report['site_data']['backlinks']['google'],
-			'yahoo' => $this->report['site_data']['backlinks']['yahoo'],
+			'seoprofiler' => $this->report['site_data']['backlinks']['seoprofiler'],
 			'peak' => max(
 				array(
 					$this->report['site_data']['backlinks']['alexa'],
 					$this->report['site_data']['backlinks']['google'],
-					$this->report['site_data']['backlinks']['yahoo']
+					$this->report['site_data']['backlinks']['seoprofiler']
 				)
 			)
 		);
@@ -372,12 +376,12 @@ class CompetitorCompareComponent extends Component {
 				'site_name' => __d('seo_tools', 'Site #%d', $i + 1),
 				'alexa' => $competitor['backlinks']['alexa'],
 				'google' => $competitor['backlinks']['google'],
-				'yahoo' => $competitor['backlinks']['yahoo'],
+				'seoprofiler' => $competitor['backlinks']['seoprofiler'],
 				'peak' => max(
 					array(
 						$competitor['backlinks']['alexa'],
 						$competitor['backlinks']['google'],
-						$competitor['backlinks']['yahoo']
+						$competitor['backlinks']['seoprofiler']
 					)
 				)
 			);
@@ -423,13 +427,13 @@ class CompetitorCompareComponent extends Component {
 	private function keyword_use_in_body_text() {
 		$criteriaWords = $this->criteriaWords($this->report['config']['criteria']);
 		$competitorsBodies = array();
-		$your_content_is_empty = false;
+		$page = str_get_html(Cache::read($this->report['site_data']['page_cache'], 'seo_cache_cc'));
+		$site_body = $page ? $page->find('body', 0) : '';
 
-		if (!empty($this->report['site_data']['body'])) {
-			$your_content = $this->emphasize_keywords($this->report['site_data']['body'], $criteriaWords);
+		if ($site_body) {
+			$your_content = $this->emphasizeKeywords($site_body->plaintext, $criteriaWords);
 		} else {
-			$your_content = __d('seo_tools', '[No content was found]');
-			$your_content_is_empty = true;
+			$your_content = '';
 		}
 
 		$out = array(
@@ -438,16 +442,23 @@ class CompetitorCompareComponent extends Component {
 		);
 
 		foreach ($this->report['competitors_data'] as $cData) {
-			if (!empty($cData['body'])) {
-				$out['their_content'][] = $this->emphasize_keywords($cData['body'], $criteriaWords);
+			$page = str_get_html(Cache::read($cData['page_cache'], 'seo_cache_cc'));
+			$competitor_body = $page ? $page->find('body', 0) : '';
+
+			if ($competitor_body) {
+				$out['their_content'][] = $this->emphasizeKeywords($competitor_body->plaintext, $criteriaWords);
+				$competitorsBodies[] = $competitor_body->plaintext;
 			} else {
 				$out['their_content'][] = __d('seo_tools', '[No content was found]');
+				$competitorsBodies[] = '';
 			}
-
-			$competitorsBodies[] = $cData['body'];
 		}
 
-		$out['keywords_stats'] = $this->keywordsStats($criteriaWords, ($your_content_is_empty ? '' : $this->report['site_data']['body']), $competitorsBodies);
+		$out['keywords_stats'] = $this->keywordsStats(
+			$criteriaWords,
+			(empty($your_content) ? '' : $site_body->plaintext),
+			$competitorsBodies
+		);
 
 		foreach ($out['keywords_stats'] as $keyword => $info) {
 			foreach ($info as $type => $stats) {
@@ -537,32 +548,43 @@ class CompetitorCompareComponent extends Component {
 
 	private function keyword_use_in_h1_headline_texts() {
 		$criteriaWords = $this->criteriaWords($this->report['config']['criteria']);
-		$competitorsH1s = array();
+		$allCompetitorsH1 = array();
 		$your_content_is_empty = false;
+		$page = str_get_html(Cache::read($this->report['site_data']['page_cache'], 'seo_cache_cc'));
+		$site_h1 = $page ? $page->find('h1') : '';
+		$site_h1_list = array();
 
-		if (!empty($this->report['site_data']['h1'])) {
-			$your_content = $this->emphasize_keywords($this->report['site_data']['h1'], $criteriaWords);
-		} else {
-			$your_content = __d('seo_tools', '[No content was found]');
-			$your_content_is_empty = true;
+		if (!empty($site_h1)) {
+			foreach ($site_h1 as $h1) {
+				$site_h1_list[] = $this->emphasizeKeywords($h1->plaintext, $criteriaWords);
+			}
 		}
 
 		$out = array(
 			'their_content' => array(),
-			'your_content' => $your_content
+			'your_content' => $site_h1_list
 		);
 
 		foreach ($this->report['competitors_data'] as $cData) {
-			if (!empty($cData['h1'])) {
-				$out['their_content'][] = $this->emphasize_keywords($cData['h1'], $criteriaWords);
-			} else {
-				$out['their_content'][] = __d('seo_tools', '[No content was found]');
+			$page = str_get_html(Cache::read($cData['page_cache'], 'seo_cache_cc'));
+			$competitor_h1 = $page ? $page->find('h1') : '';
+			$competitor_h1_list = array();
+
+			if ($competitor_h1) {
+				foreach ($competitor_h1 as $h1) {
+					$competitor_h1_list[] = $this->emphasizeKeywords($h1->plaintext, $criteriaWords);
+				}
 			}
 
-			$competitorsH1s[] = $cData['h1'];
+			$out['their_content'][] = $competitor_h1_list;
+			$allCompetitorsH1[] = implode("\n", $competitor_h1_list);
 		}
 
-		$out['keywords_stats'] = $this->keywordsStats($criteriaWords, ($your_content_is_empty ? '' : $this->report['site_data']['h1']), $competitorsH1s);
+		$out['keywords_stats'] = $this->keywordsStats(
+			$criteriaWords,
+			($your_content_is_empty ? '' : implode("\n", $site_h1_list)),
+			$allCompetitorsH1
+		);
 
 		foreach ($out['keywords_stats'] as $keyword => $info) {
 			foreach ($info as $type => $stats) {
@@ -596,13 +618,11 @@ class CompetitorCompareComponent extends Component {
 	private function keyword_use_in_page_url() {
 		$criteriaWords = $this->criteriaWords($this->report['config']['criteria']);
 		$competitorsURLs = array();
-		$your_content_is_empty = false;
 
 		if (!empty($this->report['site_data']['url'])) {
-			$your_content = $this->emphasize_keywords($this->report['site_data']['url'], $criteriaWords);
+			$your_content = $this->emphasizeKeywords($this->report['site_data']['url'], $criteriaWords);
 		} else {
-			$your_content = __d('seo_tools', '[No content was found]');
-			$your_content_is_empty = true;
+			$your_content = '';
 		}
 
 		$out = array(
@@ -612,7 +632,7 @@ class CompetitorCompareComponent extends Component {
 
 		foreach ($this->report['competitors_data'] as $cData) {
 			if (!empty($cData['url'])) {
-				$out['their_content'][] = $this->emphasize_keywords($cData['url'], $criteriaWords);
+				$out['their_content'][] = $this->emphasizeKeywords($cData['url'], $criteriaWords);
 			} else {
 				$out['their_content'][] = __d('seo_tools', '[No content was found]');
 			}
@@ -620,7 +640,11 @@ class CompetitorCompareComponent extends Component {
 			$competitorsURLs[] = $cData['url'];
 		}
 
-		$out['keywords_stats'] = $this->keywordsStats($criteriaWords, ($your_content_is_empty ? '' : $this->report['site_data']['url']), $competitorsURLs);
+		$out['keywords_stats'] = $this->keywordsStats(
+			$criteriaWords,
+			(empty($your_content) ? '' : $this->report['site_data']['url']),
+			$competitorsURLs
+		);
 
 		foreach ($out['keywords_stats'] as $keyword => $info) {
 			foreach ($info as $type => $stats) {
@@ -704,13 +728,14 @@ class CompetitorCompareComponent extends Component {
 	private function keyword_use_in_meta_description() {
 		$criteriaWords = $this->criteriaWords($this->report['config']['criteria']);
 		$competitorsMetas = array();
-		$your_content_is_empty = false;
 
-		if (isset($this->report['site_data']['meta_tags']['description']) && !empty($this->report['site_data']['meta_tags']['description'])) {
-			$your_content = $this->emphasize_keywords($this->report['site_data']['meta_tags']['description'], $criteriaWords);
+		if (
+			isset($this->report['site_data']['meta_tags']['description']) &&
+			!empty($this->report['site_data']['meta_tags']['description'])
+		) {
+			$your_content = $this->emphasizeKeywords($this->report['site_data']['meta_tags']['description'], $criteriaWords);
 		} else {
-			$your_content = __d('seo_tools', '[No content was found]');
-			$your_content_is_empty = true;
+			$your_content = '';
 		}
 
 		$out = array(
@@ -720,14 +745,18 @@ class CompetitorCompareComponent extends Component {
 
 		foreach ($this->report['competitors_data'] as $cData) {
 			if (isset($cData['meta_tags']['description']) && !empty($cData['meta_tags']['description'])) {
-				$out['their_content'][] = $this->emphasize_keywords($cData['meta_tags']['description'], $criteriaWords);
+				$out['their_content'][] = $this->emphasizeKeywords($cData['meta_tags']['description'], $criteriaWords);
 				$competitorsMetas[] = $cData['meta_tags']['description'];
 			} else {
 				$out['their_content'][] = __d('seo_tools', '[No content was found]');
 			}
 		}
 
-		$out['keywords_stats'] = $this->keywordsStats($criteriaWords, ($your_content_is_empty ? '' : $this->report['site_data']['meta_tags']['description']), $competitorsMetas);
+		$out['keywords_stats'] = $this->keywordsStats(
+			$criteriaWords,
+			(empty($your_content) ? '' : $this->report['site_data']['meta_tags']['description']),
+			$competitorsMetas
+		);
 
 		foreach ($out['keywords_stats'] as $keyword => $info) {
 			foreach ($info as $type => $stats) {
@@ -765,7 +794,7 @@ class CompetitorCompareComponent extends Component {
 		return array($human, $stamp);	
 	}
 
-	private function str2int($data) {
+	private function formatedNumberToInteger($data) {
 		if (is_array($data)) {
 			foreach($data as &$rank) { 
                 $rank = (int)str_replace(array(',', '.'), '', $rank);
@@ -780,12 +809,17 @@ class CompetitorCompareComponent extends Component {
 	}
 
 /**
- * Split criteria into words.
+ * Get a list of words by Splitting criteria into words.
+ * The last element in the list will be the complete criteria.
+ * Words of 1-2 letters length are automatically ignored.
+ *
  * Example:
  *
- *     criteriaChunk('mi cool criteria');
- *     // returns: array('mi', 'cool', 'criteria', 'mi cool criteria');
+ *     criteriaChunk('Where can I buy a unicorn');
+ *     // returns: array('Where', 'can', 'buy', 'unicorn', 'Where can I buy a unicorn');
  *
+ * @param string $criteria Search criteria
+ * @return array List of words
  */
 	private function criteriaWords($criteria) {
 		$words = explode(' ', preg_replace('/\s{2,}/', ' ', trim($criteria)));
@@ -804,6 +838,9 @@ class CompetitorCompareComponent extends Component {
 /**
  * Registers a new factor as failed/passed.
  *
+ * @param string $type essential, very_important, important
+ * @param boolean $status TRUE means passed, FALSE means failed
+ * @return void
  */
 	private function pushFactor($type, $status) {
 		if ($status) {
@@ -813,6 +850,13 @@ class CompetitorCompareComponent extends Component {
 		}
 	}
 
+/**
+ * Keywords stats. Quantity, Density, Positioning.
+ *
+ * @param $keywords The keywords no analize
+ * @param $siteContent Your site content
+ * @param $competitors A list of each competitor's content. 
+ */
 	private function keywordsStats($keywords, $siteContent = '', $competitors = array()) {
 		$out = array();
 
@@ -820,9 +864,9 @@ class CompetitorCompareComponent extends Component {
 			$quantity = $density = $position = array();
 
 			foreach ($competitors as $competitorContent) {
-				$quantity[] = $this->word_occurr($competitorContent, $kw);
-				$density[] = $this->word_density($competitorContent, $kw);
-				$position[] = $this->word_position($competitorContent, $kw);
+				$quantity[] = $this->wordOccurr($competitorContent, $kw);
+				$density[] = $this->wordDensity($competitorContent, $kw);
+				$position[] = $this->wordPosition($competitorContent, $kw);
 			}
 
 			$out[$kw] = array(
@@ -830,21 +874,21 @@ class CompetitorCompareComponent extends Component {
 					'min' => min($quantity), // min of competitors
 					'max' => max($quantity), // max of competitors
 					'avg' => (array_sum($quantity) / count($quantity)), // average value from competitors
-					'site' => $this->word_occurr($siteContent, $kw), // your's site value
+					'site' => $this->wordOccurr($siteContent, $kw), // your's site value
 					'class' => '' // success, warning, error
 				),
 				'density' => array(
 					'min' => min($density),
 					'max' => max($density),
 					'avg' => (array_sum($density) / count($density)),
-					'site' => $this->word_density($siteContent, $kw),
+					'site' => $this->wordDensity($siteContent, $kw),
 					'class' => '' // success, warning, error
 				),
 				'position' => array(
 					'min' => min($position),
 					'max' => max($position),
 					'avg' => (array_sum($position) / count($position)),
-					'site' => $this->word_position($siteContent, $kw),
+					'site' => $this->wordPosition($siteContent, $kw),
 					'class' => '' // success, warning, error
 				)
 			);
@@ -853,7 +897,7 @@ class CompetitorCompareComponent extends Component {
 		return $out;
 	}
 
-	private function emphasize_keywords($str, $words = array(), $type = 'bold') {
+	private function emphasizeKeywords($str, $words = array(), $type = 'bold') {
 		switch($type) {
 			case 'highlight': 
                 default: 
@@ -889,7 +933,7 @@ class CompetitorCompareComponent extends Component {
 		return false;
 	}	
 
-	private function __getToken() {
+	private function getToken() {
 		$token = false;
 
 		if (isset($this->Controller->data['Tool']['cmd']) && $this->Controller->data['Tool']['cmd'] == 'start') {
@@ -901,7 +945,7 @@ class CompetitorCompareComponent extends Component {
 		return $token;
 	}
 
-	private function __string2keywords($page) {
+	private function stringToKeywords($page) {
 		$page = $this->BaseTools->html2text($page);
 
 		/**
@@ -979,28 +1023,28 @@ class CompetitorCompareComponent extends Component {
 
         if (isset($Controller->data['Tool']['exclude_words']) && !empty($Controller->data['Tool']['exclude_words'])) {
             $ew = explode("\n", $Controller->data['Tool']['exclude_words']);
-            $page = $this->exclude_words($page, $ew);
+            $page = $this->excludeWords($page, $ew);
         }
 
 		return $page;
 	}     
     
-	private function word_position($source, $word) {
-		$source = $this->exclude_words($source);
+	private function wordPosition($source, $word) {
+		$source = $this->excludeWords($source);
 		$strpos = strpos(strtolower($source), strtolower($word));
 
 		return $strpos === false ? 0 : $strpos + 1;
 	}
 
-	private function words_count($source) {
-		$source = $this->__string2keywords($source);
+	private function wordsCount($source) {
+		$source = $this->stringToKeywords($source);
 		$words  = str_word_count($source, 1);
 
 		return count($words);
 	}
 
-	private function word_occurr($source, $word) {
-		$source = $this->__string2keywords($source);
+	private function wordOccurr($source, $word) {
+		$source = $this->stringToKeywords($source);
 		$word = strtolower($word);
 		$words = str_word_count($source, 1);
 		$word_c = str_word_count($word, 1);  // words of keyword
@@ -1025,8 +1069,8 @@ class CompetitorCompareComponent extends Component {
 		return $occurr;
 	}
 
-	private function word_density($source, $word) {
-		$occurr = $this->word_occurr($source, $word);
+	private function wordDensity($source, $word) {
+		$occurr = $this->wordOccurr($source, $word);
 		$words = str_word_count($source, 1);
 		$count = count($words);
 
@@ -1067,7 +1111,7 @@ class CompetitorCompareComponent extends Component {
 		return $matches;
 	}  
 
-	private function exclude_words($str, $exclude_words = array()) {
+	private function excludeWords($str, $exclude_words = array()) {
 		foreach ($exclude_words as $filter_word) {
 			$str = preg_replace(array('/[ ]{2,}/', '/\b' . strtolower($filter_word) . '\b/i'), array(' ', ''), $str);
 		}

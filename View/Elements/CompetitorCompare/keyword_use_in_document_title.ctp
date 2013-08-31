@@ -16,8 +16,8 @@
 		<tbody>
 			<?php foreach ($data['their_content'] as $i => $content): ?>
 			<tr>
-				<td align="left">#<?php echo $i + 1; ?></td>
-				<td align="left"> <?php echo $content; ?></td>
+				<td align="left"><a href="#competitor-<?php echo $i + 1; ?>">#<?php echo $i + 1; ?></a></td>
+				<td align="left"><?php echo $content ? $content : __d('seo_tools', '[No content was found for this web page.]'); ?></td>
 			</tr>
 			<?php endforeach; ?>
 		</tbody>
@@ -26,7 +26,7 @@
 	<hr />
 	
 	<h3><?php echo __d('seo_tools', 'Your Content'); ?></h3>
-	<div class="alert alert-info"><?php echo $results['site_data']['title']; ?></div>
+	<div class="alert alert-info"><?php echo $data['your_content'] ? $data['your_content'] : __d('seo_tools', '[No content was found!]'); ?></div>
 
 	<hr />
 	

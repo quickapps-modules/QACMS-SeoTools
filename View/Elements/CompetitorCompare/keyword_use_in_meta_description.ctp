@@ -1,5 +1,5 @@
 <fieldset>
-	<legend id="keyword_use_in_document_title"><?php echo __d('seo_tools', 'Keyword use in meta description'); ?> (<?php echo __d('seo_tools', 'Important'); ?>)</legend>
+	<legend id="keyword_use_in_meta_description"><?php echo __d('seo_tools', 'Keyword use in meta description'); ?> (<?php echo __d('seo_tools', 'Important'); ?>)</legend>
 	<em><?php echo __d('seo_tools', 'The Meta Description tag allows you to describe your web page. This chapter tries to find out if %s takes the Meta Description tag into account. Some search engines display the text to the user in the search results.<br/> Example: &lt;meta name="description" content= "This sentence describes the contents of your web site."&gt;<br/> Even if the Meta Description tag might not be important for ranking purposes, you should use the Meta Description tag to make sure that your web site is displayed with an attractive description in the search results', $this->data['Tool']['engine']['class']); ?></em>
 
 	<hr />
@@ -16,8 +16,8 @@
 		<tbody>
 			<?php foreach ($data['their_content'] as $i => $content): ?>
 			<tr>
-				<td align="left">#<?php echo $i + 1; ?></td>
-				<td align="left"> <?php echo $content; ?></td>
+				<td align="left"><a href="#competitor-<?php echo $i + 1; ?>">#<?php echo $i + 1; ?></a></td>
+				<td align="left"><?php echo $content ? $content : __d('seo_tools', '[No content was found for this web page.]'); ?></td>
 			</tr>
 			<?php endforeach; ?>
 		</tbody>
@@ -26,7 +26,7 @@
 	<hr />
 	
 	<h3><?php echo __d('seo_tools', 'Your Content'); ?></h3>
-	<div class="alert alert-info"><?php echo $data['your_content']; ?></div>
+	<div class="alert alert-info"><?php echo $data['your_content'] ? $data['your_content'] : __d('seo_tools', '[No content was found!]'); ?></div>
 
 	<hr />
 

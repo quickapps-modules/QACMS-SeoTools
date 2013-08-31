@@ -1,5 +1,5 @@
 <fieldset>
-	<legend id="keyword_use_in_document_title"><?php echo __d('seo_tools', 'Number of visitors to the site'); ?> (<?php echo __d('seo_tools', 'Very Important'); ?>)</legend>
+	<legend id="number_of_visitors_to_the_site"><?php echo __d('seo_tools', 'Number of visitors to the site'); ?> (<?php echo __d('seo_tools', 'Very Important'); ?>)</legend>
 	<em><?php echo __d('seo_tools', 'Search engines might look at web site usage data, such as the number of visitors to your site, to determine if your site is reputable and contains popular contents. The Alexa.com traffic rank is based on three months of aggregated traffic data from millions of Alexa Toolbar users and is a combined measure of page views and number of site visitors.'); ?></em>
 
 	<hr />
