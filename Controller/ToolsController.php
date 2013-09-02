@@ -38,6 +38,7 @@ class ToolsController extends SeoToolsAppController {
         } else {
             $data['Tool']['url'] = QuickApps::strip_language_prefix(Router::url('/', true));
             $this->data = $data;
+			$this->set('parseUrl', $this->SeoTools->parseUrl(QuickApps::strip_language_prefix(Router::url('/', true))));
         }
 
         $tool_info = $this->SeoTools->toolInfo($tool);

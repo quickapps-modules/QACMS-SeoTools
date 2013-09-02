@@ -15,7 +15,6 @@ class CompetitorCompareComponent extends Component {
 
 	public function startup(&$Controller) {
 		$this->Controller = $Controller;
-
 		$this->Controller->Layout['javascripts']['file'][] = '/seo_tools/js/Tools/CompetitorCompare/cc.js';
 	}
 
@@ -68,7 +67,7 @@ class CompetitorCompareComponent extends Component {
 			switch ($CMD) {
 				default:
 					case 'start':
-					if (Cache::read('top_10_optimizer_' . $TOKEN, 'seo_cache_cc_report')) {
+					if (Cache::read("top_10_optimizer_{$TOKEN}", 'seo_cache_cc_report')) {
 						echo "setToken('{$TOKEN}');";
 						echo 'finalizeWork();';
 						die;
@@ -263,20 +262,18 @@ class CompetitorCompareComponent extends Component {
 		// Global link popularity of web site
 		$out['number_of_backlinks'] = $this->number_of_backlinks();
 
-		
 		// Keyword use in body text
 		$out['keyword_use_in_body_text'] = $this->keyword_use_in_body_text();
-		
+
 		// Age of web site
 		$out['age_of_web_site'] = $this->age_of_web_site();
 
 		// Keyword use in H1 headline texts
 		$out['keyword_use_in_h1_headline_texts'] = $this->keyword_use_in_h1_headline_texts();
-		
-		
+
 		// Keyword use in page URL
 		$out['keyword_use_in_page_url'] = $this->keyword_use_in_page_url();
-		
+
 		// Number of visitors to the site
 		$out['number_of_visitors_to_the_site'] = $this->number_of_visitors_to_the_site();
 
@@ -724,7 +721,7 @@ class CompetitorCompareComponent extends Component {
 
 		return $out;
 	}
-	
+
 	private function keyword_use_in_meta_description() {
 		$criteriaWords = $this->criteriaWords($this->report['config']['criteria']);
 		$competitorsMetas = array();
@@ -903,13 +900,13 @@ class CompetitorCompareComponent extends Component {
                 default: 
                     $var_style = 'background: #CEDAEB;'; 
             break;
-            
-			case 'bold': 
-                $var_style = 'font-weight: bold;'; 
+
+			case 'bold':
+                $var_style = 'font-weight: bold;';
             break;
-            
-			case 'underline': 
-                $var_style = 'text-decoration: underline;'; 
+
+			case 'underline':
+                $var_style = 'text-decoration: underline;';
             break;
 		}
 
@@ -918,7 +915,7 @@ class CompetitorCompareComponent extends Component {
 				if(strlen($word) <= 1) {
 					continue;
                 }
-                
+
 				if(!empty($word)) {
 					$word= strip_tags($word);
 					$word= preg_quote($word, '/');
@@ -931,13 +928,18 @@ class CompetitorCompareComponent extends Component {
 		}
 
 		return false;
-	}	
+	}
 
 	private function getToken() {
 		$token = false;
 
 		if (isset($this->Controller->data['Tool']['cmd']) && $this->Controller->data['Tool']['cmd'] == 'start') {
-			$token = md5($this->Controller->data['Tool']['url'] . $this->Controller->data['Tool']['criteria'] . $this->Controller->data['Tool']['engine']);
+			$token = md5(
+				$this->Controller->data['Tool']['url'] .
+				$this->Controller->data['Tool']['criteria'] .
+				$this->Controller->data['Tool']['engine'] .
+				Configure::read('Config.language')
+			);
 		} elseif (isset($this->Controller->data['Tool']['token'])) {
 			$token = $this->Controller->data['Tool']['token'];
 		}
@@ -1027,8 +1029,8 @@ class CompetitorCompareComponent extends Component {
         }
 
 		return $page;
-	}     
-    
+	}
+
 	private function wordPosition($source, $word) {
 		$source = $this->excludeWords($source);
 		$strpos = strpos(strtolower($source), strtolower($word));
@@ -1090,7 +1092,7 @@ class CompetitorCompareComponent extends Component {
 
             $Engine = new $className;
             $Engine->BaseTools = $this->BaseTools;
-			
+
 			return $Engine->results($keywords, $engine['options']);
         }
 
@@ -1109,7 +1111,7 @@ class CompetitorCompareComponent extends Component {
 		$matches = isset($matches[2]) ? $matches[2] : '';
 
 		return $matches;
-	}  
+	}
 
 	private function excludeWords($str, $exclude_words = array()) {
 		foreach ($exclude_words as $filter_word) {

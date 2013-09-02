@@ -10,10 +10,10 @@ class PageRankComponent extends Component {
 
 	public function getpageRank($url) {
 		$query = "http://toolbarqueries.google.com/tbr?client=navclient-auto&ch=" .
-		$this->__checkHash($this->__hashURL($url)) .
-		"&features=Rank&q=info:" .
-		$url .
-		"&num=100&filter=0";
+			$this->__checkHash($this->__hashURL($url)) .
+			"&features=Rank&q=info:" .
+			$url .
+			"&num=100&filter=0";
 		$data = $this->BaseTools->getPage($query);
 		$pos = strpos($data, "Rank_"); 
 

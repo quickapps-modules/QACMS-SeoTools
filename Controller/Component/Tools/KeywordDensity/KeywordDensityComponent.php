@@ -6,6 +6,10 @@ class KeywordDensityComponent extends Component {
             return false;
         }
 
+		$Controller->Layout['javascripts']['file'][] = '/seo_tools/js/jquery.tablesorter.js';
+		$Controller->Layout['javascripts']['file'][] = '/seo_tools/js/jquery.tablesorter.widgets.min.js';
+		$Controller->Layout['javascripts']['file'][] = '/seo_tools/js/jquery.metadata.js';
+
 		$parseUrl = $this->BaseTools->parseUrl($Controller->data['Tool']['url']);
 		$page = $this->BaseTools->getPage($parseUrl['full']);
 		$page = $this->__string2keywords($page);

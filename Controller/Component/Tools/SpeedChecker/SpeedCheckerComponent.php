@@ -3,9 +3,9 @@ class SpeedCheckerComponent extends Component {
     public function main(&$Controller) {
 		if (isset($Controller->data['Tool']['url'])) {
 			$debugLVL = Configure::read('debug');
-			$Controller->Layout['javascripts']['file'][] = '/seo_tools/js/Tools/SpeedChecker/jquery.tablesorter.js';
-			$Controller->Layout['javascripts']['file'][] = '/seo_tools/js/Tools/SpeedChecker/jquery.tablesorter.widgets.min.js';
-			$Controller->Layout['javascripts']['file'][] = '/seo_tools/js/Tools/SpeedChecker/jquery.metadata.js';
+			$Controller->Layout['javascripts']['file'][] = '/seo_tools/js/jquery.tablesorter.js';
+			$Controller->Layout['javascripts']['file'][] = '/seo_tools/js/jquery.tablesorter.widgets.min.js';
+			$Controller->Layout['javascripts']['file'][] = '/seo_tools/js/jquery.metadata.js';
 
 			set_time_limit(0);
 			Configure::write('debug', 0);

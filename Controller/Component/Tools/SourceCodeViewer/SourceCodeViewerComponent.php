@@ -7,7 +7,9 @@ class SourceCodeViewerComponent extends Component {
         }
 
         $parseUrl = $this->BaseTools->parseUrl($Controller->data['Tool']['url']);
+		$Controller->Layout['javascripts']['file'][] = '/seo_tools/js/highlight-master/jquery.highlight.js';
+		$Controller->Layout['stylesheets']['all'][] = '/seo_tools/js/highlight-master/jquery.highlight.css';
 
-        return $this->BaseTools->getPage($parseUrl['full']);
+        return $this->BaseTools->toUTF8($this->BaseTools->getPage($parseUrl['full']));
     }
 }

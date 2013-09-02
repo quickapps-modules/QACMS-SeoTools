@@ -4,5 +4,16 @@
 	<?php echo $this->Form->end(__d('seo_tools', 'Continue')); ?>
 <?php else: ?>
 	<h1><?php echo __d('seo_tools', 'Source Code Viewer'); ?></h1>
-	<textarea style="width:100%; height:360px;"><?php echo $results; ?></textarea>
+	<pre class="code" lang="html"><?php echo htmlentities($results); ?></pre>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('pre.code').highlight({
+				source: true,
+				zebra: false,
+				indent:'space',
+				list:'ol'
+			});
+		});
+	</script>
 <?php endif; ?>

@@ -310,6 +310,22 @@
 							'Yahoo|ve.search.yahoo.com|p' => 'Yahoo Venezuela',
 							'Yahoo|vn.search.yahoo.com|p' => 'Yahoo Việt Nam',
 							'Yahoo|za.search.yahoo.com|p' => 'Yahoo South Africa'
+						),
+						'Bing' => array(
+							'Bing|bing.com' => 'Local/WW Edition',
+							'Bing|be.bing.com' => 'Belgium',
+							'Bing|br.bing.com' => 'Brazil',
+							'Bing|ca.bing.com' => 'Canada',
+							'Bing|cn.bing.com' => 'China',
+							'Bing|de.bing.com' => 'Germany',
+							'Bing|fr.bing.com' => 'France',
+							'Bing|hk.bing.com' => 'Hong Kong',
+							'Bing|it.bing.com' => 'Italy',
+							'Bing|jp.bing.com' => 'Japan',
+							'Bing|m.bing.com' => 'Mobile',
+							'Bing|nz.bing.com' => 'New Zealand',
+							'Bing|uk.bing.com' => 'United Kingdom',
+							'Bing|www.bing.com' => 'USA and Worldwide'
 						)
 					)
 				)
@@ -327,7 +343,7 @@
 			<div class="web-snippet">
 				<img src="http://free.pagepeeker.com/v2/thumbs.php?size=m&refresh=1&wait=3&url=<?php echo urlencode($this->data['Tool']['url']); ?>" class="web-tn" />
 				<a href="<?php echo $results['site_data']['url']; ?>" target="_blank" class="title"><?php echo $results['keyword_use_in_document_title']['your_content']; ?></a><br />
-				<a href="<?php echo $results['site_data']['url']; ?>" target="_blank" class="url"><?php echo String::truncate("http://{$results['site_data']['url']}", 80); ?></a>
+				<a href="<?php echo $results['site_data']['url']; ?>" target="_blank" class="url"><?php echo $results['site_data']['url']; ?></a>
 				<p class="description"><?php echo isset($results['site_data']['meta_tags']['description']) ? $results['site_data']['meta_tags']['description'] : __d('seo_tools', '[No meta description available.]'); ?></p>
 			</div>
 
@@ -380,4 +396,15 @@
 		<?php echo $this->element('CompetitorCompare/keyword_use_in_meta_description', array('data' => $results['keyword_use_in_meta_description'])); ?>
 		<?php echo $this->element('CompetitorCompare/factors_that_could_prevent_your_top_ranking'); ?>
 	</div>
+
+	<script>
+		$(document).ready(function () {
+			setInterval(function () {
+				$('img.web-tn').each(function () {
+					console.log($(this).attr('src') + '&nc=' + Math.random());
+					$(this).attr('src', $(this).attr('src') + '&nc=' + Math.random());
+				});
+			}, 10000);
+		});
+	</script>
 <?php endif; ?>

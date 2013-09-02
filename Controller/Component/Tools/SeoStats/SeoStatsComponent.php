@@ -8,7 +8,7 @@ class SeoStatsComponent extends Component {
         Cache::config('seo_stats_short', array(
             'engine' => 'File',  
             'duration'=> '+3 days',
-            'path' => CACHE
+            'path' => CACHE . 'seo_tools',
         ));
 
         $url = $Controller->data['Tool']['url'];
@@ -95,7 +95,7 @@ class SeoStatsComponent extends Component {
 
 	public function getBacklinksGoogle($domain) {
 		$domain = $this->BaseTools->parseUrl($domain);
-		$url = "http://www.google.com/search?q=link:{$domain['host']}&hl=en";
+		$url = "http://www.google.com/search?q=links:{$domain['host']}&hl=en";
 		$data = $this->BaseTools->getPage($url);
 
         preg_match('/([0-9\,]+) (results|result)<nobr>/si', $data, $p);
@@ -183,9 +183,9 @@ class SeoStatsComponent extends Component {
 		$url = "http://www.websiteoutlook.com/" . urlencode($url);
 		$data = $this->BaseTools->getPage($url);
 
-        preg_match('/Estimated Worth (.*) by websiteoutlook/i', $data, $p);
+        preg_match('/Estimeted worth of (.*) is (.+) according to websiteoutlook/i', $data, $p);
 
-        $value = isset($p[1]) ? $p[1] : false;
+        $value = isset($p[2]) ? $p[2] : false;
 
         return $value;
 	} 
@@ -237,7 +237,7 @@ class SeoStatsComponent extends Component {
 	}
 
 	public function technoratiRank($url) {
-		$url = 'http://technorati.com/blogs/' . $url;
+		$url = 'http://technorati.com/search?return=sites&authority=all&q=' . $url;
 		$data = $this->BaseTools->getPage($url);
 
         preg_match('/<span class="blog-authorities-number">(.*?)<\/span>/i', $data, $p);

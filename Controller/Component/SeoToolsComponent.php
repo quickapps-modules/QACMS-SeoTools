@@ -124,6 +124,7 @@ class SeoToolsComponent extends Component {
 		} else {
 			$opts = array(
 				'http'=>array(
+					'follow_location' => true,
 					'method'=> 'GET',
 					'header'=>
 						'User-Agent: ' . env('HTTP_USER_AGENT') . '\r\n'

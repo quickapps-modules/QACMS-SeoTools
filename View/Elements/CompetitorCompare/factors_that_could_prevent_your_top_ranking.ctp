@@ -1,6 +1,6 @@
 <fieldset>
 	<legend id="factors_that_could_prevent_your_top_ranking"><?php echo __d('seo_tools', 'Factors that could prevent your top ranking'); ?></legend>
-	<em><?php echo __d('seo_tools', 'Some ranking factors cannot be measured because the search engines do not reveal the necessary data, or it would be extremely time-consuming to measure the data. Make sure you pay attention to the following factors because they could prevent a top ranking for <b>%s</b> on <b>%s</b>.', $this->data['Tool']['url'], $this->data['Tool']['engine']); ?></em>
+	<em><?php echo __d('seo_tools', 'Some ranking factors cannot be measured because the search engines do not reveal the necessary data, or it would be extremely time-consuming to measure the data. Make sure you pay attention to the following factors because they could prevent a top ranking for <b>%s</b> on <b>%s</b>.', $this->data['Tool']['url'], $this->data['Tool']['engine']['class']); ?></em>
 
 	<hr />
 

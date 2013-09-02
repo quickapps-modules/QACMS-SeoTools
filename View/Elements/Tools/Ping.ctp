@@ -1,6 +1,6 @@
 <?php if (!isset($results)): ?>
 	<?php echo $this->Form->create('Tool'); ?>
-		<?php echo $this->Form->input('Tool.url', array('label' => __d('seo_tools', 'Enter Your Domain/IP'))); ?>
+		<?php echo $this->Form->input('Tool.domain_ip', array('value' => $parseUrl['host'], 'label' => __d('seo_tools', 'Enter Your Domain/IP'))); ?>
 	<?php echo $this->Form->end(__d('seo_tools', 'Continue')); ?>
 <?php else: ?>
 	<h1><?php echo __d('seo_tools', 'Ping Domain/IP'); ?></h1>
