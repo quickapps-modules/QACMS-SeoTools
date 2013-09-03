@@ -58,6 +58,24 @@ class UrlsController extends SeoToolsAppController {
             $this->redirect('/admin/seo_tools/urls/index');
         }
 
+		if (isset($this->data['Filter'])) {
+			$paginate = $this->paginate;
+			$paginate['limit'] = 50;
+
+			foreach ($this->data['Filter'] as $field => $value) {
+				if ($field == 'status') {
+					$paginate['conditions']["SeoUrl.{$field}"] = intval($value);
+				} else {
+					if (!empty($value)) {
+						$value = str_replace('*', '%', $value);
+						$paginate['conditions']["SeoUrl.{$field} LIKE"] = $value;
+					}
+				}
+			}
+
+			$this->paginate = $paginate;
+		}
+
         $this->set('results', $this->paginate('SeoUrl'));
         $this->setCrumb(
             '/admin/seo_tools',

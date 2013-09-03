@@ -7,6 +7,6 @@
         array(
             'engine' => 'File',
             'path' => CACHE . 'seo_tools',
-            'duration' => '+10 Years'
+            'duration' => '+100 years'
         )
     );
