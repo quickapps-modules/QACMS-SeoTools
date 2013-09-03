@@ -14,7 +14,7 @@ class UrlsController extends SeoToolsAppController {
 				'url' => $url,
 				'description' => '',
 				'keywords' => ''
-			);			
+			);
 
 			if ($html) {
 				if ($desc = $html->find('meta[name=description]', 0)->content) {
@@ -82,7 +82,7 @@ class UrlsController extends SeoToolsAppController {
 		$this->setCrumb(
 			'/admin/seo_tools', 
 			array(__d('seo_tools', 'Add URL'))
-		);		
+		);
 	}
 
     public function admin_edit($id) {
@@ -110,7 +110,7 @@ class UrlsController extends SeoToolsAppController {
             '/admin/seo_tools',
             array(__d('seo_tools', 'URL List'), '/admin/seo_tools'),
             array(__d('seo_tools', 'Editing URL'))
-        );		
+        );
     }
 
     public function admin_enable($id) {

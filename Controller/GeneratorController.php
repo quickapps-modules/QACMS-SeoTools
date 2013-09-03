@@ -5,6 +5,11 @@ class GeneratorController extends SeoToolsAppController {
 		'Menu.MenuLink'
 	);
 
+	public function beforeFilter() {
+		$this->Auth->allow('robots_txt', 'sitemap_xml');
+		parent::beforeFilter();
+	}
+
     public function robots_txt() {
 		header('Content-Type: text/plain');
 		die(Cache::read('robots', 'seo_tools_optimized_url'));
@@ -14,7 +19,6 @@ class GeneratorController extends SeoToolsAppController {
 		App::uses('Xml', 'Utility');
 
 		$this->viewClass = 'Xml';
-
         $urlset = array(
 			'url' => array()
         );
