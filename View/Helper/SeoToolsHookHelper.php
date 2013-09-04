@@ -29,7 +29,9 @@ class SeoToolsHookHelper extends AppHelper {
             $this->_View->Block->push(array('body' => $this->_View->element('toolbar') . '<!-- SeoToolsHookHelper -->' ), 'toolbar');
         }
 
-		$this->__optimize();
+		if (!isset($this->request->params['admin'])) {
+			$this->__optimize();
+		}
 
         return true;
     }
@@ -58,7 +60,7 @@ class SeoToolsHookHelper extends AppHelper {
                 $this->_View->viewVars['Layout']['meta']['description'] = $this->__url['description'];
             }
 
-            if ($this->__url['keywords']) {
+            if ($this->__url['keywords'] && Configure::read('Modules.SeoTools.settings.use_meta_keywords')) {
                 $this->_View->viewVars['Layout']['meta']['keywords'] = $this->__url['keywords'];
             }
 
@@ -71,25 +73,41 @@ class SeoToolsHookHelper extends AppHelper {
             }
         }
 
-		$ga = Configure::read('Modules.SeoTools.settings.google_analytics');
-		$gm = Configure::read('Modules.SeoTools.settings.google_meta');
-		$bm = Configure::read('Modules.SeoTools.settings.bing_meta');
-		$am = Configure::read('Modules.SeoTools.settings.alexa_meta');
+		$robots = array();
 
-		if (!empty($ga)) {
+		if (Configure::read('Modules.SeoTools.settings.noodp')) {
+			$robots[] = 'noodp';
+		}
+
+		if (Configure::read('Modules.SeoTools.settings.noydir')) {
+			$robots[] = 'noydir';
+		}
+
+		if (!empty($robots)) {
+			if (isset($this->_View->viewVars['Layout']['meta']['robots'])) {
+				$this->_View->viewVars['Layout']['meta']['robots']['content'] .= ',' . implode(',', $robots);
+			} else {
+				$this->_View->viewVars['Layout']['meta']['robots'] = array(
+					'name' => 'robots',
+					'content' => implode(',', $robots)
+				);
+			}
+		}
+
+		if ($ga = Configure::read('Modules.SeoTools.settings.google_analytics')) {
 			$this->_View->viewVars['Layout']['footer'][] = $ga;
 		}
 
-		if (!empty($gm)) {
-			$this->_View->viewVars['Layout']['header'][] = '<meta name="google-site-verification" content="' . $gm . '"/>';
+		if ($gm = Configure::read('Modules.SeoTools.settings.google_meta')) {
+			$this->_View->viewVars['Layout']['meta']['google-site-verification'] = array('name' => 'google-site-verification', 'content' => $gm);
 		}
 
-		if (!empty($bm)) {
-			$this->_View->viewVars['Layout']['header'][] = '<meta name="msvalidate.01" content="' . $bm . '"/>';
+		if ($bm = Configure::read('Modules.SeoTools.settings.bing_meta')) {
+			$this->_View->viewVars['Layout']['meta']['msvalidate.01'] = array('name' => 'msvalidate.01', 'content' => $bm);
 		}
 
-		if (!empty($am)) {
-			$this->_View->viewVars['Layout']['header'][] = '<meta name="alexaVerifyID" content="' . $am . '"/>';
+		if ($am = Configure::read('Modules.SeoTools.settings.alexa_meta')) {
+			$this->_View->viewVars['Layout']['meta']['alexaVerifyID'] = array('name' => 'alexaVerifyID', 'content' => $am);
 		}		
     }
 

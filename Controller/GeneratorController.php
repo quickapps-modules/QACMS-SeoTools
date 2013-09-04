@@ -11,8 +11,15 @@ class GeneratorController extends SeoToolsAppController {
 	}
 
     public function robots_txt() {
+		$txt = Cache::read('robots', 'seo_tools_optimized_url');
+
+		if (!$txt) {
+			$txt = Configure::read('Modules.SeoTools.settings.site_robots');
+			Cache::write('robots', $txt, 'seo_tools_optimized_url');
+		}
+
 		header('Content-Type: text/plain');
-		die(Cache::read('robots', 'seo_tools_optimized_url'));
+		die($txt);
     }
 
 	public function sitemap_xml() {
