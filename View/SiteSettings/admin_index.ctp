@@ -4,7 +4,7 @@
 			echo $this->Form->input('Module.settings.canonical_domain',
 				array(
 					'type' => 'radio',
-					'legend' => __d('seo_tools', 'Preferrer domain'),
+					'legend' => __d('seo_tools', 'Preferred domain'),
 					'options' => array(
 						'www' => 'WWW',
 						'non-www' => 'NON-WWW',
