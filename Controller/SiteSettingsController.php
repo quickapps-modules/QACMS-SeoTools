@@ -19,5 +19,9 @@ class SiteSettingsController extends SeoToolsAppController {
 		}
 
 		$this->data = $this->Module->findByName('SeoTools');
+        $this->setCrumb(
+            '/admin/seo_tools',
+            array(__d('seo_tools', 'Site configuration'))
+        );		
 	}
 }
