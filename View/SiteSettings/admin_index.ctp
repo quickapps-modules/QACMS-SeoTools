@@ -48,7 +48,7 @@
 				echo $this->Form->input('Module.settings.google_analytics',
 					array(
 						'type' => 'textarea',
-						'label' => __d('seo_tools', '<a href="" target="_blank">Google Analytics Tracking Code</a>', 'http://www.google.com/analytics/'),
+						'label' => __d('seo_tools', '<a href="%s" target="_blank">Google Analytics Tracking Code</a>', 'http://www.google.com/analytics/'),
 						'helpBlock' => __d('seo_tools', 'Copy & Paste your Google Analytics tracking code here, it will be used on every page of your site.')
 					)
 				);
