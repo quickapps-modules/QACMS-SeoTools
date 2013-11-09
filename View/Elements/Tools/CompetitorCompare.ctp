@@ -401,8 +401,8 @@
 		$(document).ready(function () {
 			setInterval(function () {
 				$('img.web-tn').each(function () {
-					console.log($(this).attr('src') + '&nc=' + Math.random());
-					$(this).attr('src', $(this).attr('src') + '&nc=' + Math.random());
+					var newUrl = $(this).attr('src').split('&nc=')[0] + '&nc=' + Math.random();
+					$(this).attr('src', newUrl);
 				});
 			}, 10000);
 		});
