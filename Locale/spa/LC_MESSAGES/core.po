@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-02 18:04+0000\n"
+"POT-Creation-Date: 2013-11-10 18:31+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Christopher Castro <chris@quickapps.es>\n"
 "Language-Team: \n"
@@ -14,48 +14,66 @@ msgstr ""
 "X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: Controller\ToolsController.php:20;49 View\Elements\toolbar.ctp:5
+#: \Controller\SeoToolsAppController.php:11
+msgid ""
+"<b>IMPORTANT:</b> Please enter a <a href=\"%s\">site description</a>, it "
+"will be used as default meta-description."
+msgstr ""
+
+#: \Controller\SiteSettingsController.php:11
+msgid "Site configuration has been saved."
+msgstr ""
+
+#: \Controller\SiteSettingsController.php:15
+msgid "Site configuration could not be saved."
+msgstr ""
+
+#: \Controller\SiteSettingsController.php:24
+msgid "Site configuration"
+msgstr ""
+
+#: \Controller\ToolsController.php:20;50 \View\Elements\toolbar.ctp:5
 msgid "Tools"
 msgstr "Herramientas"
 
-#: Controller\UrlsController.php:64;111
+#: \Controller\UrlsController.php:82;129
 msgid "URL List"
 msgstr "Listado"
 
-#: Controller\UrlsController.php:84
+#: \Controller\UrlsController.php:102
 msgid "Add URL"
 msgstr "Nueva URL"
 
-#: Controller\UrlsController.php:112 View\Urls\admin_edit.ctp:2
+#: \Controller\UrlsController.php:130 \View\Urls\admin_edit.ctp:2
 msgid "Editing URL"
 msgstr "Editado URL"
 
-#: Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:79
+#: \Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:79
 msgid "Invalid URL"
 msgstr "URL inválida"
 
-#: Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:83
+#: \Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:83
 msgid "Invalid criteria"
 msgstr "criterio inválido"
 
-#: Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:316;451;636;750
+#: \Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:314;449;634;748
 msgid "[No content was found]"
 msgstr "[No se encontraron contenidos]"
 
-#: Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:360;497;682
-#: View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:44
-#: View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:40
-#: View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:60
-#: View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:40
-#: View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:40
+#: \Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:358;495;680
+#: \View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:44
+#: \View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:40
+#: \View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:60
+#: \View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:40
+#: \View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:40
 msgid "Your Site"
 msgstr "Tu Sitio"
 
-#: Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:375;506;693
+#: \Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:373;504;691
 msgid "Site #%d"
 msgstr "Sitio #%d"
 
-#: Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:411
+#: \Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:409
 msgid ""
 "In average, less web pages link to your page than to the top ranked pages. "
 "The average link popularity of the top ranked pages is %s, the link "
@@ -70,7 +88,7 @@ msgstr ""
 "su página. Recuerde que los motores de búsqueda también evalúan el texto de "
 "los enlaces y la calidad de aquellas webs que lo enlacen."
 
-#: Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:415
+#: \Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:413
 msgid ""
 "Summing up all analyzed search engines, there are at least as many web pages "
 "linking to your page as to the top ranked pages. This meets the basic "
@@ -79,7 +97,7 @@ msgid ""
 "link to your web site"
 msgstr ""
 
-#: Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:419
+#: \Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:417
 msgid ""
 "Summing up all analyzed search engines, you have more web pages linking to "
 "your web page than the top ranking web pages. This is very good. However, %s "
@@ -87,11 +105,11 @@ msgid ""
 "your web site"
 msgstr ""
 
-#: Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:533
+#: \Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:531
 msgid "Your web site is less than 1 year old"
 msgstr "Su sitio web tiene menos de 1 año de antiguedad"
 
-#: Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:537
+#: \Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:535
 msgid ""
 "The web site age could not be determined or is newer than the newer of your "
 "competitors. In general, the older your web site, the better it is for your "
@@ -99,94 +117,78 @@ msgid ""
 "improving the other search engine ranking factors"
 msgstr ""
 
-#: Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:541
+#: \Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:539
 msgid ""
 "Your web site is about %s years old. This is very good because the older "
 "your web site, the better it is for your rankings on %s"
 msgstr ""
 
-#: Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:684;695
-#: Controller\Component\Tools\SpeedChecker\SpeedCheckerComponent.php:41;42
+#: \Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:682;693
+#: \Controller\Component\Tools\SpeedChecker\SpeedCheckerComponent.php:41;42
 msgid "n/a"
 msgstr "n/a"
 
-#: Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:705
+#: \Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:703
 msgid ""
 "Although your web site %s appears to attract more visitors than the average "
 "of your competitors sites, the absolute number of visitors is low. This "
 "could be disadvantageous to your rankings on %s"
 msgstr ""
 
-#: Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:712
+#: \Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:710
 msgid ""
 "Your web site %s does not appear to attract many visitors because your "
 "traffic trank is above #100,000 and you have less visitors than the average "
 "of your competitors. This could be disadvantageous to your rankings on %s"
 msgstr ""
 
-#: Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:716
+#: \Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:714
 msgid ""
 "Your web site %s appears to attract a lot of visitors. This is very good and "
 "might be beneficial to your rankings on %s"
 msgstr ""
 
-#: Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:791
+#: \Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:789
 msgid "%s years, %s days. (%s)"
 msgstr "%s años, %s días. (%s)"
 
-#: Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:791
+#: \Controller\Component\Tools\CompetitorCompare\CompetitorCompareComponent.php:789
 msgid "Y-m-d"
 msgstr "d-m-Y"
 
-#: Controller\Component\Tools\GoogleAnalytics\GoogleAnalyticsComponent.php:21
-msgid "Your Google Analytics tracking code has been added."
-msgstr ""
-
-#: Controller\Component\Tools\GoogleAnalytics\GoogleAnalyticsComponent.php:23
-msgid "Your Google Analytics tracking code has been disabled."
-msgstr ""
-
-#: Controller\Component\Tools\KeywordSuggestion\KeywordSuggestionComponent.php:26
+#: \Controller\Component\Tools\KeywordSuggestion\KeywordSuggestionComponent.php:26
 msgid "Unable to connect to Google Suggest service, try again later."
 msgstr ""
 
-#: Controller\Component\Tools\SiteRobots\SiteRobotsComponent.php:8
-msgid "Your <strong>robots.txt</strong> file has been saved."
-msgstr ""
-
-#: Controller\Component\Tools\SiteRobots\SiteRobotsComponent.php:11
-msgid "Your <strong>robots.txt</strong> file is now empty!"
-msgstr ""
-
-#: Controller\Component\Tools\SpeedChecker\SpeedCheckerComponent.php:28
+#: \Controller\Component\Tools\SpeedChecker\SpeedCheckerComponent.php:28
 msgid "Invalid URL, page does not exists or could not be retrieved."
 msgstr ""
 
-#: Controller\Component\Tools\WebmasterTools\WebmasterToolsComponent.php:27
-msgid "Verification codes saved."
-msgstr ""
-
-#: View\Elements\toolbar.ctp:3
+#: \View\Elements\toolbar.ctp:3
 msgid "URLs"
 msgstr "URLs"
 
-#: View\Elements\toolbar.ctp:4 View\Urls\admin_add.ctp:2
+#: \View\Elements\toolbar.ctp:4 \View\Urls\admin_add.ctp:2
 msgid "Optimize new URL"
 msgstr "Optimizar nueva URL"
 
-#: View\Elements\CompetitorCompare\age_of_web_site.ctp:2
-#: View\Elements\Tools\CompetitorCompare.ctp:364
+#: \View\Elements\toolbar.ctp:6 \View\SiteSettings\admin_index.ctp:2
+msgid "Site Settings"
+msgstr ""
+
+#: \View\Elements\CompetitorCompare\age_of_web_site.ctp:2
+#: \View\Elements\Tools\CompetitorCompare.ctp:380
 msgid "Age of web site"
 msgstr "Edad del sitio web"
 
-#: View\Elements\CompetitorCompare\age_of_web_site.ctp:2
-#: View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:2
-#: View\Elements\CompetitorCompare\number_of_visitors_to_the_site.ctp:2
-#: View\Elements\CompetitorCompare\report_charts.ctp:39
+#: \View\Elements\CompetitorCompare\age_of_web_site.ctp:2
+#: \View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:2
+#: \View\Elements\CompetitorCompare\number_of_visitors_to_the_site.ctp:2
+#: \View\Elements\CompetitorCompare\report_charts.ctp:39
 msgid "Very Important"
 msgstr "Muy Importante"
 
-#: View\Elements\CompetitorCompare\age_of_web_site.ctp:3
+#: \View\Elements\CompetitorCompare\age_of_web_site.ctp:3
 msgid ""
 "Spam sites often come and go quickly. For this reason, search engines tend "
 "to trust a web site that has been around for a long time over one that is "
@@ -194,40 +196,40 @@ msgid ""
 "because it cannot be faked. The data is provided by Alexa.com."
 msgstr ""
 
-#: View\Elements\CompetitorCompare\age_of_web_site.ctp:7
+#: \View\Elements\CompetitorCompare\age_of_web_site.ctp:7
 msgid "Dates of the domain registration or of the first contents"
 msgstr "Fecha de registro del dominio o de primer contenido"
 
-#: View\Elements\CompetitorCompare\age_of_web_site.ctp:12
-#: View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:11
-#: View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:11
-#: View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:11
-#: View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:11
-#: View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:11
-#: View\Elements\CompetitorCompare\number_of_backlinks.ctp:12
-#: View\Elements\CompetitorCompare\number_of_visitors_to_the_site.ctp:12
+#: \View\Elements\CompetitorCompare\age_of_web_site.ctp:12
+#: \View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:11
+#: \View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:11
+#: \View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:11
+#: \View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:11
+#: \View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:11
+#: \View\Elements\CompetitorCompare\number_of_backlinks.ctp:12
+#: \View\Elements\CompetitorCompare\number_of_visitors_to_the_site.ctp:12
 msgid "Web Site"
 msgstr "Sitio Web"
 
-#: View\Elements\CompetitorCompare\age_of_web_site.ctp:13
-#: View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:12
-#: View\Elements\CompetitorCompare\number_of_visitors_to_the_site.ctp:13
-#: View\Elements\Tools\BacklinkChecker.ctp:9
-#: View\Elements\Tools\SpeedChecker.ctp:12;34;61;84
-#: View\Urls\admin_index.ctp:9
+#: \View\Elements\CompetitorCompare\age_of_web_site.ctp:13
+#: \View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:12
+#: \View\Elements\CompetitorCompare\number_of_visitors_to_the_site.ctp:13
+#: \View\Elements\Tools\BacklinkChecker.ctp:9
+#: \View\Elements\Tools\SpeedChecker.ctp:12;34;61;84
+#: \View\Urls\admin_index.ctp:9
 msgid "URL"
 msgstr "URL"
 
-#: View\Elements\CompetitorCompare\age_of_web_site.ctp:14
+#: \View\Elements\CompetitorCompare\age_of_web_site.ctp:14
 msgid "Registration Date"
 msgstr "Fecha de registro"
 
-#: View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:2
-#: View\Elements\Tools\CompetitorCompare.ctp:369
+#: \View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:2
+#: \View\Elements\Tools\CompetitorCompare.ctp:385
 msgid "Factors that could prevent your top ranking"
 msgstr "Factores que podrían impedir el primer puesto"
 
-#: View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:3
+#: \View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:3
 msgid ""
 "Some ranking factors cannot be measured because the search engines do not "
 "reveal the necessary data, or it would be extremely time-consuming to "
@@ -235,143 +237,143 @@ msgid ""
 "because they could prevent a top ranking for <b>%s</b> on <b>%s</b>."
 msgstr ""
 
-#: View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:7
+#: \View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:7
 msgid "Advice"
 msgstr "Consejo"
 
-#: View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:10
+#: \View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:10
 msgid "Inbound links to your web page"
 msgstr "Enlaces entrantes a su página web"
 
-#: View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:12
+#: \View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:12
 msgid ""
 "Are the web pages linking to your web page relevant to the search term \"%s"
 "\"?"
 msgstr ""
 
-#: View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:13
+#: \View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:13
 msgid "How fast does your web page get new links pointing to it?"
 msgstr ""
 
-#: View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:14
+#: \View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:14
 msgid ""
 "Do the web sites which link to your page belong to the same content category?"
 msgstr ""
 
-#: View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:15
+#: \View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:15
 msgid "Since when do the links to your page exist?"
 msgstr ""
 
-#: View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:16
+#: \View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:16
 msgid ""
 "Is the text surrounding the link to your page relevant to the search term "
 "\"%s\"?"
 msgstr ""
 
-#: View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:20
+#: \View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:20
 msgid "Your web page"
 msgstr "Su página web"
 
-#: View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:22
+#: \View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:22
 msgid "How many important links from your other pages point to your web page?"
 msgstr ""
 
-#: View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:23
+#: \View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:23
 msgid ""
 "Do the links on your web page point to high quality, topically-related pages?"
 msgstr ""
 
-#: View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:24
+#: \View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:24
 msgid ""
 "How often and how many changes do you make to your web page over time? Is "
 "your content up-to-date?"
 msgstr ""
 
-#: View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:25
+#: \View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:25
 msgid "How often and how many web pages do you add to your web site?"
 msgstr ""
 
-#: View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:26
+#: \View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:26
 msgid "How long do your visitors spend time on your web page?"
 msgstr ""
 
-#: View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:30
+#: \View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:30
 msgid "Search engine result page"
 msgstr ""
 
-#: View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:32
+#: \View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:32
 msgid ""
 "Do your competitors on the search engine result page get a manual ranking "
 "boost by %s, for example Amazon or Wikipedia?"
 msgstr ""
 
-#: View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:33
+#: \View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:33
 msgid ""
 "How many visitors of the search engine result pages click through to your "
 "page?"
 msgstr ""
 
-#: View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:34
+#: \View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:34
 msgid ""
 "How often do search engine visitors search for your company name or web page "
 "URL on %s?"
 msgstr ""
 
-#: View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:38
+#: \View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:38
 msgid ""
 "Negative ranking factors (you should be able to say \"no\" to all the "
 "following questions)"
 msgstr ""
 
-#: View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:40
+#: \View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:40
 msgid "Is your content very similar or a duplicate of existing content?"
 msgstr ""
 
-#: View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:41
+#: \View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:41
 msgid "Is your server often down when search engine crawlers try to access it?"
 msgstr ""
 
-#: View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:42
+#: \View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:42
 msgid "Do you link to web sites that do not deserve a link?"
 msgstr ""
 
-#: View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:43
+#: \View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:43
 msgid "Do you use the same title or meta tags for many web pages?"
 msgstr ""
 
-#: View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:44
+#: \View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:44
 msgid "Do you overuse the same keyword or key phrase?"
 msgstr ""
 
-#: View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:45
+#: \View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:45
 msgid "Do you participate in link schemes?"
 msgstr ""
 
-#: View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:46
+#: \View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:46
 msgid "Do you actively sell links on your web page?"
 msgstr ""
 
-#: View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:47
+#: \View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:47
 msgid ""
 "Do a majority of your inbound links come from low quality or spam sites?"
 msgstr ""
 
-#: View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:48
+#: \View\Elements\CompetitorCompare\factors_that_could_prevent_your_top_ranking.ctp:48
 msgid "Does your web page have any spelling or grammar mistakes?"
 msgstr ""
 
-#: View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:2
+#: \View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:2
 msgid "Keyword use in body text"
 msgstr "Palabras clave utilizadas en el texto del cuerpo"
 
-#: View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:2
-#: View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:2
-#: View\Elements\CompetitorCompare\number_of_backlinks.ctp:2
-#: View\Elements\CompetitorCompare\report_charts.ctp:38
+#: \View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:2
+#: \View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:2
+#: \View\Elements\CompetitorCompare\number_of_backlinks.ctp:2
+#: \View\Elements\CompetitorCompare\report_charts.ctp:38
 msgid "Essential"
 msgstr "Esencial"
 
-#: View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:3
+#: \View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:3
 msgid ""
 "The body text is the text on your web page that can be seen by people in "
 "their web browsers. It does not include HTML commands, comments, etc. The "
@@ -379,125 +381,125 @@ msgid ""
 "index. The calculations include spaces and punctuation marks."
 msgstr ""
 
-#: View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:7
-#: View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:7
-#: View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:7
-#: View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:7
-#: View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:7
+#: \View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:7
+#: \View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:7
+#: \View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:7
+#: \View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:7
+#: \View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:7
 msgid "Their Content"
 msgstr "El contenido de ellos"
 
-#: View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:12
-#: View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:12
-#: View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:12
+#: \View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:12
+#: \View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:12
+#: \View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:12
 msgid "Content"
 msgstr "Contenido"
 
-#: View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:22
-#: View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:20
-#: View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:20
+#: \View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:22
+#: \View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:20
+#: \View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:20
 msgid "[No content was found for this web page.]"
 msgstr ""
 
-#: View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:32
-#: View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:28
-#: View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:38
-#: View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:28
-#: View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:28
+#: \View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:32
+#: \View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:28
+#: \View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:38
+#: \View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:28
+#: \View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:28
 msgid "Your Content"
 msgstr "Su Contenido"
 
-#: View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:33
-#: View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:29
-#: View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:29
+#: \View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:33
+#: \View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:29
+#: \View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:29
 msgid "[No content was found!]"
 msgstr "[No se encontraron contenidos!]"
 
-#: View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:37
-#: View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:33
-#: View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:53
-#: View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:33
-#: View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:33
+#: \View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:37
+#: \View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:33
+#: \View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:53
+#: \View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:33
+#: \View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:33
 msgid "Keywords Statistics"
 msgstr ""
 
-#: View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:42
-#: View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:38
-#: View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:58
-#: View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:38
-#: View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:38
+#: \View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:42
+#: \View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:38
+#: \View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:58
+#: \View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:38
+#: \View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:38
 msgid "Search Term"
 msgstr "Criterio de Búsqueda"
 
-#: View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:43
-#: View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:39
-#: View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:59
-#: View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:39
-#: View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:39
+#: \View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:43
+#: \View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:39
+#: \View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:59
+#: \View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:39
+#: \View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:39
 msgid "Competitors"
 msgstr "Competidores"
 
-#: View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:50
-#: View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:46
-#: View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:66
-#: View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:46
-#: View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:46
+#: \View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:50
+#: \View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:46
+#: \View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:66
+#: \View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:46
+#: \View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:46
 msgid "Quantity"
 msgstr "Cantidad"
 
-#: View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:54;82
-#: View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:50;78
-#: View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:70
-#: View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:50;78
-#: View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:50;78
+#: \View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:54;82
+#: \View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:50;78
+#: \View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:70
+#: \View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:50;78
+#: \View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:50;78
 msgid "all to %d"
 msgstr "todos a %d"
 
-#: View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:56;84
-#: View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:52;80
-#: View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:72
-#: View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:52;80
-#: View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:52;80
+#: \View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:56;84
+#: \View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:52;80
+#: \View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:72
+#: \View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:52;80
+#: \View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:52;80
 msgid "%d to %d"
 msgstr "%d a %d"
 
-#: View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:64
-#: View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:60
-#: View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:80
-#: View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:60
-#: View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:60
+#: \View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:64
+#: \View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:60
+#: \View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:80
+#: \View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:60
+#: \View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:60
 msgid "Density"
 msgstr "Densidad"
 
-#: View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:68
-#: View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:64
-#: View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:84
-#: View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:64
-#: View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:64
+#: \View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:68
+#: \View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:64
+#: \View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:84
+#: \View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:64
+#: \View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:64
 msgid "all to %.1f%%"
 msgstr ""
 
-#: View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:70
-#: View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:66
-#: View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:86
-#: View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:66
-#: View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:66
+#: \View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:70
+#: \View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:66
+#: \View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:86
+#: \View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:66
+#: \View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:66
 msgid "%.1f to %.1f%%"
 msgstr "%.1f a %.1f%%"
 
-#: View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:78
-#: View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:74
-#: View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:74
-#: View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:74
+#: \View\Elements\CompetitorCompare\keyword_use_in_body_text.ctp:78
+#: \View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:74
+#: \View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:74
+#: \View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:74
 msgid "Position"
 msgstr "Posición"
 
-#: View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:2
-#: View\Elements\Tools\CompetitorCompare.ctp:361
+#: \View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:2
+#: \View\Elements\Tools\CompetitorCompare.ctp:377
 msgid "Keyword use in document title"
 msgstr "Palabras clave utilizadas título de documento"
 
-#: View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:3
+#: \View\Elements\CompetitorCompare\keyword_use_in_document_title.ctp:3
 msgid ""
 "The document title is the text within the &lt;title&gt;...&lt;/title&gt; "
 "tags in the HTML code of your web page. This chapter tries to find out how "
@@ -505,42 +507,42 @@ msgid ""
 "%s."
 msgstr ""
 
-#: View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:2
-#: View\Elements\Tools\CompetitorCompare.ctp:365
+#: \View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:2
+#: \View\Elements\Tools\CompetitorCompare.ctp:381
 msgid "Keyword use in H1 headline texts"
 msgstr "Palabras clave utilizadas en titulares H1"
 
-#: View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:3
+#: \View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:3
 msgid ""
 "H1 headline texts are the texts that are written between the &lt;h1&gt;..."
 "&lt;/h1&gt; tags in the HTML code of a web page. Some search engines give "
 "extra relevance to search terms that appear in the headline texts."
 msgstr ""
 
-#: View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:12
+#: \View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:12
 msgid "H1 Heading Text"
 msgstr "Texto en Títulos H1"
 
-#: View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:22
+#: \View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:22
 msgid "This site does not have H1 titles."
 msgstr ""
 
-#: View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:41
+#: \View\Elements\CompetitorCompare\keyword_use_in_h1_headline_texts.ctp:41
 msgid "Your web site does not have any H1 titles."
 msgstr "Su página web no utiliza titulares H1"
 
-#: View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:2
-#: View\Elements\Tools\CompetitorCompare.ctp:368
+#: \View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:2
+#: \View\Elements\Tools\CompetitorCompare.ctp:384
 msgid "Keyword use in meta description"
 msgstr "Palabras clave utilizadas en meta-description"
 
-#: View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:2
-#: View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:2
-#: View\Elements\CompetitorCompare\report_charts.ctp:40
+#: \View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:2
+#: \View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:2
+#: \View\Elements\CompetitorCompare\report_charts.ctp:40
 msgid "Important"
 msgstr "Importante"
 
-#: View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:3
+#: \View\Elements\CompetitorCompare\keyword_use_in_meta_description.ctp:3
 msgid ""
 "The Meta Description tag allows you to describe your web page. This chapter "
 "tries to find out if %s takes the Meta Description tag into account. Some "
@@ -552,12 +554,12 @@ msgid ""
 "attractive description in the search results"
 msgstr ""
 
-#: View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:2
-#: View\Elements\Tools\CompetitorCompare.ctp:366
+#: \View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:2
+#: \View\Elements\Tools\CompetitorCompare.ctp:382
 msgid "Keyword use in page URL"
 msgstr "Palabras clave utilizadas en URL de página"
 
-#: View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:3
+#: \View\Elements\CompetitorCompare\keyword_use_in_page_url.ctp:3
 msgid ""
 "The page URL is the part after the domain name in the web page address. This "
 "chapter tries to find out if Google.es  (la Web) gives extra relevance to "
@@ -565,12 +567,12 @@ msgid ""
 "with slashes, dashes or underscores."
 msgstr ""
 
-#: View\Elements\CompetitorCompare\number_of_backlinks.ctp:2
-#: View\Elements\Tools\CompetitorCompare.ctp:362
+#: \View\Elements\CompetitorCompare\number_of_backlinks.ctp:2
+#: \View\Elements\Tools\CompetitorCompare.ctp:378
 msgid "Number of backlinks"
 msgstr "Número de enlaces entrantes"
 
-#: View\Elements\CompetitorCompare\number_of_backlinks.ctp:3
+#: \View\Elements\CompetitorCompare\number_of_backlinks.ctp:3
 msgid ""
 "This chapter measures how many web pages link to your website domain "
 "according to the data providers Alexa.com and SEOprofiler.com. The "
@@ -578,34 +580,34 @@ msgid ""
 "number of all linking pages."
 msgstr ""
 
-#: View\Elements\CompetitorCompare\number_of_backlinks.ctp:7
+#: \View\Elements\CompetitorCompare\number_of_backlinks.ctp:7
 msgid ""
 "Keep in mind that the raw number of linking web pages is not as important as "
 "the quality of the web pages that link to your site."
 msgstr ""
 
-#: View\Elements\CompetitorCompare\number_of_backlinks.ctp:13
+#: \View\Elements\CompetitorCompare\number_of_backlinks.ctp:13
 msgid "Alexa"
 msgstr "Alexa"
 
-#: View\Elements\CompetitorCompare\number_of_backlinks.ctp:14
+#: \View\Elements\CompetitorCompare\number_of_backlinks.ctp:14
 msgid "Google.com"
 msgstr "Google.com"
 
-#: View\Elements\CompetitorCompare\number_of_backlinks.ctp:15
+#: \View\Elements\CompetitorCompare\number_of_backlinks.ctp:15
 msgid "SEOprofiler (unique backlinks)"
 msgstr ""
 
-#: View\Elements\CompetitorCompare\number_of_backlinks.ctp:16
+#: \View\Elements\CompetitorCompare\number_of_backlinks.ctp:16
 msgid "Peak Value"
 msgstr "Valor Pico"
 
-#: View\Elements\CompetitorCompare\number_of_visitors_to_the_site.ctp:2
-#: View\Elements\Tools\CompetitorCompare.ctp:367
+#: \View\Elements\CompetitorCompare\number_of_visitors_to_the_site.ctp:2
+#: \View\Elements\Tools\CompetitorCompare.ctp:383
 msgid "Number of visitors to the site"
 msgstr "Número de visitantes al sitio"
 
-#: View\Elements\CompetitorCompare\number_of_visitors_to_the_site.ctp:3
+#: \View\Elements\CompetitorCompare\number_of_visitors_to_the_site.ctp:3
 msgid ""
 "Search engines might look at web site usage data, such as the number of "
 "visitors to your site, to determine if your site is reputable and contains "
@@ -614,474 +616,561 @@ msgid ""
 "combined measure of page views and number of site visitors."
 msgstr ""
 
-#: View\Elements\CompetitorCompare\number_of_visitors_to_the_site.ctp:7
+#: \View\Elements\CompetitorCompare\number_of_visitors_to_the_site.ctp:7
 msgid "Alexa.com Traffic Rank results <b>(the lower the better)</b>"
 msgstr ""
 
-#: View\Elements\CompetitorCompare\number_of_visitors_to_the_site.ctp:14
+#: \View\Elements\CompetitorCompare\number_of_visitors_to_the_site.ctp:14
 msgid "Alexa Traffic Rank"
 msgstr "Rank de Tráfico Alexa"
 
-#: View\Elements\CompetitorCompare\report_charts.ctp:14
+#: \View\Elements\CompetitorCompare\report_charts.ctp:14
 msgid "Passed factors"
 msgstr "Factores superados"
 
-#: View\Elements\CompetitorCompare\report_charts.ctp:15
+#: \View\Elements\CompetitorCompare\report_charts.ctp:15
 msgid "Failed factors"
 msgstr "Factores fallidos"
 
-#: View\Elements\CompetitorCompare\report_charts.ctp:19
+#: \View\Elements\CompetitorCompare\report_charts.ctp:19
 msgid "Search engine ranking factors performance"
 msgstr ""
 
-#: View\Elements\CompetitorCompare\report_charts.ctp:37
+#: \View\Elements\CompetitorCompare\report_charts.ctp:37
 msgid "Factors Passed"
 msgstr "Factores Superados"
 
-#: View\Elements\CompetitorCompare\report_charts.ctp:37
+#: \View\Elements\CompetitorCompare\report_charts.ctp:37
 msgid "Factors Failed"
 msgstr "Factores Fallidos"
 
-#: View\Elements\Tools\BacklinkChecker.ctp:3
-#: View\Elements\Tools\CompetitorCompare.ctp:49
-#: View\Elements\Tools\CssValidator.ctp:3
-#: View\Elements\Tools\HeaderExtractor.ctp:3
-#: View\Elements\Tools\HtmlValidator.ctp:3
-#: View\Elements\Tools\KeywordDensity.ctp:3
-#: View\Elements\Tools\KeywordExtractor.ctp:3
-#: View\Elements\Tools\LinkExtractor.ctp:3
-#: View\Elements\Tools\MetatagsExtractor.ctp:3
-#: View\Elements\Tools\PageRank.ctp:3 View\Elements\Tools\RobotsTxt.ctp:6
-#: View\Elements\Tools\SeoStats.ctp:3
-#: View\Elements\Tools\SourceCodeViewer.ctp:3
-#: View\Elements\Tools\SpeedChecker.ctp:3
-#: View\Elements\Tools\SpiderViewer.ctp:3
-#: View\Elements\Tools\WhoisRetriever.ctp:3
+#: \View\Elements\Tools\BacklinkChecker.ctp:3
+#: \View\Elements\Tools\CompetitorCompare.ctp:49
+#: \View\Elements\Tools\CssValidator.ctp:3
+#: \View\Elements\Tools\HeaderExtractor.ctp:3
+#: \View\Elements\Tools\HtmlValidator.ctp:3
+#: \View\Elements\Tools\KeywordDensity.ctp:3
+#: \View\Elements\Tools\KeywordExtractor.ctp:3
+#: \View\Elements\Tools\LinkExtractor.ctp:3
+#: \View\Elements\Tools\MetatagsExtractor.ctp:3
+#: \View\Elements\Tools\PageRank.ctp:3 \View\Elements\Tools\RobotsTxt.ctp:6
+#: \View\Elements\Tools\SeoStats.ctp:3
+#: \View\Elements\Tools\SourceCodeViewer.ctp:3
+#: \View\Elements\Tools\SpeedChecker.ctp:3
+#: \View\Elements\Tools\SpiderViewer.ctp:3
+#: \View\Elements\Tools\WhoisRetriever.ctp:3
 msgid "Enter Your URL"
 msgstr "Ingrese Su URL"
 
-#: View\Elements\Tools\BacklinkChecker.ctp:4
-#: View\Elements\Tools\CompetitorCompare.ctp:319
-#: View\Elements\Tools\CssValidator.ctp:4
-#: View\Elements\Tools\HeaderExtractor.ctp:4
-#: View\Elements\Tools\HtmlEncrypter.ctp:4
-#: View\Elements\Tools\HtmlValidator.ctp:4
-#: View\Elements\Tools\KeywordDensity.ctp:4
-#: View\Elements\Tools\KeywordExtractor.ctp:4
-#: View\Elements\Tools\KeywordSuggestion.ctp:205
-#: View\Elements\Tools\LinkExtractor.ctp:4
-#: View\Elements\Tools\Md5Encrypter.ctp:4
-#: View\Elements\Tools\MetatagsExtractor.ctp:4
-#: View\Elements\Tools\MetatagsGenerator.ctp:9
-#: View\Elements\Tools\PageRank.ctp:4 View\Elements\Tools\Ping.ctp:4
-#: View\Elements\Tools\ReverseIp.ctp:4 View\Elements\Tools\RobotsTxt.ctp:11
-#: View\Elements\Tools\SeoStats.ctp:4
-#: View\Elements\Tools\SourceCodeViewer.ctp:4
-#: View\Elements\Tools\SpeedChecker.ctp:5
-#: View\Elements\Tools\SpiderViewer.ctp:4
-#: View\Elements\Tools\WhoisRetriever.ctp:4
+#: \View\Elements\Tools\BacklinkChecker.ctp:4
+#: \View\Elements\Tools\CompetitorCompare.ctp:335
+#: \View\Elements\Tools\CssValidator.ctp:4
+#: \View\Elements\Tools\HeaderExtractor.ctp:4
+#: \View\Elements\Tools\HtmlEncrypter.ctp:4
+#: \View\Elements\Tools\HtmlValidator.ctp:4
+#: \View\Elements\Tools\KeywordDensity.ctp:4
+#: \View\Elements\Tools\KeywordExtractor.ctp:4
+#: \View\Elements\Tools\KeywordSuggestion.ctp:205
+#: \View\Elements\Tools\LinkExtractor.ctp:4
+#: \View\Elements\Tools\Md5Encrypter.ctp:4
+#: \View\Elements\Tools\MetatagsExtractor.ctp:4
+#: \View\Elements\Tools\MetatagsGenerator.ctp:9
+#: \View\Elements\Tools\PageRank.ctp:4 \View\Elements\Tools\Ping.ctp:4
+#: \View\Elements\Tools\ReverseIp.ctp:4 \View\Elements\Tools\RobotsTxt.ctp:11
+#: \View\Elements\Tools\SeoStats.ctp:4
+#: \View\Elements\Tools\SourceCodeViewer.ctp:4
+#: \View\Elements\Tools\SpeedChecker.ctp:5
+#: \View\Elements\Tools\SpiderViewer.ctp:4
+#: \View\Elements\Tools\WhoisRetriever.ctp:4
 msgid "Continue"
 msgstr "Continuar"
 
-#: View\Elements\Tools\BacklinkChecker.ctp:10
+#: \View\Elements\Tools\BacklinkChecker.ctp:10
 msgid "BL Alexa"
 msgstr "Continuar"
 
-#: View\Elements\Tools\BacklinkChecker.ctp:11
+#: \View\Elements\Tools\BacklinkChecker.ctp:11
 msgid "BL Google"
 msgstr "BL Google"
 
-#: View\Elements\Tools\CompetitorCompare.ctp:9;14;19;24;29;34;39
+#: \View\Elements\Tools\CompetitorCompare.ctp:9;14;19;24;29;34;39
 msgid "Please Wait..."
 msgstr ""
 
-#: View\Elements\Tools\CompetitorCompare.ctp:10
+#: \View\Elements\Tools\CompetitorCompare.ctp:10
 msgid "Validating information."
 msgstr ""
 
-#: View\Elements\Tools\CompetitorCompare.ctp:15
+#: \View\Elements\Tools\CompetitorCompare.ctp:15
 msgid "Downloading your web page."
 msgstr "Descargando su página web."
 
-#: View\Elements\Tools\CompetitorCompare.ctp:20
+#: \View\Elements\Tools\CompetitorCompare.ctp:20
 msgid "Fetching search engine results."
 msgstr ""
 
-#: View\Elements\Tools\CompetitorCompare.ctp:25
+#: \View\Elements\Tools\CompetitorCompare.ctp:25
 msgid "Downloading competitor web pages."
 msgstr ""
 
-#: View\Elements\Tools\CompetitorCompare.ctp:30
+#: \View\Elements\Tools\CompetitorCompare.ctp:30
 msgid "Analyzing competitors."
 msgstr "Analizando su competencia."
 
-#: View\Elements\Tools\CompetitorCompare.ctp:35
+#: \View\Elements\Tools\CompetitorCompare.ctp:35
 msgid "Analyzing your web page."
-msgstr "EnAnalizando su página web"
+msgstr "Analizando su página web"
 
-#: View\Elements\Tools\CompetitorCompare.ctp:40
+#: \View\Elements\Tools\CompetitorCompare.ctp:40
 msgid "Generating report."
 msgstr ""
 
-#: View\Elements\Tools\CompetitorCompare.ctp:55
+#: \View\Elements\Tools\CompetitorCompare.ctp:55
 msgid "Criteria"
 msgstr "Criterio"
 
-#: View\Elements\Tools\CompetitorCompare.ctp:70
+#: \View\Elements\Tools\CompetitorCompare.ctp:70
 msgid "Search Engine"
 msgstr "Motor de Búsqueda"
 
-#: View\Elements\Tools\CompetitorCompare.ctp:318
+#: \View\Elements\Tools\CompetitorCompare.ctp:334
 msgid "This may take a few minutes, please be patient and wait."
 msgstr ""
 
-#: View\Elements\Tools\CompetitorCompare.ctp:323;360
+#: \View\Elements\Tools\CompetitorCompare.ctp:339;376
 msgid "Report overview"
 msgstr "Vision General"
 
-#: View\Elements\Tools\CompetitorCompare.ctp:324
+#: \View\Elements\Tools\CompetitorCompare.ctp:340
 msgid ""
 "This report helps you to optimize the web page \"<b>%s</b>\" for a high "
 "ranking on <b>%s</b> for the search term \"<b>%s</b>\"."
 msgstr ""
 
-#: View\Elements\Tools\CompetitorCompare.ctp:331;350
+#: \View\Elements\Tools\CompetitorCompare.ctp:347;366
 msgid "[No meta description available.]"
 msgstr "[meta description no disponible.]"
 
-#: View\Elements\Tools\CompetitorCompare.ctp:336
+#: \View\Elements\Tools\CompetitorCompare.ctp:352
 msgid "Your Web Page"
 msgstr "Su Página Web"
 
-#: View\Elements\Tools\CompetitorCompare.ctp:338
+#: \View\Elements\Tools\CompetitorCompare.ctp:354
 msgid "Your Competitors"
 msgstr "Sus Competidores"
 
-#: View\Elements\Tools\CompetitorCompare.ctp:343
+#: \View\Elements\Tools\CompetitorCompare.ctp:359
 msgid "Your competitors for the search term \"%s\" on %s"
 msgstr "Sus competidores para el término de búsqueda \"%s\" on %s"
 
-#: View\Elements\Tools\CompetitorCompare.ctp:358
+#: \View\Elements\Tools\CompetitorCompare.ctp:374
 msgid "Table of contents"
 msgstr "Tabla de contenidos"
 
-#: View\Elements\Tools\CompetitorCompare.ctp:363
+#: \View\Elements\Tools\CompetitorCompare.ctp:379
 msgid "keyword use in body text"
 msgstr "Palabras clave utilizadas en el texto del cuerpo"
 
-#: View\Elements\Tools\CssValidator.ctp:6
+#: \View\Elements\Tools\CssValidator.ctp:6
 msgid "CSS Validator"
 msgstr "Validador CSS"
 
-#: View\Elements\Tools\GoogleAnalytics.ctp:6
-msgid "<a href=\"%s\" target=\"_blank\">Google Analytics Tracking Code:</a>"
-msgstr ""
-
-#: View\Elements\Tools\GoogleAnalytics.ctp:11
-#: View\Elements\Tools\SiteRobots.ctp:11
-#: View\Elements\Tools\WebmasterTools.ctp:27
-msgid "Save"
-msgstr "Guardar"
-
-#: View\Elements\Tools\HeaderExtractor.ctp:6
+#: \View\Elements\Tools\HeaderExtractor.ctp:6
 msgid "HTTP Header Extractor"
 msgstr "Extractor de cabeceras HTTP"
 
-#: View\Elements\Tools\HtmlEncrypter.ctp:3
-#: View\Elements\Tools\Md5Encrypter.ctp:3
+#: \View\Elements\Tools\HtmlEncrypter.ctp:3
+#: \View\Elements\Tools\Md5Encrypter.ctp:3
 msgid "Enter Your Text"
 msgstr "Ingrese su Texto"
 
-#: View\Elements\Tools\HtmlEncrypter.ctp:6
+#: \View\Elements\Tools\HtmlEncrypter.ctp:6
 msgid "HTML Encrypter"
 msgstr "Encriptador HTML"
 
-#: View\Elements\Tools\HtmlValidator.ctp:6
+#: \View\Elements\Tools\HtmlValidator.ctp:6
 msgid "HTML Validator"
 msgstr "Validador HTML"
 
-#: View\Elements\Tools\KeywordDensity.ctp:6
+#: \View\Elements\Tools\KeywordDensity.ctp:6
 msgid "%s analysed words"
 msgstr "%s palabras an alizadas"
 
-#: View\Elements\Tools\KeywordSuggestion.ctp:6
+#: \View\Elements\Tools\KeywordDensity.ctp:10
+#, fuzzy
+msgid "Keyword"
+msgstr "Keywords"
+
+#: \View\Elements\Tools\KeywordDensity.ctp:11
+msgid "Percent"
+msgstr ""
+
+#: \View\Elements\Tools\KeywordSuggestion.ctp:6
 msgid "Query"
 msgstr ""
 
-#: View\Elements\Tools\KeywordSuggestion.ctp:7
+#: \View\Elements\Tools\KeywordSuggestion.ctp:7
 msgid "e.g. \"how to\""
 msgstr ""
 
-#: View\Elements\Tools\KeywordSuggestion.ctp:14
+#: \View\Elements\Tools\KeywordSuggestion.ctp:14
 msgid "Language"
 msgstr ""
 
-#: View\Elements\Tools\KeywordSuggestion.ctp:219
+#: \View\Elements\Tools\KeywordSuggestion.ctp:219
 msgid "No suggestions were found for this criteria"
 msgstr ""
 
-#: View\Elements\Tools\LinkExtractor.ctp:6
+#: \View\Elements\Tools\LinkExtractor.ctp:6
 msgid "Extracted %s links"
 msgstr "%s links extraídos"
 
-#: View\Elements\Tools\Md5Encrypter.ctp:6
+#: \View\Elements\Tools\Md5Encrypter.ctp:6
 msgid "MD5 Encrypter"
 msgstr "Encriptador MD5"
 
-#: View\Elements\Tools\MetatagsExtractor.ctp:6
+#: \View\Elements\Tools\MetatagsExtractor.ctp:6
 msgid "Meta Tags Extractor"
 msgstr "Extractor de Meta Tags"
 
-#: View\Elements\Tools\MetatagsGenerator.ctp:3
+#: \View\Elements\Tools\MetatagsGenerator.ctp:3
 msgid "Title"
 msgstr "Título"
 
-#: View\Elements\Tools\MetatagsGenerator.ctp:4 View\Urls\admin_add.ctp:73
-#: View\Urls\admin_edit.ctp:66 View\Urls\admin_index.ctp:19
+#: \View\Elements\Tools\MetatagsGenerator.ctp:4 \View\Urls\admin_add.ctp:73
+#: \View\Urls\admin_edit.ctp:66 \View\Urls\admin_index.ctp:19
 msgid "Description"
 msgstr "Descricpión"
 
-#: View\Elements\Tools\MetatagsGenerator.ctp:5 View\Urls\admin_add.ctp:82
-#: View\Urls\admin_edit.ctp:75 View\Urls\admin_index.ctp:24
+#: \View\Elements\Tools\MetatagsGenerator.ctp:5 \View\Urls\admin_add.ctp:82
+#: \View\Urls\admin_edit.ctp:75 \View\Urls\admin_index.ctp:24
 msgid "Keywords"
 msgstr "Keywords"
 
-#: View\Elements\Tools\MetatagsGenerator.ctp:6
+#: \View\Elements\Tools\MetatagsGenerator.ctp:6
 msgid "Author"
 msgstr "Autor"
 
-#: View\Elements\Tools\MetatagsGenerator.ctp:7
+#: \View\Elements\Tools\MetatagsGenerator.ctp:7
 msgid "Owner"
 msgstr "Owner"
 
-#: View\Elements\Tools\MetatagsGenerator.ctp:8
+#: \View\Elements\Tools\MetatagsGenerator.ctp:8
 msgid "Copyright"
 msgstr "Copyright"
 
-#: View\Elements\Tools\MetatagsGenerator.ctp:11
+#: \View\Elements\Tools\MetatagsGenerator.ctp:11
 msgid "Meta Tags Generator"
 msgstr "Generador de Meta Tags"
 
-#: View\Elements\Tools\PageRank.ctp:6
+#: \View\Elements\Tools\PageRank.ctp:6
 msgid "Page rank: <b>%d</b>"
 msgstr ""
 
-#: View\Elements\Tools\Ping.ctp:3
+#: \View\Elements\Tools\Ping.ctp:3
 msgid "Enter Your Domain/IP"
 msgstr "Ingrese Su Dominio/IP"
 
-#: View\Elements\Tools\Ping.ctp:6 View\Elements\Tools\ReverseIp.ctp:6
+#: \View\Elements\Tools\Ping.ctp:6 \View\Elements\Tools\ReverseIp.ctp:6
 msgid "Ping Domain/IP"
 msgstr "Ping Dominio/IP"
 
-#: View\Elements\Tools\ReverseIp.ctp:3
+#: \View\Elements\Tools\ReverseIp.ctp:3
 msgid "Enter Your IP"
 msgstr "Ingrese Su IP"
 
-#: View\Elements\Tools\RobotsTxt.ctp:7
+#: \View\Elements\Tools\RobotsTxt.ctp:7
 msgid ""
 "Can be any document on your website; will automatically download http://"
 "yoursite/robots.txt"
 msgstr ""
 
-#: View\Elements\Tools\RobotsTxt.ctp:13
+#: \View\Elements\Tools\RobotsTxt.ctp:13
 msgid "robots.txt file for %s"
 msgstr "Fichero robots.txt para %s"
 
-#: View\Elements\Tools\SeoStats.ctp:18
+#: \View\Elements\Tools\SeoStats.ctp:18
 msgid "Domain Name"
 msgstr "Nombre de Dominio"
 
-#: View\Elements\Tools\SeoStats.ctp:23
+#: \View\Elements\Tools\SeoStats.ctp:23
 msgid "Google Pagerank"
 msgstr "Google Pagerank"
 
-#: View\Elements\Tools\SeoStats.ctp:28
+#: \View\Elements\Tools\SeoStats.ctp:28
 msgid "Alexa Rank"
 msgstr "Alexa Rank"
 
-#: View\Elements\Tools\SeoStats.ctp:33
+#: \View\Elements\Tools\SeoStats.ctp:33
 msgid "DMOZ Directory"
 msgstr "Directorio DMOZ"
 
-#: View\Elements\Tools\SeoStats.ctp:33;53
+#: \View\Elements\Tools\SeoStats.ctp:33;53
 msgid "Yes"
 msgstr "Si"
 
-#: View\Elements\Tools\SeoStats.ctp:33;53
+#: \View\Elements\Tools\SeoStats.ctp:33;53
 msgid "No"
 msgstr "No"
 
-#: View\Elements\Tools\SeoStats.ctp:38
+#: \View\Elements\Tools\SeoStats.ctp:38
 msgid "Domain Age"
 msgstr "Edad de Dominoi"
 
-#: View\Elements\Tools\SeoStats.ctp:38
+#: \View\Elements\Tools\SeoStats.ctp:38
 msgid "%s years, %s days"
 msgstr "%s años, %s días"
 
-#: View\Elements\Tools\SeoStats.ctp:38
+#: \View\Elements\Tools\SeoStats.ctp:38
 msgid "Unknow"
 msgstr "Desconocido"
 
-#: View\Elements\Tools\SeoStats.ctp:43
+#: \View\Elements\Tools\SeoStats.ctp:43
 msgid "Google Backlinks"
 msgstr "Google Backlinks"
 
-#: View\Elements\Tools\SeoStats.ctp:48
+#: \View\Elements\Tools\SeoStats.ctp:48
 msgid "Alexa Backlinks"
 msgstr "Alexa Backlinks"
 
-#: View\Elements\Tools\SeoStats.ctp:53
+#: \View\Elements\Tools\SeoStats.ctp:53
 msgid "Yahoo Directory"
 msgstr "Directorio Yahoo"
 
-#: View\Elements\Tools\SeoStats.ctp:58
+#: \View\Elements\Tools\SeoStats.ctp:58
 msgid "Google Indexed Pages"
 msgstr "Páginas indexadas por Google"
 
-#: View\Elements\Tools\SeoStats.ctp:63
+#: \View\Elements\Tools\SeoStats.ctp:63
 msgid "Bing Indexed Pages"
 msgstr "Páginas indexadas por Bing"
 
-#: View\Elements\Tools\SeoStats.ctp:68
+#: \View\Elements\Tools\SeoStats.ctp:68
 msgid "Digg Links"
 msgstr "Vínculus Digg"
 
-#: View\Elements\Tools\SeoStats.ctp:73
+#: \View\Elements\Tools\SeoStats.ctp:73
 msgid "Delicious Links"
 msgstr "Vínculos Delicious"
 
-#: View\Elements\Tools\SeoStats.ctp:78
+#: \View\Elements\Tools\SeoStats.ctp:78
 msgid "Technorati (Blog) Rank"
 msgstr "Technorati (Blog) Rank"
 
-#: View\Elements\Tools\SeoStats.ctp:83
+#: \View\Elements\Tools\SeoStats.ctp:83
 msgid "Compete Rank"
 msgstr "Compete Rank"
 
-#: View\Elements\Tools\SeoStats.ctp:88
+#: \View\Elements\Tools\SeoStats.ctp:88
 msgid "Site Value"
 msgstr "Valor del Sitio"
 
-#: View\Elements\Tools\SeoStats.ctp:88
+#: \View\Elements\Tools\SeoStats.ctp:88
 msgid "No data"
 msgstr "Sin datos"
 
-#: View\Elements\Tools\SeoStats.ctp:93
+#: \View\Elements\Tools\SeoStats.ctp:93
 msgid "W3C Validator"
 msgstr "Validador W3C"
 
-#: View\Elements\Tools\SeoStats.ctp:93;98
+#: \View\Elements\Tools\SeoStats.ctp:93;98
 msgid "Details"
 msgstr "Detalles"
 
-#: View\Elements\Tools\SeoStats.ctp:98
+#: \View\Elements\Tools\SeoStats.ctp:98
 msgid "Internet Archive"
 msgstr "Internet Archive"
 
-#: View\Elements\Tools\SeoStats.ctp:103
+#: \View\Elements\Tools\SeoStats.ctp:103
 msgid "Google Bot Last Visit"
 msgstr "Última Visita de Google BOT"
 
-#: View\Elements\Tools\SourceCodeViewer.ctp:6
+#: \View\Elements\Tools\SourceCodeViewer.ctp:6
 msgid "Source Code Viewer"
 msgstr "Visor de Código Fuente"
 
-#: View\Elements\Tools\SpeedChecker.ctp:4
+#: \View\Elements\Tools\SpeedChecker.ctp:4
 msgid "This may take a few minutues, please be patient!"
 msgstr ""
 
-#: View\Elements\Tools\SpeedChecker.ctp:8
+#: \View\Elements\Tools\SpeedChecker.ctp:8
 msgid "Overview"
 msgstr "Vision General"
 
-#: View\Elements\Tools\SpeedChecker.ctp:13;37;62;85
+#: \View\Elements\Tools\SpeedChecker.ctp:13;37;62;85
 msgid "Size"
 msgstr ""
 
-#: View\Elements\Tools\SpeedChecker.ctp:14;38;63;86
+#: \View\Elements\Tools\SpeedChecker.ctp:14;38;63;86
 msgid "Load Time (s)"
 msgstr ""
 
-#: View\Elements\Tools\SpeedChecker.ctp:15
+#: \View\Elements\Tools\SpeedChecker.ctp:15
 msgid "Download Speed"
 msgstr ""
 
-#: View\Elements\Tools\SpeedChecker.ctp:29
+#: \View\Elements\Tools\SpeedChecker.ctp:29
 msgid "Images"
 msgstr ""
 
-#: View\Elements\Tools\SpeedChecker.ctp:33;60;83
+#: \View\Elements\Tools\SpeedChecker.ctp:33;60;83
 msgid "#"
 msgstr ""
 
-#: View\Elements\Tools\SpeedChecker.ctp:35
+#: \View\Elements\Tools\SpeedChecker.ctp:35
 msgid "Width (px)"
 msgstr ""
 
-#: View\Elements\Tools\SpeedChecker.ctp:36
+#: \View\Elements\Tools\SpeedChecker.ctp:36
 msgid "Height (px)"
 msgstr ""
 
-#: View\Elements\Tools\SpeedChecker.ctp:56
+#: \View\Elements\Tools\SpeedChecker.ctp:56
 msgid "CSS Files"
 msgstr ""
 
-#: View\Elements\Tools\SpeedChecker.ctp:79
+#: \View\Elements\Tools\SpeedChecker.ctp:79
 msgid "JavaScript Files"
 msgstr ""
 
-#: View\Elements\Tools\SpiderViewer.ctp:6
+#: \View\Elements\Tools\SpiderViewer.ctp:6
 msgid "Spider Viewer"
 msgstr "Visor Araña"
 
-#: View\Elements\Tools\WebmasterTools.ctp:6
-msgid "<a href=\"%s\" target=\"_blank\">Google Webmaster Tools:</a>"
-msgstr ""
-
-#: View\Elements\Tools\WebmasterTools.ctp:14
-msgid "<a href=\"%s\" target=\"_blank\">Microsoft Bing Webmaster Tools:</a>"
-msgstr ""
-
-#: View\Elements\Tools\WebmasterTools.ctp:22
-msgid "<a href=\"%s\" target=\"_blank\">Alexa Verification ID:</a>"
-msgstr ""
-
-#: View\Elements\Tools\WhoisRetriever.ctp:6
+#: \View\Elements\Tools\WhoisRetriever.ctp:6
 msgid "Domain Whois Retriever"
 msgstr "Domain Whois Retriever"
 
-#: View\Urls\admin_add.ctp:4 View\Urls\admin_edit.ctp:6
+#: \View\SiteSettings\admin_index.ctp:7
+msgid "Preferred domain"
+msgstr ""
+
+#: \View\SiteSettings\admin_index.ctp:13
+msgid ""
+"The preferred domain is the one that you would liked used to index your "
+"site's pages."
+msgstr ""
+
+#: \View\SiteSettings\admin_index.ctp:18
+msgid "Sitewide <code>meta</code> settings"
+msgstr ""
+
+#: \View\SiteSettings\admin_index.ctp:23
+msgid "Use meta keywords tag?"
+msgstr ""
+
+#: \View\SiteSettings\admin_index.ctp:24
+msgid ""
+"I don't know why you'd want to use meta keywords, but if you want to, check "
+"this box."
+msgstr ""
+
+#: \View\SiteSettings\admin_index.ctp:31
+msgid "Add <code>noodp</code> meta robots tag sitewide"
+msgstr ""
+
+#: \View\SiteSettings\admin_index.ctp:32
+msgid ""
+"Prevents search engines from using the DMOZ description for pages from this "
+"site in the search results."
+msgstr ""
+
+#: \View\SiteSettings\admin_index.ctp:39
+msgid "Add <code>noydir</code> meta robots tag sitewide"
+msgstr ""
+
+#: \View\SiteSettings\admin_index.ctp:40
+msgid ""
+"Prevents search engines from using the Yahoo! directory description for "
+"pages from this site in the search results."
+msgstr ""
+
+#: \View\SiteSettings\admin_index.ctp:46
+msgid "Development & Tracking"
+msgstr ""
+
+#: \View\SiteSettings\admin_index.ctp:51
+msgid "<a href=\"%s\" target=\"_blank\">Google Analytics Tracking Code</a>"
+msgstr ""
+
+#: \View\SiteSettings\admin_index.ctp:52
+msgid ""
+"Copy & Paste your Google Analytics tracking code here, it will be used on "
+"every page of your site."
+msgstr ""
+
+#: \View\SiteSettings\admin_index.ctp:59
+msgid "<a href=\"%s\" target=\"_blank\">Site robots.txt</a>"
+msgstr ""
+
+#: \View\SiteSettings\admin_index.ctp:60
+msgid "Type in your site's robot.txt file."
+msgstr ""
+
+#: \View\SiteSettings\admin_index.ctp:69
+msgid "<a href=\"%s\" target=\"_blank\">Google Webmaster Tools:</a>"
+msgstr ""
+
+#: \View\SiteSettings\admin_index.ctp:70
+msgid ""
+"Verify your site on <b>Google Webmaster Tools</b>, if your site is already "
+"verified, you can just forget about this."
+msgstr ""
+
+#: \View\SiteSettings\admin_index.ctp:77
+msgid "<a href=\"%s\" target=\"_blank\">Microsoft Bing Webmaster Tools:</a>"
+msgstr ""
+
+#: \View\SiteSettings\admin_index.ctp:78
+msgid ""
+"Verify your site on <b>Bing Webmaster Tools</b>, if your site is already "
+"verified, you can just forget about this."
+msgstr ""
+
+#: \View\SiteSettings\admin_index.ctp:85
+msgid "<a href=\"%s\" target=\"_blank\">Alexa Verification ID:</a>"
+msgstr ""
+
+#: \View\SiteSettings\admin_index.ctp:86
+msgid ""
+"Verify your site on <b>Alexa Webmaster Tools</b>, if your site is already "
+"verified, you can just forget about this."
+msgstr ""
+
+#: \View\SiteSettings\admin_index.ctp:93
+msgid "Save"
+msgstr "Guardar"
+
+#: \View\Urls\admin_add.ctp:4 \View\Urls\admin_edit.ctp:6
 msgid "Snippet Preview"
 msgstr ""
 
-#: View\Urls\admin_add.ctp:15 View\Urls\admin_edit.ctp:17
+#: \View\Urls\admin_add.ctp:15 \View\Urls\admin_edit.ctp:17
 msgid "Optimization Active"
 msgstr "Optimizacion Activa"
 
-#: View\Urls\admin_add.ctp:27
+#: \View\Urls\admin_add.ctp:27
 msgid "Retrieve information and auto-fill."
 msgstr ""
 
-#: View\Urls\admin_add.ctp:32 View\Urls\admin_edit.ctp:25
+#: \View\Urls\admin_add.ctp:32 \View\Urls\admin_edit.ctp:25
 msgid ""
 "The URL to optimize. The URL <code>/</code> represent your site's frontpage."
 msgstr ""
 
-#: View\Urls\admin_add.ctp:41 View\Urls\admin_edit.ctp:34
+#: \View\Urls\admin_add.ctp:41 \View\Urls\admin_edit.ctp:34
 msgid "301 Redirect"
 msgstr "Redirección 301"
 
-#: View\Urls\admin_add.ctp:53 View\Urls\admin_edit.ctp:46
+#: \View\Urls\admin_add.ctp:53 \View\Urls\admin_edit.ctp:46
 msgid "The URL that this page should redirect to."
 msgstr "La URL hacia la que esta página debería redireccionar."
 
-#: View\Urls\admin_add.ctp:65 View\Urls\admin_edit.ctp:58
+#: \View\Urls\admin_add.ctp:65 \View\Urls\admin_edit.ctp:58
 msgid "Page title"
 msgstr "Título de página"
 
-#: View\Urls\admin_add.ctp:66 View\Urls\admin_edit.ctp:59
+#: \View\Urls\admin_add.ctp:66 \View\Urls\admin_edit.ctp:59
 msgid ""
 "Title display in search engines is limited to 70 chars, <span class=\"title-"
 "chars-left\">70</span> chars left."
@@ -1089,7 +1178,7 @@ msgstr ""
 "El título mostrado en los motores de búsqueda se limita a 70 caracteres, "
 "<span class=\"title-chars-left\">70</span>caracteres disponibles."
 
-#: View\Urls\admin_add.ctp:74 View\Urls\admin_edit.ctp:67
+#: \View\Urls\admin_add.ctp:74 \View\Urls\admin_edit.ctp:67
 msgid ""
 "The <code>meta</code> description will be limited to 156 chars, <span class="
 "\"desc-chars-left\">156</span> chars left. If not given, your <a href=\"%s"
@@ -1099,75 +1188,118 @@ msgstr ""
 "\"desc-chars-left\">156</span> caracteres disponibles. Si no se especifica, "
 "se utilizará por defecto la <a href=\"%s\">descripción de su sitio</a>."
 
-#: View\Urls\admin_add.ctp:83 View\Urls\admin_edit.ctp:76
+#: \View\Urls\admin_add.ctp:83 \View\Urls\admin_edit.ctp:76
 msgid "Pick the main keyword or keyphrase that this page is about."
 msgstr "Escoja la palabra clave o frase sobre la que trata esta página."
 
-#: View\Urls\admin_add.ctp:90 View\Urls\admin_edit.ctp:83
+#: \View\Urls\admin_add.ctp:90 \View\Urls\admin_edit.ctp:83
 msgid "Header Code"
 msgstr "Código adicional cabecera"
 
-#: View\Urls\admin_add.ctp:91 View\Urls\admin_edit.ctp:84
+#: \View\Urls\admin_add.ctp:91 \View\Urls\admin_edit.ctp:84
 msgid "Additional code to add right before <code>&lt;/header&gt;</code> tag."
 msgstr ""
 "Código adicinal para añadir justo antes de la etiqueta de cierre de cabecera "
 "<code>&lt;/head&gt;</code>."
 
-#: View\Urls\admin_add.ctp:98 View\Urls\admin_edit.ctp:91
+#: \View\Urls\admin_add.ctp:98 \View\Urls\admin_edit.ctp:91
 msgid "Footer Code"
 msgstr "Código adicional pie de página"
 
-#: View\Urls\admin_add.ctp:99 View\Urls\admin_edit.ctp:92
+#: \View\Urls\admin_add.ctp:99 \View\Urls\admin_edit.ctp:92
 msgid "Additional code to add right before <code>&lt;/body&gt;</code> tag."
 msgstr ""
 "Código adicinal para añadir justo antes de la etiqueta de cierre de cuerpo "
 "<code>&lt;/body&gt;</code>."
 
-#: View\Urls\admin_add.ctp:107 View\Urls\admin_edit.ctp:100
+#: \View\Urls\admin_add.ctp:107 \View\Urls\admin_edit.ctp:100
 msgid "Save url"
 msgstr "Guardar url"
 
-#: View\Urls\admin_index.ctp:14
+#: \View\Urls\admin_index.ctp:14
 msgid "Page Title"
 msgstr "Título de Página"
 
-#: View\Urls\admin_index.ctp:29
+#: \View\Urls\admin_index.ctp:29
+msgid "Created by"
+msgstr ""
+
+#: \View\Urls\admin_index.ctp:34
+#, fuzzy
+msgid "Updated"
+msgstr "Actualizar"
+
+#: \View\Urls\admin_index.ctp:36
+msgid "Y/m/d - H:i"
+msgstr ""
+
+#: \View\Urls\admin_index.ctp:37
+#, fuzzy
+msgid "updated by"
+msgstr "Actualizar"
+
+#: \View\Urls\admin_index.ctp:40
 msgid "Status"
 msgstr "Estado"
 
-#: View\Urls\admin_index.ctp:30
-msgid "inactive"
-msgstr "inactivo"
+#: \View\Urls\admin_index.ctp:41
+#, fuzzy
+msgid "optimization inactive"
+msgstr "Optimizacion Activa"
 
-#: View\Urls\admin_index.ctp:30
-msgid "active"
-msgstr "activo"
+#: \View\Urls\admin_index.ctp:41
+#, fuzzy
+msgid "optimization active"
+msgstr "Optimizacion Activa"
 
-#: View\Urls\admin_index.ctp:34
+#: \View\Urls\admin_index.ctp:45
 msgid "There are no URLs to display"
 msgstr "No hay URLs para mostrar"
 
-#: View\Urls\admin_index.ctp:41
+#: \View\Urls\admin_index.ctp:53
+#, fuzzy
+msgid "Filter Options"
+msgstr "Opciones de Modificación"
+
+#: \View\Urls\admin_index.ctp:88
+#, fuzzy
+msgid "Active"
+msgstr "activo"
+
+#: \View\Urls\admin_index.ctp:89
+#, fuzzy
+msgid "Inactive"
+msgstr "inactivo"
+
+#: \View\Urls\admin_index.ctp:94
+msgid "(NOTE: wildcard \"*\" allowed)"
+msgstr ""
+
+#: \View\Urls\admin_index.ctp:95
+msgid "Filter"
+msgstr ""
+
+#: \View\Urls\admin_index.ctp:101
 msgid "Are you sure about this changes ?"
 msgstr "Seguro desea aplicar estos cambios ?"
 
-#: View\Urls\admin_index.ctp:43
+#: \View\Urls\admin_index.ctp:103
 msgid "Update Options"
 msgstr "Opciones de Modificación"
 
-#: View\Urls\admin_index.ctp:50
+#: \View\Urls\admin_index.ctp:110
 msgid "Delete selected urls"
 msgstr "Eliminar urls seleccionadas"
 
-#: View\Urls\admin_index.ctp:51
+#: \View\Urls\admin_index.ctp:111
 msgid "Enable selected urls"
 msgstr "Activar urls seleccionadas"
 
-#: View\Urls\admin_index.ctp:52
+#: \View\Urls\admin_index.ctp:112
 msgid "Disable selected urls"
 msgstr "Desactivar urls seleccionadas"
 
-#: View\Urls\admin_index.ctp:57
+#: \View\Urls\admin_index.ctp:117
 msgid "Update"
 msgstr "Actualizar"
 

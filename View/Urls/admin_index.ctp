@@ -31,10 +31,10 @@ $tSettings = array(
             'sort'    => 'CreatedBy.name',
             'tdOptions' => array('width' => '20%', 'align' => 'left')
         ),
-		__t('Updated') => array(
+		__d('seo_tools', 'Updated') => array(
 			'value' => '
-				{php} return CakeTime::format("' . __t('Y/m/d - H:i') . '", strtotime("{SeoUrl.modified}")); {/php}
-				{php} return ("{SeoUrl.modified}" != "{SeoUrl.created}" ? "<span style=\\"color:red;\\">' . __t('updated by') . ' {ModifiedBy.name}</span>" : ""); {/php}',
+				{php} return CakeTime::format("' . __d('seo_tools', 'Y/m/d - H:i') . '", strtotime("{SeoUrl.modified}")); {/php}
+				{php} return ("{SeoUrl.modified}" != "{SeoUrl.created}" ? "<span style=\\"color:red;\\">' . __d('seo_tools', 'updated by') . ' {ModifiedBy.name}</span>" : ""); {/php}',
 			'sort' => 'SeoUrl.modified'
 		),		
         __d('seo_tools', 'Status') => array(
@@ -50,7 +50,7 @@ $tSettings = array(
 ?>
 
 <?php echo $this->Form->create(null, array('class' => 'form-vertical')); ?>
-	<?php echo $this->Html->useTag('fieldsetstart', '<span class="fieldset-toggle">' . __t('Filter Options') . '</span>'); ?>
+	<?php echo $this->Html->useTag('fieldsetstart', '<span class="fieldset-toggle">' . __d('seo_tools', 'Filter Options') . '</span>'); ?>
 		<div class="fieldset-toggle-container" style="<?php echo isset($this->data['Filter']) ? '' : 'display:none;'; ?>">
 			<?php echo $this->Form->input('Filter.url',
 					array(
@@ -92,7 +92,7 @@ $tSettings = array(
 				);
 			?>
 			<p><em><?php echo __d('seo_tools', '(NOTE: wildcard "*" allowed)'); ?></em></p>
-			<?php echo $this->Form->submit(__t('Filter')); ?>
+			<?php echo $this->Form->submit(__d('seo_tools', 'Filter')); ?>
 		</div>
 	<?php echo $this->Html->useTag('fieldsetend'); ?>
 <?php echo $this->Form->end(); ?>
